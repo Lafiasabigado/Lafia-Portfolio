@@ -19,7 +19,7 @@ const About = () => {
          <div className='flex items-center space-x-4 pt-5'>
             <Button className='bg-blue-400 border rounded-full'>Contact Me</Button>
             <div className='text-blue-500'>
-             <Link href={"linkedin.com/in/lafia-sabi-gado-03910a292/"}>
+             <Link href={"https://linkedin.com/in/lafia-sabi-gado-03910a292/"}>
                <Linkedin />
              </Link>
             </div>

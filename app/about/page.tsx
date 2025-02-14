@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 const About = () => {
   return (
-    <div className='gap-2 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 md:grid-cols-2 items-center pt-5'>
+    <div className='gap-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 md:grid-cols-2 items-center pt-5'>
       <div className=''>
          <p 
          className='uppercase text-5xl font-bold my-2 py-2'>

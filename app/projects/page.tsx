@@ -5,34 +5,38 @@ import { link } from 'fs'
 
 export const Projects = () => {
   const projects = [
-    {id:1,
-     name:"Ballamas",
-     image:"/ballamas.png",
-     description:"",
-     linkdn:"",
-     github:"",
-     tools:"",
-     year:""
+    {
+        id: 1,
+        name: "Ballamas",
+        image: "/ballamas.png",
+        description: "Ballamas is a dynamic web application designed for managing sports tournaments efficiently. It allows users to create, organize, and track competitions with real-time updates and rankings.",
+        link: "https://figma-to-code-ed2-week2-one.vercel.app/",
+        github: "https://github.com/Lafiasabigado/Figma_to_code_ed2_week2.git",
+        tools: "Vue.js, Tailwind CSS, Firebase",
+        year: "2024"
     },
-    {   id:2,
-        name:"Ballamas",
-        image:"/ballamas.png",
-        description:"",
-        linkdn:"",
-        github:"",
-        tools:"",
-        year:""
+    {
+        id: 2,
+        name: "Apex Food",
+        image: "/apex-food.png",
+        description: "Apex Food is an intuitive platform for discovering and ordering delicious meals. It features a user-friendly interface, real-time order tracking, and seamless restaurant management.",
+        link: "https://apex-food.vercel.app/",
+        github: "https://github.com/Lafiasabigado/Apex_food.git",
+        tools: "Vue.js, Django, PostgreSQL",
+        year: "2024"
     },
-    {   id:3,
-        name:"Ballamas",
-        image:"/ballamas.png",
-        description:"",
-        linkdn:"",
-        github:"",
-        tools:"",
-        year:""
+    {
+        id: 3,
+        name: "Footplayers API",
+        image: "/footplayers-api.png",
+        description: "Footplayers API is a RESTful service providing detailed information on professional football players, including stats, teams, and career history, making it ideal for sports applications and analysis.",
+        link: "https://foot-api-0gcy.onrender.com/",
+        github: "https://github.com/Lafiasabigado/Foot-Api.git",
+        tools: "Django REST Framework, PostgreSQL, Redis",
+        year: "2024"
     }
-  ]
+]
+
   return (
     <div className='pt-20'>
         <hr className='pt-5 text-zinc-700'/>

@@ -1,8 +1,10 @@
 import React from 'react'
+import About from './about/page'
 
 const Page = () => {
   return (
-    <div className='flex justify-center'>
+    <div className=''>
+      <About />
     </div>
   )
 }

@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    font-family: "Roboto", serif;
+  }
+}
+
 html.dark {
   background-color: #111827; 
   color: white;
@@ -10,4 +16,14 @@ html.dark {
 html.light {
   background-color: white;
   color: black;
+}
+
+
+.roboto{
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
 }

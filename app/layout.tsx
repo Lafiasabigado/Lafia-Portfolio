@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "./components/Nav";
 import { ThemeProvider } from "./components/theme-provider"
+import Head from "next/head";
 
 
 const geistSans = Geist({
@@ -29,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark scroll-smooth">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       > 

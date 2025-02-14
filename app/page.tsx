@@ -1,10 +1,10 @@
 import React from 'react'
-import About from './about/page'
+import Presentation from './components/Presentation'
 
 const Page = () => {
   return (
     <div className=''>
-      <About />
+      <Presentation />
     </div>
   )
 }

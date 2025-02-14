@@ -13,7 +13,7 @@ export default function Navbar() {
     <nav className="bg-white dark:bg-gray-900 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Nom */}
+          
           <Link href="/" className="text-lg font-bold uppercase hover:text-blue-500">
             Lafia Sabi Gado
           </Link>

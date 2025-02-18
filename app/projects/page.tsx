@@ -44,6 +44,27 @@ const Projects = () => {
            <h2 className='text-4xl font-bold uppercase'> Featured Projects</h2>
            <p className='dark:text-gray-300 py-2'>Here are some of the selected projects that showcase my passion for full-stack development.</p>
         </div>
+        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5'>
+        {projects.map((project) => (
+          <div key={project.id} className='items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8'>
+                <div className='my-4'>
+                  <Image 
+                  src={project.image} 
+                  alt={project.name} 
+                  width={700} 
+                  height={700}
+                  className='rounded-md transition-transform duration-300 ease-in-out hover:scale-105'
+                   />
+                </div>
+                 <div className=''>
+                    <h2 className='text-bold text-3xl'>{project.name}</h2>
+                    <p className='dark:text-gray-300 py-2'>{project.description}</p>
+                    <p className='text-2xl font-semibold dark:text-gray-300 py-2'>Project Infos</p>
+                    
+                 </div>
+              </div>
+        ))}
+        </div>
     </div>
   )
 }

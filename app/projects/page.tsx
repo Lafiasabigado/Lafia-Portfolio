@@ -49,13 +49,15 @@ const Projects = () => {
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5'>
         {projects.map((project) => (
           <div key={project.id} className='items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10'>
-                <div className='my-4 p-2 rounded-lg transition-transform duration-300 ease-in-out hover:scale-105'>
+                <div 
+                className='my-4 p-2 transition-transform duration-300 ease-in-out hover:scale-105'
+                >
                   <Image 
                   src={project.image} 
                   alt={project.name} 
                   width={800} 
                   height={600}
-                  className="w-full h-auto rounded-lg object-cover aspect-[4/3]"
+                  className="w-full h-auto rounded-xl object-cover aspect-[4/3]"
                    />
                 </div>
                  <div className=''>
@@ -72,7 +74,7 @@ const Projects = () => {
                       <p className='dark:text-gray-300'>Tools</p>
                       <p className='dark:text-gray-300 ml-2'>{project.tools}</p>
                     </div>
-                    <div className='flex justify-between items-center pt-5'>
+                    <div className='justify-start gap-8 flex items-center pt-5'>
                       <Link href={project.link} className='flex text-blue-600 text-xl justify-center items-center'>
                         <p className=''>Live Demo</p>
                         <ArrowUpRightIcon />

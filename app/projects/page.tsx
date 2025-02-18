@@ -75,11 +75,11 @@ const Projects = () => {
                       <p className='dark:text-gray-300 ml-2'>{project.tools}</p>
                     </div>
                     <div className='justify-start gap-4 flex items-center pt-5'>
-                      <Link href={project.link} className='flex text-blue-400 text-xl justify-center items-center'>
+                      <Link href={project.link} className='flex px-2 py-2 rounded-full bg-blue-400 text-xl justify-center items-center'>
                         <p className=''>Live Demo</p>
                         <ArrowUpRightIcon />
                       </Link>
-                      <Link href={project.github} className='flex text-blue-400 text-xl justify-center items-center'>
+                      <Link href={project.github} className='flex px-2 py-2 rounded-full bg-blue-400 text-xl justify-center items-center'>
                         <p className='mx-2'>See On Github</p>
                         <Github />
                       </Link>

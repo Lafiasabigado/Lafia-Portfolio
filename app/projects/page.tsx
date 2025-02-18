@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { link } from 'fs'
 import { Github,ArrowUpRightIcon } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 
 const Projects = () => {
@@ -76,12 +77,16 @@ const Projects = () => {
                     </div>
                     <div className='justify-start gap-4 flex items-center pt-5'>
                       <Link href={project.link} className='flex px-2 py-2 rounded-full bg-blue-400 text-xl justify-center items-center'>
-                        <p className=''>Live Demo</p>
-                        <ArrowUpRightIcon />
+                        <Button>
+                          <p className='uppercase'>Live Demo</p>
+                          <ArrowUpRightIcon />
+                        </Button>
                       </Link>
                       <Link href={project.github} className='flex px-2 py-2 rounded-full bg-blue-400 text-xl justify-center items-center'>
-                        <p className='mx-2'>See On Github</p>
-                        <Github />
+                        <Button>
+                          <p className='uppercase'>See On Github</p>
+                          <Github />
+                        </Button>
                       </Link>
                     </div> 
                  </div>

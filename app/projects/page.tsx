@@ -50,7 +50,7 @@ const Projects = () => {
         {projects.map((project) => (
           <div key={project.id} className='items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10'>
                 <div 
-                className='my-4 p-2 transition-transform duration-300 ease-in-out hover:scale-105'
+                className='py-4  transition-transform duration-300 ease-in-out hover:scale-105'
                 >
                   <Image 
                   src={project.image} 

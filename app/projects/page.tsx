@@ -48,7 +48,7 @@ const Projects = () => {
         </div>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5'>
         {projects.map((project) => (
-          <div key={project.id} className='items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 my-2 py-4'>
+          <div key={project.id} className='items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 py-8'>
                 <div 
                 className='py-4  transition-transform duration-300 ease-in-out hover:scale-105'
                 >
@@ -75,11 +75,11 @@ const Projects = () => {
                       <p className='dark:text-gray-300 ml-2'>{project.tools}</p>
                     </div>
                     <div className='justify-start gap-4 flex items-center pt-5'>
-                      <Link href={project.link} className='flex text-blue-600 text-xl justify-center items-center'>
+                      <Link href={project.link} className='flex text-blue-400 text-xl justify-center items-center'>
                         <p className=''>Live Demo</p>
                         <ArrowUpRightIcon />
                       </Link>
-                      <Link href={project.github} className='flex text-blue-600 text-xl justify-center items-center'>
+                      <Link href={project.github} className='flex text-blue-400 text-xl justify-center items-center'>
                         <p className='mx-2'>See On Github</p>
                         <Github />
                       </Link>

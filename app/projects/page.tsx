@@ -44,7 +44,7 @@ const Projects = () => {
     <div className='pt-20'>
         <hr className='pt-5 text-zinc-700'/>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5'>
-           <h2 className='text-4xl font-bold uppercase'> Featured Projects</h2>
+           <h2 className='text-2xl sm:text-4xl font-bold uppercase'> Featured Projects</h2>
            <p className='dark:text-gray-300 py-2'>Here are some of the selected projects that showcase my passion for full-stack development.</p>
         </div>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5'>
@@ -66,15 +66,16 @@ const Projects = () => {
                     <p className='dark:text-gray-300 py-2'>{project.description}</p>
                     <p className='text-2xl font-semibold dark:text-gray-300 py-2'>Project Infos</p>
                     <hr className='pt-7 text-zinc-700'/>
-                    <div className='flex justify-between items-center'>
+                    <div className='flex pb-5 justify-between items-center'>
                       <p className='dark:text-gray-300'>Year</p>
                       <p className='dark:text-gray-300 ml-2'>{project.year}</p>
                     </div>
                     <hr className='pt-7 text-zinc-700'/>
-                    <div className='flex justify-between items-center'>
+                    <div className='flex pb-5 justify-between items-center'>
                       <p className='dark:text-gray-300'>Tools</p>
                       <p className='dark:text-gray-300 ml-2'>{project.tools}</p>
                     </div>
+                    <hr className='pt-7 text-zinc-700'/>
                     <div className='justify-start gap-4 flex items-center pt-5'>
                       <Link href={project.link} className='flex px-2 py-2 rounded-full bg-blue-400 text-xl justify-center items-center'>
                         <Button>

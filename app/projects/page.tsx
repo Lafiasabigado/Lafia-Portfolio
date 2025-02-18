@@ -74,7 +74,7 @@ const Projects = () => {
                       <p className='dark:text-gray-300'>Tools</p>
                       <p className='dark:text-gray-300 ml-2'>{project.tools}</p>
                     </div>
-                    <div className='justify-start gap-8 flex items-center pt-5'>
+                    <div className='justify-start gap-4 flex items-center pt-5'>
                       <Link href={project.link} className='flex text-blue-600 text-xl justify-center items-center'>
                         <p className=''>Live Demo</p>
                         <ArrowUpRightIcon />

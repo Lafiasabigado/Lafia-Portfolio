@@ -48,7 +48,7 @@ const Projects = () => {
         </div>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5'>
         {projects.map((project) => (
-          <div key={project.id} className='items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 py-8'>
+          <div key={project.id} className='items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-8 py-8'>
                 <div 
                 className='py-4  transition-transform duration-300 ease-in-out hover:scale-105'
                 >

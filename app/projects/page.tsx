@@ -2,6 +2,8 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { link } from 'fs'
+import { Github,ArrowUpRightIcon } from 'lucide-react'
+
 
 const Projects = () => {
   const projects = [
@@ -46,21 +48,39 @@ const Projects = () => {
         </div>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5'>
         {projects.map((project) => (
-          <div key={project.id} className='items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8'>
-                <div className='my-4'>
+          <div key={project.id} className='items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10'>
+                <div className='my-4 bg-blue-500 p-5 rounded-md transition-transform duration-300 ease-in-out hover:scale-105'>
                   <Image 
                   src={project.image} 
                   alt={project.name} 
                   width={700} 
-                  height={700}
-                  className='rounded-md transition-transform duration-300 ease-in-out hover:scale-105'
+                  height={1000}
                    />
                 </div>
-                 <div className=''>
+                 <div className='pt-20'>
                     <h2 className='text-bold text-3xl'>{project.name}</h2>
                     <p className='dark:text-gray-300 py-2'>{project.description}</p>
                     <p className='text-2xl font-semibold dark:text-gray-300 py-2'>Project Infos</p>
-                    
+                    <hr className='pt-7 text-zinc-700'/>
+                    <div className='flex justify-between items-center'>
+                      <p className='dark:text-gray-300'>Year</p>
+                      <p className='dark:text-gray-300 ml-2'>{project.year}</p>
+                    </div>
+                    <hr className='pt-7 text-zinc-700'/>
+                    <div className='flex justify-between items-center'>
+                      <p className='dark:text-gray-300'>Tools</p>
+                      <p className='dark:text-gray-300 ml-2'>{project.tools}</p>
+                    </div>
+                    <div className='flex justify-between items-center pt-5'>
+                      <Link href={project.link} className='flex text-blue-600 text-xl justify-center items-center'>
+                        <p className=''>Live Demo</p>
+                        <ArrowUpRightIcon />
+                      </Link>
+                      <Link href={project.github} className='flex text-blue-600 text-xl justify-center items-center'>
+                        <p className='mx-2'>See On Github</p>
+                        <Github />
+                      </Link>
+                    </div> 
                  </div>
               </div>
         ))}

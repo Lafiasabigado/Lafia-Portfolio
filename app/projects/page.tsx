@@ -78,13 +78,13 @@ const Projects = () => {
                     <div className='justify-start gap-4 flex items-center pt-5'>
                       <Link href={project.link} className='flex px-2 py-2 rounded-full bg-blue-400 text-xl justify-center items-center'>
                         <Button>
-                          <p className='uppercase'>Live Demo</p>
+                          <p className=''>Live Demo</p>
                           <ArrowUpRightIcon />
                         </Button>
                       </Link>
                       <Link href={project.github} className='flex px-2 py-2 rounded-full bg-blue-400 text-xl justify-center items-center'>
                         <Button>
-                          <p className='uppercase'>See On Github</p>
+                          <p className=''>See On Github</p>
                           <Github />
                         </Button>
                       </Link>

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { link } from 'fs'
 
-export const Projects = () => {
+const Projects = () => {
   const projects = [
     {
         id: 1,
@@ -47,3 +47,4 @@ export const Projects = () => {
     </div>
   )
 }
+export default Projects

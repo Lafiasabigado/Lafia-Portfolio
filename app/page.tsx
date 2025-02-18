@@ -1,6 +1,6 @@
 import React from 'react'
 import Presentation from './components/Presentation'
-import { Projects } from './projects/page'
+import Projects from './projects/page'
 
 const Page = () => {
   return (

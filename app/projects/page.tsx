@@ -49,15 +49,16 @@ const Projects = () => {
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5'>
         {projects.map((project) => (
           <div key={project.id} className='items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10'>
-                <div className='my-4 bg-blue-500 p-5 rounded-md transition-transform duration-300 ease-in-out hover:scale-105'>
+                <div className='my-4 p-2 rounded-lg transition-transform duration-300 ease-in-out hover:scale-105'>
                   <Image 
                   src={project.image} 
                   alt={project.name} 
-                  width={700} 
-                  height={1000}
+                  width={800} 
+                  height={600}
+                  className="w-full h-auto rounded-lg object-cover aspect-[4/3]"
                    />
                 </div>
-                 <div className='pt-20'>
+                 <div className=''>
                     <h2 className='text-bold text-3xl'>{project.name}</h2>
                     <p className='dark:text-gray-300 py-2'>{project.description}</p>
                     <p className='text-2xl font-semibold dark:text-gray-300 py-2'>Project Infos</p>

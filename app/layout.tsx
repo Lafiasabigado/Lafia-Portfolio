@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Archivo, Poppins, Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "./components/Nav";
-import { ThemeProvider } from "./components/theme-provider"
+import { ThemeProvider } from "./components/theme-provider";
 import Head from "next/head";
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,8 +45,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en" className="dark scroll-smooth">
+      <Head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+      </Head>
       <body
         className={` ${inter.variable} ${archivo.variable} ${geistMono.variable} antialiased`}
       > 

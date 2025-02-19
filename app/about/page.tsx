@@ -11,13 +11,6 @@ import AOS from "aos";
 
 
 const About = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000, // Durée des animations en ms
-      once: false, // Animation qui s'exécute une seule fois
-      easing: "ease-out", // Type d'animation
-    });
-  }, []);
 
   const link = [
     "https://drive.google.com/file/d/1RWYI8TM3-R3ns8IMfZ1pwe4MeqeMdAcP/view?usp=sharing",

@@ -30,14 +30,16 @@ const Presentation = () => {
             </div>
          </div>
       </div>
-      <div className='pt-10 sm:pt-0 w-full sm:w-[300px] h-full hover:bg-blue-300 rounded-xl flex justify-center drop-shadow-sm hover:scale-105 transition-transform duration-300 ease-in-out items-center bg-bgdarkPrimary'>
-        <Image 
-        src='/logo1.png' 
-        alt='Lafia' 
-        width={300} 
-        height={400}
-        className='' 
-        />
+      <div className='pt-5 sm:pt-0'>
+        <div className='w-full sm:w-[300px] h-full hover:bg-zinc-700 rounded-xl flex justify-center drop-shadow-sm hover:scale-105 transition-transform duration-300 ease-in-out items-center bg-bgdarkPrimary'>
+          <Image 
+          src='/logo1.png' 
+          alt='Lafia' 
+          width={300} 
+          height={400}
+          className='' 
+          />
+        </div>
       </div>
     </div>
   )

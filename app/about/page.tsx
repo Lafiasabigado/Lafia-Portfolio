@@ -10,6 +10,13 @@ const About = () => {
     "https://linkedin.com/in/lafia-sabi-gado-03910a292/",
     "https://github.com/Lafiasabigado",
   ]
+
+   const elements = [
+    { id: 3, label: "Download Resume", icon: ArrowDown, link: link[0] },
+    { id: 2, label: "", icon: Linkedin, link: link[1] },
+    { id: 1, label: "", icon: Github, link: link[2] },
+  ]
+
   return (
     <div className='pt-10'>
         <hr className='pt-10 text-zinc-700'/>
@@ -26,23 +33,15 @@ const About = () => {
               When I’m not coding, I enjoy playing football, and catching up on movies and TV shows.
               Feel free to reach out if you’d like to collaborate on something great!
             </p>
-            <div className='flex justify-start py-2 space-x-4'>
-              <Link href={link[0]}>
-                <Button className='bg-blue-400  uppercase  border rounded-full'>
-                  Download Resume
-                  <ArrowDown className='h-4 w-4 ml-1' />
-                </Button>
-              </Link>
-              <Link href={link[1]}>
-                <Button className='bg-blue-400  uppercase  border rounded-full'>
-                  <Linkedin className='h-4 w-4 ml-1' />
-                </Button>
-              </Link>
-              <Link href={link[2]}>
-                <Button className='bg-blue-400  uppercase  border rounded-full'>
-                  <Github className='h-4 w-4 ml-1' />
-                </Button>
-              </Link>
+              <div className='flex justify-start py-2 space-x-4'>
+              {elements.map((element) => (
+                <Link href={element.link} key={element.id}>
+                  <Button className='bg-blue-400  uppercase border rounded-full'>
+                    {element.label}
+                    <element.icon className='h-4 w-4 ml-1' />
+                  </Button>
+                </Link>
+            ))}
             </div>
           </div>
       </div>

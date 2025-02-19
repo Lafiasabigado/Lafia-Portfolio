@@ -30,7 +30,7 @@ const Presentation = () => {
             </div>
          </div>
       </div>
-      <div className='w-[300px] h-full rounded-xl flex justify-center drop-shadow-sm hover:scale-105 transition-transform duration-300 ease-in-out items-center border' style={{backgroundColor:"#C7C7C7"}}>
+      <div className='pt-10 sm:pt-0 w-full sm:w-[300px] h-full rounded-xl flex justify-center drop-shadow-sm hover:scale-105 transition-transform duration-300 ease-in-out items-center' style={{backgroundColor:"#111827"}}>
         <Image 
         src='/logo1.png' 
         alt='Lafia' 

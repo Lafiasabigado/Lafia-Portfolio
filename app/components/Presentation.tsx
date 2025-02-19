@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 const Presentation = () => {
   return (
-    <div className='gap-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 md:grid-cols-2 items-center pt-10'>
+    <div className='gap-4 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 md:grid-cols-2 items-center pt-10'>
       <div className=''>
          <p 
          className='uppercase text-2xl sm:text-4xl font-bold my-2 py-2'>
@@ -30,12 +30,12 @@ const Presentation = () => {
             </div>
          </div>
       </div>
-      <div className='rounded-xl flex justify-center items-center w-full h-full border' style={{backgroundColor:"#C7C7C7"}}>
+      <div className='w-[300px] h-[400px] rounded-xl flex justify-center drop-shadow-sm hover:scale-105 transition-transform duration-300 ease-in-out items-end border' style={{backgroundColor:"#C7C7C7"}}>
         <Image 
         src='/logo1.png' 
         alt='Lafia' 
-        width={500} 
-        height={500}
+        width={300} 
+        height={400}
         className='' 
         />
       </div>

@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
@@ -35,7 +37,8 @@ const Presentation = () => {
          </div>
       </div>
       <div className='pt-5 sm:pt-0'>
-        <div className='w-full sm:w-[300px] h-full hover:bg-zinc-800 rounded-xl flex justify-center drop-shadow-sm hover:scale-105 transition-transform duration-300 ease-in-out items-center bg-bgdarkPrimary'>
+        <div 
+         className='w-full sm:w-[300px] h-full hover:bg-zinc-800 rounded-xl flex justify-center drop-shadow-sm hover:scale-105 transition-transform duration-300 ease-in-out items-center bg-bgdarkPrimary'>
           <Image 
           src='/logo1.png' 
           alt='Lafia' 
@@ -44,7 +47,7 @@ const Presentation = () => {
           className='' 
           />
         </div>
-      </div>
+      </div> 
     </div>
   )
 }

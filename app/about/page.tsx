@@ -1,10 +1,24 @@
+"use client";
+
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { ArrowDown } from 'lucide-react'
 import { Github,Linkedin } from 'lucide-react'
+import { useEffect } from "react";
+import "aos/dist/aos.css";
+import AOS from "aos";
+
 
 const About = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Durée des animations en ms
+      once: false, // Animation qui s'exécute une seule fois
+      easing: "ease-out", // Type d'animation
+    });
+  }, []);
+
   const link = [
     "https://drive.google.com/file/d/1RWYI8TM3-R3ns8IMfZ1pwe4MeqeMdAcP/view?usp=sharing",
     "https://linkedin.com/in/lafia-sabi-gado-03910a292/",
@@ -18,7 +32,7 @@ const About = () => {
   ]
 
   return (
-    <div className='pt-10'>
+    <div className='pt-10' data-aos="fade-up">
         <hr className='pt-10 text-zinc-700'/>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 gap-4'>
           <div className='grid md:grid-cols-2 '>

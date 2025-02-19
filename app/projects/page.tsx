@@ -74,15 +74,15 @@ const Projects = () => {
                       <p className='dark:text-gray-300'>Tools</p>
                       <p className='dark:text-gray-300 ml-2'>{project.tools}</p>
                     </div>
-                    <hr className='pt-7 text-zinc-700'/>
-                    <div className='justify-start gap-4 flex items-center pt-5'>
-                      <Link href={project.link} className='flex px-2 py-2 text-xl justify-center items-center'>
+                    <hr className='pt-5 text-zinc-700'/>
+                    <div className='justify-start gap-4 flex items-center pt-3'>
+                      <Link href={project.link} className='flex py-2 text-xl justify-center items-center'>
                         <Button className='bg-blue-400 rounded-full'>
                           <p className=''>Live Demo</p>
                           <ArrowUpRightIcon />
                         </Button>
                       </Link>
-                      <Link href={project.github} className='flex px-2 py-2 text-xl justify-center items-center'>
+                      <Link href={project.github} className='flex py-2 text-xl justify-center items-center'>
                         <Button className='bg-blue-400 rounded-full'>
                           <p className=''>See On Github</p>
                           <Github />

@@ -1,7 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { link } from 'fs'
 import { Github,ArrowUpRightIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
@@ -77,14 +76,14 @@ const Projects = () => {
                     </div>
                     <hr className='pt-7 text-zinc-700'/>
                     <div className='justify-start gap-4 flex items-center pt-5'>
-                      <Link href={project.link} className='flex px-2 py-2 rounded-full bg-blue-400 text-xl justify-center items-center'>
-                        <Button>
+                      <Link href={project.link} className='flex px-2 py-2 text-xl justify-center items-center'>
+                        <Button className='bg-blue-400 rounded-full'>
                           <p className=''>Live Demo</p>
                           <ArrowUpRightIcon />
                         </Button>
                       </Link>
-                      <Link href={project.github} className='flex px-2 py-2 rounded-full bg-blue-400 text-xl justify-center items-center'>
-                        <Button>
+                      <Link href={project.github} className='flex px-2 py-2 text-xl justify-center items-center'>
+                        <Button className='bg-blue-400 rounded-full'>
                           <p className=''>See On Github</p>
                           <Github />
                         </Button>

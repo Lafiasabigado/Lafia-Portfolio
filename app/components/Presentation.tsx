@@ -23,13 +23,13 @@ const Presentation = () => {
           A Benin based full-stack developer passionate about building accessible and user friendly websites.
          </p>
          <div className='flex items-center space-x-4 pt-5'>
-            <Button className='bg-blue-400 border rounded-full'>Contact Me</Button>
-            <div className='text-blue-400'>
+            <Button className='bg-blue-500 border rounded-full'>Contact Me</Button>
+            <div className='text-blue-500'>
              <Link href={link[0]}>
                <Linkedin />
              </Link>
             </div>
-            <div className='text-blue-400'>
+            <div className='text-blue-500'>
               <Link href={link[1]}>
                 <Github />
               </Link>

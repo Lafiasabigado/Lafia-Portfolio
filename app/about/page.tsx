@@ -42,7 +42,7 @@ const About = () => {
               <div className='sm:flex grid grid-cols-1 items-center justify-start py-2 sm:space-x-4'>
               {elements.map((element) => (
                 <Link href={element.link} key={element.id} className='py-2'>
-                  <Button className='bg-blue-400  uppercase border rounded-full'>
+                  <Button className='bg-blue-500  uppercase border rounded-full'>
                     {element.label}
                     <element.icon className='h-4 w-4 ml-1' />
                   </Button>

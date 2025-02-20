@@ -30,13 +30,13 @@ const Contact = () => {
             </div>
             <div className='flex-col py-4' data-aos="fade-up">
               <form action="" className='shadow-md space-y-4 px-6 py-6'>
-                  <label htmlFor="name" className='py-2 text-gray-500'>Name</label>
+                  <label htmlFor="name" className='py-2 text-gray-500 dark:text-zinc-100'>Name</label>
                   <input type="text" name="name" id="name" className='dark:border-none border border-gray-300 w-full p-2 rounded-lg py-2' />
-                  <label htmlFor="email" className='py-2 text-gray-500'>Email Adress</label>
+                  <label htmlFor="email" className='py-2 text-gray-500 dark:text-zinc-100'>Email Adress</label>
                   <input type="email" name="email" id="email" className='dark:border-none border border-gray-300 w-full px-2 py-2 rounded-lg' />
-                  <label htmlFor="" className='py-2 text-gray-500'>Subject</label>
+                  <label htmlFor="" className='py-2 text-gray-500 dark:text-zinc-100'>Subject</label>
                   <input type="text" id='subject' className='dark:border-none border border-gray-300 w-full p-2 rounded-lg'/>
-                  <label htmlFor="message" className='py-2 text-gray-500'>Message</label>
+                  <label htmlFor="message" className='py-2 text-gray-500 dark:text-zinc-100'>Message</label>
                   <textarea name="message" id="message" rows={5} className='dark:border-none border border-gray-300 w-full p-2 rounded-lg'></textarea>
                   <button type="submit" className='w-64 mx-auto p-2 bg-blue-500 text-white rounded-full'>Submit</button>
               </form>

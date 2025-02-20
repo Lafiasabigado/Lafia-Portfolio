@@ -4,6 +4,7 @@ import React from 'react'
 import Presentation from './components/Presentation'
 import Projects from './projects/page'
 import About from './about/page'
+import Skills from './skills/page'
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -21,6 +22,7 @@ const Page = () => {
       <Presentation />
       <Projects />
       <About />
+      <Skills />
     </div>
   )
 }

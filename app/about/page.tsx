@@ -3,7 +3,7 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { ArrowDown } from 'lucide-react'
+import { Download } from 'lucide-react';
 import { Github,Linkedin } from 'lucide-react'
 import { useEffect } from "react";
 import "aos/dist/aos.css";
@@ -18,14 +18,14 @@ const About = () => {
   ]
 
    const elements = [
-    { id: 3, label: "Download Resume", icon: ArrowDown, link: link[0] },
+    { id: 3, label: "Download Resume", icon: Download, link: link[0] },
     { id: 2, label: "Linkdin", icon: Linkedin, link: link[1] },
     { id: 1, label: "Github", icon: Github, link: link[2] },
   ]
 
   return (
     <div className='pt-10'>
-        <hr className='pt-10 text-zinc-700'/>
+        <hr className='pt-20 text-zinc-700'/>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 gap-4'>
           <div className='grid md:grid-cols-2 '>
           <h1 className='text-3xl font-bold uppercase pb-4 sm:pb-0'>About Me</h1>

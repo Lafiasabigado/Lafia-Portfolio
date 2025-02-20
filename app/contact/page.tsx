@@ -29,7 +29,7 @@ const Contact = () => {
               </div>
             </div>
             <div className='flex-col py-4'>
-              <form action="" className='space-y-4 shadow-lg'>
+              <form action="" className='shadow-lg space-y-4'>
                   <label htmlFor="name" className='py-2'>Name</label>
                   <input type="text" name="name" id="name" className='border-none w-full p-2 rounded-lg py-2' />
                   <label htmlFor="email" className='py-2'>Email Adress</label>
@@ -37,7 +37,7 @@ const Contact = () => {
                   <label htmlFor="" className='py-2'>Subject</label>
                   <input type="text" id='subject' className='border-none w-full p-2 rounded-lg'/>
                   <label htmlFor="message" className='py-2'>Message</label>
-                  <textarea name="message" id="message" rows={4} className='border-none w-full p-2 rounded-lg'></textarea>
+                  <textarea name="message" id="message" rows={5} className='border-none w-full p-2 rounded-lg'></textarea>
                   <button type="submit" className='w-64 mx-auto p-2 bg-blue-500 text-white rounded-full'>Submit</button>
               </form>
             </div>

@@ -31,13 +31,13 @@ const Contact = () => {
             <div className='flex-col py-4' data-aos="fade-up">
               <form action="" className='shadow-lg space-y-4'>
                   <label htmlFor="name" className='py-2'>Name</label>
-                  <input type="text" name="name" id="name" className='border-none w-full p-2 rounded-lg py-2' />
+                  <input type="text" name="name" id="name" className='dark:border-none w-full p-2 rounded-lg py-2' />
                   <label htmlFor="email" className='py-2'>Email Adress</label>
-                  <input type="email" name="email" id="email" className='border-none w-full px-2 py-2 rounded-lg' />
+                  <input type="email" name="email" id="email" className='dark:border-none w-full px-2 py-2 rounded-lg' />
                   <label htmlFor="" className='py-2'>Subject</label>
-                  <input type="text" id='subject' className='border-none w-full p-2 rounded-lg'/>
+                  <input type="text" id='subject' className='dark:border-none w-full p-2 rounded-lg'/>
                   <label htmlFor="message" className='py-2'>Message</label>
-                  <textarea name="message" id="message" rows={5} className='border-none w-full p-2 rounded-lg'></textarea>
+                  <textarea name="message" id="message" rows={5} className='dark:border-none w-full p-2 rounded-lg'></textarea>
                   <button type="submit" className='w-64 mx-auto p-2 bg-blue-500 text-white rounded-full'>Submit</button>
               </form>
             </div>

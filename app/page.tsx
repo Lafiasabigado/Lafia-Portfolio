@@ -19,7 +19,7 @@ const Page = () => {
     });
   }, []);
   return (
-    <div className=''>
+    <div className='text-zinc-800 dark:text-zinc-100'>
       <Presentation />
       <Projects />
       <About />

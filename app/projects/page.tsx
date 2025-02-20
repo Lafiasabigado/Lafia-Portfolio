@@ -30,7 +30,7 @@ const Projects = () => {
     {
         id: 3,
         name: "Footplayers API",
-        image: "/footplayers-api.png",
+        image: "/footplayers4.png",
         description: "Footplayers API is a RESTful service providing detailed information on professional football players, including stats, teams, and career history, making it ideal for sports applications and analysis.",
         link: "https://foot-api-0gcy.onrender.com/",
         github: "https://github.com/Lafiasabigado/Foot-Api.git",

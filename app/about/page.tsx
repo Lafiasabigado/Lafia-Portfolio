@@ -7,7 +7,6 @@ import { ArrowDown } from 'lucide-react'
 import { Github,Linkedin } from 'lucide-react'
 import { useEffect } from "react";
 import "aos/dist/aos.css";
-import AOS from "aos";
 
 
 const About = () => {
@@ -20,12 +19,12 @@ const About = () => {
 
    const elements = [
     { id: 3, label: "Download Resume", icon: ArrowDown, link: link[0] },
-    { id: 2, label: "", icon: Linkedin, link: link[1] },
-    { id: 1, label: "", icon: Github, link: link[2] },
+    { id: 2, label: "Linkdin", icon: Linkedin, link: link[1] },
+    { id: 1, label: "Github", icon: Github, link: link[2] },
   ]
 
   return (
-    <div className='pt-10' data-aos="fade-up">
+    <div className='pt-10'>
         <hr className='pt-10 text-zinc-700'/>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 gap-4'>
           <div className='grid md:grid-cols-2 '>
@@ -40,9 +39,9 @@ const About = () => {
               When I’m not coding, I enjoy playing football, and catching up on movies and TV shows.
               Feel free to reach out if you’d like to collaborate on something great!
             </p>
-              <div className='flex justify-start py-2 space-x-4'>
+              <div className='sm:flex grid grid-cols-1 items-center justify-start py-2 sm:space-x-4'>
               {elements.map((element) => (
-                <Link href={element.link} key={element.id}>
+                <Link href={element.link} key={element.id} className='py-2'>
                   <Button className='bg-blue-400  uppercase border rounded-full'>
                     {element.label}
                     <element.icon className='h-4 w-4 ml-1' />

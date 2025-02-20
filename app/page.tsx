@@ -11,8 +11,8 @@ import "aos/dist/aos.css";
 const Page = () => {
   useEffect(() => {
     AOS.init({
-      duration: 500, 
-      once: true, 
+      duration: 1000, 
+      once: false, 
       easing: "ease-out", 
     });
   }, []);

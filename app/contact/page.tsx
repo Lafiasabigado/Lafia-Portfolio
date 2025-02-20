@@ -28,7 +28,7 @@ const Contact = () => {
                 ))}
               </div>
             </div>
-            <div className='flex-col py-4'>
+            <div className='flex-col py-4' data-aos="fade-up">
               <form action="" className='shadow-lg space-y-4'>
                   <label htmlFor="name" className='py-2'>Name</label>
                   <input type="text" name="name" id="name" className='border-none w-full p-2 rounded-lg py-2' />
@@ -42,6 +42,7 @@ const Contact = () => {
               </form>
             </div>
           </div>
+          <p className='p-2'>© 2025 Lafia Sabi Gado.</p>
         </div>
     </div>
   )

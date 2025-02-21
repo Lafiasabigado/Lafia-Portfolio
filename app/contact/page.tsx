@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { FaTelegram,FaGithub,FaLinkedin,FaTwitter } from 'react-icons/fa'
+import { CheckCircle2, XCircle } from 'lucide-react'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,8 +12,17 @@ const Contact = () => {
     message: ''
   });
 
+  const [status, setStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({
+    type: null,
+    message: ''
+  });
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setStatus({ type: null, message: '' });
     
     try {
       const response = await fetch('/api/contact', {
@@ -24,14 +34,23 @@ const Contact = () => {
       });
 
       if (response.ok) {
-        alert('Message envoyé avec succès!');
+        setStatus({
+          type: 'success',
+          message: 'Message envoyé avec succès! Je vous répondrai dans les plus brefs délais.'
+        });
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
-        alert('Erreur lors de l\'envoi du message.');
+        setStatus({
+          type: 'error',
+          message: 'Erreur lors de l\'envoi du message. Veuillez réessayer.'
+        });
       }
     } catch (error) {
       console.error('Erreur:', error);
-      alert('Erreur lors de l\'envoi du message.');
+      setStatus({
+        type: 'error',
+        message: 'Erreur lors de l\'envoi du message. Veuillez réessayer.'
+      });
     }
   };
 
@@ -134,6 +153,23 @@ const Contact = () => {
                 >
                   Envoyer
                 </button>
+
+                {status.type && (
+                  <div
+                    className={`mt-4 p-4 rounded-lg flex items-center gap-2 ${
+                      status.type === 'success' 
+                        ? 'bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400' 
+                        : 'bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400'
+                    }`}
+                  >
+                    {status.type === 'success' ? (
+                      <CheckCircle2 className="h-5 w-5" />
+                    ) : (
+                      <XCircle className="h-5 w-5" />
+                    )}
+                    <p className="text-sm">{status.message}</p>
+                  </div>
+                )}
               </form>
             </div>
           </div>

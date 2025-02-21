@@ -12,7 +12,7 @@ const Presentation = () => {
     "https://github.com/Lafiasabigado"
   ]
   return (
-    <div className='gap-4 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 md:grid-cols-2 items-center pt-10'>
+    <div className='gap-4 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 md:grid-cols-2 items-center pt-32'>
       <div className=''>
         <p 
         className='uppercase text-2xl sm:text-4xl font-bold my-2 py-2'>

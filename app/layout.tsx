@@ -34,8 +34,8 @@ const archivo = Archivo({
 
 export const metadata: Metadata = {
   title: "Lafia Portfolio",
-  description: "My Portfolio",
-  icons: {
+  description: "Mon Portfolio",
+  icons: {   
     icon: "/logo1.png",
   },
 };
@@ -47,7 +47,7 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="fr" className="dark scroll-smooth">
       <Head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
       </Head>

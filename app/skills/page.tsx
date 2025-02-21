@@ -25,20 +25,27 @@ const Skills = () => {
     <div className='pt-10'>
         <hr className='pt-20 text-zinc-700'/>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-            <div className='grid md:grid-cols-2'>
-               <h2 className='text-3xl font-bold uppercase pb-4 sm:pb-0'>My Capabilities</h2>
-               <div className='flex-col'>
-                  <p className='dark:text-gray-300'>
-                    I love learning new things and growing my skills. Right now, I'm good at the following:
-                  </p>
-                 <div className='flex flex-wrap gap-4 pt-7'>
-                   {skills.map((skill) => (
-                    <div key={skill.id} data-aos="fade-up" className='flex items-center border border-gray-300 rounded-full py-2 px-4 mb-2 hover:bg-gray-100'>
-                        {skill.icon}
-                        <span className='ml-2'>{skill.name}</span>
-                    </div>
-                  ))}
-                 </div>
+            <div className='grid md:grid-cols-2 gap-8'>
+               <h2 className='text-3xl font-bold uppercase pb-4' data-aos="fade-right">Mes Compétences</h2>
+               <div className='flex-col space-y-6'>
+                  <div className='bg-gray-50 dark:bg-gray-800/50 p-6 rounded-xl' data-aos="fade-up">
+                    <p className='dark:text-gray-300 leading-relaxed'>
+                      J'aime apprendre de nouvelles choses et développer mes compétences. Actuellement, je maîtrise les technologies suivantes :
+                    </p>
+                  </div>
+                  <div className='flex flex-wrap gap-4' data-aos="fade-up" data-aos-delay="100">
+                    {skills.map((skill, index) => (
+                      <div 
+                        key={skill.id} 
+                        data-aos="zoom-in"
+                        data-aos-delay={index * 100}
+                        className='flex items-center border border-gray-300 rounded-full py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-110'
+                      >
+                          {skill.icon}
+                          <span className='ml-2'>{skill.name}</span>
+                      </div>
+                    ))}
+                  </div>
                </div>
             </div>
         </div>

@@ -11,7 +11,7 @@ const Projects = () => {
         id: 1,
         name: "Ballamas",
         image: "/ballamas.png",
-        description: "Ballamas is a dynamic web application designed for managing sports tournaments efficiently. It allows users to create, organize, and track competitions with real-time updates and rankings.",
+        description: "Ballamas est une application web dynamique conçue pour gérer efficacement les tournois sportifs. Elle permet aux utilisateurs de créer, organiser et suivre les compétitions avec des mises à jour en temps réel et des classements.",
         link: "https://figma-to-code-ed2-week2-one.vercel.app/",
         github: "https://github.com/Lafiasabigado/Figma_to_code_ed2_week2.git",
         tools: "Vue.js,Bootstrap",
@@ -21,7 +21,7 @@ const Projects = () => {
         id: 2,
         name: "Apex Food",
         image: "/apex-food.png",
-        description: "Apex Food is an intuitive platform for discovering and ordering delicious meals. It features a user-friendly interface, real-time order tracking, and seamless restaurant management.",
+        description: "Apex Food est une plateforme intuitive pour découvrir et commander des repas délicieux. Elle dispose d'une interface conviviale, d'un suivi des commandes en temps réel et d'une gestion fluide des restaurants.",
         link: "https://apex-food.vercel.app/",
         github: "https://github.com/Lafiasabigado/Apex_food.git",
         tools: "Vue.js,Tailwind",
@@ -31,11 +31,21 @@ const Projects = () => {
         id: 3,
         name: "Footplayers API",
         image: "/footplayers4.png",
-        description: "Footplayers API is a RESTful service providing detailed information on professional football players, including stats, teams, and career history, making it ideal for sports applications and analysis.",
+        description: "Footplayers API est un service RESTful fournissant des informations détaillées sur les joueurs de football professionnels, incluant les statistiques, les équipes et l'historique de carrière, idéal pour les applications et analyses sportives.",
         link: "https://foot-api-0gcy.onrender.com/",
         github: "https://github.com/Lafiasabigado/Foot-Api.git",
         tools: "Django REST Framework",
         year: "2024"
+    },
+    {
+      id:5,
+      name:"Travel Agency",
+      image:"/travel-agency.png",
+      description:"Travel Agency est une application web qui permet aux utilisateurs de planifier leurs voyages en ligne, en offrant des options de billets d'avion, de hôtels et de voitures, avec des fonctionnalités de recherche et de réservation.",
+      link:"https://travel-agency-psi-ashen.vercel.app/",
+      github:"https://github.com/Lafiasabigado/Travel-Agency.git",
+      tools:"React,Tailwind",
+      year:"2024"
     }
 ]
 
@@ -43,55 +53,62 @@ const Projects = () => {
     <div className='pt-20'>
         <hr className='pt-5 text-zinc-700'/>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5'>
-           <h2 className='text-2xl sm:text-4xl font-bold uppercase'> Featured Projects</h2>
-           <p className='dark:text-gray-300 py-2'>Here are some of the selected projects that showcase my passion for full-stack development.</p>
+           <h2 className='text-2xl sm:text-4xl font-bold uppercase' data-aos="fade-right">Mes Projets</h2>
+           <p className='dark:text-gray-300 py-2' data-aos="fade-up">
+             Voici une sélection de projets qui démontrent ma passion pour le développement full-stack.
+           </p>
         </div>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5'>
-        {projects.map((project) => (
-          <div key={project.id} data-aos="fade-up" className='items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-8 py-16'>
-                <div 
-                className='py-4  transition-transform duration-300 ease-in-out hover:scale-105'
-                >
-                  <Image 
+          {projects.map((project, index) => (
+            <div 
+              key={project.id} 
+              data-aos="fade-up"
+              data-aos-delay={index * 200}
+              className='items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 py-16'
+            >
+              <div className='group relative overflow-hidden rounded-xl'>
+                <Image 
                   src={project.image} 
                   alt={project.name} 
                   width={800} 
                   height={600}
-                  className="w-full h-auto rounded-xl object-cover aspect-[4/3]"
-                   />
-                </div>
-                 <div className=''>
-                    <h2 className='text-bold text-3xl'>{project.name}</h2>
-                    <p className='dark:text-gray-300 py-2'>{project.description}</p>
-                    <p className='text-2xl font-semibold dark:text-gray-300 py-2'>Project Infos</p>
-                    <hr className='pt-7 text-zinc-700'/>
-                    <div className='flex pb-5 justify-between items-center'>
-                      <p className='dark:text-gray-300'>Year</p>
-                      <p className='dark:text-gray-300 ml-2'>{project.year}</p>
-                    </div>
-                    <hr className='pt-7 text-zinc-700'/>
-                    <div className='flex pb-5 justify-between items-center'>
-                      <p className='dark:text-gray-300'>Tools</p>
-                      <p className='dark:text-gray-300 ml-2'>{project.tools}</p>
-                    </div>
-                    <hr className='pt-5 text-zinc-700'/>
-                    <div className='justify-start gap-2 sm:gap-4 sm:flex grid  grid-cols-1 sm:items-center pt-3'>
-                      <Link href={project.github} className='flex py-2 text-xl items-center'>
-                        <Button className='bg-blue-500 rounded-full'>
-                          <p className=''>See On Github</p>
-                          <Github />
-                        </Button>
-                      </Link>
-                      <Link href={project.link} className='flex py-2 text-xl items-center'>
-                        <Button className='bg-blue-500 rounded-full'>
-                          <p className=''>Live Demo</p>
-                          <ArrowUpRightIcon />
-                        </Button>
-                      </Link>
-                    </div> 
-                 </div>
+                  className="w-full h-auto rounded-xl object-cover aspect-[4/3] transition-transform duration-300 group-hover:scale-105"
+                />
               </div>
-        ))}
+              <div className='space-y-4'>
+                <h2 className='text-bold text-3xl'>{project.name}</h2>
+                <div className='bg-gray-50 dark:bg-gray-800/50 p-6 rounded-xl'>
+                  <p className='dark:text-gray-300'>{project.description}</p>
+                </div>
+                <div className='bg-gray-50 dark:bg-gray-800/50 p-6 rounded-xl space-y-4'>
+                  <p className='text-xl font-semibold dark:text-gray-300'>Informations du Projet</p>
+                  <div className='flex justify-between items-center'>
+                    <p className='dark:text-gray-300'>Année</p>
+                    <p className='dark:text-gray-300'>{project.year}</p>
+                  </div>
+                  <hr className='border-gray-300 dark:border-gray-700'/>
+                  <div className='flex justify-between items-center'>
+                    <p className='dark:text-gray-300'>Outils</p>
+                    <p className='dark:text-gray-300'>{project.tools}</p>
+                  </div>
+                </div>
+                <div className='flex flex-wrap gap-4 pt-4'>
+                  <Link href={project.github}>
+                    <Button className='bg-blue-500 hover:bg-blue-600 transition-colors duration-200 rounded-full'>
+                      Voir sur Github
+                      <Github className='ml-2 h-4 w-4' />
+                    </Button>
+                  </Link>
+                  <Link href={project.link}>
+                    <Button className='bg-blue-500 hover:bg-blue-600 transition-colors duration-200 rounded-full'>
+                      Démo en Direct
+                      <ArrowUpRightIcon className='ml-2 h-4 w-4' />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
     </div>
   )

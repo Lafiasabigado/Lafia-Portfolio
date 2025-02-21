@@ -22,8 +22,13 @@ const Presentation = () => {
         <p className='dark:text-gray-300'>
           Développeur Full Stack résidant au Bénin, passionné par la création de sites web accessibles et conviviaux.
         </p>
-        <div className='flex items-center space-x-4 pt-5'>
-           <Button className='bg-blue-500 border rounded-full'>Me Contacter</Button>
+        <div data-aos="fade-right"
+           data-aos-delay="100"
+           className='flex items-center space-x-4 pt-5'>
+           <Button
+           className='bg-blue-500 border rounded-full'
+           >Me Contacter
+           </Button>
            <div className='text-blue-500'>
             <Link href={link[0]}>
               <Linkedin />
@@ -44,7 +49,7 @@ const Presentation = () => {
           alt='Lafia' 
           width={300} 
           height={400}
-          className='' 
+          className='rounded-xl' 
           />
         </div>
       </div> 

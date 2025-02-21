@@ -1,8 +1,48 @@
-import React from 'react'
+"use client";
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { FaTelegram,FaGithub,FaLinkedin,FaTwitter } from 'react-icons/fa'
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        alert('Message envoyé avec succès!');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        alert('Erreur lors de l\'envoi du message.');
+      }
+    } catch (error) {
+      console.error('Erreur:', error);
+      alert('Erreur lors de l\'envoi du message.');
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
   const link = "https://drive.google.com/file/d/1RWYI8TM3-R3ns8IMfZ1pwe4MeqeMdAcP/view?usp=sharing"
 
   const socials = [
@@ -39,13 +79,16 @@ const Contact = () => {
               </div>
             </div>
             <div className='flex-col' data-aos="fade-up">
-              <form action="" className='bg-gray-50 dark:bg-gray-800/50 p-8 rounded-xl space-y-6'>
+              <form onSubmit={handleSubmit} className='bg-gray-50 dark:bg-gray-800/50 p-8 rounded-xl space-y-6'>
                 <div className='space-y-2'>
                   <label htmlFor="name" className='block text-sm font-medium'>Nom</label>
                   <input 
                     type="text" 
                     name="name" 
-                    id="name" 
+                    id="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
                     className='w-full p-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200'
                   />
                 </div>
@@ -54,7 +97,10 @@ const Contact = () => {
                   <input 
                     type="email" 
                     name="email" 
-                    id="email" 
+                    id="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                     className='w-full p-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200'
                   />
                 </div>
@@ -62,7 +108,11 @@ const Contact = () => {
                   <label htmlFor="subject" className='block text-sm font-medium'>Sujet</label>
                   <input 
                     type="text" 
-                    id='subject' 
+                    id='subject'
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
                     className='w-full p-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200'
                   />
                 </div>
@@ -70,8 +120,11 @@ const Contact = () => {
                   <label htmlFor="message" className='block text-sm font-medium'>Message</label>
                   <textarea 
                     name="message" 
-                    id="message" 
-                    rows={5} 
+                    id="message"
+                    rows={5}
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
                     className='w-full p-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200'
                   ></textarea>
                 </div>

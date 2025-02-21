@@ -24,7 +24,7 @@ const About = () => {
   ]
 
   return (
-    <div className='pt-10'>
+    <div className='pt-10 pb-4'>
       <hr className='pt-20 text-zinc-700'/>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='grid md:grid-cols-2 gap-8'>

@@ -11,7 +11,7 @@ const Projects = () => {
         id: 1,
         name: "Ballamas",
         image: "/ballamas.png",
-        description: "Ballamas est une application web dynamique conçue pour gérer efficacement les tournois sportifs. Elle permet aux utilisateurs de créer, organiser et suivre les compétitions avec des mises à jour en temps réel et des classements.",
+        description: "Ballamas est une plateforme e-commerce moderne dédiée à la vente de vêtements. Grâce à une interface intuitive et une expérience utilisateur optimisée, les clients peuvent explorer une large gamme de tenues tendances, passer des commandes en toute simplicité et bénéficier d’un service client réactif.",
         link: "https://figma-to-code-ed2-week2-one.vercel.app/",
         github: "https://github.com/Lafiasabigado/Figma_to_code_ed2_week2.git",
         tools: "Vue.js,Bootstrap",

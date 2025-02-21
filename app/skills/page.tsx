@@ -26,10 +26,10 @@ const Skills = () => {
         <hr className='pt-20 text-zinc-700'/>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='grid md:grid-cols-2 gap-8'>
-               <h2 className='text-3xl font-bold uppercase pb-4' data-aos="fade-right">Mes Compétences</h2>
+               <h2 className='text-3xl font-bold uppercase pb-4 text-gray-900 dark:text-white' data-aos="fade-right">Mes Compétences</h2>
                <div className='flex-col space-y-6'>
-                  <div className='bg-gray-50 dark:bg-gray-800/50 p-6 rounded-xl' data-aos="fade-up">
-                    <p className='dark:text-gray-300 leading-relaxed'>
+                  <div className='bg-white dark:bg-gray-800/50 shadow-sm p-6 rounded-xl' data-aos="fade-up">
+                    <p className='text-gray-600 dark:text-gray-300 text-lg leading-relaxed'>
                       J'aime apprendre de nouvelles choses et développer mes compétences. Actuellement, je maîtrise les technologies suivantes :
                     </p>
                   </div>
@@ -39,10 +39,12 @@ const Skills = () => {
                         key={skill.id} 
                         data-aos="zoom-in"
                         data-aos-delay={index * 100}
-                        className='flex items-center border border-gray-300 rounded-full py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-110'
+                        className='flex items-center bg-gradient-to-r from-gray-50 to-white dark:from-gray-800 dark:to-gray-700 border border-gray-200 dark:border-gray-600 rounded-full py-3 px-5 hover:shadow-md dark:hover:shadow-gray-800/50 transition-all duration-300 hover:scale-105'
                       >
+                        <div className='p-1.5 bg-white dark:bg-gray-700 rounded-full'>
                           {skill.icon}
-                          <span className='ml-2'>{skill.name}</span>
+                        </div>
+                        <span className='ml-3 font-medium text-gray-700 dark:text-gray-200'>{skill.name}</span>
                       </div>
                     ))}
                   </div>

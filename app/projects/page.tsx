@@ -66,33 +66,36 @@ const Projects = () => {
               data-aos-delay={index * 200}
               className='items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 py-16'
             >
-              <div className='group relative overflow-hidden rounded-xl'>
-                <Image 
-                  src={project.image} 
-                  alt={project.name} 
-                  width={800} 
-                  height={600}
-                  className="w-full h-auto rounded-xl object-cover aspect-[4/3] transition-transform duration-300 group-hover:scale-105"
-                />
+              <div className='group relative overflow-hidden rounded-xl bg-gradient-to-r from-gray-50 to-white dark:from-gray-800 dark:to-gray-700 p-2 shadow-lg hover:shadow-xl transition-all duration-300'>
+                <div className='relative aspect-[4/3] overflow-hidden rounded-lg'>
+                  <Image 
+                    src={project.image} 
+                    alt={project.name} 
+                    width={800} 
+                    height={600}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    priority
+                  />
+                </div>
               </div>
               <div className='space-y-4'>
-                <h2 className='text-bold text-3xl'>{project.name}</h2>
-                <div className='bg-gray-50 dark:bg-gray-800/50 p-6 rounded-xl'>
-                  <p className='dark:text-gray-300'>{project.description}</p>
+                <h2 className='text-bold text-3xl text-gray-900 dark:text-white'>{project.name}</h2>
+                <div className='bg-white dark:bg-gray-800/50 shadow-sm p-6 rounded-xl'>
+                  <p className='text-gray-600 dark:text-gray-300'>{project.description}</p>
                 </div>
-                <div className='bg-gray-50 dark:bg-gray-800/50 p-6 rounded-xl space-y-4'>
-                  <p className='text-xl font-semibold dark:text-gray-300'>Informations du Projet</p>
+                <div className='bg-white dark:bg-gray-800/50 shadow-sm p-6 rounded-xl space-y-4'>
+                  <p className='text-xl font-semibold text-gray-900 dark:text-gray-300'>Informations du Projet</p>
                   <div className='flex justify-between items-center'>
-                    <p className='dark:text-gray-300'>Année</p>
-                    <p className='dark:text-gray-300'>{project.year}</p>
+                    <p className='text-gray-600 dark:text-gray-300'>Année</p>
+                    <p className='text-gray-800 dark:text-gray-200'>{project.year}</p>
                   </div>
-                  <hr className='border-gray-300 dark:border-gray-700'/>
+                  <hr className='border-gray-200 dark:border-gray-700'/>
                   <div className='flex justify-between items-center'>
-                    <p className='dark:text-gray-300'>Outils</p>
-                    <p className='dark:text-gray-300'>{project.tools}</p>
+                    <p className='text-gray-600 dark:text-gray-300'>Outils</p>
+                    <p className='text-gray-800 dark:text-gray-200'>{project.tools}</p>
                   </div>
                 </div>
-                <div className='flex flex-wrap gap-4 pt-4'>
+                <div className='flex flex-wrap gap-4 pt-4 text-white dark:text-gray-100'>
                   <Link href={project.github}>
                     <Button className='bg-blue-500 hover:bg-blue-600 transition-colors duration-200 rounded-full'>
                       Voir sur Github

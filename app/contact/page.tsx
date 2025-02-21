@@ -77,8 +77,10 @@ const Contact = () => {
           <div className='grid md:grid-cols-2 gap-12'>
             <div className='flex-col' data-aos="fade-right">
               <h2 className='text-2xl sm:text-4xl font-bold uppercase'>Contactez-moi</h2>
-              <div className='mt-8 bg-gray-50 dark:bg-gray-800/50 p-6 rounded-xl'>
-                <p className='py-2 text-lg'>Dites bonjour à <span className='text-blue-500 hover:underline cursor-pointer'>lafiasabigado97@gmail.com</span></p>
+              <div className='mt-8 bg-white dark:bg-gray-800/50 shadow-sm p-6 rounded-xl'>
+                <p className='py-2 text-lg text-gray-700 dark:text-gray-300'>
+                  Dites bonjour à <span className='text-blue-500 hover:underline cursor-pointer'>lafiasabigado97@gmail.com</span>
+                </p>
                 <p className='py-2'>Pour plus d'informations, voici <Link href={link}><span className='text-blue-500 hover:underline'>mon CV</span></Link></p>
                 <div className='flex justify-start gap-6 pt-4'>
                   {socials.map((social) => (
@@ -98,9 +100,9 @@ const Contact = () => {
               </div>
             </div>
             <div className='flex-col' data-aos="fade-up">
-              <form onSubmit={handleSubmit} className='bg-gray-50 dark:bg-gray-800/50 p-8 rounded-xl space-y-6'>
+              <form onSubmit={handleSubmit} className='bg-white dark:bg-gray-800/50 shadow-md dark:shadow-sm p-8 rounded-xl space-y-6'>
                 <div className='space-y-2'>
-                  <label htmlFor="name" className='block text-sm font-medium'>Nom</label>
+                  <label htmlFor="name" className='block text-sm font-medium text-gray-700 dark:text-gray-300'>Nom</label>
                   <input 
                     type="text" 
                     name="name" 
@@ -108,11 +110,11 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className='w-full p-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200'
+                    className='w-full p-3 rounded-lg bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200 text-gray-900 dark:text-white'
                   />
                 </div>
                 <div className='space-y-2'>
-                  <label htmlFor="email" className='block text-sm font-medium'>Adresse Email</label>
+                  <label htmlFor="email" className='block text-sm font-medium text-gray-700 dark:text-gray-300'>Adresse Email</label>
                   <input 
                     type="email" 
                     name="email" 
@@ -120,11 +122,11 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className='w-full p-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200'
+                    className='w-full p-3 rounded-lg bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200 text-gray-900 dark:text-white'
                   />
                 </div>
                 <div className='space-y-2'>
-                  <label htmlFor="subject" className='block text-sm font-medium'>Sujet</label>
+                  <label htmlFor="subject" className='block text-sm font-medium text-gray-700 dark:text-gray-300'>Sujet</label>
                   <input 
                     type="text" 
                     id='subject'
@@ -132,11 +134,11 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className='w-full p-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200'
+                    className='w-full p-3 rounded-lg bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200 text-gray-900 dark:text-white'
                   />
                 </div>
                 <div className='space-y-2'>
-                  <label htmlFor="message" className='block text-sm font-medium'>Message</label>
+                  <label htmlFor="message" className='block text-sm font-medium text-gray-700 dark:text-gray-300'>Message</label>
                   <textarea 
                     name="message" 
                     id="message"
@@ -144,7 +146,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    className='w-full p-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200'
+                    className='w-full p-3 rounded-lg bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-200 text-gray-900 dark:text-white'
                   ></textarea>
                 </div>
                 <button 

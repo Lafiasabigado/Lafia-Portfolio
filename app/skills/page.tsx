@@ -39,9 +39,9 @@ const Skills = () => {
                         key={skill.id} 
                         data-aos="zoom-in"
                         data-aos-delay={index * 100}
-                        className='flex items-center bg-gradient-to-r from-gray-50 to-white dark:from-gray-800 dark:to-gray-700 border border-gray-200 dark:border-gray-600 rounded-full py-3 px-5 hover:shadow-md dark:hover:shadow-gray-800/50 transition-all duration-300 hover:scale-105'
+                        className='flex items-center bg-gradient-to-r from-gray-50 to-white dark:from-gray-800 dark:to-gray-700 border border-gray-200 dark:border-gray-600 rounded-full py-3 px-5 hover:shadow-md dark:hover:bg-gray-400 transition-all duration-300 hover:scale-105'
                       >
-                        <div className='p-1.5 bg-white dark:bg-gray-700 rounded-full'>
+                        <div className='p-1.5'>
                           {skill.icon}
                         </div>
                         <span className='ml-3 font-medium text-gray-700 dark:text-gray-200'>{skill.name}</span>

@@ -30,7 +30,7 @@ const About = () => {
         <div className='grid md:grid-cols-2 gap-8'>
           <h1 className='text-3xl font-bold uppercase pb-4'>À Propos de Moi</h1>
           <div className='flex-col space-y-6'>
-            <div className='bg-gray-50 dark:bg-gray-800/50 p-6 rounded-xl'>
+            <div data-aos="fade-up" data-aos-duration="1000" className='bg-gray-50 dark:bg-gray-800/50 p-6 rounded-xl'>
               <p className='text-xl leading-relaxed'>
                 Je suis un développeur passionné avec une expertise en développement web.
                 Mon objectif est de créer des solutions numériques innovantes qui répondent aux besoins
@@ -38,7 +38,7 @@ const About = () => {
               </p>
             </div>
             
-            <div className='bg-gray-50 dark:bg-gray-800/50 p-6 rounded-xl'>
+            <div data-aos="fade-up" data-aos-duration="1000" className='bg-gray-50 dark:bg-gray-800/50 p-6 rounded-xl'>
               <p className='leading-relaxed'>
                 Salut ! Je suis un développeur full-stack de 20 ans originaire du Bénin, étudiant en informatique de gestion.
                 Je porte une attention particulière aux détails et m'efforce toujours de livrer les meilleurs résultats.
@@ -52,7 +52,7 @@ const About = () => {
               </p>
             </div>
 
-            <div className='flex flex-wrap gap-4 pt-4 text-white dark:text-gray-100'>
+            <div className='flex flex-wrap gap-4 pt-4 text-white dark:text-gray-100' data-aos="fade-left" data-aos-delay="100">
               {elements.map((element) => (
                 <Link href={element.link} key={element.id}>
                   <Button className='bg-blue-500 hover:bg-blue-600 transition-colors duration-200 uppercase rounded-full'>

@@ -25,10 +25,12 @@ const Presentation = () => {
         <div data-aos="fade-right"
            data-aos-delay="100"
            className='flex items-center space-x-4 pt-5'>
-           <Button
-           className='bg-blue-500 text-white hover:bg-blue-600 rounded-full'
-           >Me Contacter
+           <Link href={'/contact'}>
+            <Button
+              className='bg-blue-500 text-white hover:bg-blue-600 rounded-full'
+            >Me Contacter
            </Button>
+           </Link>
            <div className='text-blue-500'>
             <Link href={link[0]}>
               <Linkedin />

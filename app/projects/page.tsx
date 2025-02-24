@@ -11,7 +11,7 @@ const Projects = () => {
         id: 1,
         name: "Ballamas",
         image: "/ballamas.png",
-        description: "Ballamas est une plateforme e-commerce moderne dédiée à la vente de vêtements. Grâce à une interface intuitive et une expérience utilisateur optimisée, les clients peuvent explorer une large gamme de tenues tendances, passer des commandes en toute simplicité et bénéficier d’un service client réactif.",
+        description: "Ballamas est une plateforme e-commerce moderne dédiée à la vente de vêtements. Grâce à une interface intuitive et une expérience utilisateur optimisée, les clients peuvent explorer une large gamme de tenues tendances, passer des commandes en toute simplicité et bénéficier d'un service client réactif.",
         link: "https://figma-to-code-ed2-week2-one.vercel.app/",
         github: "https://github.com/Lafiasabigado/Figma_to_code_ed2_week2.git",
         tools: "Vue.js,Bootstrap",
@@ -50,7 +50,7 @@ const Projects = () => {
 ]
 
   return (
-    <div className='pt-20'>
+    <div className='pt-20 w-full overflow-hidden'>
         <hr className='pt-5 text-zinc-700'/>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5'>
            <h2 className='text-2xl sm:text-4xl font-bold uppercase' data-aos="fade-right">Mes Projets</h2>
@@ -58,13 +58,13 @@ const Projects = () => {
              Voici une sélection de projets qui démontrent ma passion pour le développement full-stack.
            </p>
         </div>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5'>
+        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
           {projects.map((project, index) => (
             <div 
               key={project.id} 
               data-aos="fade-up"
               data-aos-delay={index * 200}
-              className='items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 py-16'
+              className='items-center grid grid-cols-1 md:grid-cols-2 gap-6 py-16'
             >
               <div className='group relative overflow-hidden rounded-xl bg-gradient-to-r from-gray-50 to-white dark:from-gray-800 dark:to-gray-700 p-2 shadow-lg hover:shadow-xl transition-all duration-300'>
                 <div className='relative aspect-[4/3] overflow-hidden rounded-lg'>

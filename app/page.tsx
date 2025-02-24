@@ -19,7 +19,7 @@ const Page = () => {
     });
   }, []);
   return (
-    <div className='text-zinc-800 dark:text-zinc-100'>
+    <div className='w-full overflow-hidden text-zinc-800 dark:text-zinc-100'>
       <Presentation />
       <Projects />
       <About />

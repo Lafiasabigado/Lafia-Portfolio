@@ -45,23 +45,26 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="fr" className="dark scroll-smooth">
       <Head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
       </Head>
       <body
-        className={` ${inter.variable} ${archivo.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.variable} ${archivo.variable} ${geistMono.variable} antialiased overflow-x-hidden min-h-screen`}
       > 
         <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="relative w-full overflow-x-hidden">
             <Nav />
-            {children}
+            <main className="w-full overflow-hidden">
+              {children}
+            </main>
+          </div>
         </ThemeProvider>
       </body>
     </html>

@@ -97,13 +97,13 @@ const Projects = () => {
                 </div>
                 <div className='flex flex-wrap gap-4 pt-4 text-white dark:text-gray-100'>
                   <Link href={project.github} target='_blank'>
-                    <Button className='bg-blue-500 hover:bg-blue-600 transition-colors duration-200 rounded-full'>
+                    <Button className='bg-blue-500 hover:bg-blue-600 transition-colors duration-200 rounded-xl'>
                       Voir sur Github
                       <Github className='ml-2 h-4 w-4' />
                     </Button>
                   </Link>
                   <Link href={project.link} target='_blank'>
-                    <Button className='bg-blue-500 hover:bg-blue-600 transition-colors duration-200 rounded-full'>
+                    <Button className='bg-blue-500 hover:bg-blue-600 transition-colors duration-200 rounded-xl'>
                       Démo en Direct
                       <ArrowUpRightIcon className='ml-2 h-4 w-4' />
                     </Button>

@@ -65,7 +65,7 @@ const Contact = () => {
   const link = "https://drive.google.com/file/d/1RWYI8TM3-R3ns8IMfZ1pwe4MeqeMdAcP/view?usp=sharing"
 
   const socials = [
-    { id: 1, name: "Telegram", icon: <FaTelegram className="text-blue-500 rounded-lg" />, link: "https://t.me/lafia_sabi_gado" },
+    { id: 1, name: "Telegram", icon: <FaTelegram className="text-blue-500 rounded-lg" />, link: "https://t.me/Abdiaslafia" },
     { id: 2, name: "Github", icon: <FaGithub className="text-blue-500 rounded-lg" />, link: "https://github.com/Lafiasabigado" },
     { id: 3, name: "Linkedin", icon: <FaLinkedin className="text-blue-500 rounded-lg" />, link: "https://linkedin.com/in/lafia-sabi-gado-03910a292/" },
     { id: 4, name: "Twitter", icon: <FaTwitter className="text-blue-500 rounded-lg" />, link: "https://x.com/abdiaslafia97" },
@@ -79,7 +79,7 @@ const Contact = () => {
               <h2 className='text-2xl sm:text-4xl font-bold uppercase'>Contactez-moi</h2>
               <div className='mt-8 bg-white dark:bg-gray-800/50 shadow-sm p-6 rounded-xl'>
                 <p className='py-2 text-lg text-gray-700 dark:text-gray-300'>
-                  Dites bonjour à <span className='text-blue-500 hover:underline cursor-pointer'>lafiasabigado97@gmail.com</span>
+                  Dites moi bonjour ici <span className='text-blue-500 hover:underline cursor-pointer'>lafiasabigado97@gmail.com</span>
                 </p>
                 <p className='py-2'>Pour plus d'informations, voici <Link href={link}><span className='text-blue-500 hover:underline'>mon CV</span></Link></p>
                 <div className='flex justify-start gap-6 pt-4'>

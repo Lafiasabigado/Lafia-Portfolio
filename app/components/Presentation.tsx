@@ -49,7 +49,7 @@ const Presentation = () => {
             <div 
              className='w-full sm:w-[300px] h-full bg-gray-100 hover:bg-gray-50 dark:bg-bgdarkPrimary dark:hover:bg-gray-800 rounded-xl flex justify-center drop-shadow-sm hover:scale-105 transition-transform duration-300 ease-in-out items-center'>
               <Image 
-              src='/logo1.png' 
+              src='/lafia.png' 
               alt='Lafia' 
               width={300} 
               height={400}

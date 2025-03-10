@@ -8,9 +8,19 @@ import { Button } from '@/components/ui/button'
 const Projects = () => {
   const projects = [
     {
-        id: 1,
+      id: 1,
+      name: "Apex Football",
+      image: "/projects/apexfootball.png",
+      description: "Apex Football est une agence qui accompagne les joueurs de Football professionnelles dans leur carrière de footballeur.Cette agence aident lesdits joueurs à se faire repérer, à développer leur image et à booster leur carrière grâce à leur expertise et leur réseau de partenaires.",
+      link: "https://apexfootball.vercel.app/",
+      github: "https://github.com/Lafiasabigado/Apex-Foot.git",
+      tools: "React,NextJs,Django",
+      year: "2025"
+    },
+    {
+        id: 2,
         name: "Ballamas",
-        image: "/ballamas.png",
+        image: "/projects/ballamas.png",
         description: "Ballamas est une plateforme e-commerce moderne dédiée à la vente de vêtements. Grâce à une interface intuitive et une expérience utilisateur optimisée, les clients peuvent explorer une large gamme de tenues tendances, passer des commandes en toute simplicité et bénéficier d'un service client réactif.",
         link: "https://figma-to-code-ed2-week2-one.vercel.app/",
         github: "https://github.com/Lafiasabigado/Figma_to_code_ed2_week2.git",
@@ -18,9 +28,9 @@ const Projects = () => {
         year: "2024"
     },
     {
-        id: 2,
+        id: 3,
         name: "Apex Food",
-        image: "/apex-food.png",
+        image: "/projects/apex-food.png",
         description: "Apex Food est une plateforme intuitive pour découvrir et commander des repas délicieux. Elle dispose d'une interface conviviale, d'un suivi des commandes en temps réel et d'une gestion fluide des restaurants.",
         link: "https://apex-food.vercel.app/",
         github: "https://github.com/Lafiasabigado/Apex_food.git",
@@ -28,24 +38,14 @@ const Projects = () => {
         year: "2024"
     },
     {
-        id: 3,
-        name: "Footplayers API",
-        image: "/footplayers4.png",
-        description: "Footplayers API est un service RESTful fournissant des informations détaillées sur les joueurs de football professionnels, incluant les statistiques, les équipes et l'historique de carrière, idéal pour les applications et analyses sportives.",
-        link: "https://foot-api-0gcy.onrender.com/",
-        github: "https://github.com/Lafiasabigado/Foot-Api.git",
-        tools: "Django REST Framework",
-        year: "2024"
-    },
-    {
-      id:5,
+      id:4,
       name:"Travel Agency",
-      image:"/travel-agency.png",
+      image:"/projects/travel-agency.png",
       description:"Travel Agency est une application web qui permet aux utilisateurs de planifier leurs voyages en ligne, en offrant des options de billets d'avion, de hôtels et de voitures, avec des fonctionnalités de recherche et de réservation.",
       link:"https://travel-agency-psi-ashen.vercel.app/",
       github:"https://github.com/Lafiasabigado/Travel-Agency.git",
       tools:"React,Tailwind",
-      year:"2024"
+      year:"2025"
     }
 ]
 

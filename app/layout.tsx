@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   title: "Lafia Portfolio",
   description: "Mon Portfolio",
   icons: {   
-    icon: "/logo1.png",
+    icon: "/lafia.png",
   },
 };
 

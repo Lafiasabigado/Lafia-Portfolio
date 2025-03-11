@@ -11,7 +11,7 @@ const Projects = () => {
       id: 1,
       name: "Apex Football",
       image: "/projects/apexfootball.png",
-      description: "Apex Football est une agence qui accompagne les joueurs de Football professionnelles dans leur carrière de footballeur.Cette agence aident lesdits joueurs à se faire repérer, à développer leur image et à booster leur carrière grâce à leur expertise et leur réseau de partenaires.",
+      description: "Apex Football est une agence qui accompagne les joueurs de Football professionnels dans leur carrière de footballeur. Cette agence aide lesdit joueurs à se faire repérer, à développer leur image et à booster leur carrière grâce à leur expertise et leur réseau de partenaires.",
       link: "https://apexfootball.vercel.app/",
       github: "https://github.com/Lafiasabigado/Apex-Foot.git",
       tools: "React,NextJs,Django",

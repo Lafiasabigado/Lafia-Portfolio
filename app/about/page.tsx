@@ -40,12 +40,12 @@ const About = () => {
             
             <div data-aos="fade-up" data-aos-duration="1000" className='bg-gray-50 dark:bg-gray-800/50 p-6 rounded-xl'>
               <p className='leading-relaxed'>
-                Salut ! Je suis un développeur full-stack de 20 ans originaire du Bénin, étudiant en informatique de gestion.
+                Etudiant en informatique de gestion,
                 Je porte une attention particulière aux détails et m'efforce toujours de livrer les meilleurs résultats.
               </p>
               <p className='mt-4'>
                 La résolution de problèmes me passionne, et je suis toujours motivé pour apprendre de nouvelles choses.
-                Quand je ne code pas, j'aime jouer au football et regarder des films et séries.
+                  En dehors des heures de code, j'aime jouer au football ou regarder des films et séries.
               </p>
               <p className='mt-4 text-blue-500 dark:text-blue-400'>
                 N'hésitez pas à me contacter si vous souhaitez collaborer sur quelque chose d'intéressant !

@@ -40,8 +40,8 @@ const Contact = () => {
         });
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
-        setStatus({
-          type: 'error',
+        setStatus({ 
+          type: 'error',    
           message: 'Erreur lors de l\'envoi du message. Veuillez réessayer.'
         });
       }

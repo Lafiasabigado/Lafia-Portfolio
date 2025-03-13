@@ -9,6 +9,7 @@ import Contact from './contact/page'
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Certifications from './certif/page'
 
 const Page = () => {
   useEffect(() => {
@@ -24,6 +25,7 @@ const Page = () => {
       <Projects />
       <About />
       <Skills />
+      <Certifications />
       <Contact />
     </div>
   )

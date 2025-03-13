@@ -7,20 +7,20 @@ const Skills = () => {
         { id: 1, name: "HTML", icon: <FaHtml5 className="text-orange-500" /> },
         { id: 2, name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
         { id: 3, name: "JavaScript", icon: <FaJs className="text-yellow-500" /> },
-        { id: 5, name: "React", icon: <FaReact className="text-cyan-500" /> },
-        { id: 6, name: "Next.js", icon: <SiNextdotjs className="text-black dark:text-white" /> },
-        { id: 7, name: "Django", icon: <SiDjango className="text-green-500" /> },
-        { id: 9, name: "VueJs", icon: <SiVuedotjs className="text-green-500 dark:text-white" /> },
-        { id: 10, name: "Tailwind CSS", icon: <SiTailwindcss className="text-blue-400" /> },
-        { id: 11, name: "Bootstrap", icon: <FaBootstrap className="text-purple-600" /> },
-        { id: 12, name: "Figma", icon: <FaFigma className="text-pink-500" /> },
-        { id: 13, name: "Git", icon: <FaGit className="text-red-500" /> },
-        { id: 14, name: "Python", icon: <SiPython className="text-blue-500 dark:text-white" /> },
-        { id: 15, name: "Vercel", icon: <SiVercel className="text-black dark:text-white" /> },
+        { id: 4, name: "React", icon: <FaReact className="text-cyan-500" /> },
+        { id: 5, name: "Next.js", icon: <SiNextdotjs className="text-black dark:text-white" /> },
+        { id: 6, name: "Django", icon: <SiDjango className="text-green-500" /> },
+        { id: 7, name: "VueJs", icon: <SiVuedotjs className="text-green-500 dark:text-white" /> },
+        { id: 8, name: "Tailwind CSS", icon: <SiTailwindcss className="text-blue-400" /> },
+        { id: 9, name: "Bootstrap", icon: <FaBootstrap className="text-purple-600" /> },
+        { id: 10, name: "Figma", icon: <FaFigma className="text-pink-500" /> },
+        { id: 11, name: "Git", icon: <FaGit className="text-red-500" /> },
+        { id: 12, name: "Python", icon: <SiPython className="text-blue-500 dark:text-white" /> },
+        { id: 13, name: "Vercel", icon: <SiVercel className="text-black dark:text-white" /> },
     ];
       
   return (
-    <div className='pt-10'>
+    <div className='py-10'>
         <hr className='pt-20 text-zinc-700'/>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='grid md:grid-cols-2 gap-8'>

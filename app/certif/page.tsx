@@ -17,18 +17,18 @@ const Certifications = () => {
     { id: 8, name: "web", image: "/certif/web.png" }
   ];
 
-  const [visibleCount, setVisibleCount] = useState(2);
+  const [visibleCount, setVisibleCount] = useState(4);
 
   const handleShowMore = () => {
-    setVisibleCount(prevCount => prevCount + 2); 
+    setVisibleCount(prevCount => prevCount + 4); 
   };
 
   return (
     <div className='py-10'>
       <hr className='pt-10 text-zinc-700' />
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10'>
-        <h2 className='text-2xl sm:text-3xl font-bold uppercase pb-10'>Mes Certifications</h2>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+        <h2 className='text-2xl sm:text-3xl text-center underline-offset-4 font-bold uppercase pb-10'>Mes Certifications</h2>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
           {certifs.slice(0, visibleCount).map((certif) => (
             <div               
             data-aos="fade-up"
@@ -45,9 +45,11 @@ const Certifications = () => {
           ))}
         </div>
         {visibleCount < certifs.length && (
-          <Button className='bg-blue-500 rounded-full py-4 px-12 mx-auto mt-6' onClick={handleShowMore}>
-            Voir Plus
-          </Button>
+          <div className='flex justify-center items-center mt-8'>
+            <Button className='bg-blue-500  flex justify-center items-center rounded-full py-4 px-12 mx-auto mt-6' onClick={handleShowMore}>
+              Voir Plus
+            </Button>
+          </div>
         )}
       </div>
     </div>

@@ -27,7 +27,7 @@ const Certifications = () => {
     <div className='py-10'>
       <hr className='pt-10 text-zinc-700' />
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10'>
-        <h2 className='text-2xl sm:text-3xl text-center underline-offset-4 font-bold uppercase pb-10'>Mes Certifications</h2>
+        <h2 className='text-2xl sm:text-3xl  underline-offset-4 font-bold uppercase pb-10'>Mes Certifications</h2>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
           {certifs.slice(0, visibleCount).map((certif) => (
             <div               
@@ -46,7 +46,7 @@ const Certifications = () => {
         </div>
         {visibleCount < certifs.length && (
           <div className='flex justify-center items-center mt-8'>
-            <Button className='bg-blue-500  flex justify-center items-center rounded-full py-4 px-12 mx-auto mt-6' onClick={handleShowMore}>
+            <Button className='bg-blue-500 text-white flex justify-center items-center rounded-full py-4 px-12 mx-auto mt-6' onClick={handleShowMore}>
               Voir Plus
             </Button>
           </div>

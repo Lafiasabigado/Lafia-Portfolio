@@ -33,10 +33,39 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-  title: "Lafia Portfolio",
-  description: "Mon Portfolio",
-  icons: {   
+
+  title: "Développeur Web | Sites Performants & Sur Mesure | Boostez Votre CA",
+  description: "Développeur web spécialisé dans la création de sites performants et sur mesure. Boostez votre chiffre d’affaires avec un suivi client personnalisé et des tarifs compétitifs. Contactez-moi dès maintenant !",
+  icons: {
     icon: "/lafia.png",
+  },
+
+  openGraph: {
+    type: 'website',
+    locale: 'fr_FR',
+    url: 'https://lafiasabigado.vercel.app/',
+    title: "Développeur Web | Sites Performants & Sur Mesure | Boostez Votre CA",
+    description: "Développeur web spécialisé dans la création de sites performants et sur mesure. Boostez votre chiffre d’affaires avec un suivi client personnalisé et des tarifs compétitifs. Contactez-moi dès maintenant !",
+    images: [
+      {
+        url: 'https://lafiasabigado.vercel.app/lafia.png',
+        width: 1200,
+        height: 630,
+        alt: 'Développeur web | Création de sites performants et sur mesure',
+      },
+    ],
+  },
+
+
+  twitter: {
+    card: 'summary_large_image',
+    title: "Développeur Web | Sites Performants & Sur Mesure | Boostez Votre CA",
+    description: "Développeur web spécialisé dans la création de sites performants et sur mesure. Boostez votre chiffre d’affaires avec un suivi client personnalisé et des tarifs compétitifs. Contactez-moi dès maintenant !",
+    images: ['https://lafiasabigado.vercel.app/lafia.png'],
+  },
+  
+  alternates: {
+    canonical: 'https://lafiasabigado.vercel.app/',
   },
 };
 

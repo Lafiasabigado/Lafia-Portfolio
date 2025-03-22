@@ -47,7 +47,7 @@ const Presentation = () => {
           </div>
           <div className='pt-5 sm:pt-0'>
             <div 
-             className='w-full sm:w-[300px] h-full bg-gray-100 hover:bg-gray-50 dark:bg-bgdarkPrimary dark:hover:bg-gray-800 rounded-xl flex justify-center drop-shadow-sm hover:scale-105 transition-transform duration-300 ease-in-out items-center'>
+             className='w-full sm:w-[300px] h-full rounded-xl bg-gray-100 hover:bg-gray-50 dark:bg-gray-800/50 dark:hover:bg-gray-800 flex justify-center drop-shadow-sm hover:scale-105 transition-transform duration-300 ease-in-out items-center'>
               <Image 
               src='/lafia.png' 
               alt='Lafia' 

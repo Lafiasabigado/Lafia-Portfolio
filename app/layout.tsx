@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Archivo, Poppins, Inter } from "next/font/google";
+import { Geist, Geist_Mono, Anek_Telugu} from "next/font/google";
 import "./globals.css";
 import Nav from "./components/Nav";
 import { ThemeProvider } from "./components/theme-provider";
@@ -10,26 +10,16 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["400", "600", "700"], 
-});
 
-const archivo = Archivo({
-  variable: "--font-archivo",
+const geistAnek = Anek_Telugu({
+  variable: "--font-geist-anek",
   subsets: ["latin"],
-  weight: ["400", "600", "700"], 
 });
 
 export const metadata: Metadata = {
@@ -80,7 +70,7 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
       </Head>
       <body
-        className={`${inter.variable} ${archivo.variable} ${geistMono.variable} antialiased overflow-x-hidden min-h-screen`}
+        className={`${geistMono.variable} ${geistAnek.variable} ${geistSans.variable} antialiased overflow-x-hidden font-sans h-full`}
       > 
         <ThemeProvider
           attribute="class"

@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   title: "Développeur Web | Sites Performants & Sur Mesure | Boostez Votre CA",
   description: "Développeur web spécialisé dans la création de sites performants et sur mesure. Boostez votre chiffre d’affaires avec un suivi client personnalisé et des tarifs compétitifs. Contactez-moi dès maintenant !",
   icons: {
-    icon: "/lafia.png",
+    icon: "/abdias.png",
   },
 
   openGraph: {

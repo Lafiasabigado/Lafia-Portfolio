@@ -79,7 +79,7 @@ const Contact = () => {
               <h2 className='text-2xl sm:text-4xl font-bold uppercase'>Contactez-moi</h2>
               <div className='mt-8 bg-white dark:bg-gray-800/50 shadow-sm p-6 rounded-xl'>
                 <p className='py-2 text-lg text-gray-700 dark:text-gray-300'>
-                  Dites moi bonjour ici <span className='text-blue-500 hover:underline cursor-pointer'>lafiasabigado97@gmail.com</span>
+                  Parle moi de ton projet ici <span className='text-blue-500 hover:underline cursor-pointer'>lafiasabigado97@gmail.com</span>
                 </p>
                 <p className='py-2'>Pour plus d'informations, voici <Link href={link}><span className='text-blue-500 hover:underline'>mon CV</span></Link></p>
                 <div className='flex justify-start gap-6 pt-4'>

@@ -90,9 +90,11 @@ export default function ChatBox({ onClose }: { onClose: () => void }) {
         ))}
         {loading && (
           <div className="flex justify-start">
-            <span className="bg-gray-200 dark:bg-gray-700 px-3 py-2 rounded-xl italic">
-              Lafia AI écrit...
-            </span>
+            <div className="bg-gray-200 dark:bg-gray-700 px-3 py-2 rounded-xl italic flex space-x-1">
+              <span className="animate-bounce-delay1">.</span>
+              <span className="animate-bounce-delay2">.</span>
+              <span className="animate-bounce-delay3">.</span>
+           </div>
           </div>
         )}
         {error && (

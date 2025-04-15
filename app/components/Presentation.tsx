@@ -40,7 +40,7 @@ const Presentation = () => {
               <span className='pb-4'>Lafia Sabi Gado.</span>
             </p>
             <p className='dark:text-gray-300'>
-              Développeur web full stack résidant au Bénin. Passionné par la création de sites web optimisés et modernes.
+              Développeur web full stack résidant au Bénin, passionné par l'Intelligence Artificielle.
             </p>
 
             <div className='flex flex-wrap items-center gap-4 pt-5'>

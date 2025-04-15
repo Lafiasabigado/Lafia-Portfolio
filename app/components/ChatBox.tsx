@@ -1,5 +1,6 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
+import { X } from 'lucide-react';
 
 type Message = {
   role: 'system' | 'user' | 'assistant';
@@ -70,7 +71,7 @@ export default function ChatBox({ onClose }: { onClose: () => void }) {
           className="text-sm text-red-500 hover:text-red-700 focus:outline-none"
           aria-label="Fermer le chat"
         >
-          Fermer
+          <X />
         </button>
       </div>
       
@@ -78,7 +79,7 @@ export default function ChatBox({ onClose }: { onClose: () => void }) {
         {messages.filter(m => m.role !== 'system').map((msg, idx) => (
           <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             <span className={`
-              max-w-[80%] px-3 py-2 rounded-lg break-words
+              max-w-[80%] px-3 py-2 rounded-xl break-words
               ${msg.role === 'user' 
                 ? 'bg-blue-600 text-white' 
                 : 'bg-gray-200 dark:bg-gray-700'}
@@ -89,7 +90,7 @@ export default function ChatBox({ onClose }: { onClose: () => void }) {
         ))}
         {loading && (
           <div className="flex justify-start">
-            <span className="bg-gray-200 dark:bg-gray-700 px-3 py-2 rounded-lg italic">
+            <span className="bg-gray-200 dark:bg-gray-700 px-3 py-2 rounded-xl italic">
               Lafia AI écrit...
             </span>
           </div>

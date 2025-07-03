@@ -8,6 +8,16 @@ import { Button } from '@/components/ui/button'
 const Projects = () => {
   const projects = [
     {
+      id: 0,
+      name: "Foothub",
+      image: "/projects/foothubcommunity.png",
+      description: "FootHub est une plateforme sociale dédiée aux passionnés de football. Elle permet de suivre l’actualité des matchs, de publier du contenu, de suivre d’autres utilisateurs etc.",
+      link: "https://foothubcommunity.vercel.app/",
+      github: "https://github.com/Lafiasabigado/Foothub.git",
+      tools: "React,NextJs,Django",
+      year: "2025"
+    },
+    {
       id: 1,
       name: "Apex Football",
       image: "/projects/apexfootball.png",

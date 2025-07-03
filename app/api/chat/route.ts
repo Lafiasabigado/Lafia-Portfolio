@@ -37,7 +37,7 @@ export async function POST(request: Request) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "gpt-3.5-turbo",
+        model: "gpt-4o-mini",
         messages: [
           systemPrompt,
           ...messages.filter((m: any) => m.role !== 'system')

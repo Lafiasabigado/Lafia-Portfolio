@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Anek_Telugu } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "./components/Nav";
 import { ThemeProvider } from "./components/theme-provider";
 import Script from "next/script";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,10 +16,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const geistAnek = Anek_Telugu({
-  variable: "--font-geist-anek",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Développeur Web | Sites Performants & Sur Mesure | Boostez Votre CA",
@@ -62,7 +59,7 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
       </head>
-      <body className={`${geistMono.variable} ${geistAnek.variable} ${geistSans.variable} antialiased overflow-x-hidden font-sans h-full`}>
+      <body className={`${geistMono.variable} ${geistSans.variable} antialiased overflow-x-hidden font-mono h-full`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

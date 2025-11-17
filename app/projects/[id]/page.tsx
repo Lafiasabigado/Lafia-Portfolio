@@ -158,22 +158,56 @@ const ProjectDetail = async ({ params }: { params: ParamsType }): Promise<JSX.El
           </Button>
         </Link>
 
-        {/* Hero Image */}
-        <div className='relative aspect-[21/9] rounded-3xl overflow-hidden mb-12 shadow-2xl' data-aos="fade-up">
-          <Image 
-            src={project.image} 
-            alt={project.name} 
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent' />
-          <div className='absolute bottom-0 left-0 p-8'>
-            <h1 className='text-5xl sm:text-6xl font-bold text-white mb-4'>
-              {project.name}
-            </h1>
+                {/* Hero Image */}
+          <div 
+            className="
+              relative 
+              rounded-3xl 
+              overflow-hidden 
+              mb-12 
+              shadow-2xl
+              aspect-[4/5]        /* mobile */
+              sm:aspect-[16/7]    /* tablette */
+              lg:aspect-[21/9]    /* desktop */
+            "
+            data-aos="fade-up"
+          >
+            <Image 
+              src={project.image} 
+              alt={project.name} 
+              fill
+              className="object-cover"
+              priority
+            />
+
+            {/* Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+
+            {/* Title */}
+            <div 
+              className="
+                absolute 
+                inset-0 
+                flex 
+                items-end 
+                sm:items-end 
+                p-6 
+                sm:p-8
+              "
+            >
+              <h1 className="
+                text-4xl 
+                sm:text-5xl 
+                lg:text-6xl 
+                font-bold 
+                text-white 
+                drop-shadow-xl
+              ">
+                {project.name}
+              </h1>
+            </div>
           </div>
-        </div>
+
 
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-12'>
           {/* Main Content */}

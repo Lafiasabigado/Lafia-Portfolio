@@ -3,7 +3,7 @@
 import React, { useState, Suspense, useEffect } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Github, Linkedin, MessageCircle} from 'lucide-react';
+import { FaTelegram,FaGithub,FaLinkedin,FaTwitter,FaWhatsapp } from 'react-icons/fa'
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { Bot } from 'lucide-react';
@@ -50,19 +50,19 @@ const Presentation = () => {
                   Me Contacter
                 </Button>
               </Link>
-              <div className='text-blue-500'>
+              <div className='text-blue-500 text-3xl'>
                 <Link href={link[0]}>
-                  <Linkedin />
+                  <FaLinkedin />
                 </Link>
               </div>
-              <div className='text-blue-500'>
+              <div className='text-gray-500 text-3xl'>
                 <Link href={link[1]}>
-                  <Github />
+                  <FaGithub />
                 </Link>
               </div>
-              <div className="text-green-500">
+              <div className="text-green-500 text-3xl">
                 <Link href={link[2]}>
-                  <MessageCircle />
+                  <FaWhatsapp />
                 </Link>
               </div>
             </div>

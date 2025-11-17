@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react'
 import Link from 'next/link'
-import { FaTelegram,FaGithub,FaLinkedin,FaTwitter } from 'react-icons/fa'
+import { FaTelegram,FaGithub,FaLinkedin,FaTwitter,FaWhatsapp } from 'react-icons/fa'
 import { CheckCircle2, XCircle } from 'lucide-react'
 
 const Contact = () => {
@@ -65,10 +65,11 @@ const Contact = () => {
   const link = "https://drive.google.com/file/d/1RWYI8TM3-R3ns8IMfZ1pwe4MeqeMdAcP/view?usp=sharing"
 
   const socials = [
-    { id: 1, name: "Telegram", icon: <FaTelegram className="text-blue-500 rounded-lg" />, link: "https://t.me/Abdiaslafia" },
-    { id: 2, name: "Github", icon: <FaGithub className="text-blue-500 rounded-lg" />, link: "https://github.com/Lafiasabigado" },
-    { id: 3, name: "Linkedin", icon: <FaLinkedin className="text-blue-500 rounded-lg" />, link: "https://linkedin.com/in/lafia-sabi-gado-03910a292/" },
-    { id: 4, name: "Twitter", icon: <FaTwitter className="text-blue-500 rounded-lg" />, link: "https://x.com/abdiaslafia97" },
+    { id: 1, name: "WhatsApp", icon: <FaWhatsapp className="text-blue-500 rounded-lg" />, link: "https://wa.me/22956259632" },
+    { id: 2, name: "Telegram", icon: <FaTelegram className="text-blue-500 rounded-lg" />, link: "https://t.me/Abdiaslafia" },
+    { id: 3, name: "Github", icon: <FaGithub className="text-blue-500 rounded-lg" />, link: "https://github.com/Lafiasabigado" },
+    { id: 4, name: "Linkedin", icon: <FaLinkedin className="text-blue-500 rounded-lg" />, link: "https://linkedin.com/in/lafia-sabi-gado-03910a292/" },
+    { id: 5, name: "Twitter", icon: <FaTwitter className="text-blue-500 rounded-lg" />, link: "https://x.com/abdiaslafia97" },
   ]
   return (
     <div className='pt-10'>

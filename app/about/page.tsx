@@ -4,7 +4,7 @@ import React from 'react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { Download } from 'lucide-react';
-import { Github,Linkedin, MessageCircle } from 'lucide-react'
+import { FaTelegram,FaGithub,FaLinkedin,FaTwitter,FaWhatsapp } from 'react-icons/fa'
 import { useEffect } from "react";
 import "aos/dist/aos.css";
 
@@ -20,9 +20,9 @@ const About = () => {
 
    const elements = [
     { id: 4, label: "Télécharger CV", icon: Download, link: link[0] },
-    { id: 3, label: "WhatsApp", icon: MessageCircle, link: link[3] },
-    { id: 2, label: "LinkedIn", icon: Linkedin, link: link[1] },
-    { id: 1, label: "Github", icon: Github, link: link[2] },
+    { id: 3, label: "WhatsApp", icon: FaWhatsapp, link: link[3] },
+    { id: 2, label: "LinkedIn", icon: FaLinkedin, link: link[1] },
+    { id: 1, label: "Github", icon: FaGithub, link: link[2] },
   ]
 
   return (
@@ -59,7 +59,7 @@ const About = () => {
                 <Link href={element.link} key={element.id}>
                   <Button className='bg-blue-500 hover:bg-blue-600 transition-colors duration-200 uppercase rounded-full'>
                     {element.label}
-                    <element.icon className='h-4 w-4 ml-2' />
+                    <element.icon className='text-3xl ml-2' />
                   </Button>
                 </Link>
               ))}

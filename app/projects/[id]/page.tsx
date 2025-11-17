@@ -6,17 +6,16 @@ import { Button } from '@/components/ui/button'
 
 
 interface PageProps {
-  params: {
-    id: string
-  }
+  params: { id: string }
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
 // Cette fonction génère les routes statiques
-export async function generateStaticParams() {
-  return [
+export async function generateStaticParams(): Promise<Array<{ id: string }>> {
+  return Promise.resolve([
     { id: '0' }, { id: '1' }, { id: '2' }, { id: '3' },
     { id: '4' }, { id: '5' }, { id: '6' }
-  ]
+  ])
 }
 
 const ProjectDetail = ({ params }: PageProps) => {

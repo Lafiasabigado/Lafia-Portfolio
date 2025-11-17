@@ -3,7 +3,7 @@
 import React, { useState, Suspense, useEffect } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Github, Linkedin } from 'lucide-react';
+import { Github, Linkedin, MessageCircle} from 'lucide-react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { Bot } from 'lucide-react';
@@ -18,7 +18,8 @@ const Presentation = () => {
   const [isBotBlinking, setIsBotBlinking] = useState(false);
   const link = [
     "https://linkedin.com/in/lafia-sabi-gado-03910a292/",
-    "https://github.com/Lafiasabigado"
+    "https://github.com/Lafiasabigado",
+    "https://wa.me/22956259632"
   ];
 
   useEffect(() => {
@@ -57,6 +58,11 @@ const Presentation = () => {
               <div className='text-blue-500'>
                 <Link href={link[1]}>
                   <Github />
+                </Link>
+              </div>
+              <div className="text-green-500">
+                <Link href={link[2]}>
+                  <MessageCircle />
                 </Link>
               </div>
             </div>

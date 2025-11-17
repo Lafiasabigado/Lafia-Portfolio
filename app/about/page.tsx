@@ -4,7 +4,7 @@ import React from 'react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { Download } from 'lucide-react';
-import { Github,Linkedin } from 'lucide-react'
+import { Github,Linkedin, MessageCircle } from 'lucide-react'
 import { useEffect } from "react";
 import "aos/dist/aos.css";
 
@@ -15,10 +15,12 @@ const About = () => {
     "https://drive.google.com/file/d/1RWYI8TM3-R3ns8IMfZ1pwe4MeqeMdAcP/view?usp=sharing",
     "https://linkedin.com/in/lafia-sabi-gado-03910a292/",
     "https://github.com/Lafiasabigado",
+    "https://wa.me/22956259632"
   ]
 
    const elements = [
-    { id: 3, label: "Télécharger CV", icon: Download, link: link[0] },
+    { id: 4, label: "Télécharger CV", icon: Download, link: link[0] },
+    { id: 3, label: "WhatsApp", icon: MessageCircle, link: link[3] },
     { id: 2, label: "LinkedIn", icon: Linkedin, link: link[1] },
     { id: 1, label: "Github", icon: Github, link: link[2] },
   ]

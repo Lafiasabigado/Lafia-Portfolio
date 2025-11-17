@@ -5,10 +5,7 @@ import { Github, ArrowUpRightIcon, ArrowLeft, Calendar, Code2 } from 'lucide-rea
 import { Button } from '@/components/ui/button'
 import { JSX } from 'react'
 
-interface PageProps {
-  params: { id: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
+export type ParamsType = Promise<{ id: string }>;
 
 // Cette fonction génère les routes statiques
 export async function generateStaticParams(): Promise<Array<{ id: string }>> {
@@ -18,7 +15,8 @@ export async function generateStaticParams(): Promise<Array<{ id: string }>> {
   ])
 }
 
-const ProjectDetail = async ({ params }: PageProps): Promise<JSX.Element> => {  
+const ProjectDetail = async ({ params }: { params: ParamsType }): Promise<JSX.Element> => {  
+    const { id } = await params;
     const allProjects = [
     {
       id: 0,
@@ -141,7 +139,7 @@ const ProjectDetail = async ({ params }: PageProps): Promise<JSX.Element> => {
     }
   ]
 
-  const project = allProjects.find(p => p.id === parseInt(params.id))
+  const project = allProjects.find(p => p.id === parseInt(id));
 
   if (!project) {
     return <div className='min-h-screen flex items-center justify-center'>

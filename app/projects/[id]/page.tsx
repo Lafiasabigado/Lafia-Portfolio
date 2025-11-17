@@ -4,6 +4,13 @@ import Link from 'next/link'
 import { Github, ArrowUpRightIcon, ArrowLeft, Calendar, Code2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
+
+interface PageProps {
+  params: {
+    id: string
+  }
+}
+
 // Cette fonction génère les routes statiques
 export async function generateStaticParams() {
   return [
@@ -12,7 +19,7 @@ export async function generateStaticParams() {
   ]
 }
 
-const ProjectDetail = ({ params }: { params: { id: string } }) => {
+const ProjectDetail = ({ params }: PageProps) => {
   const allProjects = [
     {
       id: 0,

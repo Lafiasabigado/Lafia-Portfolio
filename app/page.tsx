@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Presentation from './components/Presentation'
-import Projects from './projects/page'
+import ProjectsHome from './components/ProjectsHome'
 import About from './about/page'
 import Skills from './skills/page'
 import Contact from './contact/page'
@@ -22,7 +22,7 @@ const Page = () => {
   return (
     <div className='w-full overflow-hidden text-zinc-800 dark:text-zinc-100'>
       <Presentation />
-      <Projects />
+      <ProjectsHome />
       <About />
       <Skills />
       <Certifications />

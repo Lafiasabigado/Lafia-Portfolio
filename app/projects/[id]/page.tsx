@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Github, ArrowUpRightIcon, ArrowLeft, Calendar, Code2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-
+import { JSX } from 'react'
 
 interface PageProps {
   params: { id: string }
@@ -18,8 +18,8 @@ export async function generateStaticParams(): Promise<Array<{ id: string }>> {
   ])
 }
 
-const ProjectDetail = ({ params }: PageProps) => {
-  const allProjects = [
+const ProjectDetail = async ({ params }: PageProps): Promise<JSX.Element> => {  
+    const allProjects = [
     {
       id: 0,
       name: "Doczi",

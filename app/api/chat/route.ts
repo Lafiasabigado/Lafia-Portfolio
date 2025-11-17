@@ -37,7 +37,7 @@ export async function POST(request: Request) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "gpt-4o-mini",
+        model: "meta-llama/llama-3.3-70b-instruct:free",
         messages: [
           systemPrompt,
           ...messages.filter((m: any) => m.role !== 'system')

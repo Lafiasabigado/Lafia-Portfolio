@@ -20,33 +20,33 @@ const Certifications = () => {
   const [visibleCount, setVisibleCount] = useState(4);
 
   const handleShowMore = () => {
-    setVisibleCount(prevCount => prevCount + 4); 
+    setVisibleCount(prevCount => prevCount + 4);
   };
 
   return (
-    <div className='py-10'>
-      <hr className='pt-10 text-zinc-700' />
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10'>
-        <h2 className='text-2xl sm:text-3xl  underline-offset-4 font-bold uppercase pb-10'>Mes Certifications</h2>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
+    <div className='py-16 border-t border-gray-100 dark:border-gray-800'>
+      <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <h2 className='text-2xl font-medium tracking-tight mb-8 text-gray-900 dark:text-white'>Certifications</h2>
+        <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
           {certifs.slice(0, visibleCount).map((certif) => (
-            <div               
-            data-aos="fade-up"
-            data-aos-delay={certif.id * 200}
-            className='group relative overflow-hidden rounded-xl bg-gradient-to-r from-gray-50 to-white dark:from-gray-800 dark:to-gray-700 p-2 shadow-lg hover:shadow-xl transition-all duration-300' key={certif.id}>
-              <Image src={certif.image} 
-                     alt={certif.name} 
-                     width={800} 
-                     height={600}
-                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                     priority 
-              />
+            <div
+              data-aos="fade-up"
+              data-aos-delay={certif.id * 100}
+              className='group relative overflow-hidden rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 transition-all duration-300 hover:border-gray-300 dark:hover:border-gray-700' key={certif.id}>
+              <div className='aspect-[4/3] relative'>
+                <Image src={certif.image}
+                  alt={certif.name}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  priority
+                />
+              </div>
             </div>
           ))}
         </div>
         {visibleCount < certifs.length && (
-          <div className='flex justify-center items-center mt-8'>
-            <Button className='bg-blue-500 text-white flex justify-center items-center rounded-full py-4 px-12 mx-auto mt-6' onClick={handleShowMore}>
+          <div className='flex justify-center mt-8'>
+            <Button variant="outline" className='rounded-full px-6 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800' onClick={handleShowMore}>
               Voir Plus
             </Button>
           </div>

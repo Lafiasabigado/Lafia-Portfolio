@@ -5,13 +5,13 @@
 
 
 html.dark {
-  background-color: #111827; 
-  color: white;
+  background-color: #0a0a0a; 
+  color: #ededed;
 }
 
 html.light {
-  background-color: white;
-  color: black;
+  background-color: #ffffff;
+  color: #171717;
 }
 
 

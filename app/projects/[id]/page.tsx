@@ -15,9 +15,9 @@ export async function generateStaticParams(): Promise<Array<{ id: string }>> {
   ])
 }
 
-const ProjectDetail = async ({ params }: { params: ParamsType }): Promise<JSX.Element> => {  
-    const { id } = await params;
-    const allProjects = [
+const ProjectDetail = async ({ params }: { params: ParamsType }): Promise<JSX.Element> => {
+  const { id } = await params;
+  const allProjects = [
     {
       id: 0,
       name: "Doczi",
@@ -148,132 +148,84 @@ const ProjectDetail = async ({ params }: { params: ParamsType }): Promise<JSX.El
   }
 
   return (
-    <div className='min-h-screen pt-24 pb-16 bg-gradient-to-b from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-950 dark:to-gray-900'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <div className='min-h-screen py-24'>
+      <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Back Button */}
-        <Link href="/projects">
-          <Button variant="ghost" className='mb-8 group'>
-            <ArrowLeft className='mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform duration-300' />
-            Retour aux projets
-          </Button>
+        <Link href="/projects" className="inline-flex items-center text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white mb-8 transition-colors">
+          <ArrowLeft className='mr-2 h-4 w-4' />
+          Retour aux projets
         </Link>
 
-                {/* Hero Image */}
-          <div 
-            className="
-              relative 
-              rounded-3xl 
-              overflow-hidden 
-              mb-12 
-              shadow-2xl
-              aspect-[4/5]        /* mobile */
-              sm:aspect-[16/7]    /* tablette */
-              lg:aspect-[21/9]    /* desktop */
-            "
-            data-aos="fade-up"
-          >
-            <Image 
-              src={project.image} 
-              alt={project.name} 
-              fill
-              className="object-cover"
-              priority
-            />
+        {/* Hero Image */}
+        <div
+          className="relative rounded-xl overflow-hidden mb-10 aspect-video bg-gray-100 dark:bg-gray-800"
+          data-aos="fade-up"
+        >
+          <Image
+            src={project.image}
+            alt={project.name}
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
 
-            {/* Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-
-            {/* Title */}
-            <div 
-              className="
-                absolute 
-                inset-0 
-                flex 
-                items-end 
-                sm:items-end 
-                p-6 
-                sm:p-8
-              "
-            >
-              <h1 className="
-                text-4xl 
-                sm:text-5xl 
-                lg:text-6xl 
-                font-bold 
-                text-white 
-                drop-shadow-xl
-              ">
+        <div className='grid md:grid-cols-[2fr_1fr] gap-12'>
+          {/* Main Content */}
+          <div className='space-y-10'>
+            <div data-aos="fade-up">
+              <h1 className="text-3xl font-medium tracking-tight mb-4 text-gray-900 dark:text-white">
                 {project.name}
               </h1>
-            </div>
-          </div>
-
-
-        <div className='grid grid-cols-1 lg:grid-cols-3 gap-12'>
-          {/* Main Content */}
-          <div className='lg:col-span-2 space-y-8'>
-            {/* Description */}
-            <div className='bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg' data-aos="fade-up">
-              <h2 className='text-3xl font-bold mb-4 text-gray-900 dark:text-white'>
-                À propos du projet
-              </h2>
-              <p className='text-gray-600 dark:text-gray-300 text-lg leading-relaxed'>
+              <p className='text-gray-600 dark:text-gray-400 leading-relaxed text-lg'>
                 {project.fullDescription}
               </p>
             </div>
 
             {/* Features */}
-            <div className='bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg' data-aos="fade-up" data-aos-delay="100">
-              <h2 className='text-3xl font-bold mb-6 text-gray-900 dark:text-white'>
+            <div data-aos="fade-up" data-aos-delay="100">
+              <h2 className='text-xl font-medium mb-4 text-gray-900 dark:text-white'>
                 Fonctionnalités principales
               </h2>
-              <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+              <ul className='space-y-3'>
                 {project.features.map((feature, index) => (
-                  <div 
+                  <li
                     key={index}
-                    className='flex items-start space-x-3 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl'
+                    className='flex items-start text-gray-600 dark:text-gray-400'
                   >
-                    <div className='flex-shrink-0 w-2 h-2 bg-blue-500 rounded-full mt-2' />
-                    <p className='text-gray-700 dark:text-gray-300'>{feature}</p>
-                  </div>
+                    <span className='mr-3 mt-2 w-1.5 h-1.5 bg-gray-400 rounded-full flex-shrink-0' />
+                    {feature}
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </div>
 
           {/* Sidebar */}
-          <div className='space-y-6'>
+          <div className='space-y-8'>
             {/* Project Info */}
-            <div className='bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg sticky top-24' data-aos="fade-up">
-              <h3 className='text-2xl font-bold mb-6 text-gray-900 dark:text-white'>
+            <div data-aos="fade-up">
+              <h3 className='text-sm font-medium uppercase tracking-wider text-gray-500 mb-4'>
                 Informations
               </h3>
-              
-              <div className='space-y-4'>
-                <div className='flex items-center space-x-3'>
-                  <Calendar className='h-5 w-5 text-blue-500' />
-                  <div>
-                    <p className='text-sm text-gray-500 dark:text-gray-400'>Année</p>
-                    <p className='text-gray-900 dark:text-white font-semibold'>{project.year}</p>
-                  </div>
+
+              <div className='space-y-6'>
+                <div>
+                  <p className='text-xs text-gray-500 mb-1'>Année</p>
+                  <p className='text-gray-900 dark:text-white font-medium'>{project.year}</p>
                 </div>
 
-                <hr className='border-gray-200 dark:border-gray-700' />
-
-                <div className='flex items-start space-x-3'>
-                  <Code2 className='h-5 w-5 text-blue-500 mt-1' />
-                  <div className='flex-1'>
-                    <p className='text-sm text-gray-500 dark:text-gray-400 mb-2'>Technologies</p>
-                    <div className='flex flex-wrap gap-2'>
-                      {project.tools.split(',').map((tool, index) => (
-                        <span 
-                          key={index}
-                          className='px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-medium'
-                        >
-                          {tool.trim()}
-                        </span>
-                      ))}
-                    </div>
+                <div>
+                  <p className='text-xs text-gray-500 mb-2'>Technologies</p>
+                  <div className='flex flex-wrap gap-2'>
+                    {project.tools.split(',').map((tool, index) => (
+                      <span
+                        key={index}
+                        className='px-2.5 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-md text-xs'
+                      >
+                        {tool.trim()}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -281,19 +233,19 @@ const ProjectDetail = async ({ params }: { params: ParamsType }): Promise<JSX.El
               {/* Action Buttons */}
               <div className='space-y-3 mt-8'>
                 <Link href={project.link} target='_blank' className='block'>
-                  <Button className='w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-xl py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group'>
+                  <Button className='w-full bg-black dark:bg-white text-white dark:text-black hover:opacity-80 rounded-full h-11 transition-opacity'>
                     Démo en Direct
-                    <ArrowUpRightIcon className='ml-2 h-5 w-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300' />
+                    <ArrowUpRightIcon className='ml-2 h-4 w-4' />
                   </Button>
                 </Link>
-                
+
                 <Link href={project.github} target='_blank' className='block'>
-                  <Button 
-                    variant="outline" 
-                    className='w-full border-2 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl py-6 text-lg font-semibold transition-all duration-300 group'
+                  <Button
+                    variant="outline"
+                    className='w-full rounded-full h-11 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800'
                   >
                     Voir sur Github
-                    <Github className='ml-2 h-5 w-5 group-hover:rotate-12 transition-transform duration-300' />
+                    <Github className='ml-2 h-4 w-4' />
                   </Button>
                 </Link>
               </div>

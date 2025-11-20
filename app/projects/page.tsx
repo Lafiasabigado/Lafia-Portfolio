@@ -76,23 +76,23 @@ const ProjectsPage = () => {
   ]
 
   return (
-    <div className='min-h-screen pt-24 pb-16 bg-gradient-to-b from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-950 dark:to-gray-900'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <div className='min-h-screen py-24'>
+      <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Header */}
-        <div className='mb-16' data-aos="fade-up">
-          <h1 className='text-3xl font-bold uppercase mb-6 bg-gradient-to-r from-blue-600 via-blue-600 to-blue-600 bg-clip-text text-transparent'>
-            Tous Mes Projets
+        <div className='mb-12' data-aos="fade-up">
+          <h1 className='text-2xl font-medium tracking-tight mb-4 text-gray-900 dark:text-white'>
+            Tous les Projets
           </h1>
-          <p className='text-gray-600 dark:text-gray-300 text-xl max-w-3xl'>
-            Découvrez l'ensemble de mes réalisations en développement web et applications full-stack. 
+          <p className='text-gray-600 dark:text-gray-400 leading-relaxed'>
+            Découvrez l'ensemble de mes réalisations en développement web et applications full-stack.
             Chaque projet reflète mon engagement pour la qualité et l'innovation.
           </p>
         </div>
 
         {/* Projects Grid */}
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
           {projects.map((project, index) => (
-            <div 
+            <div
               key={project.id}
               data-aos="fade-up"
               data-aos-delay={index * 50}
@@ -103,22 +103,22 @@ const ProjectsPage = () => {
         </div>
 
         {/* Stats */}
-        <div className='mt-20 grid grid-cols-2 md:grid-cols-4 gap-8' data-aos="fade-up">
-          <div className='text-center p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg'>
-            <p className='text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2'>{projects.length}</p>
-            <p className='text-gray-600 dark:text-gray-300'>Projets</p>
+        <div className='mt-20 pt-10 border-t border-gray-100 dark:border-gray-800 grid grid-cols-2 md:grid-cols-4 gap-8' data-aos="fade-up">
+          <div className='text-center'>
+            <p className='text-3xl font-medium text-gray-900 dark:text-white mb-1'>{projects.length}</p>
+            <p className='text-sm text-gray-500'>Projets</p>
           </div>
-          <div className='text-center p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg'>
-            <p className='text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2'>5+</p>
-            <p className='text-gray-600 dark:text-gray-300'>Technologies</p>
+          <div className='text-center'>
+            <p className='text-3xl font-medium text-gray-900 dark:text-white mb-1'>5+</p>
+            <p className='text-sm text-gray-500'>Technologies</p>
           </div>
-          <div className='text-center p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg'>
-            <p className='text-4xl font-bold text-pink-600 dark:text-pink-400 mb-2'>5</p>
-            <p className='text-gray-600 dark:text-gray-300'>ans d'expériences</p>
+          <div className='text-center'>
+            <p className='text-3xl font-medium text-gray-900 dark:text-white mb-1'>5</p>
+            <p className='text-sm text-gray-500'>Ans d'expérience</p>
           </div>
-          <div className='text-center p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg'>
-            <p className='text-4xl font-bold text-green-600 dark:text-green-400 mb-2'>100%</p>
-            <p className='text-gray-600 dark:text-gray-300'>Passion</p>
+          <div className='text-center'>
+            <p className='text-3xl font-medium text-gray-900 dark:text-white mb-1'>100%</p>
+            <p className='text-sm text-gray-500'>Passion</p>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@
 import React, { useState, Suspense, useEffect } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { FaTelegram,FaGithub,FaLinkedin,FaTwitter,FaWhatsapp } from 'react-icons/fa'
+import { FaTelegram, FaGithub, FaLinkedin, FaTwitter, FaWhatsapp } from 'react-icons/fa'
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { Bot } from 'lucide-react';
@@ -32,49 +32,44 @@ const Presentation = () => {
   }, []);
 
   return (
-    <section className='w-full overflow-hidden relative'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='gap-4 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 md:grid-cols-2 items-center pt-32'>
-          <div className=''>
-            <p className='font-mono uppercase text-2xl sm:text-4xl font-bold my-2 py-2'>
-              <span className=''>Salut, je suis</span><br />
-              <span className='pb-4'>Lafia Sabi Gado.</span>
-            </p>
-            <p className='dark:text-gray-300'>
-              Développeur web full stack résidant au Bénin, passionné par l'Intelligence Artificielle.
+    <section className='w-full overflow-hidden relative pt-20 pb-10'>
+      <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div className='grid md:grid-cols-[1fr_auto] gap-8 items-center'>
+          <div className='order-2 md:order-1'>
+            <h1 className='font-medium text-3xl sm:text-4xl tracking-tight mb-4 text-gray-900 dark:text-white'>
+              Lafia Sabi Gado
+            </h1>
+            <p className='text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed'>
+              Développeur web full stack résidant au Bénin, passionné par l'Intelligence Artificielle. Je conçois des expériences numériques minimalistes et performantes.
             </p>
 
-            <div className='flex flex-wrap items-center gap-4 pt-5'>
+            <div className='flex flex-wrap items-center gap-4'>
               <Link href={'/contact'}>
-                <Button className='bg-blue-500 text-white hover:bg-blue-600 rounded-full'>
+                <Button className='bg-black dark:bg-white text-white dark:text-black hover:opacity-80 rounded-full px-6 transition-opacity'>
                   Me Contacter
                 </Button>
               </Link>
-              <div className='text-blue-500 text-3xl'>
-                <Link href={link[0]}>
-                  <FaLinkedin />
+              <div className='flex gap-4 text-gray-500'>
+                <Link href={link[0]} className="hover:text-black dark:hover:text-white transition-colors">
+                  <FaLinkedin size={20} />
                 </Link>
-              </div>
-              <div className='text-gray-500 text-3xl'>
-                <Link href={link[1]}>
-                  <FaGithub />
+                <Link href={link[1]} className="hover:text-black dark:hover:text-white transition-colors">
+                  <FaGithub size={20} />
                 </Link>
-              </div>
-              <div className="text-green-500 text-3xl">
-                <Link href={link[2]}>
-                  <FaWhatsapp />
+                <Link href={link[2]} className="hover:text-black dark:hover:text-white transition-colors">
+                  <FaWhatsapp size={20} />
                 </Link>
               </div>
             </div>
           </div>
 
-          <div className='pt-5 sm:pt-0'>
-            <div className='w-full sm:w-[300px] h-full rounded-xl bg-transparent hover:bg-transparent flex justify-center drop-shadow-sm hover:scale-105 transition-transform duration-300 ease-in-out items-center'>              <Image 
-                src='/lafiapro.png' 
-                alt='Lafia' 
-                width={300} 
-                height={400}
-                className='rounded-xl' 
+          <div className='order-1 md:order-2 flex justify-center md:justify-end'>
+            <div className='relative w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-800'>
+              <Image
+                src='/lafialogo2.png'
+                alt='Lafia'
+                fill
+                className='object-cover'
                 priority
               />
             </div>

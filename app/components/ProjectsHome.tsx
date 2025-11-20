@@ -49,22 +49,22 @@ const ProjectsHome = () => {
   ]
 
   return (
-    <div className='pt-10 w-full overflow-hidden bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16'>
+    <div className='w-full overflow-hidden py-16'>
+      <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Header */}
-        <div className='mb-16 text-center' data-aos="fade-up">
-          <h2 className='text-3xl font-bold uppercase mb-4 bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent'>
-            Mes Projets
+        <div className='mb-12' data-aos="fade-up">
+          <h2 className='text-2xl font-medium tracking-tight mb-2 text-gray-900 dark:text-white'>
+            Projets Sélectionnés
           </h2>
-          <p className='text-gray-600 dark:text-gray-300 text-xl max-w-2xl mx-auto'>
-            Une sélection de projets qui démontrent ma passion pour le développement full-stack
+          <p className='text-gray-500 dark:text-gray-400'>
+            Quelques réalisations récentes.
           </p>
         </div>
 
         {/* Projects Grid */}
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8 mb-12'>
           {projects.map((project, index) => (
-            <div 
+            <div
               key={project.id}
               data-aos="fade-up"
               data-aos-delay={index * 100}
@@ -75,15 +75,10 @@ const ProjectsHome = () => {
         </div>
 
         {/* View All Button */}
-        <div className='flex justify-center' data-aos="fade-up" data-aos-delay="400">
-          <Link href="/projects">
-            <Button 
-              size="lg"
-              className='bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-full px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group'
-            >
-              Voir Plus de Projets
-              <ArrowRight className='ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300' />
-            </Button>
+        <div className='mt-12' data-aos="fade-up" data-aos-delay="400">
+          <Link href="/projects" className="inline-flex items-center text-sm font-medium text-gray-900 dark:text-white hover:opacity-70 transition-opacity">
+            Voir tous les projets
+            <ArrowRight className='ml-2 h-4 w-4' />
           </Link>
         </div>
       </div>

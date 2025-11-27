@@ -15,11 +15,11 @@ const ProjectsPage = () => {
     },
     {
       id: 1,
-      name: "Freelanceprop",
-      image: "/projects/freelanceprop.png",
-      description: "Générateur IA de devis pour freelances",
-      link: "https://freelanceprop.vercel.app/",
-      github: "https://github.com/Lafiasabigado/Freelanceprop.git",
+      name: "BrainWritor",
+      image: "/projects/brainwritor.png",
+      description: "Assistant rédactionnel IA",
+      link: "https://brainwritor.vercel.app/",
+      github: "https://github.com/Lafiasabigado/BrainWritor.git",
       tools: "React,NextJs",
       year: "2025"
     },

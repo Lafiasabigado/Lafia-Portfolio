@@ -76,27 +76,6 @@ const Presentation = () => {
           </div>
         </div>
       </div>
-
-      {/* Sticker robot animé */}
-      <div className="fixed bottom-8 right-8 z-50 flex flex-col items-center">
-        <button
-          onClick={() => setShowChat(!showChat)}
-          className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 p-3 rounded-full shadow-lg hover:scale-105 transition-transform duration-300"
-        >
-          <Bot
-            size={36}
-            className={`text-blue-500 transition-opacity duration-300 ${isBotBlinking ? 'opacity-40' : 'opacity-100'}`}
-          />
-        </button>
-        <div className="mt-2 bg-blue-500 text-white text-xs px-3 py-1 rounded-full animate-pulse">
-          Causer avec Lafia AI
-        </div>
-      </div>
-
-      {/* Boîte de chat */}
-      <Suspense fallback={<div className="text-center p-4">Initialisation de Lafia AI...</div>}>
-        {showChat && <ChatBox onClose={() => setShowChat(false)} />}
-      </Suspense>
     </section>
   );
 };

@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import ProjectCard from './ProjectCard'
+import { ArrowDownIcon } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
 const ProjectsHome = () => {
   const projects = [
@@ -18,11 +20,11 @@ const ProjectsHome = () => {
     },
     {
       id: 1,
-      name: "Freelanceprop",
-      image: "/projects/freelanceprop.png",
-      description: "Générateur IA de devis pour freelances",
-      link: "https://freelanceprop.vercel.app/",
-      github: "https://github.com/Lafiasabigado/Freelanceprop.git",
+      name: "BrainWritor",
+      image: "/projects/brainwritor.png",
+      description: "Assistant rédactionnel IA",
+      link: "https://brainwritor.vercel.app/",
+      github: "https://github.com/Lafiasabigado/BrainWritor.git",
       tools: "React,NextJs",
       year: "2025"
     },
@@ -48,8 +50,24 @@ const ProjectsHome = () => {
     }
   ]
 
+  const [hidden, setHidden] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY > 50) setHidden(true);
+      else setHidden(false);
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <div className='w-full overflow-hidden py-16'>
+    <div className='w-full overflow-hidden py-4 md:py-6 lg:py-8'>
+      <ArrowDownIcon
+        className={`w-12 h-12 mx-auto mb-12 transition-opacity duration-500 ${
+          hidden ? "opacity-0" : "opacity-100 animate-bounce"
+        }`}
+      />
       <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Header */}
         <div className='mb-12' data-aos="fade-up">

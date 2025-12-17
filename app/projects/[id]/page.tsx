@@ -37,19 +37,20 @@ const ProjectDetail = async ({ params }: { params: ParamsType }): Promise<JSX.El
     },
     {
       id: 1,
-      name: "Freelanceprop",
-      image: "/projects/freelanceprop.png",
-      description: "Générateur IA de devis pour freelances",
-      fullDescription: "Freelanceprop révolutionne la création de devis pour les freelances en utilisant l'intelligence artificielle. L'application permet de générer des propositions professionnelles en quelques minutes, avec une mise en page moderne et des calculs automatiques.",
-      link: "https://freelanceprop.vercel.app/",
-      github: "https://github.com/Lafiasabigado/Freelanceprop.git",
+      name: "BrainWritor",
+      image: "/projects/brainwritor.png",
+      description: "Assistant rédactionnel IA",
+      fullDescription: "BrainWritor révolutionne la rédaction de document pour les professionnels en utilisant l'intelligence artificielle. L'application permet de générer des documents professionnelles en quelques minutes, avec une mise en page moderne et des calculs automatiques.",
+      link: "https://brainwritor.vercel.app/",
+      github: "https://github.com/Lafiasabigado/BrainWritor.git",
       tools: "React,NextJs",
       year: "2025",
       features: [
         "Génération de devis IA",
-        "Calculs automatiques",
+        "Génération de propositions professionnelles",
         "Modèles personnalisables",
-        "Export PDF"
+        "Génération de documents",
+        "Interface utilisateur moderne"
       ]
     },
     {

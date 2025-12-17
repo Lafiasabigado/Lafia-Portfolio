@@ -3,9 +3,6 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import ProjectCard from './ProjectCard'
-import { ArrowDownIcon } from 'lucide-react'
-import { useState, useEffect } from 'react'
-
 const ProjectsHome = () => {
   const projects = [
     {
@@ -50,27 +47,11 @@ const ProjectsHome = () => {
     }
   ]
 
-  const [hidden, setHidden] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => {
-      if (window.scrollY > 50) setHidden(true);
-      else setHidden(false);
-    };
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <div className='w-full overflow-hidden py-4 md:py-6 lg:py-8'>
-      <ArrowDownIcon
-        className={`w-12 h-12 mx-auto mb-12 transition-opacity duration-500 ${
-          hidden ? "opacity-0" : "opacity-100 animate-bounce"
-        }`}
-      />
+    <div className='w-full overflow-hidden py-16 border-t border-gray-100 dark:border-gray-800'>
       <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Header */}
-        <div className='mb-12' data-aos="fade-up">
+        <div className='mb-12'>
           <h2 className='text-2xl font-medium tracking-tight mb-2 text-gray-900 dark:text-white'>
             Projets Sélectionnés
           </h2>
@@ -84,7 +65,6 @@ const ProjectsHome = () => {
           {projects.map((project, index) => (
             <div
               key={project.id}
-              data-aos="fade-up"
               data-aos-delay={index * 100}
             >
               <ProjectCard project={project} />

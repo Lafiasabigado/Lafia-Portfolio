@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { FaTelegram, FaGithub, FaLinkedin, FaTwitter, FaWhatsapp } from 'react-icons/fa'
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { Bot } from 'lucide-react';
+import { Bot, ChevronDown } from 'lucide-react';
 
 const ChatBox = dynamic(() => import('./ChatBox'), {
   ssr: false,
@@ -32,7 +32,7 @@ const Presentation = () => {
   }, []);
 
   return (
-    <section className='w-full overflow-hidden relative pt-20 pb-10'>
+    <section className='w-full overflow-hidden relative pt-20 pb-16 md:pb-32'>
       <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='grid md:grid-cols-[1fr_auto] gap-8 items-center'>
           <div className='order-2 md:order-1'>
@@ -75,6 +75,9 @@ const Presentation = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce'>
+        <ChevronDown className='w-6 h-6 text-gray-400' />
       </div>
     </section>
   );

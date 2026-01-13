@@ -21,21 +21,19 @@ const Skills = () => {
 
   return (
     <div className='py-16 border-t border-gray-100 dark:border-gray-800'>
-      <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
+      <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='grid md:grid-cols-[1fr_2fr] gap-12'>
-          <h2 className='text-2xl font-medium tracking-tight text-gray-900 dark:text-white' data-aos="fade-right">Compétences</h2>
+          <h2 className='text-2xl font-medium tracking-tight text-gray-900 dark:text-white'>Compétences</h2>
           <div className='space-y-6'>
-            <div className='' data-aos="fade-up">
+            <div className=''>
               <p className='text-gray-600 dark:text-gray-400 leading-relaxed'>
                 J'aime apprendre de nouvelles choses et développer mes compétences. Actuellement, je maîtrise les technologies suivantes :
               </p>
             </div>
-            <div className='flex flex-wrap gap-3' data-aos="fade-up" data-aos-delay="100">
+            <div className='flex flex-wrap gap-3'>
               {skills.map((skill, index) => (
                 <div
                   key={skill.id}
-                  data-aos="zoom-in"
-                  data-aos-delay={index * 50}
                   className='flex items-center bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-full py-1.5 px-4 transition-all duration-300 hover:border-gray-400 dark:hover:border-gray-500'
                 >
                   <div className='text-lg'>

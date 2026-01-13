@@ -73,9 +73,9 @@ const Contact = () => {
   ]
   return (
     <div className='py-16 border-t border-gray-100 dark:border-gray-800'>
-      <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
+      <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='grid md:grid-cols-[1fr_2fr] gap-12'>
-          <div className='flex-col' data-aos="fade-right">
+          <div className='flex-col'>
             <h2 className='text-2xl font-medium tracking-tight mb-6 text-gray-900 dark:text-white'>Contact</h2>
             <div className='space-y-4'>
               <p className='text-gray-600 dark:text-gray-400'>
@@ -101,7 +101,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className='' data-aos="fade-up">
+          <div className=''>
             <form onSubmit={handleSubmit} className='space-y-4'>
               <div className='grid grid-cols-2 gap-4'>
                 <div className='space-y-1'>

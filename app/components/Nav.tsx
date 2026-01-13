@@ -28,12 +28,11 @@ export default function Navbar() {
 
   return (
     <nav className='fixed top-0 left-0 right-0 z-50 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800'>
-      <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
+      <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='flex justify-between items-center h-16'>
           <Link
             href="/"
             className='text-base font-medium tracking-tight text-gray-900 dark:text-white hover:opacity-70 transition-opacity duration-200'
-            data-aos="fade-right"
           >
             Lafia Sabi Gado
           </Link>
@@ -44,22 +43,21 @@ export default function Navbar() {
               <Link
                 key={link.path}
                 href={link.path}
-                className='hover:text-blue-500 transition-colors duration-200'
-                data-aos="fade-down"
-                data-aos-delay={index * 100}
+                className='text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200'
               >
                 {link.name}
               </Link>
             ))}
-            <div data-aos="fade-left">
-              <ThemeToggle />
-            </div>
+            <ThemeToggle />
           </div>
 
           {/* Menu Burger Mobile */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className='md:hidden hover:text-blue-500 transition-colors duration-200'
+            className='md:hidden text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200'
+            aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -67,12 +65,12 @@ export default function Navbar() {
 
         {/* Menu Mobile */}
         {isOpen && (
-          <div className='md:hidden space-y-4 py-4 bg-white dark:bg-gray-900'>
+          <div id="mobile-menu" className='md:hidden space-y-4 py-4 bg-white dark:bg-gray-900'>
             {links.map((link) => (
               <Link
                 key={link.path}
                 href={link.path}
-                className='block hover:text-blue-500 transition-colors duration-200 py-2'
+                className='block text-sm text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 py-2'
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}

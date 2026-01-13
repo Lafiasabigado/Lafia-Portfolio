@@ -1,12 +1,8 @@
-"use client";
-
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { Download } from 'lucide-react';
-import { FaTelegram, FaGithub, FaLinkedin, FaTwitter, FaWhatsapp } from 'react-icons/fa'
-import { useEffect } from "react";
-import "aos/dist/aos.css";
+import { FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
 
 
 const About = () => {
@@ -27,7 +23,7 @@ const About = () => {
 
   return (
     <div className='py-16 border-t border-gray-100 dark:border-gray-800'>
-      <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
+      <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='grid md:grid-cols-[1fr_2fr] gap-12'>
           <h2 className='text-2xl font-medium tracking-tight text-gray-900 dark:text-white'>À Propos</h2>
           <div className='space-y-6'>

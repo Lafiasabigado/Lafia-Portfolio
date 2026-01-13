@@ -2,16 +2,10 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowUpRightIcon } from 'lucide-react'
+import type { Project } from '@/lib/projects'
 
 interface ProjectCardProps {
-  project: {
-    id: number
-    name: string
-    image: string
-    description: string
-    tools: string
-    year: string
-  }
+  project: Project
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {

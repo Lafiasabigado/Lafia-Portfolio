@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/lafialogo2.png",
+    icon: "/lafiapro1.png",
   },
   openGraph: {
     type: 'website',

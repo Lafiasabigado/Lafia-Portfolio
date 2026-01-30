@@ -62,7 +62,7 @@ const Presentation = () => {
           <div className='order-1 md:order-2 flex justify-center md:justify-end'>
             <div className='relative w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-800'>
               <Image
-                src='/lafialogo2.png'
+                src='/lafiapro1.png'
                 alt='Lafia'
                 fill
                 className='object-cover'

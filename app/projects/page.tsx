@@ -5,7 +5,7 @@ import { projects } from '@/lib/projects'
 const ProjectsPage = () => {
   return (
     <div className='min-h-screen py-24'>
-      <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
+      <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Header */}
         <div className='mb-12'>
           <h1 className='text-2xl font-medium tracking-tight mb-4 text-gray-900 dark:text-white'>

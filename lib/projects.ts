@@ -14,6 +14,25 @@ export type Project = {
 export const projects: Project[] = [
   {
     id: 0,
+    name: "Tikonna",
+    image: "/projects/tikonna.png",
+    description: "Site web de l'Association Tikonna",
+    fullDescription:
+      "Tikonna est une association qui assure l'autonomisation des femmes des montagnes de l'Atacora. Le site présente les activités de l'association, ses membres et ses projets, des produits en ventes ainsi que des actualités.",
+    link: "https://www.tikonna.org/",
+    github: "https://github.com/Lafiasabigado/Tikonna_Frontend.git",
+    tools: "React,NextJs,Django",
+    year: "2025",
+    features: [
+      "Page produits présentant une variété de produits locaux",
+      "Interface utilisateur intuitive",
+      "Support de multiples formats",
+      "Blog présentant les actualités de l'association",
+      "Gestion des données via Django",
+    ],
+  },
+  {
+    id: 1,
     name: "Doczi",
     image: "/projects/doczi.png",
     description: "Générateur de documents administratifs Intelligents",
@@ -31,7 +50,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 1,
+    id: 2,
     name: "BrainWritor",
     image: "/projects/brainwritor.png",
     description: "Assistant rédactionnel IA",
@@ -50,7 +69,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     name: "Foothub",
     image: "/projects/foothubcommunity.png",
     description:
@@ -69,7 +88,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     name: "Apex Football",
     image: "/projects/apexfootball.png",
     description: "Agence accompagnant les footballeurs professionnels",
@@ -87,7 +106,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     name: "Ballamas",
     image: "/projects/ballamas.png",
     description: "Plateforme e-commerce de vêtements moderne",
@@ -105,7 +124,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     name: "Apex Food",
     image: "/projects/apex-food.png",
     description: "Plateforme de commande de repas",
@@ -123,7 +142,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 6,
+    id: 7,
     name: "Travel Agency",
     image: "/projects/travel-agency.png",
     description: "Application de planification de voyages",

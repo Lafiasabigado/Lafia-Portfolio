@@ -34,7 +34,7 @@ const About = () => {
                 de mes clients.
               </p>
               <p>
-                Etudiant en informatique de gestion,
+                Titulaire d'une licence en informatique de gestion,
                 Je porte une attention particulière aux détails et m'efforce toujours de livrer les meilleurs résultats.
               </p>
               <p>

@@ -62,7 +62,7 @@ const Contact = () => {
     }));
   };
 
-  const link = "https://drive.google.com/file/d/1RWYI8TM3-R3ns8IMfZ1pwe4MeqeMdAcP/view?usp=sharing"
+  const link = "https://drive.google.com/file/d/1IoUslE116HEUImbIFc-zTzcVAS9cewvr/view?usp=drive_link"
 
   const socials = [
     { id: 1, name: "WhatsApp", icon: <FaWhatsapp className="text-blue-500 rounded-lg" />, link: "https://wa.me/22956259632" },

@@ -34,7 +34,7 @@ export default function Navbar() {
             href="/"
             className='text-base font-medium tracking-tight text-gray-900 dark:text-white hover:opacity-70 transition-opacity duration-200'
           >
-            Lafia Sabi Gado
+            Abdias Lafia Sabi Gado
           </Link>
 
           {/* Menu Desktop */}

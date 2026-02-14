@@ -9,6 +9,8 @@ export type Project = {
   tools: string
   year: string
   features?: string[]
+  category: string
+  color: string
 }
 
 export const projects: Project[] = [
@@ -30,6 +32,8 @@ export const projects: Project[] = [
       "Blog présentant les actualités de l'association",
       "Gestion des données via Django",
     ],
+    category: "Web App",
+    color: "from-purple-500/20 to-blue-500/20"
   },
   {
     id: 1,
@@ -48,6 +52,8 @@ export const projects: Project[] = [
       "Support de multiples formats",
       "Base de données Prisma pour la gestion des données",
     ],
+    category: "SaaS Platform",
+    color: "from-blue-500/20 to-cyan-500/20"
   },
   {
     id: 2,
@@ -67,6 +73,8 @@ export const projects: Project[] = [
       "Génération de documents",
       "Interface utilisateur moderne",
     ],
+    category: "SaaS Platform",
+    color: "from-orange-500/20 to-red-500/20"
   },
   {
     id: 3,
@@ -86,6 +94,8 @@ export const projects: Project[] = [
       "Profils utilisateurs personnalisables",
       "Suivi d'équipes et de joueurs",
     ],
+    category: "Web App",
+    color: "from-green-500/20 to-emerald-500/20"
   },
   {
     id: 4,
@@ -104,6 +114,8 @@ export const projects: Project[] = [
       "Formulaire de contact",
       "Gestion de contenu via Django",
     ],
+    category: "Website",
+    color: "from-slate-500/20 to-gray-500/20"
   },
   {
     id: 5,
@@ -122,6 +134,8 @@ export const projects: Project[] = [
       "Design responsive",
       "Interface utilisateur moderne",
     ],
+    category: "E-commerce",
+    color: "from-pink-500/20 to-rose-500/20"
   },
   {
     id: 6,
@@ -140,6 +154,8 @@ export const projects: Project[] = [
       "Système de notation",
       "Interface responsive",
     ],
+    category: "Web App",
+    color: "from-yellow-500/20 to-orange-500/20"
   },
   {
     id: 7,
@@ -158,6 +174,8 @@ export const projects: Project[] = [
       "Location de voitures",
       "Interface moderne et intuitive",
     ],
+    category: "Website",
+    color: "from-cyan-500/20 to-blue-500/20"
   },
 ]
 

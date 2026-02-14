@@ -2,42 +2,116 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    /* DEFAULT (Light Mode) - Forced to Dark/Deep Theme for this specific "High-End" request if user wants it only dark, 
+       but plan said "Complete Pivot to Dark Mode". 
+       However, to be safe and support Tailwind's class strategy, I will set the DEFAULT variables to the Deep Dark theme directly 
+       OR keep a light theme if they toggle. 
+       The user request said: "ABANDONNER le fond noir pur... Utiliser un fond noir profond".
+       And "Complete Pivot to Dark Mode".
+       So I will make the :root variables essentially the Dark theme, or ensure .dark is always active.
+       Let's map :root to the new dark theme to be sure. */
 
+    --background: 240 10% 3.9%;
+    /* #0A0A0A */
+    --foreground: 0 0% 98%;
+    /* #FAFAFA */
 
-html.dark {
-  background-color: #0a0a0a; 
-  color: #ededed;
-}
+    --card: 240 10% 10%;
+    /* #1A1A1A */
+    --card-foreground: 0 0% 98%;
 
-html.light {
-  background-color: #ffffff;
-  color: #171717;
-}
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
 
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
 
-@keyframes bounceDot {
-  0%, 80%, 100% {
-    transform: scale(1);
-    opacity: 0.3;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 216 100% 50%;
+    /* #0066FF */
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+
+    --radius: 0.75rem;
   }
-  40% {
-    transform: scale(1.5);
-    opacity: 1;
+
+  .dark {
+    /* Same as root for this redesign, ensuring consistency if theme switcher is used */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 216 100% 50%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
   }
 }
 
-.animate-bounce-delay1 {
-  animation: bounceDot 1.4s infinite;
-  animation-delay: 0s;
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased;
+    /* Deep Black Gradient Background */
+    background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #0F0F0F 100%);
+    min-height: 100vh;
+  }
 }
 
-.animate-bounce-delay2 {
-  animation: bounceDot 1.4s infinite;
-  animation-delay: 0.2s;
+/* Utilities */
+.glass {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
 }
 
-.animate-bounce-delay3 {
-  animation: bounceDot 1.4s infinite;
-  animation-delay: 0.4s;
+/* Noise Texture - As requested */
+.noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
+/* Animations Variables */
+:root {
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.text-shadow-3d {
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.9);
+}

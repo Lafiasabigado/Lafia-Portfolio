@@ -1,22 +1,17 @@
-import React from 'react'
-import Presentation from './components/Presentation'
-import ProjectsHome from './components/ProjectsHome'
-import About from './about/page'
-import Skills from './skills/page'
-import Contact from './contact/page'
-import Certifications from './certif/page'
+import Hero from "./components/home/Hero";
+import ProjectsPreview from "./components/home/ProjectsPreview";
+import About from "./components/home/About";
+import Skills from "./components/home/Skills";
+import Contact from "./components/home/Contact";
 
-const Page = () => {
+export default function Home() {
   return (
-    <div className='w-full overflow-hidden text-zinc-800 dark:text-zinc-100'>
-      <Presentation />
-      <ProjectsHome />
+    <div className="relative">
+      <Hero />
+      <ProjectsPreview />
       <About />
       <Skills />
-      <Certifications />
       <Contact />
     </div>
-  )
+  );
 }
-
-export default Page

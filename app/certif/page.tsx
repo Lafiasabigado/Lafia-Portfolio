@@ -24,8 +24,8 @@ const Certifications = () => {
   };
 
   return (
-    <div className='py-16 border-t border-gray-100 dark:border-gray-800'>
-      <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <div className='py-16 pt-32 border-t border-gray-100 dark:border-gray-800'>
+      <div className='max-w-3xl mx-auto px-6'>
         <h2 className='text-2xl font-medium tracking-tight mb-8 text-gray-900 dark:text-white'>Certifications</h2>
         <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
           {certifs.slice(0, visibleCount).map((certif) => (

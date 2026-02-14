@@ -1,182 +1,141 @@
-import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import type { Metadata } from 'next'
-import { Github, ArrowUpRightIcon, ArrowLeft } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { JSX } from 'react'
-import { getProjectById, projects } from '@/lib/projects'
+'use client';
 
-export type ParamsType = { id: string };
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { ArrowLeft, ArrowUpRight, Github, Calendar, Layers } from 'lucide-react';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
+import { useRef } from 'react';
+import GlassCard from '../../components/ui/GlassCard';
+import MagneticButton from '../../components/ui/MagneticButton';
+import { projects } from '@/lib/projects';
 
-// Cette fonction génère les routes statiques
-export async function generateStaticParams(): Promise<Array<{ id: string }>> {
-  return projects.map((p) => ({ id: String(p.id) }))
-}
+export default function ProjectDetail() {
+  const params = useParams();
+  const id = Number(params.id);
+  const project = projects.find(p => p.id === id);
+  const containerRef = useRef(null);
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<ParamsType>
-}): Promise<Metadata> {
-  const { id } = await params
-  const projectId = Number.parseInt(id, 10)
-  const project = getProjectById(projectId)
+  const { scrollYProgress } = useScroll({ target: containerRef });
+  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
-  if (!project) {
-    return {
-      title: 'Projet introuvable',
-      robots: { index: false, follow: false },
-    }
-  }
-
-  const title = `${project.name} — Projet`
-  const description = (project.fullDescription ?? project.description).slice(0, 160)
-
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: `/projects/${project.id}`,
-    },
-    openGraph: {
-      title,
-      description,
-      images: [
-        {
-          url: project.image,
-          alt: project.name,
-        },
-      ],
-      type: 'article',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [project.image],
-    },
-  }
-}
-
-const ProjectDetail = async ({ params }: { params: Promise<ParamsType> }): Promise<JSX.Element> => {
-  const { id } = await params
-  const projectId = Number.parseInt(id, 10)
-  const project = getProjectById(projectId)
-
-  if (!project) {
-    return <div className='min-h-screen flex items-center justify-center'>
-      <p>Projet non trouvé</p>
+  if (!project) return (
+    <div className="min-h-screen flex items-center justify-center text-muted-foreground">
+      Project not found
     </div>
-  }
+  );
+
+  const stack = project.tools ? project.tools.split(',').map(t => t.trim()) : [];
 
   return (
-    <div className='min-h-screen py-24'>
-      <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8'>
-        {/* Back Button */}
-        <Link href="/projects" className="inline-flex items-center text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white mb-8 transition-colors">
-          <ArrowLeft className='mr-2 h-4 w-4' />
-          Retour aux projets
-        </Link>
+    <div ref={containerRef} className="min-h-screen relative selection:bg-neon-green/30">
 
-        {/* Hero Image */}
-        <div
-          className="relative rounded-xl overflow-hidden mb-10 aspect-video bg-gray-100 dark:bg-gray-800"
+      {/* Hero Section */}
+      <section className="h-[70vh] relative overflow-hidden flex items-end pb-20">
+        <motion.div
+          {...({
+            className: "absolute inset-0 z-0",
+            initial: { scale: 1.1 },
+            animate: { scale: 1 },
+            transition: { duration: 1.5, ease: "easeOut" }
+          } as any)}
         >
-          <Image
-            src={project.image}
-            alt={project.name}
-            fill
-            className="object-cover"
-            priority
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent z-10" />
+          <div
+            className="w-full h-full bg-cover bg-center opacity-40"
+            style={{ backgroundImage: `url(${project.image})` }}
           />
+        </motion.div>
+
+        <div className="relative z-20 max-w-3xl mx-auto px-6 w-full">
+          <Link href="/projects" className="inline-flex items-center gap-2 text-muted-foreground hover:text-white mb-8 transition-colors">
+            <ArrowLeft size={20} /> Back to Projects
+          </Link>
+
+          <motion.div
+            {...({
+              initial: { opacity: 0, y: 30 },
+              animate: { opacity: 1, y: 0 },
+              transition: { delay: 0.2 }
+            } as any)}
+          >
+            <h1 className="text-5xl sm:text-7xl md:text-8xl font-heading font-bold mb-6">{project.name}</h1>
+          </motion.div>
         </div>
+      </section>
 
-        <div className='grid md:grid-cols-[2fr_1fr] gap-12'>
-          {/* Main Content */}
-          <div className='space-y-10'>
-            <div>
-              <h1 className="text-3xl font-medium tracking-tight mb-4 text-gray-900 dark:text-white">
-                {project.name}
-              </h1>
-              <p className='text-gray-600 dark:text-gray-400 leading-relaxed text-lg'>
-                {project.fullDescription ?? project.description}
-              </p>
-            </div>
+      {/* Content */}
+      <article className="max-w-3xl mx-auto px-6 pb-32">
 
-            {/* Features */}
-            <div>
-              <h2 className='text-xl font-medium mb-4 text-gray-900 dark:text-white'>
-                Fonctionnalités principales
-              </h2>
-              <ul className='space-y-3'>
-                {project.features?.map((feature, index) => (
-                  <li
-                    key={index}
-                    className='flex items-start text-gray-600 dark:text-gray-400'
-                  >
-                    <span className='mr-3 mt-2 w-1.5 h-1.5 bg-gray-400 rounded-full flex-shrink-0' />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+        {/* Main Info */}
+        <div className="space-y-12">
+          <motion.div
+            {...({
+              initial: { opacity: 0, y: 20 },
+              whileInView: { opacity: 1, y: 0 },
+              viewport: { once: true },
+              className: "text-xl sm:text-2xl leading-relaxed text-muted-foreground"
+            } as any)}
+          >
+            {project.fullDescription || project.description}
+          </motion.div>
+
+          {/* Features List as a substitute for Gallery for now */}
+          <div className="space-y-6">
+            <h3 className="text-2xl font-bold font-heading">Key Features</h3>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {project.features?.map((feature: string, idx: number) => (
+                <GlassCard key={idx} className="p-4 bg-white/5 border-white/5">
+                  <span className="text-electric-blue mr-2">•</span> {feature}
+                </GlassCard>
+              ))}
             </div>
           </div>
+        </div>
 
-          {/* Sidebar */}
-          <div className='space-y-8'>
-            {/* Project Info */}
+        {/* Sidebar Info */}
+        <motion.div
+          style={{ y } as any}
+          className="lg:sticky lg:top-32 h-fit space-y-8"
+        >
+          <GlassCard className="p-8 space-y-8">
             <div>
-              <h3 className='text-sm font-medium uppercase tracking-wider text-gray-500 mb-4'>
-                Informations
+              <h3 className="text-sm uppercase tracking-wider text-muted-foreground mb-3 flex items-center gap-2">
+                <Calendar size={16} /> Year
               </h3>
+              <p className="text-xl font-medium">{project.year}</p>
+            </div>
 
-              <div className='space-y-6'>
-                <div>
-                  <p className='text-xs text-gray-500 mb-1'>Année</p>
-                  <p className='text-gray-900 dark:text-white font-medium'>{project.year}</p>
-                </div>
-
-                <div>
-                  <p className='text-xs text-gray-500 mb-2'>Technologies</p>
-                  <div className='flex flex-wrap gap-2'>
-                    {project.tools.split(',').map((tool, index) => (
-                      <span
-                        key={index}
-                        className='px-2.5 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-md text-xs'
-                      >
-                        {tool.trim()}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className='space-y-3 mt-8'>
-                <Link href={project.link} target='_blank' className='block'>
-                  <Button className='w-full bg-black dark:bg-white text-white dark:text-black hover:opacity-80 rounded-full h-11 transition-opacity'>
-                    Démo en Direct
-                    <ArrowUpRightIcon className='ml-2 h-4 w-4' />
-                  </Button>
-                </Link>
-
-                <Link href={project.github} target='_blank' className='block'>
-                  <Button
-                    variant="outline"
-                    className='w-full rounded-full h-11 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800'
-                  >
-                    Voir sur Github
-                    <Github className='ml-2 h-4 w-4' />
-                  </Button>
-                </Link>
+            <div>
+              <h3 className="text-sm uppercase tracking-wider text-muted-foreground mb-3 flex items-center gap-2">
+                <Layers size={16} /> Tech Stack
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {stack.map(tech => (
+                  <span key={tech} className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-sm">
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
 
-export default ProjectDetail
+            <div className="pt-8 border-t border-white/10 space-y-4">
+              <MagneticButton>
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-4 bg-foreground text-background rounded-full font-bold hover:bg-foreground/90 transition-colors">
+                  Live Demo <ArrowUpRight size={20} />
+                </a>
+              </MagneticButton>
+
+              <MagneticButton>
+                <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-4 border border-white/10 rounded-full font-medium hover:bg-white/5 transition-colors">
+                  View Github <Github size={20} />
+                </a>
+              </MagneticButton>
+            </div>
+          </GlassCard>
+        </motion.div>
+
+      </article>
+
+    </div>
+  );
+}

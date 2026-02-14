@@ -1,20 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { inter, syne, pixelify_sans, space_mono } from "@/lib/fonts";
 import "./globals.css";
 import Nav from "./components/Nav";
 import { ThemeProvider } from "./components/theme-provider";
-import CursorGlow from "./components/CursorGlow";
-import WhatsAppButton from "./components/WhatsAppButton";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import SmoothScroll from "./components/SmoothScroll";
+import CustomCursor from "./components/ui/CustomCursor";
+import BackgroundParticles from "./components/ui/BackgroundParticles";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://lafiasabigado.vercel.app"),
@@ -102,8 +93,8 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="fr" suppressHydrationWarning={true}>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden h-full`}>
+    <html lang="fr" suppressHydrationWarning={true} className="no-scrollbar">
+      <body className={`${inter.variable} ${syne.variable} ${pixelify_sans.variable} ${space_mono.variable} antialiased overflow-x-hidden h-full selection:bg-electric-blue/30 selection:text-electric-blue`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
@@ -114,16 +105,20 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="relative w-full overflow-x-hidden">
-            <CursorGlow />
-            <Nav />
-            <main className="w-full overflow-hidden">
-              {children}
-            </main>
-            <WhatsAppButton />
-          </div>
+          <SmoothScroll>
+            <div className="relative w-full overflow-x-hidden">
+              <BackgroundParticles />
+              <div className="noise" />
+              <CustomCursor />
+              {/* CursorGlow removed in favor of CustomCursor for clearer aesthetic direction, can be re-added if hybrid needed */}
+              <Nav />
+              <main className="w-full overflow-hidden min-h-screen">
+                {children}
+              </main>
+            </div>
+          </SmoothScroll>
         </ThemeProvider>
       </body>
-    </html>
+    </html >
   );
 }

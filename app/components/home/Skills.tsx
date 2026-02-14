@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import GlassCard from '../ui/GlassCard';
+import { useTranslations } from 'next-intl';
 
 const skills = [
     { name: "Next.js", level: "Expert", color: "text-white", bg: "bg-black" },
@@ -21,6 +22,8 @@ const skills = [
 ];
 
 export default function Skills() {
+    const t = useTranslations('home_sections.skills');
+
     return (
         <section className="max-w-3xl mx-auto px-6 py-20">
             <motion.div
@@ -31,8 +34,8 @@ export default function Skills() {
                     className: "text-center mb-16"
                 } as any)}
             >
-                <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-4">Technical Arsenal</h2>
-                <p className="text-muted-foreground text-lg">The tools I use to bring ideas to life.</p>
+                <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-4">{t('title')}</h2>
+                <p className="text-muted-foreground text-lg">{t('subtitle')}</p>
             </motion.div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

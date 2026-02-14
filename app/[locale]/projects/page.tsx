@@ -2,19 +2,32 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import GlassCard from '../components/ui/GlassCard';
+import GlassCard from '@/app/components/ui/GlassCard';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { projects } from '@/lib/projects';
+import { useTranslations } from 'next-intl';
 
 const categories = ["All", "SaaS Platform", "Web App", "E-commerce", "Website"];
 
 export default function ProjectsPage() {
+  const t = useTranslations('projects');
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filteredProjects = activeCategory === "All"
     ? projects
     : projects.filter(p => p.category === activeCategory);
+
+  const getCategoryLabel = (category: string) => {
+    switch (category) {
+      case "All": return t('all');
+      case "SaaS Platform": return t('saas');
+      case "Web App": return t('webapp');
+      case "E-commerce": return t('ecommerce');
+      case "Website": return t('website');
+      default: return category;
+    }
+  };
 
   return (
     <div className="min-h-screen py-32 relative overflow-hidden">
@@ -29,9 +42,9 @@ export default function ProjectsPage() {
             className: "mb-16 text-center"
           } as any)}
         >
-          <h1 className="text-5xl sm:text-7xl font-heading font-bold mb-6">Work</h1>
+          <h1 className="text-5xl sm:text-7xl font-heading font-bold mb-6">{t('title')}</h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A selection of projects that define my journey as a developer and designer.
+            {t('subtitle')}
           </p>
         </motion.div>
 
@@ -53,7 +66,7 @@ export default function ProjectsPage() {
                   } as any)}
                 />
               )}
-              {category}
+              {getCategoryLabel(category)}
             </button>
           ))}
         </div>
@@ -93,13 +106,13 @@ export default function ProjectsPage() {
                     />
 
                     <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/10 text-6xl font-bold uppercase tracking-tighter group-hover:scale-110 transition-transform duration-700">
-                      {project.category.split(' ')[0]}
+                      {getCategoryLabel(project.category).split(' ')[0]}
                     </div>
 
                     {/* Content Overlay */}
                     <div className="absolute inset-0 p-8 flex flex-col justify-end">
                       <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                        <span className="text-sm font-medium text-electric-blue mb-2 block opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{project.category}</span>
+                        <span className="text-sm font-medium text-electric-blue mb-2 block opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{getCategoryLabel(project.category)}</span>
                         <h3 className="text-3xl font-heading font-bold text-white mb-2">{project.name}</h3>
                         <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
                           <ArrowUpRight className="text-white w-5 h-5" />

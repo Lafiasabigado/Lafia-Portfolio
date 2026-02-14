@@ -1,0 +1,190 @@
+{
+    "nav": {
+        "home": "Home",
+        "projects": "Projects",
+        "services": "Services",
+        "contact": "Contact"
+    },
+    "hero": {
+        "badge": "Available for projects",
+        "tagline": "Creative Developer",
+        "bio": "I build pixel-perfect, engaging, and accessible digital experiences. Specialized in {nextjs} and {design}.",
+        "nextjs": "Next.js",
+        "design": "Design Engineering",
+        "viewProjects": "View Projects",
+        "getInTouch": "Get in Touch",
+        "scroll": "Scroll"
+    },
+    "about": {
+        "title": "About",
+        "intro": "I am a passionate developer with expertise in web development. My goal is to create innovative digital solutions that meet my clients' needs.",
+        "education": "Holding a degree in computer science and management, I pay particular attention to detail and always strive to deliver the best results.",
+        "passion": "Problem-solving is my passion, and I am always motivated to learn new things. Outside of coding hours, I enjoy playing football or watching movies and series.",
+        "cta": "Feel free to contact me if you want to collaborate on something interesting!",
+        "downloadCV": "Download CV",
+        "whatsapp": "WhatsApp",
+        "linkedin": "LinkedIn",
+        "github": "Github"
+    },
+    "projects": {
+        "title": "Work",
+        "subtitle": "A selection of projects that define my journey as a developer and designer.",
+        "all": "All",
+        "saas": "SaaS Platform",
+        "webapp": "Web App",
+        "ecommerce": "E-commerce",
+        "website": "Website"
+    },
+    "services": {
+        "title": "Services",
+        "subtitle": "I offer complete web solutions, from design to production. Specialized in {nextjs}, {react}, and {typescript}.",
+        "nextjs": "Next.js",
+        "react": "React",
+        "typescript": "TypeScript",
+        "cta": {
+            "title": "Have a project in mind?",
+            "description": "Let's discuss your project and see how I can help bring it to life.",
+            "button": "Get in Touch"
+        },
+        "items": {
+            "webdev": {
+                "title": "Web Development",
+                "description": "Building modern, fast, and SEO-optimized websites. Using the latest technologies like Next.js, React, and TypeScript.",
+                "features": [
+                    "Responsive and performant websites",
+                    "Advanced SEO optimization",
+                    "Modern and scalable architecture",
+                    "Third-party API integration"
+                ]
+            },
+            "saas": {
+                "title": "SaaS Applications",
+                "description": "Development of complete SaaS platforms with authentication, payments, and custom dashboards.",
+                "features": [
+                    "Secure authentication",
+                    "Payment integration (Stripe, PayPal)",
+                    "Interactive dashboards",
+                    "Optimized database (Prisma, PostgreSQL)"
+                ]
+            },
+            "ecommerce": {
+                "title": "E-commerce",
+                "description": "Custom e-commerce solutions with product management, shopping cart, and secure payment processing.",
+                "features": [
+                    "Dynamic product catalog",
+                    "Optimized cart and checkout",
+                    "Inventory and order management",
+                    "Payment gateway integration"
+                ]
+            },
+            "uiux": {
+                "title": "UI/UX Design",
+                "description": "Designing modern and intuitive user interfaces with particular attention to user experience.",
+                "features": [
+                    "Design systems and reusable components",
+                    "Interactive prototypes (Figma)",
+                    "Animations and micro-interactions",
+                    "Responsive and accessible design"
+                ]
+            },
+            "webapps": {
+                "title": "Web Applications",
+                "description": "Development of complex web applications with advanced features and third-party integrations.",
+                "features": [
+                    "Real-time applications (WebSockets)",
+                    "AI and Machine Learning integration",
+                    "Complex state management (Redux, Zustand)",
+                    "Progressive Web Apps (PWA)"
+                ]
+            },
+            "maintenance": {
+                "title": "Maintenance & Support",
+                "description": "Ongoing technical support, security updates, and performance optimization for your existing applications.",
+                "features": [
+                    "Bug fixes and updates",
+                    "Performance optimization",
+                    "Monitoring and analytics",
+                    "Responsive technical support"
+                ]
+            }
+        }
+    },
+    "contact": {
+        "title": "Contact",
+        "haveProject": "Have a project in mind?",
+        "resume": "Resume",
+        "downloadCV": "Download my CV",
+        "socials": "Socials",
+        "form": {
+            "name": "Name",
+            "namePlaceholder": "Your name",
+            "email": "Email",
+            "emailPlaceholder": "your@email.com",
+            "subject": "Subject",
+            "subjectPlaceholder": "Project discussion",
+            "message": "Message",
+            "messagePlaceholder": "Tell me about your project...",
+            "send": "Send Message"
+        },
+        "footer": "All rights reserved."
+    },
+    "project_details": {
+        "back": "Back to Projects",
+        "features": "Key Features",
+        "year": "Year",
+        "stack": "Tech Stack",
+        "demo": "Live Demo",
+        "github": "View Github",
+        "notFound": "Project not found"
+    },
+    "home_sections": {
+        "projects_preview": {
+            "title": "Selected Work",
+            "subtitle": "A closer look at some of the projects I've been working on recently.",
+            "see_all": "See all projects"
+        },
+        "about": {
+            "title_part1": "More than just",
+            "title_part2": "coding.",
+            "p1": "I'm a passionate developer based in Benin, obsessed with creating digital experiences that feel alive. My approach combines technical precision with artistic direction.",
+            "p2": "I believe that a website shouldn't just be functional; it should be memorable. Whether it's a SaaS platform or a portfolio, I aim for the \"WOW\" effect.",
+            "stats": {
+                "experience": "Years Experience",
+                "projects": "Projects Completed",
+                "clients": "Happy Clients"
+            },
+            "services": {
+                "webdev": {
+                    "title": "Web Development",
+                    "desc": "Fast, accessible, and SEO-friendly websites using Next.js."
+                },
+                "uiux": {
+                    "title": "UI/UX Design",
+                    "desc": "Modern, aesthetic, and user-centric interfaces."
+                },
+                "backend": {
+                    "title": "Backend Solutions",
+                    "desc": "Scalable APIs and database management."
+                },
+                "saas": {
+                    "title": "SaaS Products",
+                    "desc": "Full-cycle development from idea to launch."
+                }
+            }
+        },
+        "skills": {
+            "title": "Technical Arsenal",
+            "subtitle": "The tools I use to bring ideas to life."
+        },
+        "contact": {
+            "title": "Let's work together",
+            "subtitle": "Have a project in mind? I'd love to help you build it.",
+            "form": {
+                "name": "Name",
+                "email": "Email",
+                "message": "Message",
+                "send": "Send Message"
+            }
+        }
+    }
+}

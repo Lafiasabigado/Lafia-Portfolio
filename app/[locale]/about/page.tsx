@@ -1,11 +1,15 @@
+'use client';
+
 import React from 'react'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/app/components/ui/button'
 import Link from 'next/link'
 import { Download } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
+import { useTranslations } from 'next-intl';
 
 
 const About = () => {
+  const t = useTranslations('about');
 
   const link = [
     "https://drive.google.com/file/d/1RWYI8TM3-R3ns8IMfZ1pwe4MeqeMdAcP/view?usp=sharing",
@@ -15,34 +19,30 @@ const About = () => {
   ]
 
   const elements = [
-    { id: 4, label: "Télécharger CV", icon: Download, link: link[0] },
-    { id: 3, label: "WhatsApp", icon: FaWhatsapp, link: link[3] },
-    { id: 2, label: "LinkedIn", icon: FaLinkedin, link: link[1] },
-    { id: 1, label: "Github", icon: FaGithub, link: link[2] },
+    { id: 4, label: t('downloadCV'), icon: Download, link: link[0] },
+    { id: 3, label: t('whatsapp'), icon: FaWhatsapp, link: link[3] },
+    { id: 2, label: t('linkedin'), icon: FaLinkedin, link: link[1] },
+    { id: 1, label: t('github'), icon: FaGithub, link: link[2] },
   ]
 
   return (
     <div className='py-16 pt-32 border-t border-gray-100 dark:border-gray-800'>
       <div className='max-w-3xl mx-auto px-6'>
         <div className='grid md:grid-cols-[1fr_2fr] gap-12'>
-          <h2 className='text-2xl font-medium tracking-tight text-gray-900 dark:text-white'>À Propos</h2>
+          <h2 className='text-2xl font-medium tracking-tight text-gray-900 dark:text-white'>{t('title')}</h2>
           <div className='space-y-6'>
             <div className='text-gray-600 dark:text-gray-400 leading-relaxed space-y-4'>
               <p>
-                Je suis un développeur passionné avec une expertise en développement web.
-                Mon objectif est de créer des solutions numériques innovantes qui répondent aux besoins
-                de mes clients.
+                {t('intro')}
               </p>
               <p>
-                Titulaire d'une licence en informatique de gestion,
-                Je porte une attention particulière aux détails et m'efforce toujours de livrer les meilleurs résultats.
+                {t('education')}
               </p>
               <p>
-                La résolution de problèmes me passionne, et je suis toujours motivé pour apprendre de nouvelles choses.
-                En dehors des heures de code, j'aime jouer au football ou regarder des films et séries.
+                {t('passion')}
               </p>
               <p className='text-gray-900 dark:text-white font-medium'>
-                N'hésitez pas à me contacter si vous souhaitez collaborer sur quelque chose d'intéressant !
+                {t('cta')}
               </p>
             </div>
 

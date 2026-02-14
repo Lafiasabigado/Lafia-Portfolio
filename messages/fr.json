@@ -1,0 +1,190 @@
+{
+    "nav": {
+        "home": "Accueil",
+        "projects": "Projets",
+        "services": "Services",
+        "contact": "Contact"
+    },
+    "hero": {
+        "badge": "Disponible pour des projets",
+        "tagline": "Développeur Créatif",
+        "bio": "Je crée des expériences numériques pixel-perfect, engageantes et accessibles. Spécialisé en {nextjs} et {design}.",
+        "nextjs": "Next.js",
+        "design": "Design Engineering",
+        "viewProjects": "Voir les Projets",
+        "getInTouch": "Me Contacter",
+        "scroll": "Défiler"
+    },
+    "about": {
+        "title": "À Propos",
+        "intro": "Je suis un développeur passionné avec une expertise en développement web. Mon objectif est de créer des solutions numériques innovantes qui répondent aux besoins de mes clients.",
+        "education": "Titulaire d'une licence en informatique de gestion, je porte une attention particulière aux détails et m'efforce toujours de livrer les meilleurs résultats.",
+        "passion": "La résolution de problèmes me passionne, et je suis toujours motivé pour apprendre de nouvelles choses. En dehors des heures de code, j'aime jouer au football ou regarder des films et séries.",
+        "cta": "N'hésitez pas à me contacter si vous souhaitez collaborer sur quelque chose d'intéressant !",
+        "downloadCV": "Télécharger CV",
+        "whatsapp": "WhatsApp",
+        "linkedin": "LinkedIn",
+        "github": "Github"
+    },
+    "projects": {
+        "title": "Projets",
+        "subtitle": "Une sélection de projets qui définissent mon parcours en tant que développeur",
+        "all": "Tous",
+        "saas": "Plateforme SaaS",
+        "webapp": "Application Web",
+        "ecommerce": "E-commerce",
+        "website": "Site Web"
+    },
+    "services": {
+        "title": "Services",
+        "subtitle": "Je propose des solutions web complètes, du design à la mise en production. Spécialisé en {nextjs}, {react} et {typescript}.",
+        "nextjs": "Next.js",
+        "react": "React",
+        "typescript": "TypeScript",
+        "cta": {
+            "title": "Un projet en tête ?",
+            "description": "Discutons de votre projet et voyons comment je peux vous aider à le concrétiser.",
+            "button": "Me Contacter"
+        },
+        "items": {
+            "webdev": {
+                "title": "Développement Web",
+                "description": "Création de sites web modernes, rapides et optimisés pour le SEO. Utilisation des dernières technologies comme Next.js, React et TypeScript.",
+                "features": [
+                    "Sites web responsive et performants",
+                    "Optimisation SEO avancée",
+                    "Architecture moderne et scalable",
+                    "Intégration d'APIs tierces"
+                ]
+            },
+            "saas": {
+                "title": "Applications SaaS",
+                "description": "Développement de plateformes SaaS complètes avec authentification, paiements et tableaux de bord personnalisés.",
+                "features": [
+                    "Authentification sécurisée",
+                    "Intégration de paiements (Stripe, PayPal)",
+                    "Tableaux de bord interactifs",
+                    "Base de données optimisée (Prisma, PostgreSQL)"
+                ]
+            },
+            "ecommerce": {
+                "title": "E-commerce",
+                "description": "Solutions e-commerce sur mesure avec gestion de produits, panier d'achat et processus de paiement sécurisé.",
+                "features": [
+                    "Catalogue de produits dynamique",
+                    "Panier et checkout optimisés",
+                    "Gestion des stocks et commandes",
+                    "Intégration de passerelles de paiement"
+                ]
+            },
+            "uiux": {
+                "title": "UI/UX Design",
+                "description": "Conception d'interfaces utilisateur modernes et intuitives avec une attention particulière à l'expérience utilisateur.",
+                "features": [
+                    "Design systems et composants réutilisables",
+                    "Prototypes interactifs (Figma)",
+                    "Animations et micro-interactions",
+                    "Design responsive et accessible"
+                ]
+            },
+            "webapps": {
+                "title": "Applications Web",
+                "description": "Développement d'applications web complexes avec fonctionnalités avancées et intégrations tierces.",
+                "features": [
+                    "Applications temps réel (WebSockets)",
+                    "Intégration d'IA et Machine Learning",
+                    "Gestion d'état complexe (Redux, Zustand)",
+                    "Progressive Web Apps (PWA)"
+                ]
+            },
+            "maintenance": {
+                "title": "Maintenance & Support",
+                "description": "Support technique continu, mises à jour de sécurité et optimisation des performances de vos applications existantes.",
+                "features": [
+                    "Corrections de bugs et mises à jour",
+                    "Optimisation des performances",
+                    "Monitoring et analytics",
+                    "Support technique réactif"
+                ]
+            }
+        }
+    },
+    "contact": {
+        "title": "Contact",
+        "haveProject": "Un projet en tête ?",
+        "resume": "CV",
+        "downloadCV": "Télécharger mon CV",
+        "socials": "Réseaux",
+        "form": {
+            "name": "Nom",
+            "namePlaceholder": "Votre nom",
+            "email": "Email",
+            "emailPlaceholder": "votre@email.com",
+            "subject": "Sujet",
+            "subjectPlaceholder": "Discussion de projet",
+            "message": "Message",
+            "messagePlaceholder": "Parlez-moi de votre projet...",
+            "send": "Envoyer le Message"
+        },
+        "footer": "Tous droits réservés."
+    },
+    "project_details": {
+        "back": "Retour aux Projets",
+        "features": "Fonctionnalités Clés",
+        "year": "Année",
+        "stack": "Stack Technique",
+        "demo": "Démo Live",
+        "github": "Voir Github",
+        "notFound": "Projet non trouvé"
+    },
+    "home_sections": {
+        "projects_preview": {
+            "title": "Travaux Sélectionnés",
+            "subtitle": "Un aperçu de quelques projets sur lesquels j'ai travaillé récemment.",
+            "see_all": "Voir tous les projets"
+        },
+        "about": {
+            "title_part1": "Plus que du",
+            "title_part2": "code.",
+            "p1": "Je suis un développeur passionné basé au Bénin, obsédé par la création d'expériences numériques vivantes. Mon approche combine précision technique et direction artistique.",
+            "p2": "Je crois qu'un site web ne doit pas seulement être fonctionnel ; il doit être mémorable. Qu'il s'agisse d'une plateforme SaaS ou d'un portfolio, je vise l'effet \"WOW\".",
+            "stats": {
+                "experience": "Années d'Expérience",
+                "projects": "Projets Terminés",
+                "clients": "Clients Satisfaits"
+            },
+            "services": {
+                "webdev": {
+                    "title": "Développement Web",
+                    "desc": "Sites web rapides, accessibles et optimisés SEO avec Next.js."
+                },
+                "uiux": {
+                    "title": "Design UI/UX",
+                    "desc": "Interfaces modernes, esthétiques et centrées utilisateur."
+                },
+                "backend": {
+                    "title": "Solutions Backend",
+                    "desc": "APIs évolutives et gestion de base de données."
+                },
+                "saas": {
+                    "title": "Produits SaaS",
+                    "desc": "Développement complet de l'idée au lancement."
+                }
+            }
+        },
+        "skills": {
+            "title": "Arsenal Technique",
+            "subtitle": "Les outils que j'utilise pour donner vie aux idées."
+        },
+        "contact": {
+            "title": "Travaillons ensemble",
+            "subtitle": "Vous avez un projet en tête ? J'adorerais vous aider à le réaliser.",
+            "form": {
+                "name": "Nom",
+                "email": "Email",
+                "message": "Message",
+                "send": "Envoyer le Message"
+            }
+        }
+    }
+}

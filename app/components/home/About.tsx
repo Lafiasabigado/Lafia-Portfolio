@@ -1,24 +1,13 @@
-'use client';
+"use client";
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Code2, Globe, Laptop, Palette } from 'lucide-react';
 import GlassCard from '../ui/GlassCard';
-
-const stats = [
-    { label: "Years Experience", value: "3+" },
-    { label: "Projects Completed", value: "20+" },
-    { label: "Happy Clients", value: "15+" },
-];
-
-const services = [
-    { icon: <Laptop size={32} />, title: "Web Development", desc: "Fast, accessible, and SEO-friendly websites using Next.js." },
-    { icon: <Palette size={32} />, title: "UI/UX Design", desc: "Modern, aesthetic, and user-centric interfaces." },
-    { icon: <Code2 size={32} />, title: "Backend Solutions", desc: "Scalable APIs and database management." },
-    { icon: <Globe size={32} />, title: "SaaS Products", desc: "Full-cycle development from idea to launch." },
-];
+import { useTranslations } from 'next-intl';
 
 export default function About() {
+    const t = useTranslations('home_sections.about');
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -26,6 +15,19 @@ export default function About() {
     });
 
     const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+
+    const stats = [
+        { label: t('stats.experience'), value: "3+" },
+        { label: t('stats.projects'), value: "20+" },
+        { label: t('stats.clients'), value: "15+" },
+    ];
+
+    const services = [
+        { icon: <Laptop size={32} />, title: t('services.webdev.title'), desc: t('services.webdev.desc') },
+        { icon: <Palette size={32} />, title: t('services.uiux.title'), desc: t('services.uiux.desc') },
+        { icon: <Code2 size={32} />, title: t('services.backend.title'), desc: t('services.backend.desc') },
+        { icon: <Globe size={32} />, title: t('services.saas.title'), desc: t('services.saas.desc') },
+    ];
 
     return (
         <section ref={containerRef} className="max-w-3xl mx-auto px-6 py-20 relative">
@@ -41,8 +43,8 @@ export default function About() {
                             className: "text-4xl sm:text-5xl font-heading font-bold"
                         } as any)}
                     >
-                        More than just <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-neon-green">coding.</span>
+                        {t('title_part1')} <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-neon-green">{t('title_part2')}</span>
                     </motion.h2>
 
                     <motion.div
@@ -55,12 +57,10 @@ export default function About() {
                         } as any)}
                     >
                         <p>
-                            I'm a passionate developer based in Benin, obsessed with creating digital experiences that feel alive.
-                            My approach combines technical precision with artistic direction.
+                            {t('p1')}
                         </p>
                         <p>
-                            I believe that a website shouldn't just be functional; it should be memorable.
-                            Whether it's a SaaS platform or a portfolio, I aim for the "WOW" effect.
+                            {t('p2')}
                         </p>
                     </motion.div>
 

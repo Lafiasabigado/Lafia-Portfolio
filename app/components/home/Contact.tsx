@@ -4,8 +4,11 @@ import { motion } from 'framer-motion';
 import { Send } from 'lucide-react';
 import MagneticButton from '../ui/MagneticButton';
 import GlassCard from '../ui/GlassCard';
+import { useTranslations } from 'next-intl';
 
 export default function Contact() {
+    const t = useTranslations('home_sections.contact');
+
     return (
         <section id="contact" className="py-20 px-6 max-w-3xl mx-auto relative overflow-hidden">
             {/* Background Particles (Simplified) removed - using global */}
@@ -18,9 +21,9 @@ export default function Contact() {
                     className: "text-center mb-12 relative z-10"
                 } as any)}
             >
-                <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-4">Let's work together</h2>
+                <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-4">{t('title')}</h2>
                 <p className="text-muted-foreground text-lg">
-                    Have a project in mind? I'd love to help you build it.
+                    {t('subtitle')}
                 </p>
             </motion.div>
 
@@ -37,7 +40,7 @@ export default function Contact() {
                                 placeholder=" "
                             />
                             <label className="absolute left-0 top-3 text-muted-foreground transition-all peer-focus:top-0 peer-focus:text-xs peer-focus:text-electric-blue peer-[&:not(:placeholder-shown)]:top-0 peer-[&:not(:placeholder-shown)]:text-xs">
-                                Name
+                                {t('form.name')}
                             </label>
                         </div>
                         <div className="relative group">
@@ -49,7 +52,7 @@ export default function Contact() {
                                 placeholder=" "
                             />
                             <label className="absolute left-0 top-3 text-muted-foreground transition-all peer-focus:top-0 peer-focus:text-xs peer-focus:text-electric-blue peer-[&:not(:placeholder-shown)]:top-0 peer-[&:not(:placeholder-shown)]:text-xs">
-                                Email
+                                {t('form.email')}
                             </label>
                         </div>
                     </div>
@@ -63,7 +66,7 @@ export default function Contact() {
                             placeholder=" "
                         />
                         <label className="absolute left-0 top-3 text-muted-foreground transition-all peer-focus:top-0 peer-focus:text-xs peer-focus:text-electric-blue peer-[&:not(:placeholder-shown)]:top-0 peer-[&:not(:placeholder-shown)]:text-xs">
-                            Message
+                            {t('form.message')}
                         </label>
                     </div>
 
@@ -73,7 +76,7 @@ export default function Contact() {
                                 type="submit"
                                 className="px-8 py-3 bg-foreground text-background rounded-full font-medium flex items-center gap-2 hover:bg-foreground/90 transition-colors"
                             >
-                                Send Message <Send size={18} />
+                                {t('form.send')} <Send size={18} />
                             </button>
                         </MagneticButton>
                     </div>

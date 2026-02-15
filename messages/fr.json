@@ -8,7 +8,7 @@
     "hero": {
         "badge": "Disponible pour des projets",
         "tagline": "Développeur Créatif",
-        "bio": "Je crée des expériences numériques pixel-perfect, engageantes et accessibles. Spécialisé en {nextjs} et {design}.",
+        "bio": "Je crée des expériences numériques pixel-perfect, engageantes et accessibles. Spécialisé en Next.Js et Django.",
         "nextjs": "Next.js",
         "design": "Design Engineering",
         "viewProjects": "Voir les Projets",

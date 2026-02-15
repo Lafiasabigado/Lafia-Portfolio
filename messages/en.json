@@ -8,9 +8,7 @@
     "hero": {
         "badge": "Available for projects",
         "tagline": "Creative Developer",
-        "bio": "I build pixel-perfect, engaging, and accessible digital experiences. Specialized in {nextjs} and {design}.",
-        "nextjs": "Next.js",
-        "design": "Design Engineering",
+        "bio": "I build pixel-perfect, engaging, and accessible digital experiences. Specialized in Next.Js and Django.",
         "viewProjects": "View Projects",
         "getInTouch": "Get in Touch",
         "scroll": "Scroll"

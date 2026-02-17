@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 
 const Contact = () => {
   const t = useTranslations('contact');
-  const link = "https://drive.google.com/file/d/1IoUslE116HEUImbIFc-zTzcVAS9cewvr/view?usp=drive_link"
+  const link = "https://kloo.me/resumelafia"
 
   const socials = [
     { id: 1, name: t('socials'), icon: <FaWhatsapp className="text-blue-500 rounded-lg text-xl" />, link: "https://wa.me/22956259632" },

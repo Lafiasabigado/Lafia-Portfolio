@@ -6,11 +6,9 @@
         "contact": "Contact"
     },
     "hero": {
-        "badge": "Disponible pour des projets",
+        "badge": "Découvrez mon univers",
         "tagline": "Développeur Créatif",
         "bio": "Je crée des expériences numériques pixel-perfect, engageantes et accessibles. Spécialisé en Next.Js et Django.",
-        "nextjs": "Next.js",
-        "design": "Design Engineering",
         "viewProjects": "Voir les Projets",
         "getInTouch": "Me Contacter",
         "scroll": "Défiler"

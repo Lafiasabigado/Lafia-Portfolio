@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { inter, syne, pixelify_sans, space_mono } from "@/lib/fonts";
+import { inter, syne, draftCartoon, space_mono } from "@/lib/fonts";
 import "../globals.css";
 import Nav from "@/app/components/Nav";
 import { ThemeProvider } from "@/app/components/theme-provider";
@@ -115,7 +115,7 @@ export default async function RootLayout({
 
     return (
         <html lang={locale} suppressHydrationWarning={true} className="no-scrollbar">
-            <body className={`${inter.variable} ${syne.variable} ${pixelify_sans.variable} ${space_mono.variable} antialiased overflow-x-hidden h-full selection:bg-electric-blue/30 selection:text-electric-blue`}>
+            <body className={`${inter.variable} ${syne.variable} ${draftCartoon.variable} ${space_mono.variable} antialiased overflow-x-hidden h-full selection:bg-white/30 selection:text-white`}>
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

@@ -25,7 +25,7 @@ export default function LanguageToggle({ placement = 'bottom' }: LanguageToggleP
         <div className="relative">
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-accent transition-colors duration-200"
+                className="flex items-center gap-2 text-sm font-medium text-white/70 hover:text-white transition-colors duration-200"
                 aria-label="Change language"
             >
                 <Globe className="w-4 h-4" />
@@ -39,12 +39,12 @@ export default function LanguageToggle({ placement = 'bottom' }: LanguageToggleP
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: placement === 'bottom' ? -10 : 10 }}
                         transition={{ duration: 0.2 }}
-                        className={`absolute right-0 bg-white dark:bg-black border border-border/50 rounded-xl shadow-lg overflow-hidden min-w-[120px] ${placement === 'bottom' ? 'top-full mt-2' : 'bottom-full mb-2'
+                        className={`absolute right-0 bg-black/90 backdrop-blur-xl border border-white/10 rounded-xl shadow-lg overflow-hidden min-w-[120px] ${placement === 'bottom' ? 'top-full mt-2' : 'bottom-full mb-2'
                             }`}
                     >
                         <button
                             onClick={() => switchLocale('en')}
-                            className={`w-full px-4 py-2.5 text-left text-sm hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors flex items-center gap-2 ${locale === 'en' ? 'bg-gray-50 dark:bg-gray-900/50 font-medium' : ''
+                            className={`w-full px-4 py-2.5 text-left text-sm hover:bg-white/10 transition-colors flex items-center gap-2 ${locale === 'en' ? 'bg-white/5 font-medium' : ''
                                 }`}
                         >
                             <span className="text-lg">🇬🇧</span>
@@ -52,7 +52,7 @@ export default function LanguageToggle({ placement = 'bottom' }: LanguageToggleP
                         </button>
                         <button
                             onClick={() => switchLocale('fr')}
-                            className={`w-full px-4 py-2.5 text-left text-sm hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors flex items-center gap-2 ${locale === 'fr' ? 'bg-gray-50 dark:bg-gray-900/50 font-medium' : ''
+                            className={`w-full px-4 py-2.5 text-left text-sm hover:bg-white/10 transition-colors flex items-center gap-2 ${locale === 'fr' ? 'bg-white/5 font-medium' : ''
                                 }`}
                         >
                             <span className="text-lg">🇫🇷</span>

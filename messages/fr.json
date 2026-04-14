@@ -7,7 +7,7 @@
     },
     "hero": {
         "badge": "Découvrez mon univers",
-        "tagline": "Développeur Créatif",
+        "tagline": "Ingénieur Logiciel",
         "bio": "Je crée des expériences numériques pixel-perfect, engageantes et accessibles. Spécialisé en Next.Js et Django.",
         "viewProjects": "Voir les Projets",
         "getInTouch": "Me Contacter",
@@ -137,7 +137,7 @@
     },
     "home_sections": {
         "projects_preview": {
-            "title": "Travaux Sélectionnés",
+            "title": "Projets Sélectionnés",
             "subtitle": "Un aperçu de quelques projets sur lesquels j'ai travaillé récemment.",
             "see_all": "Voir tous les projets"
         },

@@ -1,4 +1,5 @@
-import { Inter, Syne, Pixelify_Sans, Space_Mono } from 'next/font/google';
+import { Inter, Syne, Space_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 
 export const inter = Inter({
     subsets: ['latin'],
@@ -12,15 +13,16 @@ export const syne = Syne({
     variable: '--font-syne',
 });
 
-export const pixelify_sans = Pixelify_Sans({
-    subsets: ['latin'],
+export const draftCartoon = localFont({
+    src: '../public/fonts/DraftCartoon-Bold.ttf',
     display: 'swap',
-    variable: '--font-pixel',
+    variable: '--font-draft-cartoon',
+    weight: '700',
 });
 
 export const space_mono = Space_Mono({
-    weight: ['400', '700'],
     subsets: ['latin'],
     display: 'swap',
     variable: '--font-space-mono',
+    weight: ['400', '700']
 });

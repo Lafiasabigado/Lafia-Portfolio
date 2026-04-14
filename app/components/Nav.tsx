@@ -27,7 +27,7 @@ export default function Nav() {
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-          className="bg-white/80 dark:bg-black/80 backdrop-blur-lg border border-border/50 rounded-full px-6 py-3 shadow-lg flex items-center gap-8"
+          className="bg-black/40 backdrop-blur-lg border border-white/10 rounded-full px-6 py-3 shadow-lg flex items-center gap-8"
         >
           {navItems.map((item) => {
             const isActive = pathname === item.path;
@@ -37,7 +37,7 @@ export default function Nav() {
                 href={item.path}
                 className={cn(
                   "text-sm font-medium transition-colors duration-200 relative",
-                  isActive ? "text-foreground" : "text-muted-foreground hover:text-accent"
+                  isActive ? "text-white" : "text-white/60 hover:text-white"
                 )}
               >
                 {item.name}
@@ -62,7 +62,7 @@ export default function Nav() {
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-          className="bg-white/80 dark:bg-black/80 backdrop-blur-xl border border-border/50 rounded-2xl px-6 py-4 shadow-2xl flex items-center justify-between"
+          className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 shadow-2xl flex items-center justify-between"
         >
           {navItems.map((item) => {
             const isActive = pathname === item.path;
@@ -72,7 +72,7 @@ export default function Nav() {
                 href={item.path}
                 className={cn(
                   "relative p-2 rounded-full transition-all duration-300 flex flex-col items-center gap-1",
-                  isActive ? "text-accent" : "text-muted-foreground hover:text-foreground hover:bg-white/10"
+                  isActive ? "text-white" : "text-white/60 hover:text-white hover:bg-white/10"
                 )}
               >
                 <div className="relative">

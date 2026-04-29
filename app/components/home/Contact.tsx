@@ -10,7 +10,7 @@ export default function Contact() {
     const t = useTranslations('home_sections.contact');
 
     return (
-        <section id="contact" className="py-20 px-6 max-w-3xl mx-auto relative overflow-hidden">
+        <section id="contact" className="py-12 px-6 max-w-3xl mx-auto relative overflow-hidden">
             {/* Background Particles (Simplified) removed - using global */}
 
             <motion.div
@@ -18,7 +18,7 @@ export default function Contact() {
                     initial: { opacity: 0, y: 20 },
                     whileInView: { opacity: 1, y: 0 },
                     viewport: { once: true },
-                    className: "text-center mb-12 relative z-10"
+                    className: "text-center mb-8 relative z-10"
                 } as any)}
             >
                 <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-4">{t('title')}</h2>

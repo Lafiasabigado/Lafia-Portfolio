@@ -25,13 +25,13 @@ export default function Skills() {
     const t = useTranslations('home_sections.skills');
 
     return (
-        <section className="max-w-3xl mx-auto px-6 py-20">
+        <section className="max-w-3xl mx-auto px-6 py-12">
             <motion.div
                 {...({
                     initial: { opacity: 0, y: 20 },
                     whileInView: { opacity: 1, y: 0 },
                     viewport: { once: true },
-                    className: "text-center mb-16"
+                    className: "text-center mb-10"
                 } as any)}
             >
                 <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-4">{t('title')}</h2>

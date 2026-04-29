@@ -34,7 +34,7 @@ const Hero = memo(function Hero() {
     const nameWords = "Lafia Sabi Gado".split(" ");
 
     return (
-        <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden px-5 sm:px-8 pt-24 pb-16">
+        <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden px-5 sm:px-8 pt-16 pb-10">
 
             <div className="max-w-3xl w-full mx-auto relative z-10">
 
@@ -89,8 +89,7 @@ const Hero = memo(function Hero() {
 
                         {/* Name */}
                         <h1
-                            className="mb-3 text-[1.8rem] sm:text-[2.4rem] md:text-[2.8rem] lg:text-[3.2rem] leading-[1.15] text-white flex flex-wrap justify-center lg:justify-start gap-x-3"
-                            style={{ fontFamily: 'var(--font-draft-cartoon), sans-serif' }}
+                            className="mb-3 text-[1.8rem] sm:text-[2.4rem] md:text-[2.8rem] lg:text-[3.2rem] leading-[1.15] text-white flex flex-wrap justify-center lg:justify-start gap-x-3 font-display"
                         >
                             {nameWords.map((word, i) => (
                                 <motion.span

@@ -30,8 +30,8 @@ export default function About() {
     ];
 
     return (
-        <section ref={containerRef} className="max-w-3xl mx-auto px-6 py-20 relative">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <section ref={containerRef} className="max-w-3xl mx-auto px-6 py-12 relative">
+            <div className="grid lg:grid-cols-2 gap-10 items-center">
 
                 {/* Text Content */}
                 <div className="space-y-8">
@@ -90,14 +90,14 @@ export default function About() {
                     {services.map((service, index) => (
                         <GlassCard
                             key={index}
-                            className={`p-6 ${index === 1 || index === 3 ? 'sm:translate-y-12' : ''}`}
+                            className={`p-5 min-w-0 ${index === 1 || index === 3 ? 'sm:translate-y-12' : ''}`}
                             hoverEffect={true}
                         >
-                            <div className="w-12 h-12 rounded-xl bg-foreground/5 flex items-center justify-center mb-4 text-electric-blue">
+                            <div className="w-10 h-10 rounded-xl bg-foreground/5 flex items-center justify-center mb-3 text-electric-blue">
                                 {service.icon}
                             </div>
-                            <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-                            <p className="text-sm text-muted-foreground">{service.desc}</p>
+                            <h3 className="text-xl font-bold mb-1 leading-tight break-words" style={{ fontFamily: 'var(--font-outfit), sans-serif' }}>{service.title}</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">{service.desc}</p>
                         </GlassCard>
                     ))}
                 </motion.div>

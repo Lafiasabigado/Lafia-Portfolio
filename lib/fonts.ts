@@ -1,4 +1,4 @@
-import { Inter, Syne, Space_Mono } from 'next/font/google';
+import { Inter, Space_Mono, Outfit } from 'next/font/google';
 import localFont from 'next/font/local';
 
 export const inter = Inter({
@@ -7,10 +7,11 @@ export const inter = Inter({
     variable: '--font-inter',
 });
 
-export const syne = Syne({
+export const outfit = Outfit({
     subsets: ['latin'],
     display: 'swap',
-    variable: '--font-syne',
+    variable: '--font-outfit',
+    weight: ['400', '500', '600', '700', '800', '900'],
 });
 
 export const draftCartoon = localFont({

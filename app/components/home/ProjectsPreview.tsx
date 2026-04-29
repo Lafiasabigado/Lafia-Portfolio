@@ -16,11 +16,11 @@ export default function ProjectsPreview() {
     const displayProjects = projects.slice(0, 4);
 
     return (
-        <section className="py-24 px-6" id="projects">
+        <section className="py-12 px-6" id="projects">
             <div className="max-w-3xl mx-auto">
 
                 {/* Header section - CENTERED */}
-                <div className="text-center mb-16 space-y-4">
+                <div className="text-center mb-10 space-y-4">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}

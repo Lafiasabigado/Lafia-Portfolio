@@ -113,7 +113,7 @@ export default function ProjectsPage() {
                     <div className="absolute inset-0 p-8 flex flex-col justify-end">
                       <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                         <span className="text-sm font-medium text-electric-blue mb-2 block opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{getCategoryLabel(project.category)}</span>
-                        <h3 className="text-3xl font-heading font-bold text-white mb-2">{project.name}</h3>
+                        <h3 className="text-2xl font-bold text-white mb-2 break-words leading-tight" style={{ fontFamily: 'var(--font-outfit), sans-serif' }}>{project.name}</h3>
                         <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
                           <ArrowUpRight className="text-white w-5 h-5" />
                         </div>

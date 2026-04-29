@@ -72,49 +72,50 @@ export default function ProjectDetail() {
       </section>
 
       {/* Content */}
-      <article className="max-w-3xl mx-auto px-6 pb-32">
+      <article className="max-w-5xl mx-auto px-6 pb-32">
 
-        {/* Main Info */}
-        <div className="space-y-12">
-          <motion.div
-            {...({
-              initial: { opacity: 0, y: 20 },
-              whileInView: { opacity: 1, y: 0 },
-              viewport: { once: true },
-              className: "text-xl sm:text-2xl leading-relaxed text-muted-foreground"
-            } as any)}
-          >
-            {fullDescription || description}
-          </motion.div>
+        {/* Main Info - Grid Layout */}
+        <div className="grid lg:grid-cols-[1fr_350px] gap-12">
+          <div className="space-y-12">
+            <motion.div
+              {...({
+                initial: { opacity: 0, y: 20 },
+                whileInView: { opacity: 1, y: 0 },
+                viewport: { once: true },
+                className: "text-xl sm:text-2xl leading-relaxed text-muted-foreground"
+              } as any)}
+            >
+              {fullDescription || description}
+            </motion.div>
 
-          {/* Features List as a substitute for Gallery for now */}
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold font-heading">{t('features')}</h3>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {features?.map((feature: string, idx: number) => (
-                <GlassCard key={idx} className="p-4 bg-white/5 border-white/5">
-                  <span className="text-electric-blue mr-2">•</span> {feature}
-                </GlassCard>
-              ))}
+            {/* Features List */}
+            <div className="space-y-6">
+              <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'var(--font-outfit), sans-serif' }}>{t('features')}</h3>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {features?.map((feature: string, idx: number) => (
+                  <GlassCard key={idx} className="p-4 bg-white/5 border-white/5">
+                    <span className="text-electric-blue mr-2">•</span> {feature}
+                  </GlassCard>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Sidebar Info */}
-        <motion.div
-          style={{ y } as any}
-          className="lg:sticky lg:top-32 h-fit space-y-8"
-        >
-          <GlassCard className="p-8 space-y-8">
+          {/* Sidebar Info */}
+          <motion.div
+            style={{ y } as any}
+            className="lg:sticky lg:top-32 h-fit space-y-8"
+          >
+            <GlassCard className="p-8 space-y-8">
             <div>
-              <h3 className="text-sm uppercase tracking-wider text-muted-foreground mb-3 flex items-center gap-2">
+              <h3 className="text-sm uppercase tracking-wider text-white mb-3 flex items-center gap-2" style={{ fontFamily: 'var(--font-outfit), sans-serif' }}>
                 <Calendar size={16} /> {t('year')}
               </h3>
               <p className="text-xl font-medium">{project.year}</p>
             </div>
 
             <div>
-              <h3 className="text-sm uppercase tracking-wider text-muted-foreground mb-3 flex items-center gap-2">
+              <h3 className="text-sm uppercase tracking-wider text-white mb-3 flex items-center gap-2" style={{ fontFamily: 'var(--font-outfit), sans-serif' }}>
                 <Layers size={16} /> {t('stack')}
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -140,8 +141,8 @@ export default function ProjectDetail() {
               </MagneticButton>
             </div>
           </GlassCard>
-        </motion.div>
-
+          </motion.div>
+        </div>
       </article>
 
     </div>

@@ -6,7 +6,7 @@ import Contact from "@/app/components/home/Contact";
 
 export default function Home() {
   return (
-    <div className="relative">
+    <div className="relative pb-32 md:pb-0">
       <Hero />
       <ProjectsPreview />
       <About />

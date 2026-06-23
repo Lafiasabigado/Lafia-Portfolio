@@ -13,7 +13,7 @@ const About = () => {
   const t = useTranslations('about');
 
   const link = [
-    "https://drive.google.com/file/d/1RWYI8TM3-R3ns8IMfZ1pwe4MeqeMdAcP/view?usp=sharing",
+    "https://kloo.me/resumelafia",
     "https://linkedin.com/in/lafia-sabi-gado-03910a292/",
     "https://github.com/Lafiasabigado",
     "https://wa.me/22956259632"

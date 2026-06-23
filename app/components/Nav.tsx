@@ -22,7 +22,6 @@ export default function Nav() {
   }, []);
 
   const navItems = [
-    { name: t('home'), path: '/' },
     { name: t('about'), path: '/about' },
     { name: t('services'), path: '/service' },
     { name: t('projects'), path: '/projects' },

@@ -148,9 +148,13 @@
             "p1": "Je suis un développeur passionné basé au Bénin, obsédé par la création d'expériences numériques vivantes. Mon approche combine précision technique et direction artistique.",
             "p2": "Je crois qu'un site web ne doit pas seulement être fonctionnel ; il doit être mémorable. Qu'il s'agisse d'une plateforme SaaS ou d'un portfolio, je vise l'effet \"WOW\".",
             "personal": {
+                "eyebrow": "Qui suis-je",
                 "title": "Plus qu'un simple développeur.",
+                "label1": "Background",
                 "p1": "Diplômé en informatique de gestion, je ne me contente pas d'écrire du code. Je façonne des expériences. Pour moi, l'UX n'est jamais une option : une interface doit être aussi intuitive qu'esthétique.",
+                "label2": "Veille Tech",
                 "p2": "Fasciné par l'IA, je repousse constamment les limites de cette technologie. Je décortique chaque nouveau modèle LLM et je partage mes découvertes avec ma communauté.",
+                "label3": "Lifestyle",
                 "p3": "Fan d'animés, de football et de rap (FR & US). Bref : un développeur passionné, mais surtout un mec chill toujours prêt pour le prochain défi."
             },
             "stats": {

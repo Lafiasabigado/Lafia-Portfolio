@@ -2,62 +2,68 @@
 
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { GraduationCap, Brain, Gamepad2, Sparkles } from 'lucide-react';
 
 export default function AboutMe() {
     const t = useTranslations('home_sections.about.personal');
 
     const interests = [
-        { icon: <GraduationCap size={20} />, text: t('p1') },
-        { icon: <Brain size={20} />, text: t('p2') },
-        { icon: <Gamepad2 size={20} />, text: t('p3') },
+        { index: '01', label: t('label1'), text: t('p1') },
+        { index: '02', label: t('label2'), text: t('p2') },
+        { index: '03', label: t('label3'), text: t('p3') },
     ];
 
     return (
-        <section className="py-24 border-t border-white/5">
+        <section className="py-24 md:py-32 border-t border-white/5">
             <div className="max-w-5xl mx-auto px-6 md:px-10">
-                <div className="flex flex-col md:flex-row gap-12 items-center">
-                    
-                    {/* Left: Decorative or Image */}
-                    <motion.div 
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="w-full md:w-1/3 flex justify-center"
-                    >
-                        <div className="relative w-64 h-64 md:w-72 md:h-72 rounded-full border border-white/10 bg-white/[0.02] flex items-center justify-center">
-                            {/* Inner rings for decoration */}
-                            <div className="absolute inset-4 rounded-full border border-blue-500/20" />
-                            <div className="absolute inset-8 rounded-full border border-white/5 bg-white/[0.01]" />
-                            <Sparkles className="w-12 h-12 text-blue-500" />
-                        </div>
-                    </motion.div>
 
-                    {/* Right: Content */}
-                    <div className="w-full md:w-2/3">
-                        <motion.h2 
+                <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-20">
+                    {/* Left Column: Header (Sticky for desktop) */}
+                    <div>
+                        <motion.div
                             initial={{ opacity: 0, y: 15 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-2xl md:text-3xl font-heading font-bold text-white tracking-tight mb-8"
+                            className="sticky top-32"
                         >
-                            {t('title')}
-                        </motion.h2>
+                            <p className="text-blue-500 font-mono text-xs tracking-widest uppercase mb-4">
+                                {t('eyebrow')}
+                            </p>
+                            <h2 className="text-3xl md:text-4xl font-heading font-bold text-white tracking-tight leading-tight">
+                                {t('title')}
+                            </h2>
+                        </motion.div>
+                    </div>
 
-                        <div className="space-y-6">
+                    {/* Right Column: Thread layout */}
+                    <div className="relative pl-px mt-4 md:mt-0">
+                        {/* Vertical line — the thread */}
+                        <div className="absolute left-0 top-2 bottom-0 w-px bg-gradient-to-b from-blue-500/60 via-blue-500/10 to-transparent" />
+
+                        <div className="space-y-16">
                             {interests.map((item, idx) => (
-                                <motion.div 
+                                <motion.div
                                     key={idx}
-                                    initial={{ opacity: 0, y: 15 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
+                                    initial={{ opacity: 0, x: -15 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.1 }}
-                                    className="flex gap-4 items-start"
+                                    transition={{ delay: idx * 0.15, duration: 0.5 }}
+                                    className="relative pl-8 md:pl-12"
                                 >
-                                    <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 shrink-0">
-                                        {item.icon}
+                                    {/* Dot on the thread */}
+                                    <div className="absolute left-0 top-1.5 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-blue-500 ring-4 ring-blue-500/10 shadow-[0_0_15px_rgba(59,130,246,0.5)]" />
+
+                                    {/* Index + label row */}
+                                    <div className="flex items-baseline gap-4 mb-3">
+                                        <span className="font-mono text-xs text-blue-500 font-semibold tabular-nums">
+                                            {item.index}
+                                        </span>
+                                        <span className="font-mono text-xs text-white/40 uppercase tracking-widest">
+                                            {item.label}
+                                        </span>
                                     </div>
-                                    <p className="text-neutral-400 text-sm leading-relaxed pt-1">
+
+                                    {/* Body text */}
+                                    <p className="text-neutral-400 text-base md:text-lg leading-relaxed max-w-xl">
                                         {item.text}
                                     </p>
                                 </motion.div>
@@ -65,6 +71,7 @@ export default function AboutMe() {
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
     );

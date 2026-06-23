@@ -148,9 +148,13 @@
             "p1": "I'm a passionate developer based in Benin, obsessed with creating digital experiences that feel alive. My approach combines technical precision with artistic direction.",
             "p2": "I believe that a website shouldn't just be functional; it should be memorable. Whether it's a SaaS platform or a portfolio, I aim for the \"WOW\" effect.",
             "personal": {
+                "eyebrow": "Who am I",
                 "title": "More than just a developer.",
+                "label1": "Background",
                 "p1": "Armed with a degree in Management Information Systems, I don't just write code—I craft experiences. To me, UX is never an afterthought: an interface must be as intuitive as it is beautiful.",
+                "label2": "Tech Watch",
                 "p2": "Fascinated by AI, I constantly push the boundaries of this technology. I analyze every new LLM release and share these breakthroughs with my community.",
+                "label3": "Lifestyle",
                 "p3": "Anime enthusiast, football fan, and rap listener (FR & US). Simply put: a passionate developer, but mostly a chill guy always ready for the next challenge."
             },
             "stats": {

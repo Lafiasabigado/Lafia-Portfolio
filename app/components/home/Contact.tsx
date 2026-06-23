@@ -1,87 +1,106 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Send } from 'lucide-react';
+import { Send, Mail, MapPin } from 'lucide-react';
 import MagneticButton from '../ui/MagneticButton';
-import GlassCard from '../ui/GlassCard';
 import { useTranslations } from 'next-intl';
 
 export default function Contact() {
     const t = useTranslations('home_sections.contact');
 
     return (
-        <section id="contact" className="py-12 px-6 max-w-3xl mx-auto relative overflow-hidden">
-            {/* Background Particles (Simplified) removed - using global */}
+        <section id="contact" className="py-24 border-t border-white/5">
+            <div className="max-w-5xl mx-auto px-6 md:px-10">
+                <div className="grid lg:grid-cols-2 gap-16 items-start">
+                    
+                    {/* Left */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <h2 className="text-2xl md:text-3xl font-heading font-bold text-white tracking-tight mb-4">{t('title')}</h2>
+                        <p className="text-neutral-400 leading-relaxed mb-10 max-w-md">
+                            {t('subtitle')}
+                        </p>
 
-            <motion.div
-                {...({
-                    initial: { opacity: 0, y: 20 },
-                    whileInView: { opacity: 1, y: 0 },
-                    viewport: { once: true },
-                    className: "text-center mb-8 relative z-10"
-                } as any)}
-            >
-                <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-4">{t('title')}</h2>
-                <p className="text-muted-foreground text-lg">
-                    {t('subtitle')}
-                </p>
-            </motion.div>
-
-            <GlassCard className="relative z-10 backdrop-blur-xl">
-                <form action="https://formspree.io/f/maqdekbd" method="POST" className="space-y-6">
-                    {/* Note: Replace YOUR_FORM_ID with your actual Formspree form ID */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div className="relative group">
-                            <input
-                                type="text"
-                                name="name"
-                                required
-                                className="w-full bg-transparent border-b border-white/20 py-3 text-lg focus:outline-none focus:border-electric-blue transition-colors peer pt-6"
-                                placeholder=" "
-                            />
-                            <label className="absolute left-0 top-3 text-muted-foreground transition-all peer-focus:top-0 peer-focus:text-xs peer-focus:text-electric-blue peer-[&:not(:placeholder-shown)]:top-0 peer-[&:not(:placeholder-shown)]:text-xs">
-                                {t('form.name')}
-                            </label>
+                        <div className="space-y-6">
+                            <div className="flex items-center gap-4">
+                                <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500">
+                                    <Mail size={18} />
+                                </div>
+                                <div>
+                                    <p className="text-xs text-neutral-500 uppercase tracking-wider font-medium mb-0.5">Email</p>
+                                    <a href="mailto:lafiasabigado@gmail.com" className="text-sm text-white hover:text-blue-500 transition-colors">lafiasabigado@gmail.com</a>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-4">
+                                <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500">
+                                    <MapPin size={18} />
+                                </div>
+                                <div>
+                                    <p className="text-xs text-neutral-500 uppercase tracking-wider font-medium mb-0.5">Localisation</p>
+                                    <p className="text-sm text-white">Parakou, Bénin (Remote)</p>
+                                </div>
+                            </div>
                         </div>
-                        <div className="relative group">
-                            <input
-                                type="email"
-                                name="email"
-                                required
-                                className="w-full bg-transparent border-b border-white/20 py-3 text-lg focus:outline-none focus:border-electric-blue transition-colors peer pt-6"
-                                placeholder=" "
-                            />
-                            <label className="absolute left-0 top-3 text-muted-foreground transition-all peer-focus:top-0 peer-focus:text-xs peer-focus:text-electric-blue peer-[&:not(:placeholder-shown)]:top-0 peer-[&:not(:placeholder-shown)]:text-xs">
-                                {t('form.email')}
-                            </label>
-                        </div>
-                    </div>
+                    </motion.div>
 
-                    <div className="relative group">
-                        <textarea
-                            rows={4}
-                            name="message"
-                            required
-                            className="w-full bg-transparent border-b border-white/20 py-3 text-lg focus:outline-none focus:border-electric-blue transition-colors peer pt-6 resize-none"
-                            placeholder=" "
-                        />
-                        <label className="absolute left-0 top-3 text-muted-foreground transition-all peer-focus:top-0 peer-focus:text-xs peer-focus:text-electric-blue peer-[&:not(:placeholder-shown)]:top-0 peer-[&:not(:placeholder-shown)]:text-xs">
-                            {t('form.message')}
-                        </label>
-                    </div>
+                    {/* Right: Form */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
+                        className="bg-white/[0.03] rounded-2xl p-6 md:p-8 border border-white/5"
+                    >
+                        <form action="https://formspree.io/f/maqdekbd" method="POST" className="space-y-6">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label className="block text-xs text-neutral-500 uppercase tracking-wider font-medium mb-2">{t('form.name')}</label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        required
+                                        className="w-full bg-transparent border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors placeholder:text-neutral-600"
+                                        placeholder="Votre nom"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-xs text-neutral-500 uppercase tracking-wider font-medium mb-2">{t('form.email')}</label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        required
+                                        className="w-full bg-transparent border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors placeholder:text-neutral-600"
+                                        placeholder="votre@email.com"
+                                    />
+                                </div>
+                            </div>
 
-                    <div className="flex justify-end">
-                        <MagneticButton>
-                            <button
-                                type="submit"
-                                className="px-8 py-3 bg-foreground text-background rounded-full font-medium flex items-center gap-2 hover:bg-foreground/90 transition-colors"
-                            >
-                                {t('form.send')} <Send size={18} />
-                            </button>
-                        </MagneticButton>
-                    </div>
-                </form>
-            </GlassCard>
+                            <div>
+                                <label className="block text-xs text-neutral-500 uppercase tracking-wider font-medium mb-2">{t('form.message')}</label>
+                                <textarea
+                                    rows={4}
+                                    name="message"
+                                    required
+                                    className="w-full bg-transparent border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors resize-none placeholder:text-neutral-600"
+                                    placeholder="Parlez-moi de votre projet..."
+                                />
+                            </div>
+
+                            <MagneticButton>
+                                <button
+                                    type="submit"
+                                    className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium text-sm flex items-center gap-2 transition-colors"
+                                >
+                                    {t('form.send')} <Send size={16} />
+                                </button>
+                            </MagneticButton>
+                        </form>
+                    </motion.div>
+                </div>
+            </div>
         </section>
     );
 }

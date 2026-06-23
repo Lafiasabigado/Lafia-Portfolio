@@ -48,35 +48,63 @@ export const projects: Project[] = [
     color: "from-purple-500/20 to-blue-500/20"
   },
   {
-    id: 1,
-    name: "Doczi",
-    image: "/projects/doczi.png",
-    description: "Générateur de documents administratifs Intelligents",
-    description_en: "Intelligent Administrative Document Generator",
+    id: 3,
+    name: "Adtechgroup",
+    image: "/projects/adtechgroup.png",
+    description: "Site web de l'Agence Adtechgroup",
+    description_en: "Adtechgroup Agency Website",
     fullDescription:
-      "Doczi est une solution innovante qui utilise l'intelligence artificielle pour générer automatiquement des documents administratifs personnalisés. L'application simplifie considérablement le processus de création de documents officiels en guidant l'utilisateur à travers un formulaire intuitif et en générant automatiquement le document final au format souhaité.",
-    fullDescription_en: "Doczi is an innovative solution that uses artificial intelligence to automatically generate personalized administrative documents. The application significantly simplifies the official document creation process by guiding the user through an intuitive form and automatically generating the final document in the desired format.",
-    link: "https://doczi.vercel.app/",
-    github: "https://github.com/Lafiasabigado/Doczi.git",
-    tools: "React,NextJs,Prisma",
+      "Adtechgroup est une agence qui accompagne les entreprises dans leur transformation digitale. Le site présente les activités de l'agence, ses membres et ses projets, des produits en ventes ainsi que des actualités.",
+    fullDescription_en: "Adtechgroup is an agency that accompanies companies in their digital transformation. The site presents the agency's activities, its members and projects, products for sale, and news.",
+    link: "https://adtechgroup.org/",
+    github: "https://github.com/Lafiasabigado/Adtechgroup.git",
+    tools: "React,NextJs,Django",
     year: "2025",
     features: [
-      "Génération automatique de documents",
+      "Page d'accueil présentant les services de l'agence",
       "Interface utilisateur intuitive",
       "Support de multiples formats",
-      "Base de données Prisma pour la gestion des données",
+      "Blog présentant les actualités de l'agence",
     ],
     features_en: [
-      "Automatic document generation",
+      "Homepage presenting the agency's services",
       "Intuitive user interface",
       "Multi-format support",
-      "Prisma database for data management"
+      "Blog presenting agency news"
     ],
-    category: "SaaS Platform",
-    color: "from-blue-500/20 to-cyan-500/20"
+    category: "Web App",
+    color: "from-purple-500/20 to-blue-500/20"
   },
   {
-    id: 2,
+    id: 4,
+    name: "AIC Bénin",
+    image: "/projects/aicbenin.png",
+    description: "Site web de l'Association AIC Bénin",
+    description_en: "AIC Benin Association Website",
+    fullDescription:
+      "AIC Bénin est une association qui assure la gestion de la filière Coton au Bénin. Le site présente les activités de l'association, ses membres et ses projets, des produits en ventes ainsi que des actualités.",
+    fullDescription_en: "AIC Benin is an association that ensures the management of the cotton sector in Benin. The site presents the association's activities, its members and projects, products for sale, and news.",
+    link: "https://aicbenin.vercel.app/",
+    github: "https://github.com/Lafiasabigado/aicbenin.git",
+    tools: "React,NextJs,Django",
+    year: "2025",
+    features: [
+      "Page d'accueil présentant les services de l'association",
+      "Interface utilisateur intuitive",
+      "Support de multiples formats",
+      "Blog présentant les actualités de l'association",
+    ],
+    features_en: [
+      "Homepage presenting the association's services",
+      "Intuitive user interface",
+      "Multi-format support",
+      "Blog presenting association news"
+    ],
+    category: "Web App",
+    color: "from-purple-500/20 to-blue-500/20"
+  },
+  {
+    id: 5,
     name: "BrainWritor",
     image: "/projects/brainwritor.png",
     description: "Assistant rédactionnel IA",
@@ -105,8 +133,36 @@ export const projects: Project[] = [
     category: "SaaS Platform",
     color: "from-orange-500/20 to-red-500/20"
   },
+   {
+    id: 6,
+    name: "Doczi",
+    image: "/projects/doczi.png",
+    description: "Générateur de documents administratifs Intelligents",
+    description_en: "Intelligent Administrative Document Generator",
+    fullDescription:
+      "Doczi est une solution innovante qui utilise l'intelligence artificielle pour générer automatiquement des documents administratifs personnalisés. L'application simplifie considérablement le processus de création de documents officiels en guidant l'utilisateur à travers un formulaire intuitif et en générant automatiquement le document final au format souhaité.",
+    fullDescription_en: "Doczi is an innovative solution that uses artificial intelligence to automatically generate personalized administrative documents. The application significantly simplifies the official document creation process by guiding the user through an intuitive form and automatically generating the final document in the desired format.",
+    link: "https://doczi.vercel.app/",
+    github: "https://github.com/Lafiasabigado/Doczi.git",
+    tools: "React,NextJs,Prisma",
+    year: "2025",
+    features: [
+      "Génération automatique de documents",
+      "Interface utilisateur intuitive",
+      "Support de multiples formats",
+      "Base de données Prisma pour la gestion des données",
+    ],
+    features_en: [
+      "Automatic document generation",
+      "Intuitive user interface",
+      "Multi-format support",
+      "Prisma database for data management"
+    ],
+    category: "SaaS Platform",
+    color: "from-blue-500/20 to-cyan-500/20"
+  },
   {
-    id: 3,
+    id: 7,
     name: "Foothub",
     image: "/projects/foothubcommunity.png",
     description:
@@ -135,7 +191,137 @@ export const projects: Project[] = [
     color: "from-green-500/20 to-emerald-500/20"
   },
   {
-    id: 4,
+    id: 8,
+    name: "Kamischool",
+    image: "/projects/kamischool.png",
+    description: "Outils de gestion de formations",
+    description_en: "Training Management Tools",
+    fullDescription:
+      "Kamischool est une plateforme de gestion de centre de formation (élèves, formations, formateurs , paiements , attestations)",
+    fullDescription_en: "Kamischool is a management platform for training centers (students, training courses, instructors, payments, certificates)",
+    link: "https://kamischool.vercel.app/",
+    github: "https://github.com/Lafiasabigado/kamischool.git",
+    tools: "React,NextJs,Django",
+    year: "2026",
+    features: [
+      "Interface utilisateur intuitive",
+      "Gestion des paiements",
+      "Gestion des élèves",
+      "Gestion des formations",
+      "Gestion des formateurs",
+      "Gestion des attestations",
+    ],
+    features_en: [
+      "Intuitive user interface",
+      "Payment management",
+      "Student management",
+      "Training management",
+      "Instructor management",
+      "Certificate management",
+    ],
+    category: "Web App",
+    color: "from-purple-500/20 to-blue-500/20"
+  },
+  {
+    id: 9,
+    name: "Afriglot",
+    image: "/projects/afriglot.png",
+    description: "Plateforme d'apprentissage des langues africaines",
+    description_en: "African Languages Learning Platform",
+    fullDescription:
+      "Afriglot est une plateforme d'apprentissage des langues africaines. Le site présente les activités de l'association, ses membres et ses projets, des produits en ventes ainsi que des actualités.",
+    fullDescription_en: "Afriglot is an African language learning platform. The site presents the association's activities, its members and projects, products for sale, and news.",
+    link: "https://afriglot.vercel.app/",
+    github: "https://github.com/Lafiasabigado/afriglot.git",
+    tools: "React,NextJs,Django",
+    year: "2026",
+    features: [
+      "Interface utilisateur intuitive",
+      "Support de multiples formats",
+    ],
+    features_en: [
+      "Intuitive user interface",
+      "Multi-format support",
+    ],
+    category: "Web App",
+    color: "from-purple-500/20 to-blue-500/20"
+  },
+  {
+    id: 10,
+    name: "Localshare",
+    image: "/projects/localshare.png",
+    description: "Application web facilitant le transfert de fichier entre différent appareils connecté au même réseau local",
+    description_en: "Localshare is a web application that facilitates file transfer between different devices connected to the same local network",
+    fullDescription:
+      "Localshare est une application web qui permet de transférer des fichiers entre différents appareils connectés au même réseau local.",
+    fullDescription_en: "Localshare is a web application that allows you to transfer files between different devices connected to the same local network.",
+    link: "https://localshare.vercel.app/",
+    github: "https://github.com/Lafiasabigado/localshare.git",
+    tools: "React,NextJs,Django",
+    year: "2025",
+    features: [
+      "Interface utilisateur intuitive",
+      "Support de multiples formats",
+    ],
+    features_en: [
+      "Intuitive user interface",
+      "Multi-format support"
+    ],
+    category: "Web App",
+    color: "from-purple-500/20 to-blue-500/20"
+  },
+  {
+    id: 11,
+    name: "Toji",
+    image: "/projects/toji.png",
+    description: "Mon assistant personnel intelligent",
+    description_en: "My personal intelligent assistant",
+    fullDescription:
+      "Toji est mon assistant personnel intelligent qui me permet de gérer mes tâches, mes contacts et mes rendez-vous.",
+    fullDescription_en: "Toji is my personal intelligent assistant that allows me to manage my tasks, my contacts and my appointments.",
+    link: "https://toji.vercel.app/",
+    github: "https://github.com/Lafiasabigado/toji.git",
+    tools: "React,NextJs,Django",
+    year: "2025",
+    features: [
+      "Interface utilisateur intuitive",
+      "Support de multiples formats",
+    ],
+    features_en: [
+      "Intuitive user interface",
+      "Multi-format support",
+    ],
+    category: "Web App",
+    color: "from-purple-500/20 to-blue-500/20"
+  },
+    {
+    id: 12,
+    name: "MemoryCardGame",
+    image: "/projects/memorygame.png",
+    description: "Memory Card Game",
+    description_en: "Memory Card Game",
+    fullDescription:
+      "MemoryCardGame est un jeu de cartes qui permet de développer la mémoire.",
+    fullDescription_en: "MemoryCardGame is a card game that helps develop memory.",
+    link: "https://memory-card-game-nine-kappa.vercel.app/",
+    github: "https://github.com/Lafiasabigado/memorycardgame.git",
+    tools: "React,NextJs,Django",
+    year: "2026",
+    features: [
+      "Interface utilisateur intuitive",
+      "Support de multiples formats",
+      "Leaderboard"
+    ],
+    features_en: [
+      "Intuitive user interface",
+      "Multi-format support",
+      "Leaderboard"
+    ],
+    category: "Web App",
+    color: "from-purple-500/20 to-blue-500/20"
+  },
+  {
+    id: 13,
     name: "Apex Football",
     image: "/projects/apexfootball.png",
     description: "Agence accompagnant les footballeurs professionnels",
@@ -163,7 +349,7 @@ export const projects: Project[] = [
     color: "from-slate-500/20 to-gray-500/20"
   },
   {
-    id: 5,
+    id: 14,
     name: "Ballamas",
     image: "/projects/ballamas.png",
     description: "Plateforme e-commerce de vêtements moderne",
@@ -191,7 +377,7 @@ export const projects: Project[] = [
     color: "from-pink-500/20 to-rose-500/20"
   },
   {
-    id: 6,
+    id: 15,
     name: "Apex Food",
     image: "/projects/apex-food.png",
     description: "Plateforme de commande de repas",
@@ -219,7 +405,7 @@ export const projects: Project[] = [
     color: "from-yellow-500/20 to-orange-500/20"
   },
   {
-    id: 7,
+    id: 16,
     name: "Travel Agency",
     image: "/projects/travel-agency.png",
     description: "Application de planification de voyages",
@@ -245,7 +431,7 @@ export const projects: Project[] = [
     ],
     category: "Website",
     color: "from-cyan-500/20 to-blue-500/20"
-  },
+  }
 ]
 
 export const featuredProjects: Project[] = projects.slice(0, 4)

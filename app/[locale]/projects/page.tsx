@@ -30,53 +30,44 @@ export default function ProjectsPage() {
   };
 
   return (
-    <div className="min-h-screen py-32 relative overflow-hidden">
-      {/* Background Elements removed - using global */}
-
-      <div className="max-w-3xl mx-auto px-6 relative z-10">
+    <div className="min-h-screen py-32 bg-background text-white">
+      <div className="max-w-5xl mx-auto px-6 md:px-10">
         <motion.div
           {...({
-            initial: { opacity: 0, y: 30 },
+            initial: { opacity: 0, y: 20 },
             animate: { opacity: 1, y: 0 },
-            transition: { duration: 0.8 },
-            className: "mb-16 text-center"
+            transition: { duration: 0.6 },
+            className: "mb-12"
           } as any)}
         >
-          <h1 className="text-5xl sm:text-7xl font-heading font-bold mb-6">{t('title')}</h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <h1 className="text-3xl md:text-4xl font-heading font-bold text-white tracking-tight mb-3">{t('title')}</h1>
+          <p className="text-neutral-400 max-w-xl">
             {t('subtitle')}
           </p>
         </motion.div>
 
         {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
+        <div className="flex flex-wrap gap-2 mb-12">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`relative px-6 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${activeCategory === category ? 'text-background' : 'text-foreground hover:text-electric-blue'
-                }`}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                activeCategory === category
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-white/5 text-neutral-400 hover:text-white hover:bg-white/10'
+              }`}
             >
-              {activeCategory === category && (
-                <motion.div
-                  {...({
-                    layoutId: "activeFilter",
-                    className: "absolute inset-0 bg-foreground rounded-full -z-10",
-                    transition: { type: "spring", stiffness: 300, damping: 30 }
-                  } as any)}
-                />
-              )}
               {getCategoryLabel(category)}
             </button>
           ))}
         </div>
 
         {/* Grid */}
-        {/* Grid */}
         <motion.div
           {...({
             layout: true,
-            className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           } as any)}
         >
           <AnimatePresence mode='popLayout'>
@@ -85,42 +76,26 @@ export default function ProjectsPage() {
                 key={project.id}
                 {...({
                   layout: true,
-                  initial: { opacity: 0, scale: 0.9 },
+                  initial: { opacity: 0, scale: 0.95 },
                   animate: { opacity: 1, scale: 1 },
-                  exit: { opacity: 0, scale: 0.9 },
-                  transition: { duration: 0.5 }
+                  exit: { opacity: 0, scale: 0.95 },
+                  transition: { duration: 0.4 }
                 } as any)}
               >
-                <GlassCard className="group relative overflow-hidden p-0 h-[400px] border-0">
-                  <Link href={`/projects/${project.id}`} className="block w-full h-full">
-                    {/* Background Gradient */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-
-                    {/* Placeholder */}
-                    <div className="absolute inset-0 bg-neutral-900/50 group-hover:bg-neutral-900/40 transition-colors duration-500" />
-
-                    {/* Use inline style for BG image if real image is missing, or next/image as preferred */}
+                <Link href={`/projects/${project.id}`} className="group block">
+                  <div className="aspect-[4/3] relative rounded-xl overflow-hidden bg-neutral-900 border border-white/5 mb-3">
                     <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-30 group-hover:opacity-50"
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                       style={{ backgroundImage: `url(${project.image})` }}
                     />
-
-                    <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/10 text-6xl font-bold uppercase tracking-tighter group-hover:scale-110 transition-transform duration-700">
-                      {getCategoryLabel(project.category).split(' ')[0]}
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
+                    <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                      <ArrowUpRight className="text-white w-4 h-4" />
                     </div>
-
-                    {/* Content Overlay */}
-                    <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                      <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                        <span className="text-sm font-medium text-electric-blue mb-2 block opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{getCategoryLabel(project.category)}</span>
-                        <h3 className="text-2xl font-bold text-white mb-2 break-words leading-tight" style={{ fontFamily: 'var(--font-outfit), sans-serif' }}>{project.name}</h3>
-                        <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                          <ArrowUpRight className="text-white w-5 h-5" />
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                </GlassCard>
+                  </div>
+                  <span className="text-xs text-blue-500 font-medium">{getCategoryLabel(project.category)}</span>
+                  <h3 className="text-base font-bold text-white mt-1 group-hover:text-blue-500 transition-colors tracking-tight">{project.name}</h3>
+                </Link>
               </motion.div>
             ))}
           </AnimatePresence>

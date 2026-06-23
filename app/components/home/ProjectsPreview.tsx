@@ -11,106 +11,81 @@ import { useTranslations, useLocale } from 'next-intl';
 export default function ProjectsPreview() {
     const t = useTranslations('home_sections.projects_preview');
     const locale = useLocale();
-
-    // Show 4 projects for a balanced 2x2 grid
     const displayProjects = projects.slice(0, 4);
 
     return (
-        <section className="py-12 px-6" id="projects">
-            <div className="max-w-3xl mx-auto">
+        <section className="py-24" id="projects">
+            <div className="max-w-5xl mx-auto px-6 md:px-10">
 
-                {/* Header section - CENTERED */}
-                <div className="text-center mb-10 space-y-4">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-4xl md:text-5xl font-medium text-foreground"
+                {/* Header */}
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                    <div>
+                        <motion.h2
+                            initial={{ opacity: 0, y: 15 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-2xl md:text-3xl font-heading font-bold text-white tracking-tight"
+                        >
+                            {t('title')}
+                        </motion.h2>
+                        <motion.p
+                            initial={{ opacity: 0, y: 15 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.1 }}
+                            className="text-neutral-400 mt-2"
+                        >
+                            {t('subtitle')}
+                        </motion.p>
+                    </div>
+                    <Link
+                        href="/projects"
+                        className="inline-flex items-center gap-2 text-blue-500 hover:text-blue-400 font-medium text-sm transition-colors group"
                     >
-                        {t('title')}
-                    </motion.h2>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="text-lg text-muted-foreground max-w-2xl mx-auto"
-                    >
-                        {t('subtitle')}
-                    </motion.p>
+                        {t('see_all')}
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
                 </div>
 
-                {/* Grid Projects */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                {/* Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {displayProjects.map((project, index) => {
                         const description = locale.startsWith('en') ? project.description_en : project.description;
                         return (
                             <motion.div
                                 key={project.id}
-                                initial={{ opacity: 0, y: 30 }}
+                                initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                             >
-                                <Link href={`/projects/${project.id}`} className="group block h-full">
-                                    <div className="bg-card border border-border rounded-2xl overflow-hidden hover:shadow-xl hover:border-accent transition-all duration-500 h-full flex flex-col">
-
-                                        {/* Image - Fixed Aspect Ratio 4/3 */}
-                                        <div className="aspect-[4/3] overflow-hidden bg-secondary relative">
-                                            <Image
-                                                src={project.image}
-                                                alt={project.name}
-                                                fill
-                                                className="object-cover group-hover:scale-105 transition-transform duration-700"
-                                                sizes="(max-width: 768px) 100vw, 50vw"
-                                            />
-                                        </div>
-
-                                        {/* Content */}
-                                        <div className="p-6 flex flex-col flex-1">
-                                            <h3 className="text-xl font-semibold text-foreground group-hover:text-accent transition-colors mb-2">
-                                                {project.name}
-                                            </h3>
-
-                                            {/* Description truncated */}
-                                            <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2 mb-4">
-                                                {description}
-                                            </p>
-
-                                            {/* Tags */}
-                                            <div className="flex flex-wrap gap-2 mt-auto pt-2">
-                                                {project.tools.split(',').slice(0, 3).map((tool, i) => (
-                                                    <span
-                                                        key={i}
-                                                        className="px-3 py-1 bg-secondary text-secondary-foreground text-xs font-medium rounded-full"
-                                                    >
-                                                        {tool.trim()}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
+                                <Link href={`/projects/${project.id}`} className="group block">
+                                    <div className="aspect-video relative rounded-xl overflow-hidden bg-neutral-900 border border-white/5 mb-4">
+                                        <Image
+                                            src={project.image}
+                                            alt={project.name}
+                                            fill
+                                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                            sizes="(max-width: 768px) 100vw, 50vw"
+                                        />
+                                        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-300" />
+                                    </div>
+                                    <h3 className="text-lg font-bold text-white group-hover:text-blue-500 transition-colors tracking-tight">
+                                        {project.name}
+                                    </h3>
+                                    <p className="text-sm text-neutral-400 mt-1 line-clamp-1">{description}</p>
+                                    <div className="flex gap-2 mt-3">
+                                        {project.tools.split(',').slice(0, 3).map((tool, i) => (
+                                            <span key={i} className="text-xs text-neutral-500 bg-white/5 px-2.5 py-1 rounded-md">
+                                                {tool.trim()}
+                                            </span>
+                                        ))}
                                     </div>
                                 </Link>
                             </motion.div>
                         );
                     })}
                 </div>
-
-                {/* CTA "See all projects" - CENTERED */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    className="text-center"
-                >
-                    <Link
-                        href="/projects"
-                        className="inline-flex items-center gap-2 text-foreground font-medium hover:text-accent transition-colors group text-lg"
-                    >
-                        {t('see_all')}
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                </motion.div>
             </div>
         </section>
     );

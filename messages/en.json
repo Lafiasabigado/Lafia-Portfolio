@@ -1,6 +1,7 @@
 {
     "nav": {
         "home": "Home",
+        "about": "About",
         "projects": "Projects",
         "services": "Services",
         "contact": "Contact"
@@ -14,11 +15,11 @@
         "scroll": "Scroll"
     },
     "about": {
-        "title": "About",
-        "intro": "I am a passionate developer with expertise in web development. My goal is to create innovative digital solutions that meet my clients' needs.",
-        "education": "Holding a degree in computer science and management, I pay particular attention to detail and always strive to deliver the best results.",
-        "passion": "Problem-solving is my passion, and I am always motivated to learn new things. Outside of coding hours, I enjoy playing football or watching movies and series.",
-        "cta": "Feel free to contact me if you want to collaborate on something interesting!",
+        "title": "About Me",
+        "intro": "Armed with a degree in Management Information Systems, I don't just write code—I craft digital experiences. To me, User Experience (UX) is never an afterthought: a web interface must be as intuitive and fluid as it is beautiful.",
+        "education": "Fascinated by Artificial Intelligence, I constantly push the boundaries of this technology. I analyze every new LLM release on the market and take genuine pleasure in demystifying and sharing these breakthroughs with my tech community.",
+        "passion": "But life isn't just about algorithms. I'm a massive anime enthusiast and a die-hard football fan, and I unwind by listening to both French and US rap. Simply put: a passionate developer, but mostly a chill guy always ready for the next challenge.",
+        "cta": "Ready to bring your ideas to life? Feel free to reach out!",
         "downloadCV": "Download CV",
         "whatsapp": "WhatsApp",
         "linkedin": "LinkedIn",
@@ -146,6 +147,12 @@
             "title_part2": "coding.",
             "p1": "I'm a passionate developer based in Benin, obsessed with creating digital experiences that feel alive. My approach combines technical precision with artistic direction.",
             "p2": "I believe that a website shouldn't just be functional; it should be memorable. Whether it's a SaaS platform or a portfolio, I aim for the \"WOW\" effect.",
+            "personal": {
+                "title": "More than just a developer.",
+                "p1": "Armed with a degree in Management Information Systems, I don't just write code—I craft experiences. To me, UX is never an afterthought: an interface must be as intuitive as it is beautiful.",
+                "p2": "Fascinated by AI, I constantly push the boundaries of this technology. I analyze every new LLM release and share these breakthroughs with my community.",
+                "p3": "Anime enthusiast, football fan, and rap listener (FR & US). Simply put: a passionate developer, but mostly a chill guy always ready for the next challenge."
+            },
             "stats": {
                 "experience": "Years Experience",
                 "projects": "Projects Completed",

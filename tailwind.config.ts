@@ -11,8 +11,8 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ["var(--font-inter)", "sans-serif"],
-				heading: ["var(--font-draft-cartoon)", "var(--font-outfit)", "sans-serif"],
-				display: ["var(--font-draft-cartoon)", "var(--font-outfit)", "sans-serif"],
+				heading: ["var(--font-outfit)", "var(--font-inter)", "sans-serif"],
+				display: ["var(--font-outfit)", "var(--font-inter)", "sans-serif"],
 			},
 			colors: {
 				background: 'hsl(var(--background))',

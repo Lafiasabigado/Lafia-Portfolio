@@ -1,6 +1,7 @@
 {
     "nav": {
         "home": "Accueil",
+        "about": "À propos",
         "projects": "Projets",
         "services": "Services",
         "contact": "Contact"
@@ -14,11 +15,11 @@
         "scroll": "Défiler"
     },
     "about": {
-        "title": "À Propos",
-        "intro": "Je suis un développeur passionné avec une expertise en développement web. Mon objectif est de créer des solutions numériques innovantes qui répondent aux besoins de mes clients.",
-        "education": "Titulaire d'une licence en informatique de gestion, je porte une attention particulière aux détails et m'efforce toujours de livrer les meilleurs résultats.",
-        "passion": "La résolution de problèmes me passionne, et je suis toujours motivé pour apprendre de nouvelles choses. En dehors des heures de code, j'aime jouer au football ou regarder des films et séries.",
-        "cta": "N'hésitez pas à me contacter si vous souhaitez collaborer sur quelque chose d'intéressant !",
+        "title": "À Propos de moi",
+        "intro": "Diplômé en informatique de gestion, je ne me contente pas d'écrire du code. Je façonne des expériences numériques. Pour moi, l'expérience utilisateur (UX) n'est jamais une option : une interface web doit être aussi intuitive et fluide qu'elle est esthétique.",
+        "education": "Fasciné par l'Intelligence Artificielle, je repousse constamment les limites de cette technologie. Je décortique chaque nouveau modèle LLM qui sort sur le marché et je prends un réel plaisir à vulgariser et partager ces découvertes avec ma communauté tech.",
+        "passion": "Mais la vie, ce n'est pas que des algorithmes. Grand fan d'animés et inconditionnel de football, je me ressource en écoutant du rap (FR comme US). Bref : un développeur passionné, mais surtout un mec chill toujours prêt pour le prochain défi.",
+        "cta": "Prêt à donner vie à vos idées ? N'hésitez pas à me contacter !",
         "downloadCV": "Télécharger CV",
         "whatsapp": "WhatsApp",
         "linkedin": "LinkedIn",
@@ -146,6 +147,12 @@
             "title_part2": "code.",
             "p1": "Je suis un développeur passionné basé au Bénin, obsédé par la création d'expériences numériques vivantes. Mon approche combine précision technique et direction artistique.",
             "p2": "Je crois qu'un site web ne doit pas seulement être fonctionnel ; il doit être mémorable. Qu'il s'agisse d'une plateforme SaaS ou d'un portfolio, je vise l'effet \"WOW\".",
+            "personal": {
+                "title": "Plus qu'un simple développeur.",
+                "p1": "Diplômé en informatique de gestion, je ne me contente pas d'écrire du code. Je façonne des expériences. Pour moi, l'UX n'est jamais une option : une interface doit être aussi intuitive qu'esthétique.",
+                "p2": "Fasciné par l'IA, je repousse constamment les limites de cette technologie. Je décortique chaque nouveau modèle LLM et je partage mes découvertes avec ma communauté.",
+                "p3": "Fan d'animés, de football et de rap (FR & US). Bref : un développeur passionné, mais surtout un mec chill toujours prêt pour le prochain défi."
+            },
             "stats": {
                 "experience": "Années d'Expérience",
                 "projects": "Projets Terminés",

@@ -18,11 +18,11 @@ const Contact = () => {
   ]
 
   return (
-    <div className='py-16 pt-32 min-h-screen'>
-      <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <div className='py-16 pt-32 min-h-screen bg-background text-white'>
+      <div className='max-w-5xl mx-auto px-6 md:px-10'>
         <div className='grid md:grid-cols-[1fr_2fr] gap-12'>
           <div className='flex-col'>
-            <h2 className='text-3xl font-heading font-bold mb-8 text-white'>{t('title')}</h2>
+            <h2 className='text-4xl md:text-5xl font-heading font-bold mb-8 text-white tracking-tight'>{t('title')}</h2>
             <div className='space-y-6'>
               <div className='text-muted-foreground'>
                 <p className='font-medium text-white mb-2'>{t('haveProject')}</p>

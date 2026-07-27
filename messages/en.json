@@ -9,8 +9,10 @@
     "hero": {
         "badge": "Discover my universe",
         "tagline": "Software Engineer",
-        "bio": "I build pixel-perfect, engaging, and accessible digital experiences. Specialized in Next.Js and Django.",
+        "greeting": "Hi, I'm",
+        "bio": "I design and build modern, high-performance, tailor-made web applications to turn your ideas into digital products that convert.",
         "viewProjects": "View Projects",
+        "downloadCV": "Download CV",
         "getInTouch": "Get in Touch",
         "scroll": "Scroll"
     },
@@ -36,10 +38,7 @@
     },
     "services": {
         "title": "Services",
-        "subtitle": "I offer complete web solutions, from design to production. Specialized in {nextjs}, {react}, and {typescript}.",
-        "nextjs": "Next.js",
-        "react": "React",
-        "typescript": "TypeScript",
+        "subtitle": "I offer complete web solutions, from design to production. Specialized in nextjs, react, and django.",
         "cta": {
             "title": "Have a project in mind?",
             "description": "Let's discuss your project and see how I can help bring it to life.",
@@ -127,6 +126,16 @@
         },
         "footer": "All rights reserved."
     },
+    "testimonials": {
+        "title": "Testimonials",
+        "subtitle": "What my clients and partners say about working together.",
+        "items": {
+            "abdou": "Lafia transformed our vision into an incredibly high-performing web platform. His expertise in Next.js cut our loading times in half.",
+            "marc": "A rare developer who understands both business challenges and technical perfection. The design and code are flawless.",
+            "sarah": "Working with Lafia was a game-changer. He doesn't just execute — he proposes innovative solutions to improve the product.",
+            "jeanpaul": "Rigour, fluid communication, and on-time delivery. An excellent collaboration across the board."
+        }
+    },
     "project_details": {
         "back": "Back to Projects",
         "features": "Key Features",
@@ -188,10 +197,16 @@
         "contact": {
             "title": "Let's work together",
             "subtitle": "Have a project in mind? I'd love to help you build it.",
+            "emailLabel": "Email",
+            "locationLabel": "Location",
+            "location": "Parakou, Bénin (Remote)",
             "form": {
                 "name": "Name",
+                "namePlaceholder": "Your name",
                 "email": "Email",
+                "emailPlaceholder": "your@email.com",
                 "message": "Message",
+                "messagePlaceholder": "Tell me about your project...",
                 "send": "Send Message"
             }
         }

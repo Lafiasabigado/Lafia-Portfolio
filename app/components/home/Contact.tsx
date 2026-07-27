@@ -30,7 +30,7 @@ export default function Contact() {
                                     <Mail size={18} />
                                 </div>
                                 <div>
-                                    <p className="text-xs text-neutral-500 uppercase tracking-wider font-medium mb-0.5">Email</p>
+                                    <p className="text-xs text-neutral-500 uppercase tracking-wider font-medium mb-0.5">{t('emailLabel')}</p>
                                     <a href="mailto:lafiasabigado@gmail.com" className="text-sm text-white hover:text-blue-500 transition-colors">lafiasabigado@gmail.com</a>
                                 </div>
                             </div>
@@ -39,8 +39,8 @@ export default function Contact() {
                                     <MapPin size={18} />
                                 </div>
                                 <div>
-                                    <p className="text-xs text-neutral-500 uppercase tracking-wider font-medium mb-0.5">Localisation</p>
-                                    <p className="text-sm text-white">Parakou, Bénin (Remote)</p>
+                                    <p className="text-xs text-neutral-500 uppercase tracking-wider font-medium mb-0.5">{t('locationLabel')}</p>
+                                    <p className="text-sm text-white">{t('location')}</p>
                                 </div>
                             </div>
                         </div>
@@ -63,7 +63,7 @@ export default function Contact() {
                                         name="name"
                                         required
                                         className="w-full bg-transparent border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors placeholder:text-neutral-600"
-                                        placeholder="Votre nom"
+                                        placeholder={t('form.namePlaceholder')}
                                     />
                                 </div>
                                 <div>
@@ -73,7 +73,7 @@ export default function Contact() {
                                         name="email"
                                         required
                                         className="w-full bg-transparent border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors placeholder:text-neutral-600"
-                                        placeholder="votre@email.com"
+                                        placeholder={t('form.emailPlaceholder')}
                                     />
                                 </div>
                             </div>
@@ -85,7 +85,7 @@ export default function Contact() {
                                     name="message"
                                     required
                                     className="w-full bg-transparent border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors resize-none placeholder:text-neutral-600"
-                                    placeholder="Parlez-moi de votre projet..."
+                                    placeholder={t('form.messagePlaceholder')}
                                 />
                             </div>
 

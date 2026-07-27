@@ -3,36 +3,38 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Quote } from 'lucide-react';
-
-const testimonials = [
-    {
-        name: "Abdou",
-        role: "CEO, Tikonna",
-        text: "Lafia a transformé notre vision en une plateforme web incroyablement performante. Son expertise en Next.js a divisé nos temps de chargement par deux.",
-        avatar: "A"
-    },
-    {
-        name: "Marc",
-        role: "Directeur, Adtechgroup",
-        text: "Un développeur rare qui comprend à la fois les enjeux business et la perfection technique. Le design et le code sont irréprochables.",
-        avatar: "M"
-    },
-    {
-        name: "Sarah",
-        role: "Founder, Afriglot",
-        text: "Travailler avec Lafia a été un game-changer. Il ne se contente pas d'exécuter, il propose des solutions innovantes pour améliorer le produit.",
-        avatar: "S"
-    },
-    {
-        name: "Jean-Paul",
-        role: "Tech Lead, AIC Bénin",
-        text: "Rigueur, communication fluide et livraison dans les temps. Une collaboration excellente sur toute la ligne.",
-        avatar: "JP"
-    }
-];
+import { useTranslations } from 'next-intl';
 
 export default function Testimonials() {
+    const t = useTranslations('testimonials');
     const [current, setCurrent] = useState(0);
+
+    const testimonials = [
+        {
+            name: "Abdou",
+            role: "CEO, Tikonna",
+            text: t('items.abdou'),
+            avatar: "A"
+        },
+        {
+            name: "Marc",
+            role: "Directeur, Adtechgroup",
+            text: t('items.marc'),
+            avatar: "M"
+        },
+        {
+            name: "Sarah",
+            role: "Founder, Afriglot",
+            text: t('items.sarah'),
+            avatar: "S"
+        },
+        {
+            name: "Jean-Paul",
+            role: "Tech Lead, AIC Bénin",
+            text: t('items.jeanpaul'),
+            avatar: "JP"
+        }
+    ];
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -55,10 +57,10 @@ export default function Testimonials() {
                         >
                             <Quote className="w-8 h-8 text-blue-500 mb-4" />
                             <h2 className="text-2xl md:text-3xl font-heading font-bold text-white tracking-tight mb-3">
-                                Témoignages
+                                {t('title')}
                             </h2>
                             <p className="text-neutral-400 text-sm leading-relaxed">
-                                Ce que mes clients et partenaires disent de notre collaboration.
+                                {t('subtitle')}
                             </p>
                         </motion.div>
 

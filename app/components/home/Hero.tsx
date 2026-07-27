@@ -5,8 +5,10 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { ArrowRight, Download } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export default function Hero() {
+    const t = useTranslations('hero');
     return (
         <section className="relative min-h-screen flex items-center overflow-hidden">
             <div className="w-full max-w-5xl mx-auto px-6 md:px-10 py-32">
@@ -20,7 +22,7 @@ export default function Hero() {
                             transition={{ duration: 0.6 }}
                             className="text-blue-500 font-semibold text-sm uppercase tracking-widest mb-6"
                         >
-                            Ingénieur Logiciel · Bénin
+                            {t('tagline')} · Bénin
                         </motion.p>
 
                         <motion.h1
@@ -29,7 +31,7 @@ export default function Hero() {
                             transition={{ duration: 0.7, delay: 0.1 }}
                             className="text-4xl md:text-5xl font-heading font-bold text-white leading-tight tracking-tight mb-6"
                         >
-                            Salut, je suis{' '}
+                            {t('greeting')}{' '}
                             <span className="text-blue-500">Lafia Sabi Gado</span>
                         </motion.h1>
 
@@ -39,8 +41,7 @@ export default function Hero() {
                             transition={{ duration: 0.7, delay: 0.2 }}
                             className="text-neutral-400 text-base md:text-lg leading-relaxed mb-10 max-w-md"
                         >
-                            Je conçois et développe des applications web modernes, 
-                            performantes et sur-mesure pour transformer vos idées en produits digitaux qui convertissent.
+                            {t('bio')}
                         </motion.p>
 
                         <motion.div
@@ -53,7 +54,7 @@ export default function Hero() {
                                 href="/projects"
                                 className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium text-sm flex items-center gap-2 transition-colors"
                             >
-                                Voir mes projets
+                                {t('viewProjects')}
                                 <ArrowRight className="w-4 h-4" />
                             </Link>
                             <a
@@ -62,7 +63,7 @@ export default function Hero() {
                                 rel="noopener noreferrer"
                                 className="px-6 py-3 border border-white/20 hover:border-white/40 text-white rounded-lg font-medium text-sm flex items-center gap-2 transition-colors"
                             >
-                                Télécharger CV
+                                {t('downloadCV')}
                                 <Download className="w-4 h-4" />
                             </a>
                         </motion.div>

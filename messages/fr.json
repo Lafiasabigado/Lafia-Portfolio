@@ -9,8 +9,10 @@
     "hero": {
         "badge": "Découvrez mon univers",
         "tagline": "Ingénieur Logiciel",
-        "bio": "Je crée des expériences numériques pixel-perfect, engageantes et accessibles. Spécialisé en Next.Js et Django.",
-        "viewProjects": "Voir les Projets",
+        "greeting": "Salut, je suis",
+        "bio": "Je conçois et développe des applications web modernes, performantes et sur-mesure pour transformer vos idées en produits digitaux qui convertissent.",
+        "viewProjects": "Voir mes projets",
+        "downloadCV": "Télécharger CV",
         "getInTouch": "Me Contacter",
         "scroll": "Défiler"
     },
@@ -36,10 +38,7 @@
     },
     "services": {
         "title": "Services",
-        "subtitle": "Je propose des solutions web complètes, du design à la mise en production. Spécialisé en {nextjs}, {react} et {typescript}.",
-        "nextjs": "Next.js",
-        "react": "React",
-        "typescript": "TypeScript",
+        "subtitle": "Je propose des solutions web complètes, du design à la mise en production. Spécialisé en nextjs, react et django.",
         "cta": {
             "title": "Un projet en tête ?",
             "description": "Discutons de votre projet et voyons comment je peux vous aider à le concrétiser.",
@@ -127,6 +126,16 @@
         },
         "footer": "Tous droits réservés."
     },
+    "testimonials": {
+        "title": "Témoignages",
+        "subtitle": "Ce que mes clients et partenaires disent de notre collaboration.",
+        "items": {
+            "abdou": "Lafia a transformé notre vision en une plateforme web incroyablement performante. Son expertise en Next.js a divisé nos temps de chargement par deux.",
+            "marc": "Un développeur rare qui comprend à la fois les enjeux business et la perfection technique. Le design et le code sont irréprochables.",
+            "sarah": "Travailler avec Lafia a été un game-changer. Il ne se contente pas d'exécuter, il propose des solutions innovantes pour améliorer le produit.",
+            "jeanpaul": "Rigueur, communication fluide et livraison dans les temps. Une collaboration excellente sur toute la ligne."
+        }
+    },
     "project_details": {
         "back": "Retour aux Projets",
         "features": "Fonctionnalités Clés",
@@ -188,10 +197,16 @@
         "contact": {
             "title": "Travaillons ensemble",
             "subtitle": "Vous avez un projet en tête ? J'adorerais vous aider à le réaliser.",
+            "emailLabel": "Email",
+            "locationLabel": "Localisation",
+            "location": "Parakou, Bénin (Remote)",
             "form": {
                 "name": "Nom",
+                "namePlaceholder": "Votre nom",
                 "email": "Email",
+                "emailPlaceholder": "votre@email.com",
                 "message": "Message",
+                "messagePlaceholder": "Parlez-moi de votre projet...",
                 "send": "Envoyer le Message"
             }
         }

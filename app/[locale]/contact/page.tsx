@@ -107,15 +107,12 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
-                className='w-full px-8 py-4 bg-white text-black rounded-xl font-medium hover:opacity-90 transition-opacity flex items-center justify-center gap-2 max-w-xs ml-auto'
+                className='font-handwritten text-[22px] px-8 py-3 bg-white text-black rounded-[18px] hover:-translate-y-0.5 hover:shadow-glow-lift hover:bg-neutral-100 transition-all flex items-center justify-center gap-2'
               >
                 {t('form.send')} <ArrowUpRight className="w-4 h-4" />
               </button>
             </form>
           </div>
-        </div>
-        <div className='mt-20 pt-8 border-t border-border text-center'>
-          <p className='text-sm text-muted-foreground'>© {new Date().getFullYear()} Lafia Sabi Gado. {t('footer')}</p>
         </div>
       </div>
     </div>

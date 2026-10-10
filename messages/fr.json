@@ -7,14 +7,15 @@
         "contact": "Contact"
     },
     "hero": {
-        "badge": "Découvrez mon univers",
-        "tagline": "Ingénieur Logiciel",
-        "greeting": "Salut, je suis",
-        "bio": "Je conçois et développe des applications web modernes, performantes et sur-mesure pour transformer vos idées en produits digitaux qui convertissent.",
-        "viewProjects": "Voir mes projets",
+        "titleLine1": "Salut, je suis",
+        "name": "Lafia",
+        "titleLine2": "ingénieur logiciel & builder.",
+        "subtitle": "je construis des trucs, et j'aimerais en construire pour toi aussi.",
+        "locationBio": "Basé au Bénin · produits web et IA pensés pour l'Afrique de l'Ouest",
+        "ctaWelcome": "bienvenue dans mon monde",
         "downloadCV": "Télécharger CV",
-        "getInTouch": "Me Contacter",
-        "scroll": "Défiler"
+        "viewProjects": "Voir mes projets",
+        "getInTouch": "Me Contacter"
     },
     "about": {
         "title": "À Propos de moi",

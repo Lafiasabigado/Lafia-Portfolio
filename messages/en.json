@@ -7,14 +7,15 @@
         "contact": "Contact"
     },
     "hero": {
-        "badge": "Discover my universe",
-        "tagline": "Software Engineer",
-        "greeting": "Hi, I'm",
-        "bio": "I design and build modern, high-performance, tailor-made web applications to turn your ideas into digital products that convert.",
-        "viewProjects": "View Projects",
+        "titleLine1": "Hey, I'm",
+        "name": "Lafia",
+        "titleLine2": "software engineer & builder.",
+        "subtitle": "I build stuff, and I'd love to build for you too.",
+        "locationBio": "Based in Benin · web & AI products tailored for West Africa",
+        "ctaWelcome": "welcome to my world",
         "downloadCV": "Download CV",
-        "getInTouch": "Get in Touch",
-        "scroll": "Scroll"
+        "viewProjects": "View Projects",
+        "getInTouch": "Get in Touch"
     },
     "about": {
         "title": "About Me",

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { inter, outfit, caveat } from "@/lib/fonts";
 import "../globals.css";
 import Nav from "@/app/components/Nav";
-import { ThemeProvider } from "@/app/components/theme-provider";
+import Footer from "@/app/components/Footer";
+import GuideLines from "@/app/components/GuideLines";
 import SmoothScroll from "@/app/components/SmoothScroll";
 import ClientComponents from "@/app/components/ClientComponents";
 import { NextIntlClientProvider } from 'next-intl';
@@ -121,25 +122,25 @@ export default async function RootLayout({
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
                 />
                 <NextIntlClientProvider messages={messages}>
-                    <ThemeProvider
-                        attribute="class"
-                        defaultTheme="system"
-                        enableSystem
-                        disableTransitionOnChange
-                    >
-                        <SmoothScroll>
-                            <div className="relative w-full overflow-x-hidden">
-                                <ClientComponents />
-                                {/* CursorGlow removed in favor of CustomCursor for clearer aesthetic direction, can be re-added if hybrid needed */}
-                                <Nav />
-                                <main className="w-full overflow-hidden min-h-screen">
-                                    {children}
-                                </main>
-                            </div>
-                        </SmoothScroll>
-                    </ThemeProvider>
+                    <SmoothScroll>
+                        <div className="relative w-full min-h-screen bg-bg text-fg">
+                            <a
+                                href="#main-content"
+                                className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-md focus:shadow-lg text-sm font-medium"
+                            >
+                                {locale === 'fr' ? 'Aller au contenu principal' : 'Skip to main content'}
+                            </a>
+                            <ClientComponents />
+                            <GuideLines />
+                            <Nav />
+                            <main id="main-content" className="relative z-10 w-full overflow-hidden min-h-screen">
+                                {children}
+                            </main>
+                            <Footer />
+                        </div>
+                    </SmoothScroll>
                 </NextIntlClientProvider>
             </body>
-        </html >
+        </html>
     );
 }

@@ -126,6 +126,13 @@
         },
         "footer": "All rights reserved."
     },
+    "footer": {
+        "craftedWith": "Crafted with coffee and a few too many late nights, from Benin.",
+        "navigation": "Navigation",
+        "connect": "Connect",
+        "rights": "All rights reserved.",
+        "signature": "Lafia Sabi Gado · Builder"
+    },
     "testimonials": {
         "title": "Testimonials",
         "subtitle": "What my clients and partners say about working together.",

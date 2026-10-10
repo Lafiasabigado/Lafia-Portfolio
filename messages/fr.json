@@ -126,6 +126,13 @@
         },
         "footer": "Tous droits réservés."
     },
+    "footer": {
+        "craftedWith": "Fait avec du café et un peu trop de nuits blanches, depuis le Bénin.",
+        "navigation": "Navigation",
+        "connect": "Réseaux",
+        "rights": "Tous droits réservés.",
+        "signature": "Lafia Sabi Gado · Builder"
+    },
     "testimonials": {
         "title": "Témoignages",
         "subtitle": "Ce que mes clients et partenaires disent de notre collaboration.",

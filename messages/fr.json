@@ -218,5 +218,19 @@
                 "send": "Envoyer le Message"
             }
         }
+    },
+    "rail": {
+        "explore": "Voir →",
+        "caseStudy": "Étude de cas"
+    },
+    "offscreen": {
+        "title": "Hors écran.",
+        "eyebrow": "hors écran",
+        "subtitle": "Des bribes de vie quand je ne suis pas le nez dans le code."
+    },
+    "notFound": {
+        "title": "cette page a quitté le chat.",
+        "subtitle": "Le lien que tu as suivi est peut-être cassé ou la page a été déplacée.",
+        "cta": "retour à l’accueil"
     }
 }

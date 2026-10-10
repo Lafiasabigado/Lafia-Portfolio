@@ -1,43 +1,36 @@
 import type { MetadataRoute } from "next";
-import { projects } from "@/lib/projects";
+import { projects } from "@/content/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = "https://lafiasabigado.vercel.app";
   const now = new Date();
+  const locales = ["fr", "en"];
 
-  const staticRoutes: MetadataRoute.Sitemap = [
-    {
-      url: `${siteUrl}/`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${siteUrl}/projects`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/about`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${siteUrl}/contact`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-  ];
+  const routes = ["", "/projects", "/about", "/service", "/contact"];
 
-  const projectRoutes: MetadataRoute.Sitemap = projects.map((p) => ({
-    url: `${siteUrl}/projects/${p.id}`,
-    lastModified: now,
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
+  const staticRoutes: MetadataRoute.Sitemap = [];
+  locales.forEach((locale) => {
+    routes.forEach((route) => {
+      staticRoutes.push({
+        url: `${siteUrl}/${locale}${route}`,
+        lastModified: now,
+        changeFrequency: route === "" ? "weekly" : "monthly",
+        priority: route === "" ? 1 : 0.8,
+      });
+    });
+  });
+
+  const projectRoutes: MetadataRoute.Sitemap = [];
+  locales.forEach((locale) => {
+    projects.forEach((p) => {
+      projectRoutes.push({
+        url: `${siteUrl}/${locale}/projects/${p.slug}`,
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.7,
+      });
+    });
+  });
 
   return [...staticRoutes, ...projectRoutes];
 }

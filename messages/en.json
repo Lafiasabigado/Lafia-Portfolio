@@ -218,5 +218,19 @@
                 "send": "Send Message"
             }
         }
+    },
+    "rail": {
+        "explore": "Explore →",
+        "caseStudy": "Case Study"
+    },
+    "offscreen": {
+        "title": "Off screen.",
+        "eyebrow": "off screen",
+        "subtitle": "Glimpses of life beyond code — setups, community meetups and daily life in Benin."
+    },
+    "notFound": {
+        "title": "this page left the chat.",
+        "subtitle": "The link you followed might be broken or the page was moved.",
+        "cta": "back to home"
     }
 }

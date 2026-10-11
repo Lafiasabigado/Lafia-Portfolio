@@ -163,6 +163,20 @@ export default function ProjectsGrid() {
             })}
           </AnimatePresence>
         </motion.div>
+
+        {/* View All Projects Button */}
+        <div className="mt-8 sm:mt-10 text-center">
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2.5 font-handwritten text-lg sm:text-xl px-7 py-2.5 rounded-full bg-white text-black hover:-translate-y-0.5 hover:shadow-glow-lift hover:bg-neutral-100 transition-all group"
+          >
+            <span>{locale === 'en' ? 'Explore all projects' : 'Voir tous les projets'}</span>
+            <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-black/10 text-black font-semibold">
+              {projects.length}
+            </span>
+            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </Link>
+        </div>
       </div>
     </section>
   );

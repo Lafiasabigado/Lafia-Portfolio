@@ -1,122 +1,239 @@
-"use client";
-import React from 'react'
-import Link from 'next/link'
-import { FaTelegram, FaGithub, FaLinkedin, FaTwitter, FaWhatsapp } from 'react-icons/fa'
-import { ArrowUpRight } from 'lucide-react'
-import { useTranslations } from 'next-intl';
+'use client';
 
-const Contact = () => {
+import React from 'react';
+import Image from 'next/image';
+import { useTranslations, useLocale } from 'next-intl';
+import { Card } from '@/components/ui/Card';
+import { SectionTitle } from '@/components/ui/SectionTitle';
+import { Reveal } from '@/components/ui/Reveal';
+import { Mail, MapPin, Send, ArrowUpRight, Download } from 'lucide-react';
+import { FaGithub, FaLinkedinIn, FaWhatsapp, FaTelegram } from 'react-icons/fa6';
+
+export default function ContactPage() {
   const t = useTranslations('contact');
-  const link = "https://kloo.me/resumelafia"
+  const tHome = useTranslations('home_sections.contact');
+  const locale = useLocale();
 
-  const socials = [
-    { id: 1, name: t('socials'), icon: <FaWhatsapp className="text-blue-500 rounded-lg text-xl" />, link: "https://wa.me/22956259632" },
-    { id: 2, name: t('socials'), icon: <FaTelegram className="text-blue-500 rounded-lg text-xl" />, link: "https://t.me/Abdiaslafia" },
-    { id: 3, name: t('socials'), icon: <FaGithub className="text-blue-500 rounded-lg text-xl" />, link: "https://github.com/Lafiasabigado" },
-    { id: 4, name: t('socials'), icon: <FaLinkedin className="text-blue-500 rounded-lg text-xl" />, link: "https://linkedin.com/in/lafia-sabi-gado-03910a292/" },
-    { id: 5, name: t('socials'), icon: <FaTwitter className="text-blue-500 rounded-lg text-xl" />, link: "https://x.com/abdiaslafia97" },
-  ]
+  const socialLinks = [
+    {
+      name: 'WhatsApp',
+      href: 'https://wa.me/22956259632',
+      label: '+229 56 25 96 32',
+      icon: <FaWhatsapp className="w-3.5 h-3.5" />,
+    },
+    {
+      name: 'Email',
+      href: 'mailto:lafiasabigado@gmail.com',
+      label: 'lafiasabigado@gmail.com',
+      icon: <Mail className="w-3.5 h-3.5" />,
+    },
+    {
+      name: 'LinkedIn',
+      href: 'https://linkedin.com/in/lafia-sabi-gado-03910a292/',
+      label: 'Lafia Sabi Gado',
+      icon: <FaLinkedinIn className="w-3.5 h-3.5" />,
+    },
+    {
+      name: 'GitHub',
+      href: 'https://github.com/Lafiasabigado',
+      label: 'Lafiasabigado',
+      icon: <FaGithub className="w-3.5 h-3.5" />,
+    },
+    {
+      name: 'Telegram',
+      href: 'https://t.me/Abdiaslafia',
+      label: '@Abdiaslafia',
+      icon: <FaTelegram className="w-3.5 h-3.5" />,
+    },
+  ];
 
   return (
-    <div className='py-16 pt-32 min-h-screen bg-background text-white'>
-      <div className='max-w-5xl mx-auto px-6 md:px-10'>
-        <div className='grid md:grid-cols-[1fr_2fr] gap-12'>
-          <div className='flex-col'>
-            <h2 className='text-4xl md:text-5xl font-heading font-bold mb-8 text-white tracking-tight'>{t('title')}</h2>
-            <div className='space-y-6'>
-              <div className='text-muted-foreground'>
-                <p className='font-medium text-white mb-2'>{t('haveProject')}</p>
-                <a href="mailto:lafiasabigado97@gmail.com" className='hover:text-white transition-colors underline decoration-white/30 underline-offset-4'>
-                  lafiasabigado97@gmail.com
-                </a>
-              </div>
-
-              <div className='text-muted-foreground'>
-                <p className='font-medium text-white mb-2'>{t('resume')}</p>
-                <Link href={link} className='inline-flex items-center gap-2 hover:text-white transition-colors underline decoration-white/30 underline-offset-4'>
-                  {t('downloadCV')} <ArrowUpRight className="w-4 h-4" />
-                </Link>
-              </div>
-
-              <div className='pt-4'>
-                <p className='font-medium text-white mb-4'>{t('socials')}</p>
-                <div className='flex gap-4'>
-                  {socials.map((social) => (
-                    <Link
-                      key={social.id}
-                      href={social.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className='text-muted-foreground hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full'
-                    >
-                      {social.icon}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
+    <div className="pt-24 sm:pt-28 pb-24 relative">
+      <div className="container-custom">
+        {/* Availability Eyebrow */}
+        <Reveal>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-line bg-white/[0.02] mb-3">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+            </span>
+            <span className="text-[11px] font-mono text-fg-soft uppercase tracking-wider">
+              {locale === 'en' ? 'Available for new projects' : 'Disponible pour de nouveaux projets'}
+            </span>
           </div>
 
-          <div className='bg-card/50 p-8 rounded-3xl border border-border'>
-            <form action="https://formspree.io/f/maqdekbd" method="POST" className='space-y-6'>
-              <div className='grid grid-cols-2 gap-6'>
-                <div className='space-y-2'>
-                  <label htmlFor="name" className='block text-xs font-semibold text-muted-foreground uppercase tracking-wider'>{t('form.name')}</label>
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    required
-                    className='w-full p-3 bg-background border border-border rounded-xl focus:ring-2 focus:ring-white outline-none transition-all text-white placeholder-muted-foreground'
-                    placeholder={t('form.namePlaceholder')}
-                  />
-                </div>
-                <div className='space-y-2'>
-                  <label htmlFor="email" className='block text-xs font-semibold text-muted-foreground uppercase tracking-wider'>{t('form.email')}</label>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    required
-                    className='w-full p-3 bg-background border border-border rounded-xl focus:ring-2 focus:ring-white outline-none transition-all text-white placeholder-muted-foreground'
-                    placeholder={t('form.emailPlaceholder')}
-                  />
-                </div>
-              </div>
-              <div className='space-y-2'>
-                <label htmlFor="subject" className='block text-xs font-semibold text-muted-foreground uppercase tracking-wider'>{t('form.subject')}</label>
-                <input
-                  type="text"
-                  id='subject'
-                  name="subject"
-                  required
-                  className='w-full p-3 bg-background border border-border rounded-xl focus:ring-2 focus:ring-white outline-none transition-all text-white placeholder-muted-foreground'
-                  placeholder={t('form.subjectPlaceholder')}
-                />
-              </div>
-              <div className='space-y-2'>
-                <label htmlFor="message" className='block text-xs font-semibold text-muted-foreground uppercase tracking-wider'>{t('form.message')}</label>
-                <textarea
-                  name="message"
-                  id="message"
-                  rows={6}
-                  required
-                  className='w-full p-3 bg-background border border-border rounded-xl focus:ring-2 focus:ring-white outline-none transition-all text-white placeholder-muted-foreground resize-none'
-                  placeholder={t('form.messagePlaceholder')}
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                className='font-handwritten text-[22px] px-8 py-3 bg-white text-black rounded-[18px] hover:-translate-y-0.5 hover:shadow-glow-lift hover:bg-neutral-100 transition-all flex items-center justify-center gap-2'
+          <SectionTitle
+            eyebrow="contact"
+            title={
+              <span>
+                {locale === 'en' ? "Let's build together" : "Travaillons ensemble"}
+                <span className="text-accent">.</span>
+              </span>
+            }
+            subtitle={
+              locale === 'en'
+                ? "Have a software project, freelance collaboration, or idea you'd like to bring to life? Drop me a message below."
+                : "Vous avez un projet logiciel, une opportunité ou une idée ambitieuse à concrétiser ? Écrivez-moi ci-dessous."
+            }
+          />
+        </Reveal>
+
+        {/* Contact Grid: Form + Profile Card */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-start mt-6">
+          {/* Left: Contact Form */}
+          <div className="md:col-span-7">
+            <Reveal delay={0.05}>
+              <form
+                action="https://formspree.io/f/maqdekbd"
+                method="POST"
+                className="space-y-3.5"
+                aria-label="Formulaire de contact"
               >
-                {t('form.send')} <ArrowUpRight className="w-4 h-4" />
-              </button>
-            </form>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  <div>
+                    <label
+                      htmlFor="contact-name"
+                      className="block text-[11px] font-mono text-muted uppercase tracking-wider mb-1"
+                    >
+                      {t('form.name')}
+                    </label>
+                    <input
+                      id="contact-name"
+                      type="text"
+                      name="name"
+                      required
+                      placeholder={t('form.namePlaceholder')}
+                      className="w-full bg-bg-elevated border border-line rounded-[12px] px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder:text-muted/50 outline-none transition-all focus:border-accent"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="contact-email"
+                      className="block text-[11px] font-mono text-muted uppercase tracking-wider mb-1"
+                    >
+                      {t('form.email')}
+                    </label>
+                    <input
+                      id="contact-email"
+                      type="email"
+                      name="email"
+                      required
+                      placeholder={t('form.emailPlaceholder')}
+                      className="w-full bg-bg-elevated border border-line rounded-[12px] px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder:text-muted/50 outline-none transition-all focus:border-accent"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="contact-subject"
+                    className="block text-[11px] font-mono text-muted uppercase tracking-wider mb-1"
+                  >
+                    {t('form.subject')}
+                  </label>
+                  <input
+                    id="contact-subject"
+                    type="text"
+                    name="subject"
+                    required
+                    placeholder={t('form.subjectPlaceholder')}
+                    className="w-full bg-bg-elevated border border-line rounded-[12px] px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder:text-muted/50 outline-none transition-all focus:border-accent"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="contact-message"
+                    className="block text-[11px] font-mono text-muted uppercase tracking-wider mb-1"
+                  >
+                    {t('form.message')}
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    rows={5}
+                    name="message"
+                    required
+                    placeholder={t('form.messagePlaceholder')}
+                    className="w-full bg-bg-elevated border border-line rounded-[12px] px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder:text-muted/50 outline-none transition-all focus:border-accent resize-none"
+                  />
+                </div>
+
+                <div className="pt-1">
+                  <button
+                    type="submit"
+                    className="font-handwritten text-lg px-7 py-2 rounded-full bg-white text-black hover:-translate-y-0.5 hover:shadow-glow-lift hover:bg-neutral-100 transition-all inline-flex items-center gap-2"
+                  >
+                    <span>{locale === 'en' ? 'send message' : 'envoyer'}</span>
+                    <Send className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </form>
+            </Reveal>
+          </div>
+
+          {/* Right: Portrait Card & Direct Links */}
+          <div className="md:col-span-5 space-y-3.5">
+            <Reveal delay={0.1}>
+              <Card radius="md" interactive={false} className="p-1 group overflow-hidden">
+                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[10px] bg-neutral-900 border border-line/40">
+                  <Image
+                    src="/ablafia.png"
+                    alt="Lafia Sabi Gado"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 360px"
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent pointer-events-none" />
+                  <div className="absolute bottom-3 left-3 right-3 sm:bottom-3.5 sm:left-3.5 sm:right-3.5">
+                    <h3 className="font-heading text-sm sm:text-base font-bold text-white tracking-tight">
+                      Lafia Sabi Gado
+                    </h3>
+                    <p className="text-[11px] text-muted font-mono mt-0.5 flex items-center gap-1">
+                      <MapPin className="w-3 h-3 text-accent shrink-0" />
+                      <span>{tHome('location')}</span>
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            </Reveal>
+
+            {/* Resume Download Pill */}
+            <Reveal delay={0.15}>
+              <a
+                href="https://kloo.me/resumelafia"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full p-2.5 rounded-[12px] bg-bg-elevated border border-line hover:border-accent/40 hover:bg-bg-soft transition-all flex items-center justify-between text-xs text-muted hover:text-white group"
+              >
+                <div className="flex items-center gap-2">
+                  <Download className="w-3.5 h-3.5 text-accent" />
+                  <span className="text-[11px] font-mono">{t('downloadCV')}</span>
+                </div>
+                <ArrowUpRight className="w-3.5 h-3.5 text-muted group-hover:text-white transition-colors" />
+              </a>
+            </Reveal>
+
+            {/* Direct Social Links Grid */}
+            <div className="grid grid-cols-2 gap-2">
+              {socialLinks.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-[12px] bg-bg-elevated border border-line hover:border-white/30 hover:bg-bg-soft transition-all flex items-center gap-2 text-xs text-muted hover:text-white group"
+                >
+                  <span className="text-accent group-hover:scale-110 transition-transform">
+                    {item.icon}
+                  </span>
+                  <span className="text-[11px] font-mono truncate">{item.name}</span>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
-
-export default Contact

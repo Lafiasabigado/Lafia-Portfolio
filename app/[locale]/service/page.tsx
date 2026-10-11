@@ -2,105 +2,135 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from '@/i18n/routing';
 import { services } from '@/lib/services';
-import * as LucideIcons from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { SectionTitle } from '@/components/ui/SectionTitle';
+import { Reveal } from '@/components/ui/Reveal';
+import { Code2, Rocket, ShoppingCart, Palette, Zap, Wrench, ArrowUpRight, Sparkles, Check } from 'lucide-react';
+import { useTranslations, useLocale } from 'next-intl';
 
-const ServicePage = () => {
-    const t = useTranslations('services');
-
-    const getIcon = (iconName: string) => {
-        const Icon = (LucideIcons as any)[iconName];
-        return Icon ? <Icon className="w-6 h-6" /> : null;
-    };
-
-    const serviceKeys = ['webdev', 'saas', 'ecommerce', 'uiux', 'webapps', 'maintenance'];
-
-    return (
-        <div className='py-32 min-h-screen bg-background text-white'>
-            <div className='max-w-5xl mx-auto px-6 md:px-10'>
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className='mb-12'
-                >
-                    <h1 className='text-3xl md:text-4xl font-heading font-bold text-white tracking-tight mb-3'>
-                        {t('title')}
-                    </h1>
-                    <p className='text-neutral-400 max-w-xl leading-relaxed'>
-                        {t.rich('subtitle', {
-                            nextjs: (chunks) => <span className='text-blue-500 font-medium'>{chunks}</span>,
-                            react: (chunks) => <span className='text-blue-500 font-medium'>{chunks}</span>,
-                            typescript: (chunks) => <span className='text-blue-500 font-medium'>{chunks}</span>,
-                        })}
-                    </p>
-                </motion.div>
-
-                {/* Services Grid */}
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-                    {services.map((service, idx) => {
-                        const key = serviceKeys[idx];
-                        return (
-                            <motion.div
-                                key={service.id}
-                                initial={{ opacity: 0, y: 15 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.4, delay: idx * 0.08 }}
-                                className='p-6 rounded-xl bg-white/[0.03] border border-white/5 hover:border-blue-500/30 transition-colors group'
-                            >
-                                <div className='w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-4 text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-colors'>
-                                    {getIcon(service.icon)}
-                                </div>
-                                <h3 className='text-base font-bold text-white mb-2'>
-                                    {t(`items.${key}.title`)}
-                                </h3>
-                                <p className='text-sm text-neutral-400 mb-4 leading-relaxed'>
-                                    {t(`items.${key}.description`)}
-                                </p>
-                                <ul className='space-y-1.5'>
-                                    {[0, 1, 2, 3].map((i) => {
-                                        const feature = t(`items.${key}.features.${i}`);
-                                        if (feature.includes(`items.${key}.features.${i}`)) return null;
-                                        return (
-                                            <li key={i} className='text-xs text-neutral-500 flex items-start gap-2'>
-                                                <span className='text-blue-500 mt-0.5'>•</span>
-                                                <span>{feature}</span>
-                                            </li>
-                                        );
-                                    })}
-                                </ul>
-                            </motion.div>
-                        );
-                    })}
-                </div>
-
-                {/* CTA */}
-                <motion.div
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.5 }}
-                    className='mt-16'
-                >
-                    <div className='bg-white/[0.03] border border-white/5 p-8 md:p-10 rounded-2xl text-center'>
-                        <h2 className='text-xl md:text-2xl font-heading font-bold text-white mb-3'>
-                            {t('cta.title')}
-                        </h2>
-                        <p className='text-neutral-400 mb-6 max-w-md mx-auto text-sm'>
-                            {t('cta.description')}
-                        </p>
-                        <a
-                            href='/contact'
-                            className='inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium text-sm transition-colors'
-                        >
-                            {t('cta.button')}
-                        </a>
-                    </div>
-                </motion.div>
-            </div>
-        </div>
-    );
+const iconMap: Record<string, React.ReactNode> = {
+  Code2: <Code2 className="w-4 h-4" />,
+  Rocket: <Rocket className="w-4 h-4" />,
+  ShoppingCart: <ShoppingCart className="w-4 h-4" />,
+  Palette: <Palette className="w-4 h-4" />,
+  Zap: <Zap className="w-4 h-4" />,
+  Wrench: <Wrench className="w-4 h-4" />,
 };
 
-export default ServicePage;
+const serviceKeys = ['webdev', 'saas', 'ecommerce', 'uiux', 'webapps', 'maintenance'] as const;
+
+export default function ServicePage() {
+  const t = useTranslations('services');
+  const locale = useLocale();
+
+  return (
+    <div className="pt-24 sm:pt-28 pb-24 relative">
+      <div className="container-custom">
+        {/* Header aligned with DA */}
+        <Reveal>
+          <div className="mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-line bg-white/[0.02] mb-3">
+              <Sparkles className="w-3 h-3 text-accent" />
+              <span className="text-[11px] font-mono text-fg-soft uppercase tracking-wider">
+                {locale === 'en' ? 'Offerings & Capabilities' : 'Expertise & Solutions'}
+              </span>
+            </div>
+
+            <SectionTitle
+              eyebrow="services"
+              title={
+                <span>
+                  {locale === 'en' ? 'Services & Engineering' : 'Services & Ingénierie'}
+                  <span className="text-accent">.</span>
+                </span>
+              }
+              subtitle={
+                locale === 'en'
+                  ? 'End-to-end web software engineering, SaaS architecture, and high-performance user interfaces tailored for growth.'
+                  : 'Développement d’applications web, architecture SaaS et interfaces utilisateur haute performance pensées pour l’impact.'
+              }
+            />
+          </div>
+        </Reveal>
+
+        {/* Services Grid: 2 columns matching homepage DA */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+          {services.map((service, idx) => {
+            const key = serviceKeys[idx];
+            const icon = iconMap[service.icon] || <Code2 className="w-4 h-4" />;
+
+            return (
+              <Reveal key={service.id} delay={idx * 0.05}>
+                <div className="h-full p-1.5 bg-card-ring rounded-[20px] shadow-glow hover:shadow-glow-lift transition-all duration-300 flex flex-col group">
+                  <div className="h-full p-4 sm:p-5 bg-bg-elevated rounded-[16px] border border-white/[0.04] flex flex-col justify-between">
+                    <div>
+                      {/* Icon & Index Badge */}
+                      <div className="flex items-center justify-between mb-3.5">
+                        <div className="w-8 h-8 rounded-[10px] bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all">
+                          {icon}
+                        </div>
+                        <span className="text-[10px] font-mono text-muted/70">
+                          0{idx + 1}
+                        </span>
+                      </div>
+
+                      {/* Title & Description */}
+                      <h3 className="font-heading text-base font-bold text-white mb-1.5 group-hover:text-accent transition-colors">
+                        {t(`items.${key}.title`)}
+                      </h3>
+                      <p className="text-xs text-fg-soft/80 leading-relaxed mb-4">
+                        {t(`items.${key}.description`)}
+                      </p>
+                    </div>
+
+                    {/* Features list */}
+                    <ul className="space-y-1.5 pt-3 border-t border-line/40">
+                      {[0, 1, 2, 3].map((i) => {
+                        const feature = t(`items.${key}.features.${i}`);
+                        if (feature.includes(`items.${key}.features.${i}`)) return null;
+                        return (
+                          <li key={i} className="text-[11px] text-muted flex items-start gap-2">
+                            <Check className="w-3 h-3 text-accent shrink-0 mt-0.5" />
+                            <span>{feature}</span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+
+        {/* CTA Banner matching homepage aesthetic */}
+        <Reveal delay={0.3}>
+          <div className="p-6 sm:p-8 rounded-[20px] bg-bg-elevated border border-line relative overflow-hidden text-center sm:text-left flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+            <div className="max-w-md">
+              <span className="text-[11px] font-mono text-accent uppercase tracking-wider block mb-1">
+                {locale === 'en' ? 'Start a project' : 'Démarrer un projet'}
+              </span>
+              <h2 className="text-xl sm:text-2xl font-heading font-bold text-white tracking-tight mb-2">
+                {t('cta.title')}
+              </h2>
+              <p className="text-xs sm:text-sm text-muted leading-relaxed">
+                {t('cta.description')}
+              </p>
+            </div>
+
+            <div className="shrink-0">
+              <Link
+                href="/contact"
+                className="font-handwritten text-lg px-7 py-2.5 rounded-full bg-white text-black hover:-translate-y-0.5 hover:shadow-glow-lift hover:bg-neutral-100 transition-all inline-flex items-center gap-2"
+              >
+                <span>{t('cta.button')}</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </div>
+  );
+}

@@ -17,9 +17,11 @@ export default function ProjectsGrid() {
   const [activeCategory, setActiveCategory] = useState<string>("Tous");
   const locale = useLocale();
 
-  const filteredProjects = activeCategory === "Tous"
-    ? projects
-    : projects.filter((p) => p.category === activeCategory);
+  const filteredProjects = (
+    activeCategory === "Tous"
+      ? projects
+      : projects.filter((p) => p.category === activeCategory)
+  ).slice(0, 6);
 
   return (
     <section id="projets" className="section-spacing relative scroll-mt-20">

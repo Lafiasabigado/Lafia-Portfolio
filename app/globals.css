@@ -5,36 +5,36 @@
 @layer base {
   :root {
     color-scheme: dark;
-    --bg: #000000;
-    --bg-elevated: #0A0A0B;
-    --bg-soft: #111113;
-    --fg: #FFFFFF;
-    --fg-soft: #E5E7EB;
-    --muted: #9CA3AF;
-    --line: rgba(255, 255, 255, 0.14);
-    --card-ring: #17181B;
-    --accent: #3B82F6;
-    --accent-strong: #2563EB;
-    --glow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 18px 50px rgba(37, 99, 235, 0.12);
-    --glow-lift: 0 0 0 1px rgba(255, 255, 255, 0.10), 0 24px 60px rgba(37, 99, 235, 0.20);
-    --r-sm: 10px;
-    --r-md: 18px;
-    --r-lg: 28px;
-    --r-xl: 36px;
+    --bg: #09090b;
+    --bg-elevated: #111114;
+    --bg-soft: #18181c;
+    --fg: #fafafa;
+    --fg-soft: #d4d4d8;
+    --muted: #a1a1aa;
+    --line: rgba(255, 255, 255, 0.08);
+    --card-ring: #16161a;
+    --accent: #3b82f6;
+    --accent-strong: #2563eb;
+    --glow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 10px 30px rgba(37, 99, 235, 0.08);
+    --glow-lift: 0 0 0 1px rgba(255, 255, 255, 0.12), 0 16px 40px rgba(37, 99, 235, 0.16);
+    --r-sm: 8px;
+    --r-md: 14px;
+    --r-lg: 20px;
+    --r-xl: 26px;
 
     /* Tailwind mapped tokens */
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
-    --card: 0 0% 4%;
-    --card-foreground: 0 0% 100%;
-    --popover: 0 0% 4%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 0%;
-    --secondary: 0 0% 7%;
-    --secondary-foreground: 0 0% 90%;
-    --border: 0 0% 100% / 0.14;
-    --input: 0 0% 100% / 0.14;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 12%;
+    --secondary-foreground: 0 0% 98%;
+    --border: 240 3.7% 14%;
+    --input: 240 3.7% 14%;
     --ring: 217 91% 60%;
   }
 
@@ -51,72 +51,85 @@
   body {
     background-color: var(--bg);
     color: var(--fg);
-    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
-    line-height: 1.6;
-    font-size: 16px;
+    font-family: var(--font-geist-sans), var(--font-inter), system-ui, -apple-system, sans-serif;
+    line-height: 1.55;
+    font-size: 15px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
+    /* Rich subtle dark background texture */
+    background-image: 
+      radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.07) 0%, transparent 55%),
+      radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 100% 100%, 24px 24px;
+    background-attachment: scroll, fixed;
   }
 
+  /* Compact, disciplined typography like melvynx.com */
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-outfit), var(--font-inter), sans-serif;
-    letter-spacing: -0.02em;
+    font-family: var(--font-pixel-grid), var(--font-outfit), sans-serif;
+    letter-spacing: -0.025em;
     color: var(--fg);
   }
 
   h1 {
-    font-size: clamp(2.25rem, 5vw, 4rem);
-    line-height: 1.08;
-    font-weight: 700;
-  }
-
-  h2 {
-    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-size: clamp(1.85rem, 3.4vw, 2.5rem);
     line-height: 1.15;
     font-weight: 700;
   }
 
-  h3 {
-    font-size: 1.375rem;
+  h2 {
+    font-size: clamp(1.35rem, 2.3vw, 1.75rem);
     line-height: 1.25;
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    line-height: 1.35;
     font-weight: 600;
   }
 }
 
-/* Base custom utility classes */
+.font-pixel-grid {
+  font-family: var(--font-pixel-grid), monospace;
+}
+
+.font-pixel-square {
+  font-family: var(--font-pixel-square), monospace;
+}
+
+.font-pixel-circle {
+  font-family: var(--font-pixel-circle), monospace;
+}
+
+/* Compact Container like melvynx (max-w-2xl to max-w-3xl) */
 .container-custom {
   width: 100%;
-  max-width: 1100px;
+  max-width: 760px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .container-custom {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 
+/* Tighter, natural section flow (no huge empty scrolling void) */
 .section-spacing {
-  padding-top: 120px;
-  padding-bottom: 120px;
-}
-
-@media (max-width: 1024px) {
-  .section-spacing {
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
+  padding-top: 48px;
+  padding-bottom: 48px;
 }
 
 @media (max-width: 768px) {
   .section-spacing {
-    padding-top: 64px;
-    padding-bottom: 64px;
+    padding-top: 36px;
+    padding-bottom: 36px;
   }
 }
 
@@ -124,12 +137,13 @@
   font-family: var(--font-caveat), cursive;
 }
 
+/* Thick ring card with tight padding */
 .card-thick {
   background-color: var(--card-ring);
-  padding: 8px;
+  padding: 6px;
   border-radius: var(--r-lg);
   box-shadow: var(--glow);
-  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .card-thick:hover {
@@ -138,13 +152,13 @@
 
 .card-thick-inner {
   background-color: var(--bg-elevated);
-  border-radius: calc(var(--r-lg) - 6px);
+  border-radius: calc(var(--r-lg) - 4px);
   overflow: hidden;
   height: 100%;
   width: 100%;
 }
 
-/* Hide scrollbars when needed */
+/* Hide scrollbars */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

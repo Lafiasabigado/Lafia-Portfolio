@@ -8,7 +8,7 @@ import Contact from "@/app/components/home/Contact";
 
 export default function Home() {
   return (
-    <div className="relative pb-16 bg-black text-white selection:bg-white/20">
+    <div className="relative pb-8 bg-transparent text-white selection:bg-white/20">
       <Hero />
       <ProjectMarquee />
       <AboutSection />

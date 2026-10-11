@@ -11,8 +11,12 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)", "sans-serif"],
-        heading: ["var(--font-outfit)", "var(--font-inter)", "sans-serif"],
+        sans: ["var(--font-geist-sans)", "var(--font-inter)", "sans-serif"],
+        heading: ["var(--font-pixel-grid)", "var(--font-outfit)", "sans-serif"],
+        "pixel-grid": ["var(--font-pixel-grid)", "monospace"],
+        "pixel-square": ["var(--font-pixel-square)", "monospace"],
+        "pixel-circle": ["var(--font-pixel-circle)", "monospace"],
+        mono: ["var(--font-geist-mono)", "monospace"],
         handwritten: ["var(--font-caveat)", "cursive"],
       },
       colors: {

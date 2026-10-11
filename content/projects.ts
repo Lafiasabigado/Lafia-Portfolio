@@ -86,58 +86,16 @@ export const projects: Project[] = [
     }
   },
   {
-    slug: "fonika-translate",
-    name: "Fonika Translate",
-    year: "2025",
-    category: "Mobile",
-    tagline: "Package Flutter pour traduction, TTS & STT en langues africaines",
-    tagline_en: "Flutter package for translation, TTS & STT in African languages",
-    description: "Package open-source publié sur pub.dev facilitant l'intégration des fonctionnalités de traduction, synthèse vocale (TTS) et reconnaissance vocale (STT) pour les applications mobiles en Afrique.",
-    description_en: "Open-source package published on pub.dev facilitating the integration of translation, TTS, and STT features in African mobile apps.",
-    stack: ["Flutter", "Dart", "REST API", "Pub.dev", "Audio Processing"],
-    cover: "/projects/ballamas.png", // fallback placeholder
-    links: {
-      repo: "https://github.com/Lafiasabigado",
-    },
-    featuredInHero: true,
-    sections: {
-      context: {
-        fr: "Faciliter la vie des développeurs mobiles construisant des applications pour le marché africain.",
-        en: "Empowering mobile developers building applications for the African market."
-      },
-      problem: {
-        fr: "Intégrer la voix et la traduction dans les langues locales demandait trop de code rébarbatif et de configurations spécifiques.",
-        en: "Integrating voice and local language translation previously required repetitive boilerplate and custom configurations."
-      },
-      solution: {
-        fr: "Un package Dart propre avec typage strict, gestion unifiée des erreurs réseau et streaming audio fluide.",
-        en: "A clean Dart package with strict typing, unified network error handling, and fluid audio streaming."
-      },
-      features: {
-        fr: [
-          "API simplifiée pour TTS et reconnaissance vocale",
-          "Documentation complète et exemples prêts à l'emploi",
-          "Gestion optimisée de la mémoire sur appareils d'entrée de gamme"
-        ],
-        en: [
-          "Simplified API for TTS and speech recognition",
-          "Complete documentation and ready-to-use examples",
-          "Optimized memory footprint on entry-level devices"
-        ]
-      }
-    }
-  },
-  {
     slug: "securio",
     name: "Securio",
-    year: "2025",
+    year: "2026",
     category: "Outils & CLI",
     tagline: "Audit de sécurité web passif (Web App & CLI Node/Python)",
     tagline_en: "Passive web security audit suite (Web App & Node/Python CLI)",
     description: "Suite complète d'audit de sécurité passif comprenant une application web, une CLI Node.js et une CLI Python au sein d'un monorepo pour inspecter en un clic les en-têtes de sécurité, certificats SSL et vulnérabilités de configuration.",
     description_en: "Complete passive security audit suite featuring a web app, Node.js CLI, and Python CLI in a monorepo to inspect security headers, SSL certificates, and config vulnerabilities.",
     stack: ["TypeScript", "Node.js", "Python", "Next.js", "Tailwind CSS"],
-    cover: "/projects/doczi.png", // fallback placeholder
+    cover: "/projects/securio.png", // fallback placeholder
     links: {
       repo: "https://github.com/Lafiasabigado",
     },
@@ -168,62 +126,6 @@ export const projects: Project[] = [
           "Fast CLI easily integrated into CI/CD pipelines",
           "Clear A+ to F grading with concrete recommendations"
         ]
-      }
-    }
-  },
-  {
-    slug: "ai-funnel-builder",
-    name: "AI Funnel Builder",
-    year: "2025",
-    category: "IA",
-    tagline: "SaaS pages de vente, funnels WhatsApp & Mobile Money",
-    tagline_en: "SaaS landing pages, WhatsApp funnels & Mobile Money",
-    description: "Plateforme SaaS conçue pour le commerce ouest-africain : génération par IA de pages de vente à forte conversion, automatisation des funnels de redirection vers WhatsApp et encaissement Mobile Money simplifié.",
-    description_en: "SaaS platform crafted for West African e-commerce: AI generation of high-converting landing pages, WhatsApp funnels, and seamless Mobile Money checkout.",
-    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "OpenAI API", "FedaPay / MTN MoMo"],
-    cover: "/projects/brainwritor.png", // fallback placeholder
-    links: {
-      repo: "https://github.com/Lafiasabigado",
-    },
-    featuredInHero: true,
-    sections: {
-      context: {
-        fr: "En Afrique de l'Ouest, l'immense majorité des ventes en ligne se conclut directement sur WhatsApp et via Mobile Money.",
-        en: "In West Africa, the overwhelming majority of digital sales happen directly through WhatsApp and Mobile Money."
-      },
-      problem: {
-        fr: "Créer une landing page adaptée, rédiger du texte percutant et relier le formulaire au bon flux WhatsApp prend des heures aux marchands.",
-        en: "Creating tailored landing pages, writing persuasive copy, and hooking forms into WhatsApp workflows takes hours for local merchants."
-      },
-      solution: {
-        fr: "Un constructeur intelligent qui génère la page, la copy localisée et les boutons d'appel à l'action WhatsApp en moins de deux minutes.",
-        en: "An intelligent builder that generates the page, localized copy, and WhatsApp conversion triggers in under two minutes."
-      }
-    }
-  },
-  {
-    slug: "grace-branco",
-    name: "Grâce Branco Portfolio",
-    year: "2025",
-    category: "Web Apps",
-    tagline: "Site portfolio moderne et épuré pour cliente créative",
-    tagline_en: "Modern and sleek portfolio website for creative client",
-    description: "Conception et développement sur-mesure d'un site portfolio interactif, optimisé pour le référencement et la mise en valeur de créations visuelles.",
-    description_en: "Custom design and development of an interactive portfolio website, optimized for SEO and creative visual showcases.",
-    stack: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
-    cover: "/projects/freelanceprop.png", // fallback placeholder
-    links: {
-      repo: "https://github.com/Lafiasabigado",
-    },
-    featuredInHero: true,
-    sections: {
-      context: {
-        fr: "Projet client demandant une direction artistique élégante et des animations soignées.",
-        en: "Client project requiring elegant art direction and refined micro-interactions."
-      },
-      solution: {
-        fr: "Un portfolio fluide avec chargement optimisé des visuels haute définition et mise en page responsive.",
-        en: "A fluid portfolio with optimized high-resolution asset delivery and responsive layout."
       }
     }
   },
@@ -333,6 +235,117 @@ export const projects: Project[] = [
       repo: "https://github.com/Lafiasabigado/localshare.git",
     },
     featuredInHero: false,
+  },
+  {
+    slug: "adtechgroup",
+    name: "AdtechGroup",
+    year: "2026",
+    category: "Web Apps",
+    tagline: "Site web de l'entreprise AdtechGroup",
+    tagline_en: "AdtechGroup company website",
+    description: "Site web pour l'entreprise AdtechGroup : vitrine d'activités, catalogue de produits et blog d'actualités.",
+    description_en: "Website for AdtechGroup company: showcase of activities, products catalog, and news blog.",
+    stack: ["React", "Next.js", "Tailwind CSS"],
+    cover: "/projects/adtechgroup.png",
+    links: {
+      demo: "https://adtechgroup.vercel.app/",
+      repo: "https://github.com/Lafiasabigado/adtechgroup.git",
+    },
+    featuredInHero: false,
+  },
+  {
+    slug: "aicbenin",
+    name: "AIC-Bénin",
+    year: "2026",
+    category: "Web Apps",
+    tagline: "Site web de l'entreprise AIC-Bénin",
+    tagline_en: "AIC-Bénin company website",
+    description: "Site web pour l'entreprise AIC-Bénin : vitrine d'activités, catalogue de produits et blog d'actualités.",
+    description_en: "Website for AIC-Bénin company: showcase of activities, products catalog, and news blog.",
+    stack: ["React", "Next.js", "Tailwind CSS"],
+    cover: "/projects/aicbenin.png",
+    links: {
+      demo: "https://aicbenin.vercel.app/",
+      repo: "https://github.com/Lafiasabigado/aicbenin.git",
+    },
+    featuredInHero: false,
+  },
+  {
+    slug: "ballamas",
+    name: "Ballamas",
+    year: "2026",
+    category: "Web Apps",
+    tagline: "Site e-commerce de vente de vêtements",
+    tagline_en: "E-commerce website for selling clothes",
+    description: "Site e-commerce pour la vente de vêtements : vitrine d'activités, catalogue de produits et blog d'actualités.",
+    description_en: "E-commerce website for selling clothes: showcase of activities, products catalog, and news blog.",
+    stack: ["React", "Next.js", "Tailwind CSS"],
+    cover: "/projects/ballamas.png",
+    links: {
+      demo: "https://ballamas.vercel.app/",
+      repo: "https://github.com/Lafiasabigado/ballamas.git",
+    },
+    featuredInHero: false,
+  },
+  {
+    slug: "apex-food",
+    name: "Apex Food",
+    year: "2024",
+    category: "Web Apps",
+    tagline: "Site de restaurant avec vente en ligne",
+    tagline_en: "Restaurant website with online selling",
+    description: "Site de restaurant avec vente en ligne : vitrine d'activités, catalogue de produits et blog d'actualités.",
+    description_en: "Restaurant website with online selling: showcase of activities, products catalog, and news blog.",
+    stack: ["React", "Next.js", "Tailwind CSS"],
+    cover: "/projects/apex-food.png", // fallback placeholder
+    links: {
+      repo: "https://github.com/Lafiasabigado",
+    },
+    featuredInHero: true,
+    sections: {
+      context: {
+        fr: "Au Bénin, l'immense majorité des ventes en ligne se conclut directement sur WhatsApp et via Mobile Money.",
+        en: "In Benin, the overwhelming majority of digital sales happen directly through WhatsApp and Mobile Money."
+      },
+      problem: {
+        fr: "Créer une landing page adaptée, rédiger du texte percutant et relier le formulaire au bon flux WhatsApp prend des heures aux marchands.",
+        en: "Creating tailored landing pages, writing persuasive copy, and hooking forms into WhatsApp workflows takes hours for local merchants."
+      },
+      solution: {
+        fr: "Un constructeur intelligent qui génère la page, la copy localisée et les boutons d'appel à l'action WhatsApp en moins de deux minutes.",
+        en: "An intelligent builder that generates the page, localized copy, and WhatsApp conversion triggers in under two minutes."
+      }
+    }
+  },
+  {
+    slug: "apex-football",
+    name: "Apex Football",
+    year: "2024",
+    category: "Web Apps",
+    tagline: "Site de l'agence Apex Foot, chargé de la gestion des footballeurs",
+    tagline_en: "Website of the Apex Foot agency, responsible for the management of footballers",
+    description: "Site de l'agence Apex Foot, chargé de la gestion des footballeurs : vitrine d'activités, catalogue de produits et blog d'actualités.",
+    description_en: "Website of the Apex Foot agency, responsible for the management of footballers: showcase of activities, products catalog, and news blog.",
+    stack: ["React", "Next.js", "Tailwind CSS"],
+    cover: "/projects/apexfootball.png",
+    links: {
+      repo: "https://github.com/Lafiasabigado",
+    },
+    featuredInHero: true,
+    sections: {
+      context: {
+        fr: "La gestion des footballeurs est une tâche complexe qui nécessite beaucoup de temps et d'efforts.",
+        en: "In the world of football, player management is a complex task that requires a lot of time and effort."
+      },
+      problem: {
+        fr: "Créer une landing page de l'agence, mettre en avant les joueurs, leurs performances, leurs contrats et leurs actualités prend des heures aux agents",
+        en: "Creating landing pages for the agency, highlighting players, their performances, their contracts and their news takes hours for agents."
+      },
+      solution: {
+        fr: "Site web de l'agence Apex Foot, vitrine d'activités, catalogue de produits et blog d'actualités.",
+        en: "Website of the Apex Foot agency, showcase of activities, products catalog, and news blog."
+      }
+    }
   },
   {
     slug: "foothub",

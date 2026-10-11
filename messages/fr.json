@@ -19,9 +19,9 @@
     },
     "about": {
         "title": "À Propos de moi",
-        "intro": "Diplômé en informatique de gestion, je ne me contente pas d'écrire du code. Je façonne des expériences numériques. Pour moi, l'expérience utilisateur (UX) n'est jamais une option : une interface web doit être aussi intuitive et fluide qu'elle est esthétique.",
-        "education": "Fasciné par l'Intelligence Artificielle, je repousse constamment les limites de cette technologie. Je décortique chaque nouveau modèle LLM qui sort sur le marché et je prends un réel plaisir à vulgariser et partager ces découvertes avec ma communauté tech.",
-        "passion": "Mais la vie, ce n'est pas que des algorithmes. Grand fan d'animés et inconditionnel de football, je me ressource en écoutant du rap (FR comme US). Bref : un développeur passionné, mais surtout un mec chill toujours prêt pour le prochain défi.",
+        "intro": "Je construis des choses. Du code, surtout. Des produits, des idées parfois un peu ambitieuses, et quelques bugs qui auraient pu attendre le lendemain.",
+        "education": "Je m’intéresse au développement logiciel, à l’intelligence artificielle et à tout ce qui permet de transformer une idée en quelque chose de concret, d’utile et de bien conçu. J’aime explorer, expérimenter et comprendre comment les choses fonctionnent, quitte à toucher à plusieurs domaines en même temps.",
+        "passion": "Quand je ne code pas, je regarde probablement un animé, je parle football, je découvre de nouveaux outils ou je réfléchis à un projet que je n’aurais probablement pas dû commencer à minuit.",
         "cta": "Prêt à donner vie à vos idées ? N'hésitez pas à me contacter !",
         "downloadCV": "Télécharger CV",
         "whatsapp": "WhatsApp",
@@ -160,19 +160,21 @@
             "see_all": "Voir tous les projets"
         },
         "about": {
+            "eyebrow": "à propos",
             "title_part1": "Plus que du",
             "title_part2": "code.",
-            "p1": "Je suis un développeur passionné basé au Bénin, obsédé par la création d'expériences numériques vivantes. Mon approche combine précision technique et direction artistique.",
-            "p2": "Je crois qu'un site web ne doit pas seulement être fonctionnel ; il doit être mémorable. Qu'il s'agisse d'une plateforme SaaS ou d'un portfolio, je vise l'effet \"WOW\".",
+            "p1": "Je construis des choses. Du code, surtout. Des produits, des idées parfois un peu ambitieuses, et quelques bugs qui auraient pu attendre le lendemain.",
+            "p2": "Je m’intéresse au développement logiciel, à l’intelligence artificielle et à tout ce qui permet de transformer une idée en quelque chose de concret, d’utile et de bien conçu. J’aime explorer, expérimenter et comprendre comment les choses fonctionnent, quitte à toucher à plusieurs domaines en même temps.",
+            "p3": "Quand je ne code pas, je regarde probablement un animé, je parle football, je découvre de nouveaux outils ou je réfléchis à un projet que je n’aurais probablement pas dû commencer à minuit.",
             "personal": {
                 "eyebrow": "Qui suis-je",
                 "title": "Plus qu'un simple développeur.",
                 "label1": "Background",
-                "p1": "Diplômé en informatique de gestion, je ne me contente pas d'écrire du code. Je façonne des expériences. Pour moi, l'UX n'est jamais une option : une interface doit être aussi intuitive qu'esthétique.",
+                "p1": "Je construis des choses. Du code, surtout. Des produits, des idées parfois un peu ambitieuses, et quelques bugs qui auraient pu attendre le lendemain.",
                 "label2": "Veille Tech",
-                "p2": "Fasciné par l'IA, je repousse constamment les limites de cette technologie. Je décortique chaque nouveau modèle LLM et je partage mes découvertes avec ma communauté.",
+                "p2": "Je m’intéresse au développement logiciel, à l’intelligence artificielle et à tout ce qui permet de transformer une idée en quelque chose de concret, d’utile et de bien conçu.",
                 "label3": "Lifestyle",
-                "p3": "Fan d'animés, de football et de rap (FR & US). Bref : un développeur passionné, mais surtout un mec chill toujours prêt pour le prochain défi."
+                "p3": "Quand je ne code pas, je regarde probablement un animé, je parle football, je découvre de nouveaux outils ou je réfléchis à un projet que je n’aurais probablement pas dû commencer à minuit."
             },
             "stats": {
                 "experience": "Années d'Expérience",

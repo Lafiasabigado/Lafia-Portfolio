@@ -24,7 +24,6 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Handle escape key and focus trap for mobile menu
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && mobileMenuOpen) {
@@ -54,17 +53,17 @@ export default function Nav() {
     {
       name: 'GitHub',
       href: 'https://github.com/Lafiasabigado',
-      icon: <FaGithub className="w-4 h-4" />,
+      icon: <FaGithub className="w-3.5 h-3.5" />,
     },
     {
       name: 'LinkedIn',
       href: 'https://linkedin.com/in/lafia-sabi-gado-03910a292/',
-      icon: <FaLinkedinIn className="w-4 h-4" />,
+      icon: <FaLinkedinIn className="w-3.5 h-3.5" />,
     },
     {
       name: 'X',
       href: 'https://x.com/lafiasabigado',
-      icon: <FaXTwitter className="w-4 h-4" />,
+      icon: <FaXTwitter className="w-3.5 h-3.5" />,
     },
   ];
 
@@ -72,23 +71,23 @@ export default function Nav() {
     <>
       <header
         className={cn(
-          "sticky top-0 left-0 right-0 z-40 h-[72px] transition-all duration-300",
+          "sticky top-0 left-0 right-0 z-40 h-[60px] transition-all duration-300",
           scrolled
-            ? "bg-black/75 backdrop-blur-md border-b border-line shadow-sm"
+            ? "bg-black/80 backdrop-blur-md border-b border-line shadow-xs"
             : "bg-transparent border-b border-transparent"
         )}
       >
         <div className="container-custom h-full flex items-center justify-between">
           {/* Logo & Desktop Nav */}
-          <div className="flex items-center gap-10">
+          <div className="flex items-center gap-7">
             <Link
               href="/"
-              className="text-xl font-heading font-bold text-white tracking-tight flex items-center hover:opacity-90 transition-opacity"
+              className="font-pixel-grid text-sm sm:text-base uppercase tracking-tight text-white hover:opacity-90 transition-opacity flex items-center"
             >
-              Lafia<span className="text-accent text-2xl leading-none">.</span>
+              LAFIA<span className="text-accent font-pixel-grid">.</span>
             </Link>
 
-            <nav className="hidden md:flex items-center gap-8">
+            <nav className="hidden md:flex items-center gap-6">
               {navItems.map((item) => {
                 const isActive = pathname === item.route;
                 return (
@@ -96,13 +95,13 @@ export default function Nav() {
                     key={item.name}
                     href={item.href}
                     className={cn(
-                      "text-[15px] font-medium transition-colors relative py-1.5 scroll-smooth",
-                      isActive ? "text-white" : "text-muted hover:text-white"
+                      "text-xs font-medium transition-colors relative py-1",
+                      isActive ? "text-white font-semibold" : "text-muted hover:text-white"
                     )}
                   >
                     {item.name}
                     {isActive && (
-                      <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-accent" />
+                      <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-accent" />
                     )}
                   </Link>
                 );
@@ -111,15 +110,15 @@ export default function Nav() {
           </div>
 
           {/* Right side: i18n & Socials */}
-          <div className="flex items-center gap-4">
-            <div className="hidden sm:flex items-center gap-3 pr-2 border-r border-line">
+          <div className="flex items-center gap-3">
+            <div className="hidden sm:flex items-center gap-2 pr-2 border-r border-line">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-muted hover:text-white transition-colors"
+                  className="p-1.5 text-muted hover:text-white transition-colors"
                   aria-label={social.name}
                 >
                   {social.icon}
@@ -133,11 +132,11 @@ export default function Nav() {
             <div className="md:hidden">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="text-white p-2 rounded-lg hover:bg-white/[0.05] transition-colors"
+                className="text-white p-1.5 rounded-lg hover:bg-white/[0.05] transition-colors"
                 aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
                 aria-expanded={mobileMenuOpen}
               >
-                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
               </button>
             </div>
           </div>
@@ -149,39 +148,39 @@ export default function Nav() {
         {mobileMenuOpen && (
           <motion.div
             ref={menuRef}
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-50 bg-black flex flex-col justify-between p-8 md:hidden"
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-50 bg-black flex flex-col justify-between p-6 md:hidden"
             role="dialog"
             aria-modal="true"
           >
             <div>
-              <div className="flex items-center justify-between pb-8 border-b border-line">
+              <div className="flex items-center justify-between pb-6 border-b border-line">
                 <Link
                   href="/"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-2xl font-heading font-bold text-white tracking-tight"
+                  className="text-xl font-heading font-bold text-white tracking-tight"
                 >
                   Lafia<span className="text-accent">.</span>
                 </Link>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-white p-2 rounded-lg hover:bg-white/[0.05]"
+                  className="text-white p-1.5 rounded-lg hover:bg-white/[0.05]"
                   aria-label="Fermer le menu"
                 >
-                  <X size={28} />
+                  <X size={24} />
                 </button>
               </div>
 
-              <nav className="flex flex-col gap-6 mt-12">
+              <nav className="flex flex-col gap-4 mt-8">
                 {navItems.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-[28px] font-heading font-bold text-fg-soft hover:text-white hover:translate-x-2 transition-transform duration-200"
+                    className="text-2xl font-heading font-bold text-fg-soft hover:text-white transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -189,15 +188,15 @@ export default function Nav() {
               </nav>
             </div>
 
-            <div className="pt-8 border-t border-line flex items-center justify-between">
-              <div className="flex items-center gap-4">
+            <div className="pt-6 border-t border-line flex items-center justify-between">
+              <div className="flex items-center gap-3">
                 {socialLinks.map((social) => (
                   <a
                     key={social.name}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-muted hover:text-white p-2"
+                    className="text-muted hover:text-white p-1.5"
                     aria-label={social.name}
                   >
                     {social.icon}

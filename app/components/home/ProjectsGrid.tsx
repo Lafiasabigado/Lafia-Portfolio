@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { motion, AnimatePresence } from 'framer-motion';
-import { projects, Project } from '@/content/projects';
+import { projects } from '@/content/projects';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { Badge } from '@/components/ui/Badge';
 import { ArrowUpRight } from 'lucide-react';
@@ -22,20 +22,20 @@ export default function ProjectsGrid() {
     : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="projets" className="section-spacing relative scroll-mt-24">
+    <section id="projets" className="section-spacing relative scroll-mt-20">
       <div className="container-custom">
         <SectionTitle
           eyebrow="projets"
-          title="Là où atterrit tout ce que je construis."
+          title={locale === 'en' ? "What I've built." : "Ce que j'ai construit."}
           subtitle={
             locale === 'en'
-              ? "Where everything I build ends up — the best alongside the experiments."
-              : "Là où atterrit tout ce que je construis, le meilleur comme le moins bon."
+              ? "A selection of web apps, mobile tools, and AI prototypes."
+              : "Une sélection d'applications web, outils mobiles et prototypes d'IA."
           }
         />
 
         {/* Category Filter Pills */}
-        <div className="flex flex-wrap gap-2.5 mb-12" role="tablist" aria-label="Filtrer les projets">
+        <div className="flex flex-wrap gap-2 mb-6" role="tablist" aria-label="Filtrer les projets">
           {categories.map((cat) => {
             const isActive = activeCategory === cat;
             return (
@@ -45,7 +45,7 @@ export default function ProjectsGrid() {
                 aria-selected={isActive}
                 onClick={() => setActiveCategory(cat)}
                 className={cn(
-                  "relative px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider transition-colors duration-200 outline-none focus-visible:outline-2 focus-visible:outline-accent",
+                  "relative px-3 py-1 rounded-full text-[11px] font-mono uppercase tracking-wider transition-colors duration-200 outline-none focus-visible:outline-2 focus-visible:outline-accent",
                   isActive
                     ? "text-black font-semibold"
                     : "text-muted hover:text-white border border-line bg-white/[0.02]"
@@ -64,10 +64,10 @@ export default function ProjectsGrid() {
           })}
         </div>
 
-        {/* Projects Grid */}
+        {/* Projects Grid: 2 columns in compact container */}
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4"
         >
           <AnimatePresence>
             {filteredProjects.map((project) => {
@@ -80,14 +80,14 @@ export default function ProjectsGrid() {
                 <motion.div
                   key={project.slug}
                   layout
-                  initial={{ opacity: 0, scale: 0.96 }}
+                  initial={{ opacity: 0, scale: 0.97 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  exit={{ opacity: 0, scale: 0.97 }}
+                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                   className="group flex flex-col h-full"
                 >
-                  <div className="flex flex-col h-full p-2 bg-card-ring rounded-[28px] shadow-glow hover:shadow-glow-lift transition-all duration-300">
-                    <div className="flex flex-col h-full bg-bg-elevated rounded-[22px] overflow-hidden border border-white/[0.04]">
+                  <div className="flex flex-col h-full p-1.5 bg-card-ring rounded-[20px] shadow-glow hover:shadow-glow-lift transition-all duration-300">
+                    <div className="flex flex-col h-full bg-bg-elevated rounded-[16px] overflow-hidden border border-white/[0.04]">
                       {/* Image header - 16/10 aspect ratio */}
                       <div className="relative aspect-[16/10] w-full bg-neutral-900 overflow-hidden border-b border-line/40">
                         {project.cover ? (
@@ -95,52 +95,52 @@ export default function ProjectsGrid() {
                             src={project.cover}
                             alt={project.name}
                             fill
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            sizes="(max-width: 640px) 100vw, 360px"
                             className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                           />
                         ) : (
-                          <div className="w-full h-full bg-gradient-to-br from-neutral-800 to-black flex items-center justify-center p-4">
-                            <span className="font-heading text-2xl font-bold text-muted/60">
+                          <div className="w-full h-full bg-gradient-to-br from-neutral-800 to-black flex items-center justify-center p-3">
+                            <span className="font-heading text-lg font-bold text-muted/60">
                               {project.name}
                             </span>
                           </div>
                         )}
 
                         {/* Top pastille badge with initial */}
-                        <div className="absolute top-3 left-3 w-8 h-8 rounded-full bg-black/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-xs font-bold font-mono text-white">
+                        <div className="absolute top-2.5 left-2.5 w-6 h-6 rounded-full bg-black/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-[10px] font-bold font-mono text-white">
                           {project.name.charAt(0)}
                         </div>
 
                         {/* Year badge */}
-                        <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/10 text-[11px] font-mono text-muted">
+                        <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-black/80 backdrop-blur-md border border-white/10 text-[10px] font-mono text-muted">
                           {project.year}
                         </div>
                       </div>
 
                       {/* Card Content */}
-                      <div className="p-6 flex flex-col justify-between flex-1">
+                      <div className="p-4 sm:p-5 flex flex-col justify-between flex-1">
                         <div>
-                          <h3 className="font-heading text-xl font-bold text-white mb-1 group-hover:text-accent transition-colors">
+                          <h3 className="font-heading text-base font-bold text-white mb-0.5 group-hover:text-accent transition-colors">
                             {project.name}
                           </h3>
-                          <p className="text-xs font-mono text-muted mb-3 line-clamp-1">
+                          <p className="text-[11px] font-mono text-muted mb-2 line-clamp-1">
                             {tagline}
                           </p>
-                          <p className="text-sm text-fg-soft/80 line-clamp-3 leading-relaxed mb-6">
+                          <p className="text-xs text-fg-soft/80 line-clamp-2 leading-relaxed mb-4">
                             {description}
                           </p>
                         </div>
 
                         <div>
                           {/* Tags: 3 + "+N" */}
-                          <div className="flex flex-wrap items-center gap-1.5 mb-5">
+                          <div className="flex flex-wrap items-center gap-1 mb-3.5">
                             {displayedTags.map((tag) => (
-                              <Badge key={tag} className="text-[11px] py-0.5 px-2">
+                              <Badge key={tag} className="text-[10px] py-0.5 px-1.5">
                                 {tag}
                               </Badge>
                             ))}
                             {remainingCount > 0 && (
-                              <span className="text-[11px] text-muted font-mono px-1.5">
+                              <span className="text-[10px] text-muted font-mono px-1">
                                 +{remainingCount}
                               </span>
                             )}
@@ -149,10 +149,10 @@ export default function ProjectsGrid() {
                           {/* Link to Case Study */}
                           <Link
                             href={`/projects/${project.slug}`}
-                            className="inline-flex items-center gap-1.5 text-xs font-medium text-white hover:text-accent transition-colors"
+                            className="inline-flex items-center gap-1 text-xs font-medium text-white hover:text-accent transition-colors"
                           >
                             <span>{locale === 'en' ? 'Read case study' : 'Lire l’étude de cas'}</span>
-                            <ArrowUpRight className="w-3.5 h-3.5" />
+                            <ArrowUpRight className="w-3 h-3" />
                           </Link>
                         </div>
                       </div>

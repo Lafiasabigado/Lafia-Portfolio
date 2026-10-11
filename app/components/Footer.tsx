@@ -2,7 +2,6 @@
 
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
-import { FaGithub, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6';
 
 export default function Footer() {
   const t = useTranslations('footer');
@@ -23,30 +22,30 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative border-t border-line mt-24 z-10 bg-black">
-      <div className="container-custom py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 mb-12">
-          {/* Zone 1: Identity & quote */}
-          <div className="space-y-3">
-            <Link href="/" className="text-xl font-heading font-bold text-white tracking-tight inline-block">
-              Lafia<span className="text-accent text-2xl leading-none">.</span>
+    <footer className="relative border-t border-line mt-12 z-10 bg-black/40">
+      <div className="container-custom py-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8 text-xs">
+          {/* Identity & quote */}
+          <div className="space-y-2">
+            <Link href="/" className="text-base font-heading font-bold text-white tracking-tight inline-block">
+              Lafia<span className="text-accent text-lg leading-none">.</span>
             </Link>
-            <p className="text-muted text-sm max-w-xs leading-relaxed font-sans">
+            <p className="text-muted text-xs leading-relaxed max-w-xs font-sans">
               {t('craftedWith')}
             </p>
           </div>
 
-          {/* Zone 2: Navigation Links */}
-          <div className="space-y-3 md:text-center">
-            <p className="text-xs uppercase tracking-wider text-fg-soft font-mono">
+          {/* Navigation Links */}
+          <div className="space-y-2 sm:text-center">
+            <p className="text-[11px] uppercase tracking-wider text-fg-soft font-mono">
               {t('navigation')}
             </p>
-            <ul className="space-y-2">
+            <ul className="space-y-1">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-muted hover:text-white transition-colors"
+                    className="text-xs text-muted hover:text-white transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -55,19 +54,19 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Zone 3: Social Links */}
-          <div className="space-y-3 md:text-right">
-            <p className="text-xs uppercase tracking-wider text-fg-soft font-mono">
+          {/* Social Links */}
+          <div className="space-y-2 sm:text-right">
+            <p className="text-[11px] uppercase tracking-wider text-fg-soft font-mono">
               {t('connect')}
             </p>
-            <ul className="space-y-2">
+            <ul className="space-y-1">
               {socialLinks.map((social) => (
                 <li key={social.name}>
                   <a
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-muted hover:text-white transition-colors"
+                    className="text-xs text-muted hover:text-white transition-colors"
                   >
                     {social.name}
                   </a>
@@ -78,9 +77,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom copyright */}
-        <div className="pt-8 border-t border-line/60 flex flex-col sm:flex-row items-center justify-between text-xs text-muted gap-4">
+        <div className="pt-6 border-t border-line/40 flex flex-col sm:flex-row items-center justify-between text-[11px] text-muted gap-2">
           <p>© {currentYear} Lafia Sabi Gado. {t('rights')}</p>
-          <p className="font-handwritten text-base text-muted/80">
+          <p className="font-handwritten text-sm text-muted/70">
             {t('signature')}
           </p>
         </div>

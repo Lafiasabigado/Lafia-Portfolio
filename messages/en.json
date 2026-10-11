@@ -19,9 +19,9 @@
     },
     "about": {
         "title": "About Me",
-        "intro": "Armed with a degree in Management Information Systems, I don't just write code—I craft digital experiences. To me, User Experience (UX) is never an afterthought: a web interface must be as intuitive and fluid as it is beautiful.",
-        "education": "Fascinated by Artificial Intelligence, I constantly push the boundaries of this technology. I analyze every new LLM release on the market and take genuine pleasure in demystifying and sharing these breakthroughs with my tech community.",
-        "passion": "But life isn't just about algorithms. I'm a massive anime enthusiast and a die-hard football fan, and I unwind by listening to both French and US rap. Simply put: a passionate developer, but mostly a chill guy always ready for the next challenge.",
+        "intro": "Software, AI, and a lot of curiosity.",
+        "education": "I like building things, exploring ideas, breaking stuff, figuring out why they broke, and turning experiments into products people can actually use. I'm interested in software engineering, artificial intelligence, and the endless possibilities at the intersection of both.",
+        "passion": "Outside of code, you'll probably find me watching anime, talking football, exploring new tech, or overthinking an idea that could have waited until tomorrow.",
         "cta": "Ready to bring your ideas to life? Feel free to reach out!",
         "downloadCV": "Download CV",
         "whatsapp": "WhatsApp",
@@ -160,19 +160,21 @@
             "see_all": "See all projects"
         },
         "about": {
+            "eyebrow": "about",
             "title_part1": "More than just",
-            "title_part2": "coding.",
-            "p1": "I'm a passionate developer based in Benin, obsessed with creating digital experiences that feel alive. My approach combines technical precision with artistic direction.",
-            "p2": "I believe that a website shouldn't just be functional; it should be memorable. Whether it's a SaaS platform or a portfolio, I aim for the \"WOW\" effect.",
+            "title_part2": "code.",
+            "p1": "Software, AI, and a lot of curiosity.",
+            "p2": "I like building things, exploring ideas, breaking stuff, figuring out why they broke, and turning experiments into products people can actually use. I'm interested in software engineering, artificial intelligence, and the endless possibilities at the intersection of both.",
+            "p3": "Outside of code, you'll probably find me watching anime, talking football, exploring new tech, or overthinking an idea that could have waited until tomorrow.",
             "personal": {
                 "eyebrow": "Who am I",
                 "title": "More than just a developer.",
                 "label1": "Background",
-                "p1": "Armed with a degree in Management Information Systems, I don't just write code—I craft experiences. To me, UX is never an afterthought: an interface must be as intuitive as it is beautiful.",
+                "p1": "Software, AI, and a lot of curiosity.",
                 "label2": "Tech Watch",
-                "p2": "Fascinated by AI, I constantly push the boundaries of this technology. I analyze every new LLM release and share these breakthroughs with my community.",
+                "p2": "I like building things, exploring ideas, breaking stuff, figuring out why they broke, and turning experiments into products people can actually use. I'm interested in software engineering, artificial intelligence, and the endless possibilities at the intersection of both.",
                 "label3": "Lifestyle",
-                "p3": "Anime enthusiast, football fan, and rap listener (FR & US). Simply put: a passionate developer, but mostly a chill guy always ready for the next challenge."
+                "p3": "Outside of code, you'll probably find me watching anime, talking football, exploring new tech, or overthinking an idea that could have waited until tomorrow."
             },
             "stats": {
                 "experience": "Years Experience",

@@ -19,22 +19,22 @@ export function SectionTitle({
   return (
     <div
       className={cn(
-        "mb-10 md:mb-14",
+        "mb-6 md:mb-8",
         align === "center" ? "text-center mx-auto" : "text-left",
         className
       )}
       {...props}
     >
       {eyebrow && (
-        <p className="font-handwritten text-muted text-xl md:text-2xl mb-2 tracking-wide">
+        <p className="font-handwritten text-muted text-lg mb-1 tracking-wide">
           {eyebrow}
         </p>
       )}
-      <h2 className="text-3xl md:text-5xl font-heading font-bold text-white tracking-tight">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-white tracking-tight">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-3 text-muted text-base md:text-lg max-w-xl leading-relaxed">
+        <p className="mt-1.5 text-muted text-xs sm:text-sm max-w-lg leading-relaxed">
           {subtitle}
         </p>
       )}

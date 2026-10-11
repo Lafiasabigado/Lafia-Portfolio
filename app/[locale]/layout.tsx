@@ -1,5 +1,14 @@
 import type { Metadata } from "next";
-import { inter, outfit, caveat } from "@/lib/fonts";
+import { 
+    inter, 
+    outfit, 
+    caveat, 
+    geistPixelGrid, 
+    geistPixelSquare, 
+    geistPixelCircle, 
+    geistSans, 
+    geistMono 
+} from "@/lib/fonts";
 import "../globals.css";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
@@ -44,7 +53,12 @@ export const metadata: Metadata = {
         },
     },
     icons: {
-        icon: "/lafiapro1.png",
+        icon: [
+            { url: "/icon.svg", type: "image/svg+xml" },
+            { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+            { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+        ],
+        apple: "/apple-touch-icon.png",
     },
     openGraph: {
         type: 'website',
@@ -116,7 +130,7 @@ export default async function RootLayout({
 
     return (
         <html lang={locale} suppressHydrationWarning={true} className="no-scrollbar">
-            <body className={`${inter.variable} ${outfit.variable} ${caveat.variable} antialiased overflow-x-hidden h-full selection:bg-white/30 selection:text-white bg-black text-white`}>
+            <body className={`${geistPixelGrid.variable} ${geistPixelSquare.variable} ${geistPixelCircle.variable} ${geistSans.variable} ${geistMono.variable} ${inter.variable} ${outfit.variable} ${caveat.variable} antialiased overflow-x-hidden h-full selection:bg-white/30 selection:text-white bg-black text-white`}>
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

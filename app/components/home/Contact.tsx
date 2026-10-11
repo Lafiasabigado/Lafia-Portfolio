@@ -16,67 +16,67 @@ export default function Contact() {
       name: 'Email',
       href: 'mailto:lafiasabigado@gmail.com',
       label: 'lafiasabigado@gmail.com',
-      icon: <Mail className="w-4 h-4" />,
+      icon: <Mail className="w-3.5 h-3.5" />,
     },
     {
       name: 'WhatsApp',
-      href: 'https://wa.me/22961882772',
-      label: '+229 61 88 27 72',
-      icon: <FaWhatsapp className="w-4 h-4" />,
+      href: 'https://wa.me/22956259632',
+      label: '+229 56 25 96 32',
+      icon: <FaWhatsapp className="w-3.5 h-3.5" />,
     },
     {
       name: 'GitHub',
       href: 'https://github.com/Lafiasabigado',
       label: 'github.com/Lafiasabigado',
-      icon: <FaGithub className="w-4 h-4" />,
+      icon: <FaGithub className="w-3.5 h-3.5" />,
     },
     {
       name: 'LinkedIn',
       href: 'https://linkedin.com/in/lafia-sabi-gado-03910a292/',
       label: 'Lafia Sabi Gado',
-      icon: <FaLinkedinIn className="w-4 h-4" />,
+      icon: <FaLinkedinIn className="w-3.5 h-3.5" />,
     },
   ];
 
   return (
-    <section id="contact" className="section-spacing relative scroll-mt-24">
+    <section id="contact" className="section-spacing relative scroll-mt-20">
       <div className="container-custom">
         {/* Availability Pulsing Dot Eyebrow */}
-        <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-line bg-white/[0.02] mb-6">
-          <span className="relative flex h-2 w-2">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-line bg-white/[0.02] mb-3">
+          <span className="relative flex h-1.5 w-1.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
           </span>
-          <span className="text-xs font-mono text-fg-soft uppercase tracking-wider">
+          <span className="text-[11px] font-mono text-fg-soft uppercase tracking-wider">
             {locale === 'en' ? 'Available for new projects' : 'Disponible pour de nouveaux projets'}
           </span>
         </div>
 
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-white tracking-tight leading-[1.15] mb-4 max-w-3xl">
+        <h2 className="text-xl sm:text-2xl font-heading font-bold text-white tracking-tight leading-snug mb-2 max-w-xl">
           {locale === 'en'
-            ? "Always on the lookout for new challenges, great teams & bold ideas."
+            ? "Always on the lookout for new challenges & bold ideas."
             : "Toujours en quête de nouveaux problèmes, d'équipes sympas et de bonnes idées."}
         </h2>
-        <p className="text-muted text-lg sm:text-xl font-handwritten mb-14">
+        <p className="text-muted text-sm sm:text-base font-handwritten mb-6">
           {locale === 'en' ? "If that resonates, drop me a line." : "si ça te parle, écris-moi."}
         </p>
 
-        {/* Form and Profile Photo Card */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Compact Form and Profile Card */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-start">
           {/* Form */}
-          <div className="lg:col-span-7">
+          <div className="md:col-span-7">
             <Reveal>
               <form
                 action="https://formspree.io/f/maqdekbd"
                 method="POST"
-                className="space-y-5"
+                className="space-y-3.5"
                 aria-label="Formulaire de contact"
               >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   <div>
                     <label
                       htmlFor="contact-name"
-                      className="block text-xs font-mono text-muted uppercase tracking-wider mb-2"
+                      className="block text-[11px] font-mono text-muted uppercase tracking-wider mb-1"
                     >
                       {t('form.name')}
                     </label>
@@ -86,14 +86,14 @@ export default function Contact() {
                       name="name"
                       required
                       placeholder={t('form.namePlaceholder')}
-                      className="w-full bg-bg-elevated border border-line rounded-[14px] px-4 py-3.5 text-sm text-white placeholder:text-muted/50 outline-none transition-all focus:border-accent focus:shadow-[0_0_0_3px_rgba(59,130,246,0.15)]"
+                      className="w-full bg-bg-elevated border border-line rounded-[12px] px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder:text-muted/50 outline-none transition-all focus:border-accent"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="contact-email"
-                      className="block text-xs font-mono text-muted uppercase tracking-wider mb-2"
+                      className="block text-[11px] font-mono text-muted uppercase tracking-wider mb-1"
                     >
                       {t('form.email')}
                     </label>
@@ -103,7 +103,7 @@ export default function Contact() {
                       name="email"
                       required
                       placeholder={t('form.emailPlaceholder')}
-                      className="w-full bg-bg-elevated border border-line rounded-[14px] px-4 py-3.5 text-sm text-white placeholder:text-muted/50 outline-none transition-all focus:border-accent focus:shadow-[0_0_0_3px_rgba(59,130,246,0.15)]"
+                      className="w-full bg-bg-elevated border border-line rounded-[12px] px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder:text-muted/50 outline-none transition-all focus:border-accent"
                     />
                   </div>
                 </div>
@@ -111,27 +111,27 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="contact-message"
-                    className="block text-xs font-mono text-muted uppercase tracking-wider mb-2"
+                    className="block text-[11px] font-mono text-muted uppercase tracking-wider mb-1"
                   >
                     {t('form.message')}
                   </label>
                   <textarea
                     id="contact-message"
-                    rows={5}
+                    rows={4}
                     name="message"
                     required
                     placeholder={t('form.messagePlaceholder')}
-                    className="w-full bg-bg-elevated border border-line rounded-[14px] px-4 py-3.5 text-sm text-white placeholder:text-muted/50 outline-none transition-all focus:border-accent focus:shadow-[0_0_0_3px_rgba(59,130,246,0.15)] resize-none"
+                    className="w-full bg-bg-elevated border border-line rounded-[12px] px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder:text-muted/50 outline-none transition-all focus:border-accent resize-none"
                   />
                 </div>
 
-                <div className="pt-2">
+                <div className="pt-1">
                   <button
                     type="submit"
-                    className="font-handwritten text-[22px] px-8 py-3 rounded-[18px] bg-white text-black hover:-translate-y-0.5 hover:shadow-glow-lift hover:bg-neutral-100 transition-all duration-200 inline-flex items-center gap-2"
+                    className="font-handwritten text-lg px-6 py-2 rounded-full bg-white text-black hover:-translate-y-0.5 hover:shadow-glow-lift hover:bg-neutral-100 transition-all inline-flex items-center gap-2"
                   >
                     <span>{locale === 'en' ? 'send message' : 'envoyer'}</span>
-                    <Send className="w-4 h-4" />
+                    <Send className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </form>
@@ -139,44 +139,45 @@ export default function Contact() {
           </div>
 
           {/* Right: Portrait Card & Direct Links */}
-          <div className="lg:col-span-5 space-y-6">
-            <Reveal delay={0.1}>
-              <Card radius="lg" interactive={false} className="p-2">
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-900 border-b border-line/40">
+          <div className="md:col-span-5 space-y-3.5">
+            <Reveal delay={0.08}>
+              <Card radius="md" interactive={false} className="p-1 group overflow-hidden">
+                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[10px] bg-neutral-900 border border-line/40">
                   <Image
-                    src="/lafia.png"
+                    src="/ablafia.png"
                     alt="Lafia Sabi Gado"
                     fill
-                    sizes="(max-width: 1024px) 100vw, 400px"
-                    className="object-cover object-top"
+                    sizes="(max-width: 768px) 100vw, 360px"
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
                   />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-heading text-lg font-bold text-white">
-                    Lafia Sabi Gado
-                  </h3>
-                  <p className="text-xs text-muted font-mono mt-1 flex items-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5 text-accent" />
-                    <span>{t('location')}</span>
-                  </p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent pointer-events-none" />
+                  <div className="absolute bottom-3 left-3 right-3 sm:bottom-3.5 sm:left-3.5 sm:right-3.5">
+                    <h3 className="font-heading text-sm sm:text-base font-bold text-white tracking-tight">
+                      Lafia Sabi Gado
+                    </h3>
+                    <p className="text-[11px] text-muted font-mono mt-0.5 flex items-center gap-1">
+                      <MapPin className="w-3 h-3 text-accent shrink-0" />
+                      <span>{t('location')}</span>
+                    </p>
+                  </div>
                 </div>
               </Card>
             </Reveal>
 
-            {/* Direct Social / Contact Links */}
-            <div className="grid grid-cols-2 gap-3">
+            {/* Direct Social Links */}
+            <div className="grid grid-cols-2 gap-2">
               {socialLinks.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3.5 rounded-[14px] bg-bg-elevated border border-line hover:border-white/30 hover:bg-bg-soft transition-all flex items-center gap-3 text-xs text-muted hover:text-white group"
+                  className="p-2.5 rounded-[12px] bg-bg-elevated border border-line hover:border-white/30 hover:bg-bg-soft transition-all flex items-center gap-2 text-xs text-muted hover:text-white group"
                 >
                   <span className="text-accent group-hover:scale-110 transition-transform">
                     {item.icon}
                   </span>
-                  <span className="font-medium truncate">{item.name}</span>
+                  <span className="text-[11px] font-mono truncate">{item.name}</span>
                 </a>
               ))}
             </div>

@@ -154,6 +154,8 @@ export default function ProjectMarquee() {
                 <Link
                   key={`${item.slug}-${idx}`}
                   href={`/projects/${item.slug}`}
+                  data-umami-event="project_open"
+                  data-umami-event-project={item.slug}
                   className={cn(
                     "group relative shrink-0 h-[240px] sm:h-[260px] rounded-[18px] p-1.5 bg-card-ring shadow-glow hover:shadow-glow-lift transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] outline-none",
                     item.width,

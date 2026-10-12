@@ -17,6 +17,11 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
+  // Do not render public navbar on private dashboard routes
+  if (pathname?.includes('/dashboard')) {
+    return null;
+  }
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 8);
@@ -121,18 +126,28 @@ export default function Nav() {
           {/* Right side: i18n & Socials */}
           <div className="flex items-center gap-3">
             <div className="hidden sm:flex items-center gap-2 pr-2 border-r border-line">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1.5 text-muted hover:text-white transition-colors"
-                  aria-label={social.name}
-                >
-                  {social.icon}
-                </a>
-              ))}
+              {socialLinks.map((social) => {
+                const eventName =
+                  social.name === 'GitHub'
+                    ? 'github_click'
+                    : social.name === 'LinkedIn'
+                    ? 'linkedin_click'
+                    : 'x_click';
+                return (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-1.5 text-muted hover:text-white transition-colors"
+                    aria-label={social.name}
+                    data-umami-event={eventName}
+                    data-umami-event-location="navbar"
+                  >
+                    {social.icon}
+                  </a>
+                );
+              })}
             </div>
 
             <LanguageToggle />
@@ -206,18 +221,28 @@ export default function Nav() {
 
             <div className="pt-6 border-t border-line flex items-center justify-between">
               <div className="flex items-center gap-3">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted hover:text-white p-1.5"
-                    aria-label={social.name}
-                  >
-                    {social.icon}
-                  </a>
-                ))}
+                {socialLinks.map((social) => {
+                  const eventName =
+                    social.name === 'GitHub'
+                      ? 'github_click'
+                      : social.name === 'LinkedIn'
+                      ? 'linkedin_click'
+                      : 'x_click';
+                  return (
+                    <a
+                      key={social.name}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted hover:text-white p-1.5"
+                      aria-label={social.name}
+                      data-umami-event={eventName}
+                      data-umami-event-location="navbar"
+                    >
+                      {social.icon}
+                    </a>
+                  );
+                })}
               </div>
               <LanguageToggle />
             </div>

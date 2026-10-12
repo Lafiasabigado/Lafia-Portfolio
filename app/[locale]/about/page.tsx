@@ -18,10 +18,10 @@ export default function AboutPage() {
   const resumeLink = "https://kloo.me/resumelafia";
 
   const socials = [
-    { label: t('downloadCV'), icon: <Download className="w-3.5 h-3.5" />, link: resumeLink },
-    { label: t('whatsapp'), icon: <FaWhatsapp className="w-3.5 h-3.5" />, link: "https://wa.me/22956259632" },
-    { label: t('linkedin'), icon: <FaLinkedinIn className="w-3.5 h-3.5" />, link: "https://linkedin.com/in/lafia-sabi-gado-03910a292/" },
-    { label: t('github'), icon: <FaGithub className="w-3.5 h-3.5" />, link: "https://github.com/Lafiasabigado" },
+    { label: t('downloadCV'), icon: <Download className="w-3.5 h-3.5" />, link: resumeLink, event: 'cv_download' },
+    { label: t('whatsapp'), icon: <FaWhatsapp className="w-3.5 h-3.5" />, link: "https://wa.me/22956259632", event: 'whatsapp_click' },
+    { label: t('linkedin'), icon: <FaLinkedinIn className="w-3.5 h-3.5" />, link: "https://linkedin.com/in/lafia-sabi-gado-03910a292/", event: 'linkedin_click' },
+    { label: t('github'), icon: <FaGithub className="w-3.5 h-3.5" />, link: "https://github.com/Lafiasabigado", event: 'github_click' },
   ];
 
   const highlights = [
@@ -108,6 +108,8 @@ export default function AboutPage() {
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-umami-event={item.event}
+                    data-umami-event-location="about"
                     className="p-2.5 rounded-[12px] bg-bg-elevated border border-line hover:border-white/30 hover:bg-bg-soft transition-all flex items-center gap-2 text-xs text-muted hover:text-white group"
                   >
                     <span className="text-accent group-hover:scale-110 transition-transform">

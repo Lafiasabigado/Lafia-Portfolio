@@ -11,6 +11,8 @@ export default function WhatsAppButton() {
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50  text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group flex items-center justify-center"
       aria-label="Contact via WhatsApp"
+      data-umami-event="whatsapp_click"
+      data-umami-event-location="floating"
     >
       <img 
         src="/whatsapp-icon.svg" 

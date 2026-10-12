@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 import { Card } from '@/components/ui/Card';
@@ -8,11 +8,50 @@ import { SectionTitle } from '@/components/ui/SectionTitle';
 import { Reveal } from '@/components/ui/Reveal';
 import { Mail, MapPin, Send, ArrowUpRight, Download } from 'lucide-react';
 import { FaGithub, FaLinkedinIn, FaWhatsapp, FaTelegram } from 'react-icons/fa6';
+import { useContactFormAnalytics } from '@/lib/analytics/events';
 
 export default function ContactPage() {
   const t = useTranslations('contact');
   const tHome = useTranslations('home_sections.contact');
   const locale = useLocale();
+  const { handleFormFocus, handleFormSubmitSuccess, handleFormSubmitError } = useContactFormAnalytics();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setErrorMessage(null);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('https://formspree.io/f/maqdekbd', {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        form.reset();
+        handleFormSubmitSuccess();
+      } else {
+        const data = await response.json().catch(() => ({}));
+        const errText = data?.errors?.[0]?.message || 'Erreur lors de l’envoi';
+        setErrorMessage(errText);
+        handleFormSubmitError(errText);
+      }
+    } catch (err: any) {
+      const errText = err?.message || 'Erreur réseau';
+      setErrorMessage(errText);
+      handleFormSubmitError(errText);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const socialLinks = [
     {
@@ -20,30 +59,35 @@ export default function ContactPage() {
       href: 'https://wa.me/22956259632',
       label: '+229 56 25 96 32',
       icon: <FaWhatsapp className="w-3.5 h-3.5" />,
+      event: 'whatsapp_click',
     },
     {
       name: 'Email',
       href: 'mailto:lafiasabigado@gmail.com',
       label: 'lafiasabigado@gmail.com',
       icon: <Mail className="w-3.5 h-3.5" />,
+      event: 'contact_click',
     },
     {
       name: 'LinkedIn',
       href: 'https://linkedin.com/in/lafia-sabi-gado-03910a292/',
       label: 'Lafia Sabi Gado',
       icon: <FaLinkedinIn className="w-3.5 h-3.5" />,
+      event: 'linkedin_click',
     },
     {
       name: 'GitHub',
       href: 'https://github.com/Lafiasabigado',
       label: 'Lafiasabigado',
       icon: <FaGithub className="w-3.5 h-3.5" />,
+      event: 'github_click',
     },
     {
       name: 'Telegram',
       href: 'https://t.me/Abdiaslafia',
       label: '@Abdiaslafia',
       icon: <FaTelegram className="w-3.5 h-3.5" />,
+      event: 'contact_click',
     },
   ];
 
@@ -84,8 +128,8 @@ export default function ContactPage() {
           <div className="md:col-span-7">
             <Reveal delay={0.05}>
               <form
-                action="https://formspree.io/f/maqdekbd"
-                method="POST"
+                onSubmit={handleSubmit}
+                onFocusCapture={handleFormFocus}
                 className="space-y-3.5"
                 aria-label="Formulaire de contact"
               >
@@ -159,12 +203,25 @@ export default function ContactPage() {
                   />
                 </div>
 
+                {submitted && (
+                  <p className="text-xs text-emerald-400 font-mono">
+                    {locale === 'en' ? 'Message sent successfully! Thank you.' : 'Message envoyé avec succès ! Merci.'}
+                  </p>
+                )}
+
+                {errorMessage && (
+                  <p className="text-xs text-rose-400 font-mono">
+                    {errorMessage}
+                  </p>
+                )}
+
                 <div className="pt-1">
                   <button
                     type="submit"
-                    className="font-handwritten text-lg px-7 py-2 rounded-full bg-white text-black hover:-translate-y-0.5 hover:shadow-glow-lift hover:bg-neutral-100 transition-all inline-flex items-center gap-2"
+                    disabled={isSubmitting}
+                    className="font-handwritten text-lg px-7 py-2 rounded-full bg-white text-black hover:-translate-y-0.5 hover:shadow-glow-lift hover:bg-neutral-100 transition-all inline-flex items-center gap-2 disabled:opacity-60"
                   >
-                    <span>{locale === 'en' ? 'send message' : 'envoyer'}</span>
+                    <span>{isSubmitting ? (locale === 'en' ? 'sending...' : 'envoi...') : locale === 'en' ? 'send message' : 'envoyer'}</span>
                     <Send className="w-3.5 h-3.5" />
                   </button>
                 </div>
@@ -204,6 +261,8 @@ export default function ContactPage() {
                 href="https://kloo.me/resumelafia"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-umami-event="cv_download"
+                data-umami-event-location="contact"
                 className="w-full p-2.5 rounded-[12px] bg-bg-elevated border border-line hover:border-accent/40 hover:bg-bg-soft transition-all flex items-center justify-between text-xs text-muted hover:text-white group"
               >
                 <div className="flex items-center gap-2">
@@ -222,6 +281,8 @@ export default function ContactPage() {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-umami-event={item.event}
+                  data-umami-event-location="contact"
                   className="p-2.5 rounded-[12px] bg-bg-elevated border border-line hover:border-white/30 hover:bg-bg-soft transition-all flex items-center gap-2 text-xs text-muted hover:text-white group"
                 >
                   <span className="text-accent group-hover:scale-110 transition-transform">

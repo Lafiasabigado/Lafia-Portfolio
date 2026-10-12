@@ -20,6 +20,8 @@ export default function LanguageToggle() {
             : "text-muted hover:text-white"
         )}
         aria-label="Passer en Français"
+        data-umami-event="language_switch"
+        data-umami-event-lang="fr"
       >
         FR
       </Link>
@@ -33,6 +35,8 @@ export default function LanguageToggle() {
             : "text-muted hover:text-white"
         )}
         aria-label="Switch to English"
+        data-umami-event="language_switch"
+        data-umami-event-lang="en"
       >
         EN
       </Link>

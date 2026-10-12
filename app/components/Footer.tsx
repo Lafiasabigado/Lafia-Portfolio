@@ -1,13 +1,20 @@
 'use client';
 
-import { Link } from '@/i18n/routing';
-import { useTranslations } from 'next-intl';
+import { Link, usePathname } from '@/i18n/routing';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 
 export default function Footer() {
+  const pathname = usePathname();
+  const locale = useLocale();
   const t = useTranslations('footer');
   const navT = useTranslations('nav');
   const currentYear = new Date().getFullYear();
+
+  // Hide public footer on private dashboard routes
+  if (pathname?.includes('/dashboard')) {
+    return null;
+  }
 
   const navLinks = [
     { name: navT('about'), href: '/about' },
@@ -71,25 +78,41 @@ export default function Footer() {
               {t('connect')}
             </p>
             <ul className="space-y-1">
-              {socialLinks.map((social) => (
-                <li key={social.name}>
-                  <a
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-muted hover:text-white transition-colors"
-                  >
-                    {social.name}
-                  </a>
-                </li>
-              ))}
+              {socialLinks.map((social) => {
+                const eventName =
+                  social.name === 'GitHub'
+                    ? 'github_click'
+                    : social.name === 'LinkedIn'
+                    ? 'linkedin_click'
+                    : 'x_click';
+                return (
+                  <li key={social.name}>
+                    <a
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-umami-event={eventName}
+                      data-umami-event-location="footer"
+                      className="text-xs text-muted hover:text-white transition-colors"
+                    >
+                      {social.name}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
 
-        {/* Bottom copyright */}
+        {/* Bottom copyright & privacy notice */}
         <div className="pt-6 border-t border-line/40 flex flex-col sm:flex-row items-center justify-between text-[11px] text-muted gap-2">
-          <p>© {currentYear} Lafia Sabi Gado. {t('rights')}</p>
+          <div className="flex flex-wrap items-center gap-2">
+            <p>© {currentYear} Lafia Sabi Gado. {t('rights')}</p>
+            <span className="text-muted/40">·</span>
+            <span className="text-[10px] text-muted/70">
+              {locale === 'fr' ? 'statistiques anonymes, sans cookies' : 'anonymous analytics, cookieless'}
+            </span>
+          </div>
           <p className="font-handwritten text-sm text-muted/70">
             {t('signature')}
           </p>

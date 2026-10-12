@@ -224,6 +224,8 @@ export default function ProjectsPage() {
                             {/* Link to Case Study */}
                             <Link
                               href={`/projects/${project.slug}`}
+                              data-umami-event="project_open"
+                              data-umami-event-project={project.slug}
                               className="inline-flex items-center gap-1 text-xs font-medium text-white hover:text-accent transition-colors"
                             >
                               <span>{locale === 'en' ? 'Read case study' : 'Lire l’étude de cas'}</span>

@@ -15,6 +15,7 @@ import Footer from "@/app/components/Footer";
 import GuideLines from "@/app/components/GuideLines";
 import SmoothScroll from "@/app/components/SmoothScroll";
 import ClientComponents from "@/app/components/ClientComponents";
+import UmamiScript from "@/app/components/UmamiScript";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -145,6 +146,7 @@ export default async function RootLayout({
                                 {locale === 'fr' ? 'Aller au contenu principal' : 'Skip to main content'}
                             </a>
                             <ClientComponents />
+                            <UmamiScript />
                             <GuideLines />
                             <Nav />
                             <main id="main-content" className="relative z-10 w-full overflow-hidden min-h-screen">

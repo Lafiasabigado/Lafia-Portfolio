@@ -91,6 +91,22 @@ export default function DashboardView({
     });
   };
 
+  // Trend helper: returns color class, arrow icon, and formatted text
+  const renderTrend = (changePercent: number, invertColors = false) => {
+    const isPositive = changePercent > 0;
+    const isNegative = changePercent < 0;
+    const isGood = invertColors ? isNegative : isPositive;
+    const isBad = invertColors ? isPositive : isNegative;
+    const colorClass = isGood ? 'text-emerald-400' : isBad ? 'text-rose-400' : 'text-muted/60';
+    const Arrow = isNegative ? ArrowDownRight : ArrowUpRight;
+    const sign = isPositive ? '+' : '';
+    return (
+      <span className={`${colorClass} inline-flex items-center`}>
+        <Arrow className="w-3 h-3" />{sign}{changePercent}%
+      </span>
+    );
+  };
+
   // SVG Chart computation
   const points = data.timeSeries;
   const maxVal = Math.max(
@@ -559,10 +575,8 @@ export default function DashboardView({
                         {data.overview.pageviews.value.toLocaleString()}
                       </div>
                       <div className="flex items-center gap-1 mt-1 text-[11px] font-mono">
-                        <span className="text-emerald-400 inline-flex items-center">
-                          <ArrowUpRight className="w-3 h-3" />+{data.overview.pageviews.changePercent}%
-                        </span>
-                        <span className="text-muted/60">{isEn ? 'trend' : 'croissance'}</span>
+                        {renderTrend(data.overview.pageviews.changePercent)}
+                        <span className="text-muted/60">{isEn ? 'vs prev' : 'vs préc.'}</span>
                       </div>
                     </div>
                   </div>
@@ -582,9 +596,7 @@ export default function DashboardView({
                         {data.overview.visitors.value.toLocaleString()}
                       </div>
                       <div className="flex items-center gap-1 mt-1 text-[11px] font-mono">
-                        <span className="text-emerald-400 inline-flex items-center">
-                          <ArrowUpRight className="w-3 h-3" />+{data.overview.visitors.changePercent}%
-                        </span>
+                        {renderTrend(data.overview.visitors.changePercent)}
                         <span className="text-muted/60">{isEn ? 'distinct' : 'uniques'}</span>
                       </div>
                     </div>
@@ -605,9 +617,7 @@ export default function DashboardView({
                         {data.overview.visits.value.toLocaleString()}
                       </div>
                       <div className="flex items-center gap-1 mt-1 text-[11px] font-mono">
-                        <span className="text-emerald-400 inline-flex items-center">
-                          <ArrowUpRight className="w-3 h-3" />+{data.overview.visits.changePercent}%
-                        </span>
+                        {renderTrend(data.overview.visits.changePercent)}
                         <span className="text-muted/60">sessions</span>
                       </div>
                     </div>
@@ -628,10 +638,8 @@ export default function DashboardView({
                         {data.overview.bounceRate.value}%
                       </div>
                       <div className="flex items-center gap-1 mt-1 text-[11px] font-mono">
-                        <span className="text-emerald-400 inline-flex items-center">
-                          <ArrowDownRight className="w-3 h-3" />{data.overview.bounceRate.changePercent}%
-                        </span>
-                        <span className="text-muted/60">{isEn ? 'healthy' : 'optimal'}</span>
+                        {renderTrend(data.overview.bounceRate.changePercent, true)}
+                        <span className="text-muted/60">{data.overview.bounceRate.value < 50 ? (isEn ? 'healthy' : 'optimal') : (isEn ? 'high' : 'élevé')}</span>
                       </div>
                     </div>
                   </div>
@@ -851,22 +859,28 @@ export default function DashboardView({
                       </button>
                     </div>
                     <div className="space-y-3">
-                      {data.topPages.slice(0, 4).map((page, idx) => (
-                        <div key={idx}>
-                          <div className="flex items-center justify-between text-xs mb-1 font-mono">
-                            <span className="text-white truncate font-medium">{page.name}</span>
-                            <span className="text-muted shrink-0">
-                              {page.value} ({page.percentage}%)
-                            </span>
+                      {data.topPages.length === 0 ? (
+                        <p className="text-xs text-muted/60 font-mono py-4 text-center">
+                          {isEn ? 'No pageviews recorded yet.' : 'Aucune page visitée pour le moment.'}
+                        </p>
+                      ) : (
+                        data.topPages.slice(0, 4).map((page, idx) => (
+                          <div key={idx}>
+                            <div className="flex items-center justify-between text-xs mb-1 font-mono">
+                              <span className="text-white truncate font-medium">{page.name}</span>
+                              <span className="text-muted shrink-0">
+                                {page.value} ({page.percentage}%)
+                              </span>
+                            </div>
+                            <div className="h-1.5 w-full bg-white/[0.04] rounded-full overflow-hidden">
+                              <div
+                                className="h-full bg-blue-500 rounded-full"
+                                style={{ width: `${page.percentage}%` }}
+                              />
+                            </div>
                           </div>
-                          <div className="h-1.5 w-full bg-white/[0.04] rounded-full overflow-hidden">
-                            <div
-                              className="h-full bg-blue-500 rounded-full"
-                              style={{ width: `${page.percentage}%` }}
-                            />
-                          </div>
-                        </div>
-                      ))}
+                        ))
+                      )}
                     </div>
                   </div>
                 </div>
@@ -887,20 +901,26 @@ export default function DashboardView({
                       </button>
                     </div>
                     <div className="space-y-2.5">
-                      {data.events.slice(0, 3).map((evt, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-center justify-between p-2.5 rounded-[10px] bg-bg-soft/70 border border-line"
-                        >
-                          <div className="flex items-center gap-2.5">
-                            <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                            <span className="text-xs text-white font-medium">{evt.label}</span>
+                      {data.events.length === 0 ? (
+                        <p className="text-xs text-muted/60 font-mono py-4 text-center">
+                          {isEn ? 'No conversion signals yet.' : 'Aucune action de contact pour le moment.'}
+                        </p>
+                      ) : (
+                        data.events.slice(0, 3).map((evt, idx) => (
+                          <div
+                            key={idx}
+                            className="flex items-center justify-between p-2.5 rounded-[10px] bg-bg-soft/70 border border-line"
+                          >
+                            <div className="flex items-center gap-2.5">
+                              <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                              <span className="text-xs text-white font-medium">{evt.label}</span>
+                            </div>
+                            <span className="font-mono text-xs font-bold text-white">
+                              {evt.count}
+                            </span>
                           </div>
-                          <span className="font-mono text-xs font-bold text-white">
-                            {evt.count}
-                          </span>
-                        </div>
-                      ))}
+                        ))
+                      )}
                     </div>
                   </div>
                 </div>
@@ -931,40 +951,51 @@ export default function DashboardView({
                 </div>
 
                 <div className="space-y-4">
-                  {data.topPages.map((page, idx) => (
-                    <div
-                      key={idx}
-                      className="p-3.5 rounded-[12px] bg-bg-soft/50 border border-line hover:border-white/10 transition-colors"
-                    >
-                      <div className="flex items-center justify-between text-xs mb-2">
-                        <div className="flex items-center gap-3 min-w-0">
-                          <span className="font-mono text-muted/60 text-xs w-5 font-bold">
-                            #{idx + 1}
-                          </span>
-                          <span className="font-mono text-white font-semibold text-sm truncate">
-                            {page.name}
-                          </span>
-                          {page.label && (
-                            <span className="text-xs text-muted truncate hidden sm:inline">
-                              · {page.label}
-                            </span>
-                          )}
-                        </div>
-                        <div className="flex items-center gap-3 shrink-0 font-mono">
-                          <span className="text-white font-bold">{page.value} vues</span>
-                          <span className="px-2 py-0.5 rounded bg-blue-950/60 text-blue-300 text-[11px] font-semibold">
-                            {page.percentage}%
-                          </span>
-                        </div>
-                      </div>
-                      <div className="h-2 w-full bg-white/[0.04] rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-gradient-to-r from-blue-600 to-indigo-500 rounded-full"
-                          style={{ width: `${page.percentage}%` }}
-                        />
-                      </div>
+                  {data.topPages.length === 0 ? (
+                    <div className="text-center py-12 text-muted border border-dashed border-line rounded-[14px]">
+                      <Globe className="w-8 h-8 text-muted/30 mx-auto mb-2" />
+                      <p className="text-xs font-mono text-muted/80 max-w-md mx-auto">
+                        {isEn
+                          ? 'No pageviews recorded yet for this period. As visitors browse your portfolio, their visited URLs will appear here in real-time.'
+                          : 'Aucune page consultée pour le moment sur cette période. Dès que des visiteurs navigueront sur votre portfolio, leurs pages vues apparaîtront ici en direct.'}
+                      </p>
                     </div>
-                  ))}
+                  ) : (
+                    data.topPages.map((page, idx) => (
+                      <div
+                        key={idx}
+                        className="p-3.5 rounded-[12px] bg-bg-soft/50 border border-line hover:border-white/10 transition-colors"
+                      >
+                        <div className="flex items-center justify-between text-xs mb-2">
+                          <div className="flex items-center gap-3 min-w-0">
+                            <span className="font-mono text-muted/60 text-xs w-5 font-bold">
+                              #{idx + 1}
+                            </span>
+                            <span className="font-mono text-white font-semibold text-sm truncate">
+                              {page.name}
+                            </span>
+                            {page.label && (
+                              <span className="text-xs text-muted truncate hidden sm:inline">
+                                · {page.label}
+                              </span>
+                            )}
+                          </div>
+                          <div className="flex items-center gap-3 shrink-0 font-mono">
+                            <span className="text-white font-bold">{page.value} vues</span>
+                            <span className="px-2 py-0.5 rounded bg-blue-950/60 text-blue-300 text-[11px] font-semibold">
+                              {page.percentage}%
+                            </span>
+                          </div>
+                        </div>
+                        <div className="h-2 w-full bg-white/[0.04] rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-gradient-to-r from-blue-600 to-indigo-500 rounded-full"
+                            style={{ width: `${page.percentage}%` }}
+                          />
+                        </div>
+                      </div>
+                    ))
+                  )}
                 </div>
               </div>
             </div>
@@ -985,31 +1016,42 @@ export default function DashboardView({
                   </p>
 
                   <div className="space-y-4">
-                    {data.topReferrers.map((ref, idx) => (
-                      <div
-                        key={idx}
-                        className="p-3.5 rounded-[12px] bg-bg-soft/50 border border-line hover:border-white/10 transition-colors"
-                      >
-                        <div className="flex items-center justify-between text-xs mb-2">
-                          <div className="flex items-center gap-3">
-                            <span className="font-mono text-muted/60 w-5">#{idx + 1}</span>
-                            <span className="font-semibold text-white">{ref.name}</span>
-                          </div>
-                          <div className="flex items-center gap-3 font-mono">
-                            <span className="text-white font-bold">{ref.value} visiteurs</span>
-                            <span className="px-2 py-0.5 rounded bg-purple-950/60 text-purple-300 text-[11px]">
-                              {ref.percentage}%
-                            </span>
-                          </div>
-                        </div>
-                        <div className="h-2 w-full bg-white/[0.04] rounded-full overflow-hidden">
-                          <div
-                            className="h-full bg-gradient-to-r from-purple-600 to-pink-500 rounded-full"
-                            style={{ width: `${ref.percentage}%` }}
-                          />
-                        </div>
+                    {data.topReferrers.length === 0 ? (
+                      <div className="text-center py-12 text-muted border border-dashed border-line rounded-[14px]">
+                        <Share2 className="w-8 h-8 text-muted/30 mx-auto mb-2" />
+                        <p className="text-xs font-mono text-muted/80 max-w-md mx-auto">
+                          {isEn
+                            ? 'No referral sources recorded yet for this period.'
+                            : 'Aucune source externe de référence enregistrée sur cette période.'}
+                        </p>
                       </div>
-                    ))}
+                    ) : (
+                      data.topReferrers.map((ref, idx) => (
+                        <div
+                          key={idx}
+                          className="p-3.5 rounded-[12px] bg-bg-soft/50 border border-line hover:border-white/10 transition-colors"
+                        >
+                          <div className="flex items-center justify-between text-xs mb-2">
+                            <div className="flex items-center gap-3">
+                              <span className="font-mono text-muted/60 w-5">#{idx + 1}</span>
+                              <span className="font-semibold text-white">{ref.name}</span>
+                            </div>
+                            <div className="flex items-center gap-3 font-mono">
+                              <span className="text-white font-bold">{ref.value} visiteurs</span>
+                              <span className="px-2 py-0.5 rounded bg-purple-950/60 text-purple-300 text-[11px]">
+                                {ref.percentage}%
+                              </span>
+                            </div>
+                          </div>
+                          <div className="h-2 w-full bg-white/[0.04] rounded-full overflow-hidden">
+                            <div
+                              className="h-full bg-gradient-to-r from-purple-600 to-pink-500 rounded-full"
+                              style={{ width: `${ref.percentage}%` }}
+                            />
+                          </div>
+                        </div>
+                      ))
+                    )}
                   </div>
                 </div>
               </div>
@@ -1022,17 +1064,27 @@ export default function DashboardView({
                       {isEn ? 'Acquisition Insights' : 'Analyse des Canaux'}
                     </h3>
                     <p className="text-xs text-muted leading-relaxed">
-                      {isEn
-                        ? 'LinkedIn and GitHub remain top-tier referral pipelines. Direct traffic corresponds to repeat visits and recruiters accessing via your resume link.'
-                        : 'LinkedIn et GitHub génèrent un trafic qualifié de développeurs et de recruteurs. Le trafic direct reflète les consultations directes depuis votre CV.'}
+                      {data.topReferrers.length > 0
+                        ? (isEn
+                          ? `Your top traffic source is "${data.topReferrers[0].name}" with ${data.topReferrers[0].percentage}% of referral visits. Direct traffic corresponds to repeat visits and users accessing via shared links.`
+                          : `Votre source de trafic n°1 est « ${data.topReferrers[0].name} » avec ${data.topReferrers[0].percentage}% des visites référentes. Le trafic direct reflète les consultations directes depuis des liens partagés.`)
+                        : (isEn
+                          ? 'No referral data available yet. Once visitors start finding your portfolio via external links, insights will appear here.'
+                          : 'Aucune donnée de référence disponible pour le moment. Les insights apparaîtront dès que des visiteurs arriveront via des liens externes.')}
                     </p>
                   </div>
-                  <div className="mt-6 pt-4 border-t border-line space-y-3 font-mono text-xs">
-                    <div className="p-3 rounded-[10px] bg-purple-950/20 border border-purple-800/30">
-                      <div className="text-purple-300 font-semibold mb-0.5">Top Canal Pro</div>
-                      <div className="text-muted text-[11px]">LinkedIn (posts & réseau)</div>
+                  {data.topReferrers.length > 0 && (
+                    <div className="mt-6 pt-4 border-t border-line space-y-3 font-mono text-xs">
+                      <div className="p-3 rounded-[10px] bg-purple-950/20 border border-purple-800/30">
+                        <div className="text-purple-300 font-semibold mb-0.5">
+                          {isEn ? 'Top Channel' : 'Canal Principal'}
+                        </div>
+                        <div className="text-muted text-[11px]">
+                          {data.topReferrers[0].name} ({data.topReferrers[0].value} {isEn ? 'visitors' : 'visiteurs'})
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -1059,31 +1111,42 @@ export default function DashboardView({
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {data.events.map((evt, idx) => (
-                      <div
-                        key={idx}
-                        className="p-4 rounded-[14px] bg-bg-soft/60 border border-line flex items-center justify-between"
-                      >
-                        <div className="flex items-center gap-3">
-                          <div className="w-9 h-9 rounded-[10px] bg-card-ring border border-line flex items-center justify-center font-bold text-white text-xs">
-                            ⚡
-                          </div>
-                          <div>
-                            <div className="text-xs font-semibold text-white">{evt.label}</div>
-                            <div className="text-[10px] font-mono text-muted">
-                              event: {evt.event}
+                  {data.events.length === 0 ? (
+                    <div className="text-center py-12 text-muted border border-dashed border-line rounded-[14px]">
+                      <Sparkles className="w-8 h-8 text-muted/30 mx-auto mb-2" />
+                      <p className="text-xs font-mono text-muted/80 max-w-md mx-auto">
+                        {isEn
+                          ? 'No conversion events (CV downloads, WhatsApp clicks, contact messages) recorded yet for this period.'
+                          : 'Aucun événement de conversion (téléchargement CV, clic WhatsApp, message de contact) enregistré pour le moment sur cette période.'}
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {data.events.map((evt, idx) => (
+                        <div
+                          key={idx}
+                          className="p-4 rounded-[14px] bg-bg-soft/60 border border-line flex items-center justify-between"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="w-9 h-9 rounded-[10px] bg-card-ring border border-line flex items-center justify-center font-bold text-white text-xs">
+                              ⚡
+                            </div>
+                            <div>
+                              <div className="text-xs font-semibold text-white">{evt.label}</div>
+                              <div className="text-[10px] font-mono text-muted">
+                                event: {evt.event}
+                              </div>
                             </div>
                           </div>
-                        </div>
 
-                        <div className="text-right font-mono">
-                          <span className="text-lg font-bold text-white">{evt.count}</span>
-                          <span className="text-[10px] text-muted block uppercase">déclenchements</span>
+                          <div className="text-right font-mono">
+                            <span className="text-lg font-bold text-white">{evt.count}</span>
+                            <span className="text-[10px] text-muted block uppercase">déclenchements</span>
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                  </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -1102,20 +1165,26 @@ export default function DashboardView({
                     {isEn ? 'Devices' : 'Types d’Appareils'}
                   </h3>
                   <div className="space-y-3">
-                    {data.devices.map((device, idx) => (
-                      <div key={idx}>
-                        <div className="flex justify-between text-xs mb-1 font-mono">
-                          <span className="text-white">{device.name}</span>
-                          <span className="text-muted">{device.percentage}%</span>
+                    {data.devices.length === 0 ? (
+                      <p className="text-xs text-muted/60 font-mono py-4 text-center">
+                        {isEn ? 'No device data yet.' : 'En attente de visites.'}
+                      </p>
+                    ) : (
+                      data.devices.map((device, idx) => (
+                        <div key={idx}>
+                          <div className="flex justify-between text-xs mb-1 font-mono">
+                            <span className="text-white">{device.name}</span>
+                            <span className="text-muted">{device.percentage}%</span>
+                          </div>
+                          <div className="h-1.5 w-full bg-white/[0.04] rounded-full overflow-hidden">
+                            <div
+                              className="h-full bg-blue-500 rounded-full"
+                              style={{ width: `${device.percentage}%` }}
+                            />
+                          </div>
                         </div>
-                        <div className="h-1.5 w-full bg-white/[0.04] rounded-full overflow-hidden">
-                          <div
-                            className="h-full bg-blue-500 rounded-full"
-                            style={{ width: `${device.percentage}%` }}
-                          />
-                        </div>
-                      </div>
-                    ))}
+                      ))
+                    )}
                   </div>
                 </div>
               </div>
@@ -1128,20 +1197,26 @@ export default function DashboardView({
                     {isEn ? 'Browsers' : 'Navigateurs'}
                   </h3>
                   <div className="space-y-3">
-                    {data.browsers.map((b, idx) => (
-                      <div key={idx}>
-                        <div className="flex justify-between text-xs mb-1 font-mono">
-                          <span className="text-white">{b.name}</span>
-                          <span className="text-muted">{b.percentage}%</span>
+                    {data.browsers.length === 0 ? (
+                      <p className="text-xs text-muted/60 font-mono py-4 text-center">
+                        {isEn ? 'No browser data yet.' : 'En attente de visites.'}
+                      </p>
+                    ) : (
+                      data.browsers.map((b, idx) => (
+                        <div key={idx}>
+                          <div className="flex justify-between text-xs mb-1 font-mono">
+                            <span className="text-white">{b.name}</span>
+                            <span className="text-muted">{b.percentage}%</span>
+                          </div>
+                          <div className="h-1.5 w-full bg-white/[0.04] rounded-full overflow-hidden">
+                            <div
+                              className="h-full bg-purple-500 rounded-full"
+                              style={{ width: `${b.percentage}%` }}
+                            />
+                          </div>
                         </div>
-                        <div className="h-1.5 w-full bg-white/[0.04] rounded-full overflow-hidden">
-                          <div
-                            className="h-full bg-purple-500 rounded-full"
-                            style={{ width: `${b.percentage}%` }}
-                          />
-                        </div>
-                      </div>
-                    ))}
+                      ))
+                    )}
                   </div>
                 </div>
               </div>
@@ -1154,20 +1229,26 @@ export default function DashboardView({
                     {isEn ? 'Top Countries' : 'Origine Géographique'}
                   </h3>
                   <div className="space-y-3">
-                    {data.topCountries.map((c, idx) => (
-                      <div key={idx}>
-                        <div className="flex justify-between text-xs mb-1 font-mono">
-                          <span className="text-white">{c.name}</span>
-                          <span className="text-muted">{c.percentage}%</span>
+                    {data.topCountries.length === 0 ? (
+                      <p className="text-xs text-muted/60 font-mono py-4 text-center">
+                        {isEn ? 'No country data yet.' : 'En attente de visites.'}
+                      </p>
+                    ) : (
+                      data.topCountries.map((c, idx) => (
+                        <div key={idx}>
+                          <div className="flex justify-between text-xs mb-1 font-mono">
+                            <span className="text-white">{c.name}</span>
+                            <span className="text-muted">{c.percentage}%</span>
+                          </div>
+                          <div className="h-1.5 w-full bg-white/[0.04] rounded-full overflow-hidden">
+                            <div
+                              className="h-full bg-emerald-500 rounded-full"
+                              style={{ width: `${c.percentage}%` }}
+                            />
+                          </div>
                         </div>
-                        <div className="h-1.5 w-full bg-white/[0.04] rounded-full overflow-hidden">
-                          <div
-                            className="h-full bg-emerald-500 rounded-full"
-                            style={{ width: `${c.percentage}%` }}
-                          />
-                        </div>
-                      </div>
-                    ))}
+                      ))
+                    )}
                   </div>
                 </div>
               </div>
@@ -1189,7 +1270,7 @@ export default function DashboardView({
                     <p className="text-xs text-muted font-mono mt-0.5">
                       {isEn
                         ? 'Recent interactions dispatched to PostHog Cloud US'
-                        : 'Dernières télémétries enregistrées sur PostHog Cloud US'}
+                        : 'Dernières télémétries réelles enregistrées sur PostHog Cloud US'}
                     </p>
                   </div>
                   <span className="px-2.5 py-1 rounded-full bg-emerald-950/40 text-emerald-400 border border-emerald-800/40 text-xs font-mono flex items-center gap-1.5">
@@ -1199,29 +1280,40 @@ export default function DashboardView({
                 </div>
 
                 <div className="space-y-3 font-mono text-xs">
-                  {data.recentLogs.map((log) => (
-                    <div
-                      key={log.id}
-                      className="p-3.5 rounded-[12px] bg-bg-soft/60 border border-line flex flex-col sm:flex-row sm:items-center justify-between gap-2"
-                    >
-                      <div className="flex items-center gap-3">
-                        <span className="px-2 py-0.5 rounded bg-blue-950/50 text-blue-300 text-[10px] font-semibold border border-blue-800/30">
-                          {log.event}
-                        </span>
-                        <span className="text-white font-medium">{log.url}</span>
-                        {log.country && (
-                          <span className="text-muted/70 text-[11px] hidden sm:inline">
-                            · {log.country}
-                          </span>
-                        )}
-                      </div>
-
-                      <div className="flex items-center gap-3 text-muted/60 text-[11px] self-end sm:self-auto">
-                        {log.device && <span>{log.device}</span>}
-                        <span>{log.timestamp}</span>
-                      </div>
+                  {data.recentLogs.length === 0 ? (
+                    <div className="text-center py-12 text-muted border border-dashed border-line rounded-[14px]">
+                      <Flame className="w-8 h-8 text-muted/30 mx-auto mb-2" />
+                      <p className="text-xs font-mono text-muted/80 max-w-md mx-auto">
+                        {isEn
+                          ? 'No events captured yet. Visit your public portfolio to see live pageviews stream here!'
+                          : 'Aucun événement capturé pour le moment. Visitez votre portfolio pour voir vos pages vues apparaître en direct !'}
+                      </p>
                     </div>
-                  ))}
+                  ) : (
+                    data.recentLogs.map((log) => (
+                      <div
+                        key={log.id}
+                        className="p-3.5 rounded-[12px] bg-bg-soft/60 border border-line flex flex-col sm:flex-row sm:items-center justify-between gap-2"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="px-2 py-0.5 rounded bg-blue-950/50 text-blue-300 text-[10px] font-semibold border border-blue-800/30">
+                            {log.event}
+                          </span>
+                          <span className="text-white font-medium">{log.url || '/'}</span>
+                          {log.country && (
+                            <span className="text-muted/70 text-[11px] hidden sm:inline">
+                              · {log.country}
+                            </span>
+                          )}
+                        </div>
+
+                        <div className="flex items-center gap-3 text-muted/60 text-[11px] self-end sm:self-auto">
+                          {log.device && <span>{log.device}</span>}
+                          <span>{log.timestamp}</span>
+                        </div>
+                      </div>
+                    ))
+                  )}
                 </div>
               </div>
             </div>

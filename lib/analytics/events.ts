@@ -32,12 +32,6 @@ declare global {
       reset: () => void;
       __loaded?: boolean;
     };
-    umami?: {
-      track: (
-        event: string | Record<string, any>,
-        data?: Record<string, any>
-      ) => void;
-    };
   }
 }
 
@@ -50,8 +44,6 @@ export function track(event: AnalyticsEvent | string, data?: Record<string, any>
   try {
     if (window.posthog && typeof window.posthog.capture === 'function') {
       window.posthog.capture(event, data);
-    } else if (window.umami && typeof window.umami.track === 'function') {
-      window.umami.track(event, data);
     }
   } catch {
     // Silently ignore tracking failures

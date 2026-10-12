@@ -83,9 +83,6 @@ const EVENT_META: Record<string, { labelFr: string; labelEn: string; category: C
   language_switch: { labelFr: 'Changement de langue', labelEn: 'Language Switch', category: 'engagement' },
 };
 
-/**
- * Returns interval string for HogQL queries
- */
 function getIntervalClause(range: TimeRange): string {
   switch (range) {
     case '24h':
@@ -99,148 +96,35 @@ function getIntervalClause(range: TimeRange): string {
   }
 }
 
-/**
- * Generates realistic benchmark telemetry (used as foundation or when no live events exist yet)
- */
-function getBenchmarkData(range: TimeRange, locale: 'fr' | 'en' = 'fr'): DashboardData {
-  const isEn = locale === 'en';
-  const now = Date.now();
-
-  const multipliers: Record<TimeRange, { views: number; visitors: number; points: number }> = {
-    '24h': { views: 92, visitors: 44, points: 24 },
-    '7d': { views: 640, visitors: 310, points: 7 },
-    '30d': { views: 2680, visitors: 1290, points: 15 },
-    '90d': { views: 8420, visitors: 3950, points: 18 },
-  };
-
-  const m = multipliers[range];
-  const timeSeries: TimeSeriesPoint[] = [];
-
-  if (range === '24h') {
-    for (let i = 23; i >= 0; i--) {
-      const pointTime = now - i * 3600 * 1000;
-      const hour = new Date(pointTime).getHours();
-      const factor = hour >= 9 && hour <= 22 ? 1 + Math.sin((hour - 9) / 4) * 0.8 : 0.25;
-      const pv = Math.max(1, Math.round((m.views / 24) * factor * (0.8 + Math.random() * 0.4)));
-      const vis = Math.max(1, Math.round(pv * 0.65));
-      timeSeries.push({
-        label: `${hour.toString().padStart(2, '0')}:00`,
-        timestamp: pointTime,
-        pageviews: pv,
-        visitors: vis,
-      });
-    }
-  } else {
-    const days = range === '7d' ? 7 : range === '30d' ? 30 : 90;
-    const step = range === '90d' ? 5 : range === '30d' ? 2 : 1;
-    for (let i = days; i >= 0; i -= step) {
-      const pointTime = now - i * 86400 * 1000;
-      const d = new Date(pointTime);
-      const label = d.toLocaleDateString(isEn ? 'en-US' : 'fr-FR', {
-        month: 'short',
-        day: 'numeric',
-      });
-      const pv = Math.max(
-        6,
-        Math.round((m.views / (days / step)) * (0.75 + Math.random() * 0.5))
-      );
-      const vis = Math.max(2, Math.round(pv * 0.58));
-      timeSeries.push({
-        label,
-        timestamp: pointTime,
-        pageviews: pv,
-        visitors: vis,
-      });
-    }
+function getPrevIntervalClause(range: TimeRange): { start: string; end: string } {
+  switch (range) {
+    case '24h':
+      return { start: 'interval 48 hour', end: 'interval 24 hour' };
+    case '7d':
+      return { start: 'interval 14 day', end: 'interval 7 day' };
+    case '30d':
+      return { start: 'interval 60 day', end: 'interval 30 day' };
+    case '90d':
+      return { start: 'interval 180 day', end: 'interval 90 day' };
   }
-
-  const topPages: MetricItem[] = [
-    { name: '/', label: 'Accueil / Portfolio', value: Math.round(m.views * 0.52), percentage: 52 },
-    { name: '/projects', label: 'Projets Réalisés', value: Math.round(m.views * 0.24), percentage: 24 },
-    { name: '/about', label: 'À Propos & Bio', value: Math.round(m.views * 0.12), percentage: 12 },
-    { name: '/service', label: 'Services & Offres', value: Math.round(m.views * 0.08), percentage: 8 },
-    { name: '/contact', label: 'Contact & Réseaux', value: Math.round(m.views * 0.04), percentage: 4 },
-  ];
-
-  const topReferrers: MetricItem[] = [
-    { name: isEn ? 'Direct Traffic' : 'Accès Direct', value: Math.round(m.visitors * 0.36), percentage: 36 },
-    { name: 'LinkedIn', value: Math.round(m.visitors * 0.30), percentage: 30 },
-    { name: 'GitHub', value: Math.round(m.visitors * 0.18), percentage: 18 },
-    { name: 'X / Twitter', value: Math.round(m.visitors * 0.10), percentage: 10 },
-    { name: 'Google Search', value: Math.round(m.visitors * 0.06), percentage: 6 },
-  ];
-
-  const topCountries: MetricItem[] = [
-    { name: 'Bénin 🇧🇯', value: Math.round(m.visitors * 0.38), percentage: 38 },
-    { name: 'France 🇫🇷', value: Math.round(m.visitors * 0.28), percentage: 28 },
-    { name: "Côte d'Ivoire 🇨🇮", value: Math.round(m.visitors * 0.14), percentage: 14 },
-    { name: 'Canada 🇨🇦', value: Math.round(m.visitors * 0.09), percentage: 9 },
-    { name: 'États-Unis 🇺🇸', value: Math.round(m.visitors * 0.07), percentage: 7 },
-    { name: 'Autres 🌍', value: Math.round(m.visitors * 0.04), percentage: 4 },
-  ];
-
-  const devices: MetricItem[] = [
-    { name: isEn ? 'Mobile' : 'Mobile (Smartphones)', value: Math.round(m.visitors * 0.56), percentage: 56 },
-    { name: isEn ? 'Desktop' : 'Ordinateur (Desktop)', value: Math.round(m.visitors * 0.40), percentage: 40 },
-    { name: 'Tablette', value: Math.round(m.visitors * 0.04), percentage: 4 },
-  ];
-
-  const browsers: MetricItem[] = [
-    { name: 'Chrome', value: Math.round(m.visitors * 0.64), percentage: 64 },
-    { name: 'Safari', value: Math.round(m.visitors * 0.22), percentage: 22 },
-    { name: 'Firefox', value: Math.round(m.visitors * 0.09), percentage: 9 },
-    { name: 'Edge', value: Math.round(m.visitors * 0.05), percentage: 5 },
-  ];
-
-  const events: CustomEventItem[] = [
-    { event: 'project_open', label: isEn ? 'Projects Viewed' : 'Projets consultés', count: Math.round(m.views * 0.18), category: 'engagement' },
-    { event: 'cv_download', label: isEn ? 'CV Downloads' : 'Téléchargement de CV', count: Math.max(5, Math.round(m.visitors * 0.07)), category: 'engagement' },
-    { event: 'whatsapp_click', label: isEn ? 'WhatsApp Clicks' : 'Clics WhatsApp', count: Math.max(4, Math.round(m.visitors * 0.06)), category: 'contact' },
-    { event: 'linkedin_click', label: isEn ? 'LinkedIn Clicks' : 'Profil LinkedIn', count: Math.max(8, Math.round(m.visitors * 0.09)), category: 'social' },
-    { event: 'github_click', label: isEn ? 'GitHub Clicks' : 'Visites GitHub', count: Math.max(6, Math.round(m.visitors * 0.07)), category: 'social' },
-    { event: 'contact_form_submit', label: isEn ? 'Contact Submissions' : 'Messages envoyés', count: Math.max(2, Math.round(m.visitors * 0.03)), category: 'contact' },
-    { event: 'contact_form_start', label: isEn ? 'Contact Form Started' : 'Formulaires commencés', count: Math.max(5, Math.round(m.visitors * 0.05)), category: 'contact' },
-  ];
-
-  const totalPageviews = timeSeries.reduce((acc, p) => acc + p.pageviews, 0);
-  const totalVisitors = timeSeries.reduce((acc, p) => acc + p.visitors, 0);
-
-  const recentLogs: RecentEventLog[] = [
-    { id: '1', event: '$pageview', timestamp: 'Il y a 2 min', url: '/projects', country: 'Bénin 🇧🇯', device: 'Mobile' },
-    { id: '2', event: 'whatsapp_click', timestamp: 'Il y a 14 min', url: '/contact', country: 'France 🇫🇷', device: 'Desktop' },
-    { id: '3', event: '$pageview', timestamp: 'Il y a 28 min', url: '/', country: "Côte d'Ivoire 🇨🇮", device: 'Mobile' },
-    { id: '4', event: 'cv_download', timestamp: 'Il y a 45 min', url: '/about', country: 'Canada 🇨🇦', device: 'Desktop' },
-    { id: '5', event: 'project_open', timestamp: 'Il y a 1 heure', url: '/projects', country: 'France 🇫🇷', device: 'Mobile' },
-  ];
-
-  return {
-    range,
-    isLivePostHog: true,
-    projectId: process.env.POSTHOG_PROJECT_ID || '660589',
-    posthogHost: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com',
-    activeVisitors: 3,
-    overview: {
-      pageviews: { value: totalPageviews, prev: Math.round(totalPageviews * 0.82), changePercent: 22 },
-      visitors: { value: totalVisitors, prev: Math.round(totalVisitors * 0.8), changePercent: 25 },
-      visits: { value: Math.round(totalVisitors * 1.25), prev: Math.round(totalVisitors * 1.05), changePercent: 19 },
-      bounceRate: { value: 32.8, prev: 36.4, changePercent: -9.8 },
-      avgTime: { seconds: 142, formatted: '2m 22s' },
-    },
-    timeSeries,
-    topPages,
-    topReferrers,
-    topCountries,
-    devices,
-    browsers,
-    events,
-    recentLogs,
-    updatedAt: new Date().toISOString(),
-  };
 }
 
-/**
- * Runs a HogQL query against PostHog Query API
- */
+function formatRelativeTime(dateStr: string, locale: 'fr' | 'en'): string {
+  try {
+    const diffMs = Date.now() - new Date(dateStr).getTime();
+    const diffMins = Math.floor(diffMs / (60 * 1000));
+    const diffHours = Math.floor(diffMs / (3600 * 1000));
+    const diffDays = Math.floor(diffMs / (86400 * 1000));
+
+    if (diffMins < 1) return locale === 'en' ? 'Just now' : 'À l’instant';
+    if (diffMins < 60) return locale === 'en' ? `${diffMins}m ago` : `Il y a ${diffMins} min`;
+    if (diffHours < 24) return locale === 'en' ? `${diffHours}h ago` : `Il y a ${diffHours} h`;
+    return locale === 'en' ? `${diffDays}d ago` : `Il y a ${diffDays} j`;
+  } catch {
+    return dateStr;
+  }
+}
+
 async function runHogQLQuery(
   query: string,
   projectId: string,
@@ -272,21 +156,58 @@ async function runHogQLQuery(
           msg = `${msg}: ${errJson.detail}`;
         }
       } catch {
-        // use fallback message
+        // fallback
       }
       return { results: null, error: msg };
     }
 
     const data = await res.json();
-    return { results: data.results || null };
+    return { results: data.results || [] };
   } catch (e: any) {
-    return { results: null, error: e?.message || 'Network fetch failure' };
+    return { results: null, error: e?.message || 'Network error' };
   }
 }
 
 /**
- * Main function to fetch PostHog dashboard data
+ * Builds clean real timeline dates (initialized to 0) to guarantee a stable chart
  */
+function buildRealTimeSlots(range: TimeRange, locale: 'fr' | 'en'): TimeSeriesPoint[] {
+  const isEn = locale === 'en';
+  const now = Date.now();
+  const points: TimeSeriesPoint[] = [];
+
+  if (range === '24h') {
+    for (let i = 23; i >= 0; i--) {
+      const pointTime = now - i * 3600 * 1000;
+      const hour = new Date(pointTime).getHours();
+      points.push({
+        label: `${hour.toString().padStart(2, '0')}:00`,
+        timestamp: pointTime,
+        pageviews: 0,
+        visitors: 0,
+      });
+    }
+  } else {
+    const days = range === '7d' ? 7 : range === '30d' ? 30 : 90;
+    const step = range === '90d' ? 3 : 1;
+    for (let i = days - 1; i >= 0; i -= step) {
+      const pointTime = now - i * 86400 * 1000;
+      const d = new Date(pointTime);
+      const label = d.toLocaleDateString(isEn ? 'en-US' : 'fr-FR', {
+        month: 'short',
+        day: 'numeric',
+      });
+      points.push({
+        label,
+        timestamp: pointTime,
+        pageviews: 0,
+        visitors: 0,
+      });
+    }
+  }
+  return points;
+}
+
 export async function getPostHogDashboardData(
   range: TimeRange = '7d',
   locale: 'fr' | 'en' = 'fr'
@@ -295,17 +216,60 @@ export async function getPostHogDashboardData(
   const projectId = process.env.POSTHOG_PROJECT_ID || '660589';
   const host = process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com';
 
-  const benchmark = getBenchmarkData(range, locale);
+  const emptyOverview: OverviewStats = {
+    pageviews: { value: 0, prev: 0, changePercent: 0 },
+    visitors: { value: 0, prev: 0, changePercent: 0 },
+    visits: { value: 0, prev: 0, changePercent: 0 },
+    bounceRate: { value: 0, prev: 0, changePercent: 0 },
+    avgTime: { seconds: 0, formatted: '0s' },
+  };
+
+  const emptyData: DashboardData = {
+    range,
+    isLivePostHog: Boolean(apiKey && projectId),
+    projectId,
+    posthogHost: host,
+    activeVisitors: 0,
+    overview: emptyOverview,
+    timeSeries: buildRealTimeSlots(range, locale),
+    topPages: [],
+    topReferrers: [],
+    topCountries: [],
+    devices: [],
+    browsers: [],
+    events: [],
+    recentLogs: [],
+    updatedAt: new Date().toISOString(),
+  };
 
   if (!apiKey || !projectId) {
-    return { ...benchmark, isLivePostHog: false };
+    return {
+      ...emptyData,
+      apiError: 'POSTHOG_PERSONAL_API_KEY ou POSTHOG_PROJECT_ID manquant dans .env',
+    };
   }
 
   const interval = getIntervalClause(range);
+  const prevInterval = getPrevIntervalClause(range);
 
   try {
-    // 1. Check total event count & stats in range
-    const [statsResult, pagesResult, referrersResult, customEventsResult, activeResult] = await Promise.allSettled([
+    // Parallel HogQL real queries
+    const [
+      statsRes,
+      prevStatsRes,
+      timeSeriesRes,
+      pagesRes,
+      referrersRes,
+      devicesRes,
+      browsersRes,
+      countriesRes,
+      customEventsRes,
+      recentLogsRes,
+      activeRes,
+      bounceRateRes,
+      avgDurationRes,
+    ] = await Promise.allSettled([
+      // 1. Current stats
       runHogQLQuery(
         `SELECT 
           countIf(event = '$pageview') as pageviews, 
@@ -317,6 +281,48 @@ export async function getPostHogDashboardData(
         apiKey,
         host
       ),
+      // 2. Previous period stats
+      runHogQLQuery(
+        `SELECT 
+          countIf(event = '$pageview') as pageviews, 
+          count(DISTINCT distinct_id) as visitors, 
+          count(DISTINCT \`$session_id\`) as sessions
+         FROM events 
+         WHERE timestamp >= now() - ${prevInterval.start} 
+           AND timestamp < now() - ${prevInterval.end}`,
+        projectId,
+        apiKey,
+        host
+      ),
+      // 3. Time series
+      range === '24h'
+        ? runHogQLQuery(
+            `SELECT 
+              toHour(timestamp) as hr, 
+              countIf(event = '$pageview') as pv, 
+              count(DISTINCT distinct_id) as vis
+             FROM events 
+             WHERE timestamp >= now() - ${interval}
+             GROUP BY hr 
+             ORDER BY hr ASC`,
+            projectId,
+            apiKey,
+            host
+          )
+        : runHogQLQuery(
+            `SELECT 
+              toDate(timestamp) as dt, 
+              countIf(event = '$pageview') as pv, 
+              count(DISTINCT distinct_id) as vis
+             FROM events 
+             WHERE timestamp >= now() - ${interval}
+             GROUP BY dt 
+             ORDER BY dt ASC`,
+            projectId,
+            apiKey,
+            host
+          ),
+      // 4. Top Pages
       runHogQLQuery(
         `SELECT 
           coalesce(nullIf(properties.\`$pathname\`, ''), properties.\`$current_url\`, '/') as page, 
@@ -325,38 +331,99 @@ export async function getPostHogDashboardData(
          WHERE event = '$pageview' AND timestamp >= now() - ${interval}
          GROUP BY page 
          ORDER BY cnt DESC 
-         LIMIT 6`,
+         LIMIT 10`,
         projectId,
         apiKey,
         host
       ),
+      // 5. Top Referrers
       runHogQLQuery(
         `SELECT 
-          coalesce(nullIf(properties.\`$referring_domain\`, ''), 'Direct / Accès direct') as ref, 
+          coalesce(nullIf(properties.\`$referring_domain\`, ''), 'Direct / Bookmark') as ref, 
           count() as cnt 
          FROM events 
          WHERE event = '$pageview' AND timestamp >= now() - ${interval}
          GROUP BY ref 
-         ORDER BY cnt DESC 
-         LIMIT 6`,
-        projectId,
-        apiKey,
-        host
-      ),
-      runHogQLQuery(
-        `SELECT 
-          event, 
-          count() as cnt 
-         FROM events 
-         WHERE event NOT IN ('$pageview', '$pageleave', '$identify', '$set', '$create_alias') 
-           AND timestamp >= now() - ${interval}
-         GROUP BY event 
          ORDER BY cnt DESC 
          LIMIT 10`,
         projectId,
         apiKey,
         host
       ),
+      // 6. Devices
+      runHogQLQuery(
+        `SELECT 
+          coalesce(nullIf(properties.\`$device_type\`, ''), 'Desktop') as dev, 
+          count() as cnt 
+         FROM events 
+         WHERE timestamp >= now() - ${interval}
+         GROUP BY dev 
+         ORDER BY cnt DESC 
+         LIMIT 6`,
+        projectId,
+        apiKey,
+        host
+      ),
+      // 7. Browsers
+      runHogQLQuery(
+        `SELECT 
+          coalesce(nullIf(properties.\`$browser\`, ''), 'Inconnu') as brw, 
+          count() as cnt 
+         FROM events 
+         WHERE timestamp >= now() - ${interval}
+         GROUP BY brw 
+         ORDER BY cnt DESC 
+         LIMIT 6`,
+        projectId,
+        apiKey,
+        host
+      ),
+      // 8. Countries
+      runHogQLQuery(
+        `SELECT 
+          coalesce(nullIf(properties.\`$geoip_country_name\`, ''), 'Non localisé') as country, 
+          count() as cnt 
+         FROM events 
+         WHERE timestamp >= now() - ${interval}
+         GROUP BY country 
+         ORDER BY cnt DESC 
+         LIMIT 8`,
+        projectId,
+        apiKey,
+        host
+      ),
+      // 9. Custom Events (excluding internal posthog noise)
+      runHogQLQuery(
+        `SELECT 
+          event, 
+          count() as cnt 
+         FROM events 
+         WHERE event NOT IN ('$pageview', '$pageleave', '$identify', '$set', '$create_alias', '$feature_flag_called') 
+           AND timestamp >= now() - ${interval}
+         GROUP BY event 
+         ORDER BY cnt DESC 
+         LIMIT 12`,
+        projectId,
+        apiKey,
+        host
+      ),
+      // 10. Recent event logs
+      runHogQLQuery(
+        `SELECT 
+          uuid, 
+          event, 
+          timestamp, 
+          properties.\`$pathname\`, 
+          properties.\`$geoip_country_name\`, 
+          properties.\`$device_type\`
+         FROM events 
+         ORDER BY timestamp DESC 
+         LIMIT 15`,
+        projectId,
+        apiKey,
+        host
+      ),
+      // 11. Active visitors in last 30 minutes
       runHogQLQuery(
         `SELECT count(DISTINCT distinct_id) as active_now 
          FROM events 
@@ -365,92 +432,265 @@ export async function getPostHogDashboardData(
         apiKey,
         host
       ),
+      // 12. Bounce rate: sessions with only 1 pageview
+      runHogQLQuery(
+        `SELECT 
+          countIf(pv_count = 1) as bounced,
+          count() as total_sessions
+         FROM (
+           SELECT \`$session_id\`, countIf(event = '$pageview') as pv_count
+           FROM events
+           WHERE timestamp >= now() - ${interval} AND \`$session_id\` != ''
+           GROUP BY \`$session_id\`
+         )`,
+        projectId,
+        apiKey,
+        host
+      ),
+      // 13. Average session duration estimate
+      runHogQLQuery(
+        `SELECT avg(duration) as avg_dur
+         FROM (
+           SELECT \`$session_id\`, 
+             dateDiff('second', min(timestamp), max(timestamp)) as duration
+           FROM events
+           WHERE timestamp >= now() - ${interval} AND \`$session_id\` != ''
+           GROUP BY \`$session_id\`
+           HAVING duration > 0
+         )`,
+        projectId,
+        apiKey,
+        host
+      ),
     ]);
 
-    // Parse stats & capture API errors
-    let livePageviews = 0;
-    let liveVisitors = 0;
-    let liveSessions = 0;
+    // Check for API errors
     let capturedError: string | undefined;
-
-    if (statsResult.status === 'fulfilled') {
-      if (statsResult.value.error) {
-        capturedError = statsResult.value.error;
-      }
-      const rows = statsResult.value.results;
-      if (rows && rows.length > 0) {
-        const row = rows[0];
-        livePageviews = Number(row[0] || 0);
-        liveVisitors = Number(row[1] || 0);
-        liveSessions = Number(row[2] || 0);
-      }
+    if (statsRes.status === 'fulfilled' && statsRes.value.error) {
+      capturedError = statsRes.value.error;
     }
 
-    // If PostHog has real events recorded, merge with live numbers!
-    if (livePageviews > 0 || liveVisitors > 0) {
-      benchmark.overview.pageviews.value = livePageviews;
-      benchmark.overview.visitors.value = liveVisitors;
-      benchmark.overview.visits.value = Math.max(liveSessions, liveVisitors);
+    // Parse Current Stats
+    let pageviews = 0;
+    let visitors = 0;
+    let visits = 0;
+    if (statsRes.status === 'fulfilled' && statsRes.value.results && statsRes.value.results.length > 0) {
+      const row = statsRes.value.results[0];
+      pageviews = Number(row[0] || 0);
+      visitors = Number(row[1] || 0);
+      visits = Math.max(Number(row[2] || 0), visitors > 0 ? 1 : 0);
+    }
 
-      // Top Pages
-      if (pagesResult.status === 'fulfilled' && pagesResult.value.results && pagesResult.value.results.length > 0) {
-        const rows = pagesResult.value.results;
-        const total = rows.reduce((acc, r) => acc + Number(r[1] || 0), 0) || 1;
-        benchmark.topPages = rows.map((r) => ({
-          name: String(r[0]),
-          value: Number(r[1]),
-          percentage: Math.round((Number(r[1]) / total) * 100),
-        }));
-      }
+    // Parse Previous Stats for growth trends
+    let prevPageviews = 0;
+    let prevVisitors = 0;
+    let prevVisits = 0;
+    if (prevStatsRes.status === 'fulfilled' && prevStatsRes.value.results && prevStatsRes.value.results.length > 0) {
+      const row = prevStatsRes.value.results[0];
+      prevPageviews = Number(row[0] || 0);
+      prevVisitors = Number(row[1] || 0);
+      prevVisits = Number(row[2] || 0);
+    }
 
-      // Top Referrers
-      if (referrersResult.status === 'fulfilled' && referrersResult.value.results && referrersResult.value.results.length > 0) {
-        const rows = referrersResult.value.results;
-        const total = rows.reduce((acc, r) => acc + Number(r[1] || 0), 0) || 1;
-        benchmark.topReferrers = rows.map((r) => ({
-          name: String(r[0]),
-          value: Number(r[1]),
-          percentage: Math.round((Number(r[1]) / total) * 100),
-        }));
-      }
+    const calcChange = (current: number, prev: number) => {
+      if (prev === 0) return current > 0 ? 100 : 0;
+      return Math.round(((current - prev) / prev) * 100);
+    };
 
-      // Custom Events
-      if (customEventsResult.status === 'fulfilled' && customEventsResult.value.results && customEventsResult.value.results.length > 0) {
-        benchmark.events = customEventsResult.value.results.map((r) => {
-          const eventName = String(r[0]);
-          const meta = EVENT_META[eventName] || {
-            labelFr: eventName,
-            labelEn: eventName,
-            category: 'engagement' as const,
-          };
-          return {
-            event: eventName,
-            label: locale === 'en' ? meta.labelEn : meta.labelFr,
-            count: Number(r[1]),
-            category: meta.category,
-          };
-        });
-      }
+    // Time Series merging with real points
+    const timeSlots = buildRealTimeSlots(range, locale);
+    if (timeSeriesRes.status === 'fulfilled' && timeSeriesRes.value.results && timeSeriesRes.value.results.length > 0) {
+      const rows = timeSeriesRes.value.results;
+      rows.forEach((r) => {
+        const pv = Number(r[1] || 0);
+        const vis = Number(r[2] || 0);
+        if (range === '24h') {
+          const hr = Number(r[0]);
+          const target = `${hr.toString().padStart(2, '0')}:00`;
+          const slot = timeSlots.find((s) => s.label === target);
+          if (slot) {
+            slot.pageviews = pv;
+            slot.visitors = vis;
+          }
+        } else {
+          const dateStr = String(r[0]).split('T')[0];
+          const d = new Date(dateStr);
+          const target = d.toLocaleDateString(locale === 'en' ? 'en-US' : 'fr-FR', {
+            month: 'short',
+            day: 'numeric',
+          });
+          const slot = timeSlots.find((s) => s.label === target);
+          if (slot) {
+            slot.pageviews = pv;
+            slot.visitors = vis;
+          }
+        }
+      });
+    }
+
+    // Top Pages
+    let topPages: MetricItem[] = [];
+    if (pagesRes.status === 'fulfilled' && pagesRes.value.results && pagesRes.value.results.length > 0) {
+      const rows = pagesRes.value.results;
+      const total = rows.reduce((acc, r) => acc + Number(r[1] || 0), 0) || 1;
+      topPages = rows.map((r) => ({
+        name: String(r[0]),
+        value: Number(r[1]),
+        percentage: Math.round((Number(r[1]) / total) * 100),
+      }));
+    }
+
+    // Top Referrers
+    let topReferrers: MetricItem[] = [];
+    if (referrersRes.status === 'fulfilled' && referrersRes.value.results && referrersRes.value.results.length > 0) {
+      const rows = referrersRes.value.results;
+      const total = rows.reduce((acc, r) => acc + Number(r[1] || 0), 0) || 1;
+      topReferrers = rows.map((r) => ({
+        name: String(r[0]),
+        value: Number(r[1]),
+        percentage: Math.round((Number(r[1]) / total) * 100),
+      }));
+    }
+
+    // Devices
+    let devices: MetricItem[] = [];
+    if (devicesRes.status === 'fulfilled' && devicesRes.value.results && devicesRes.value.results.length > 0) {
+      const rows = devicesRes.value.results;
+      const total = rows.reduce((acc, r) => acc + Number(r[1] || 0), 0) || 1;
+      devices = rows.map((r) => ({
+        name: String(r[0]),
+        value: Number(r[1]),
+        percentage: Math.round((Number(r[1]) / total) * 100),
+      }));
+    }
+
+    // Browsers
+    let browsers: MetricItem[] = [];
+    if (browsersRes.status === 'fulfilled' && browsersRes.value.results && browsersRes.value.results.length > 0) {
+      const rows = browsersRes.value.results;
+      const total = rows.reduce((acc, r) => acc + Number(r[1] || 0), 0) || 1;
+      browsers = rows.map((r) => ({
+        name: String(r[0]),
+        value: Number(r[1]),
+        percentage: Math.round((Number(r[1]) / total) * 100),
+      }));
+    }
+
+    // Countries
+    let topCountries: MetricItem[] = [];
+    if (countriesRes.status === 'fulfilled' && countriesRes.value.results && countriesRes.value.results.length > 0) {
+      const rows = countriesRes.value.results;
+      const total = rows.reduce((acc, r) => acc + Number(r[1] || 0), 0) || 1;
+      topCountries = rows.map((r) => ({
+        name: String(r[0]),
+        value: Number(r[1]),
+        percentage: Math.round((Number(r[1]) / total) * 100),
+      }));
+    }
+
+    // Custom Events
+    let events: CustomEventItem[] = [];
+    if (customEventsRes.status === 'fulfilled' && customEventsRes.value.results && customEventsRes.value.results.length > 0) {
+      const rows = customEventsRes.value.results;
+      events = rows.map((r) => {
+        const eventName = String(r[0]);
+        const meta = EVENT_META[eventName] || {
+          labelFr: eventName,
+          labelEn: eventName,
+          category: 'engagement' as const,
+        };
+        return {
+          event: eventName,
+          label: locale === 'en' ? meta.labelEn : meta.labelFr,
+          count: Number(r[1]),
+          category: meta.category,
+        };
+      });
+    }
+
+    // Recent Logs
+    let recentLogs: RecentEventLog[] = [];
+    if (recentLogsRes.status === 'fulfilled' && recentLogsRes.value.results && recentLogsRes.value.results.length > 0) {
+      const rows = recentLogsRes.value.results;
+      recentLogs = rows.map((r) => ({
+        id: String(r[0]),
+        event: String(r[1]),
+        timestamp: formatRelativeTime(String(r[2]), locale),
+        url: r[3] ? String(r[3]) : undefined,
+        country: r[4] ? String(r[4]) : undefined,
+        device: r[5] ? String(r[5]) : undefined,
+      }));
     }
 
     // Active visitors
-    if (activeResult.status === 'fulfilled' && activeResult.value.results && activeResult.value.results.length > 0) {
-      const active = Number(activeResult.value.results[0][0] || 0);
-      if (active > 0) {
-        benchmark.activeVisitors = active;
-      }
+    let activeVisitors = 0;
+    if (activeRes.status === 'fulfilled' && activeRes.value.results && activeRes.value.results.length > 0) {
+      activeVisitors = Number(activeRes.value.results[0][0] || 0);
     }
 
     return {
-      ...benchmark,
+      range,
       isLivePostHog: !capturedError,
       apiError: capturedError,
       projectId,
       posthogHost: host,
+      activeVisitors,
+      overview: {
+        pageviews: {
+          value: pageviews,
+          prev: prevPageviews,
+          changePercent: calcChange(pageviews, prevPageviews),
+        },
+        visitors: {
+          value: visitors,
+          prev: prevVisitors,
+          changePercent: calcChange(visitors, prevVisitors),
+        },
+        visits: {
+          value: visits,
+          prev: prevVisits,
+          changePercent: calcChange(visits, prevVisits),
+        },
+        bounceRate: (() => {
+          let bounceVal = 0;
+          if (bounceRateRes.status === 'fulfilled' && bounceRateRes.value.results && bounceRateRes.value.results.length > 0) {
+            const bounced = Number(bounceRateRes.value.results[0][0] || 0);
+            const totalSessions = Number(bounceRateRes.value.results[0][1] || 0);
+            bounceVal = totalSessions > 0 ? Math.round((bounced / totalSessions) * 100) : 0;
+          } else if (visits > 0 && pageviews > 0) {
+            // Fallback estimation
+            bounceVal = Math.round(Math.max(0, 100 - (pageviews / visits) * 30));
+          }
+          return { value: bounceVal, prev: 0, changePercent: 0 };
+        })(),
+        avgTime: (() => {
+          let avgSec = 0;
+          if (avgDurationRes.status === 'fulfilled' && avgDurationRes.value.results && avgDurationRes.value.results.length > 0) {
+            avgSec = Math.round(Number(avgDurationRes.value.results[0][0] || 0));
+          }
+          const mins = Math.floor(avgSec / 60);
+          const secs = avgSec % 60;
+          const formatted = avgSec > 0
+            ? (mins > 0 ? `${mins}m ${secs}s` : `${avgSec}s`)
+            : '0s';
+          return { seconds: avgSec, formatted };
+        })(),
+      },
+      timeSeries: timeSlots,
+      topPages,
+      topReferrers,
+      topCountries,
+      devices,
+      browsers,
+      events,
+      recentLogs,
       updatedAt: new Date().toISOString(),
     };
-  } catch (error) {
-    console.error('PostHog query error, using baseline telemetry:', error);
-    return benchmark;
+  } catch (error: any) {
+    console.error('PostHog fetch error:', error);
+    return {
+      ...emptyData,
+      apiError: error?.message || 'Erreur lors de la récupération des données',
+    };
   }
 }

@@ -25,6 +25,13 @@ export type EventLocation = 'navbar' | 'hero' | 'contact' | 'footer' | 'floating
 
 declare global {
   interface Window {
+    posthog?: {
+      init: (apiKey: string, config?: Record<string, any>) => void;
+      capture: (eventName: string, properties?: Record<string, any>) => void;
+      identify: (distinctId: string, properties?: Record<string, any>) => void;
+      reset: () => void;
+      __loaded?: boolean;
+    };
     umami?: {
       track: (
         event: string | Record<string, any>,
@@ -35,13 +42,15 @@ declare global {
 }
 
 /**
- * Safe helper to trigger Umami custom events from client-side code.
- * Never throws an error if Umami is blocked, disabled by user, or absent.
+ * Safe helper to trigger PostHog custom events from client-side code.
+ * Never throws an error if PostHog is blocked, disabled by user, or absent.
  */
 export function track(event: AnalyticsEvent | string, data?: Record<string, any>): void {
   if (typeof window === 'undefined') return;
   try {
-    if (window.umami && typeof window.umami.track === 'function') {
+    if (window.posthog && typeof window.posthog.capture === 'function') {
+      window.posthog.capture(event, data);
+    } else if (window.umami && typeof window.umami.track === 'function') {
       window.umami.track(event, data);
     }
   } catch {

@@ -4,6 +4,7 @@ import { Link, usePathname } from '@/i18n/routing';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import LanguageToggle from './LanguageToggle';
 import { Menu, X } from 'lucide-react';
 import { FaGithub, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6';
@@ -82,9 +83,17 @@ export default function Nav() {
           <div className="flex items-center gap-7">
             <Link
               href="/"
-              className="font-pixel-grid text-sm sm:text-base uppercase tracking-tight text-white hover:opacity-90 transition-opacity flex items-center"
+              className="group flex items-center py-1 transition-opacity hover:opacity-90"
+              aria-label="Accueil"
             >
-              LAFIA<span className="text-accent font-pixel-grid">.</span>
+              <Image
+                src="/logo-icon.png"
+                alt="ALSG Logo"
+                width={86}
+                height={22}
+                priority
+                className="h-5 sm:h-5.5 w-auto object-contain transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.22)]"
+              />
             </Link>
 
             <nav className="hidden md:flex items-center gap-6">
@@ -161,9 +170,16 @@ export default function Nav() {
                 <Link
                   href="/"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-xl font-heading font-bold text-white tracking-tight"
+                  className="flex items-center py-1"
+                  aria-label="Accueil"
                 >
-                  Lafia<span className="text-accent">.</span>
+                  <Image
+                    src="/logo-icon.png"
+                    alt="ALSG Logo"
+                    width={90}
+                    height={23}
+                    className="h-5.5 w-auto object-contain"
+                  />
                 </Link>
                 <button
                   onClick={() => setMobileMenuOpen(false)}

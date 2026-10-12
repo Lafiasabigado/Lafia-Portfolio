@@ -2,6 +2,7 @@
 
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 export default function Footer() {
   const t = useTranslations('footer');
@@ -26,9 +27,19 @@ export default function Footer() {
       <div className="container-custom py-10">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8 text-xs">
           {/* Identity & quote */}
-          <div className="space-y-2">
-            <Link href="/" className="text-base font-heading font-bold text-white tracking-tight inline-block">
-              Lafia<span className="text-accent text-lg leading-none">.</span>
+          <div className="space-y-2.5">
+            <Link
+              href="/"
+              className="inline-flex items-center group py-0.5"
+              aria-label="Accueil"
+            >
+              <Image
+                src="/logo-icon.png"
+                alt="ALSG Logo"
+                width={86}
+                height={22}
+                className="h-5 sm:h-5.5 w-auto object-contain transition-all duration-300 group-hover:scale-105 group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.2)]"
+              />
             </Link>
             <p className="text-muted text-xs leading-relaxed max-w-xs font-sans">
               {t('craftedWith')}

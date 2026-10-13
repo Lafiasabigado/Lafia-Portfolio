@@ -108,16 +108,16 @@ export default function Hero() {
             {t('subtitle')}
           </motion.p>
 
-          {/* Action buttons - Clean, slim, elegant duo */}
+          {/* Action buttons - Clean, normal padding */}
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 sm:mt-7 flex flex-wrap sm:flex-nowrap items-center justify-center gap-3"
+            className="mt-6 sm:mt-7 flex flex-wrap items-center justify-center gap-3"
           >
             <a
               href="#projets"
-              className="inline-flex items-center justify-center h-10.5 sm:h-11 px-5.5 sm:px-6 rounded-full bg-white text-black font-handwritten text-[17px] sm:text-lg font-semibold hover:-translate-y-0.5 hover:shadow-glow-lift hover:bg-neutral-100 transition-all duration-200"
+              className="inline-flex items-center justify-center font-handwritten text-base sm:text-lg px-5 py-2 rounded-full bg-white text-black font-semibold hover:-translate-y-0.5 hover:shadow-glow-lift hover:bg-neutral-100 transition-all duration-200"
               data-umami-event="hero_cta_click"
               data-umami-event-location="hero"
             >
@@ -128,7 +128,7 @@ export default function Hero() {
               href="https://kloo.me/resumelafia"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-1.5 h-10.5 sm:h-11 px-4.5 sm:px-5 rounded-full border border-white/12 bg-white/[0.03] text-[13px] font-medium text-neutral-300 hover:text-white hover:bg-white/[0.08] hover:border-white/25 transition-all duration-200 hover:-translate-y-0.5 shadow-sm"
+              className="inline-flex items-center justify-center gap-1.5 text-xs sm:text-[13px] font-medium px-4 py-2 rounded-full border border-white/15 bg-white/[0.04] text-neutral-300 hover:text-white hover:bg-white/[0.08] hover:border-white/25 transition-all duration-200 hover:-translate-y-0.5 shadow-sm"
               data-umami-event="cv_download"
               data-umami-event-location="hero"
             >

@@ -26,7 +26,7 @@ export default function Hero() {
           >
             <h1 className="tracking-tight">
               {/* Line 1: Main entry point */}
-              <span className="block text-[1.65rem] sm:text-3xl md:text-[2.25rem] font-pixel-grid font-bold text-white leading-[1.25]">
+              <span className="block text-[1.9rem] sm:text-3xl md:text-[2.25rem] font-pixel-grid font-bold text-white leading-[1.22]">
                 <span>{t('titleLine1')}</span>
                 {/* Inline Avatar - refined compact scale */}
                 <motion.span
@@ -34,7 +34,7 @@ export default function Hero() {
                   whileHover={{ rotate: 5, scale: 1.1 }}
                   transition={{ type: 'spring', stiffness: 350, damping: 15 }}
                 >
-                  <span className="relative inline-block w-[38px] h-[38px] sm:w-[42px] sm:h-[42px] rounded-[11px] p-[2px] bg-[#1c1c22] border border-white/20 shadow-glow -rotate-2 overflow-hidden align-middle ring-1 ring-white/10">
+                  <span className="relative inline-block w-[39px] h-[39px] sm:w-[42px] sm:h-[42px] rounded-[11px] p-[2px] bg-[#1c1c22] border border-white/20 shadow-glow -rotate-2 overflow-hidden align-middle ring-1 ring-white/10">
                     <Image
                       src="/ablafia.png"
                       alt="Lafia Sabi Gado"
@@ -50,7 +50,7 @@ export default function Hero() {
               </span>
 
               {/* Line 2: Same size as Line 1, 'builder.' with delicate brush stroke paint */}
-              <span className="block text-[1.65rem] sm:text-3xl md:text-[2.25rem] font-pixel-grid font-bold leading-[1.25] mt-1 sm:mt-1.5">
+              <span className="block text-[1.9rem] sm:text-3xl md:text-[2.25rem] font-pixel-grid font-bold leading-[1.22] mt-1 sm:mt-1.5">
                 <span className="text-white/95">
                   {t('titleLine2').replace(/builder\.?$/i, '')}
                 </span>

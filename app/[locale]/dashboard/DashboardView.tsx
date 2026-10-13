@@ -402,6 +402,24 @@ export default function DashboardView({
               </button>
             </div>
 
+            {/* Live status badge inside mobile drawer */}
+            <div className="py-2.5 border-b border-line/60">
+              <div className="flex items-center justify-between rounded-[10px] bg-card-ring/70 border border-line p-2">
+                <div className="flex items-center gap-2">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  </span>
+                  <span className="text-[11px] font-mono text-emerald-400">
+                    {data.activeVisitors} {isEn ? 'active online' : 'en ligne'}
+                  </span>
+                </div>
+                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-blue-950/60 text-blue-400 border border-blue-800/40">
+                  #{data.projectId}
+                </span>
+              </div>
+            </div>
+
             <div className="py-4 space-y-1.5 flex-1 overflow-y-auto">
               {navItems.map((item) => {
                 const Icon = item.icon;
@@ -451,34 +469,72 @@ export default function DashboardView({
           MAIN CONTENT AREA
       ========================================================================= */}
       <div className="flex-1 flex flex-col min-w-0">
-        {/* Top Header / Control Bar */}
-        <header className="sticky top-0 z-20 bg-bg/85 backdrop-blur-xl border-b border-line px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            {/* Mobile Menu Hamburger */}
-            <button
-              onClick={() => setMobileMenuOpen(true)}
-              className="lg:hidden p-2 rounded-[10px] bg-card-ring border border-line text-muted hover:text-white"
-            >
-              <Menu className="w-4 h-4" />
-            </button>
+        {/* Top Header / Control Bar - Mobile Optimized & Desktop Aligned */}
+        <header className="sticky top-0 z-20 bg-bg/90 backdrop-blur-xl border-b border-line px-3.5 sm:px-6 lg:px-8 py-2.5 sm:py-0 sm:h-16 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 sm:gap-3 transition-all">
+          {/* Top Bar on Mobile / Left Section on Desktop */}
+          <div className="flex items-center justify-between sm:justify-start gap-2.5 sm:gap-3 w-full sm:w-auto">
+            <div className="flex items-center gap-2.5 min-w-0">
+              {/* Mobile Menu Hamburger */}
+              <button
+                onClick={() => setMobileMenuOpen(true)}
+                className="lg:hidden p-2 rounded-[10px] bg-card-ring border border-line text-muted hover:text-white active:scale-95 transition-transform shrink-0"
+                aria-label="Ouvrir le menu"
+              >
+                <Menu className="w-4 h-4" />
+              </button>
 
-            <div>
-              <div className="flex items-center gap-2">
-                <h1 className="font-heading text-base sm:text-lg font-bold text-white tracking-tight">
+              {/* Mobile Logo Brand + Title */}
+              <div className="flex items-center gap-2 min-w-0">
+                <div className="lg:hidden w-6 h-6 rounded-[7px] bg-white/[0.06] border border-white/10 flex items-center justify-center p-0.5 shrink-0">
+                  <Image
+                    src="/logo-icon.png"
+                    alt="ALSG"
+                    width={18}
+                    height={18}
+                    className="w-4 h-auto object-contain"
+                  />
+                </div>
+                <h1 className="font-heading text-sm sm:text-base lg:text-lg font-bold text-white tracking-tight truncate">
                   {navItems.find((n) => n.id === activeSection)?.label}
                 </h1>
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-950/40 border border-blue-800/30 text-blue-400 text-[10px] font-mono">
-                  <CheckCircle2 className="w-3 h-3 text-blue-400" />
-                  PostHog
-                </span>
               </div>
+
+              {/* PostHog badge */}
+              <span className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-950/40 border border-blue-800/30 text-blue-400 text-[10px] font-mono shrink-0">
+                <CheckCircle2 className="w-3 h-3 text-blue-400" />
+                PostHog
+              </span>
+            </div>
+
+            {/* Mobile Right Quick Action: Live Status + Refresh */}
+            <div className="flex items-center gap-1.5 sm:hidden shrink-0">
+              {/* Mobile Live Status Pill */}
+              <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-emerald-950/40 border border-emerald-800/40 text-[10px] font-mono text-emerald-400">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                </span>
+                <span>{data.activeVisitors} live</span>
+              </div>
+
+              {/* Mobile Refresh Button */}
+              <button
+                onClick={handleManualRefresh}
+                disabled={isRefreshing}
+                className="p-1.5 rounded-[9px] bg-card-ring hover:bg-bg-soft border border-line text-muted hover:text-white transition-all disabled:opacity-50"
+                title={isEn ? 'Refresh data' : 'Actualiser'}
+              >
+                <RefreshCw
+                  className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin text-blue-400' : ''}`}
+                />
+              </button>
             </div>
           </div>
 
-          {/* Right Controls: Range + Refresh */}
-          <div className="flex items-center gap-2">
-            {/* Range Pills */}
-            <div className="inline-flex items-center p-1 rounded-[12px] bg-card-ring border border-line">
+          {/* Right Controls: Range + Desktop Refresh */}
+          <div className="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto">
+            {/* Range Pills - Full width on mobile, sleek segmented pill */}
+            <div className="flex items-center justify-between sm:justify-start w-full sm:w-auto p-1 rounded-[11px] bg-card-ring border border-line/80 shadow-inner">
               {(['24h', '7d', '30d', '90d'] as TimeRange[]).map((r) => {
                 const labelMap = {
                   '24h': '24h',
@@ -492,7 +548,7 @@ export default function DashboardView({
                     key={r}
                     onClick={() => handleRangeChange(r)}
                     disabled={isRefreshing}
-                    className={`px-2.5 sm:px-3 py-1 rounded-[8px] text-xs font-mono transition-all ${
+                    className={`flex-1 sm:flex-initial text-center px-3 sm:px-3.5 py-1.5 sm:py-1 rounded-[8px] text-[11px] sm:text-xs font-mono transition-all ${
                       active
                         ? 'bg-white text-black font-semibold shadow-sm'
                         : 'text-muted hover:text-white hover:bg-white/[0.04]'
@@ -504,11 +560,11 @@ export default function DashboardView({
               })}
             </div>
 
-            {/* Refresh Button */}
+            {/* Desktop Refresh Button */}
             <button
               onClick={handleManualRefresh}
               disabled={isRefreshing}
-              className="p-2 rounded-[12px] bg-card-ring hover:bg-bg-soft border border-line text-muted hover:text-white transition-all disabled:opacity-50"
+              className="hidden sm:flex p-2 rounded-[11px] bg-card-ring hover:bg-bg-soft border border-line text-muted hover:text-white transition-all disabled:opacity-50 shrink-0"
               title={isEn ? 'Refresh data' : 'Actualiser les données'}
             >
               <RefreshCw
